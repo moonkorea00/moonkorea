@@ -51,12 +51,14 @@ const getPosts = () => {
           date: metaData.date ? metaData.date : '날짜 없음',
           content: content ? content : '내용 없음',
         };
-        postList.push(post);
-        if (idx === files.length - 1) {
-          let data = JSON.stringify(postList);
+        setTimeout(() => {
+          postList.push(post);
+          if (idx === files.length - 1) {
+            let data = JSON.stringify(postList);
 
-          fs.writeFileSync('src/posts.json', data);
-        }
+            fs.writeFileSync('src/posts.json', data);
+          }
+        }, 500);
       });
     });
   });
