@@ -1,18 +1,18 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 const Nav = () => {
-  return ( 
+  return (
     <>
-    <NavMain>Nav</NavMain>
+      <NavMain>moonkorea &copy; moonkorea {new Date().getFullYear()}</NavMain>
     </>
-   );
-}
- 
-const NavMain = styled.div`
-width: 100vw;
-height: 10vh;
-margin: 0;
-padding: 0;
-border-bottom: 1px solid black;
+  );
+};
+
+const NavMain = styled.section`
+  width: 100vw;
+  height: 10vh;
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid black;
 `;
 export default Nav;

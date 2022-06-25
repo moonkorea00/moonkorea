@@ -1,10 +1,10 @@
-import { notInitialized } from 'react-redux/es/utils/useSyncExternalStore';
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
 *{
   line-height: 30px;
   /* padding: 0;  */
+  
 }
 
 body {
@@ -16,6 +16,9 @@ body {
   sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  ::-webkit-scrollbar {
+    display: none;
+}
 }
 
 a {
