@@ -5,9 +5,11 @@ import SyntaxHighlighter from 'react-syntax-highlighter';
 import Reactmarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 import postList from '../posts.json';
-
+import { useTitle } from '../hooks/useTitle';
 const Blog = () => {
   const { id } = useParams();
+  const { category, title } = postList[id - 1];
+  useTitle(`${category} - ${title}`);
 
   return (
     <Layout>
