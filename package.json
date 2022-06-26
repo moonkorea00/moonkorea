@@ -31,7 +31,7 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "server": "node public/main.js"
+    "server": "node public/createPostList.js"
   },
   "eslintConfig": {
     "extends": [

@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import styled from 'styled-components';
 import Nav from './components/Nav';
-import SideNav from './components/SideNav';
+import CategoryList from './components/CategoryList/CategoryList';
 import Home from './components/Home'
 import Blog from './components/Blog';
 
@@ -10,11 +10,10 @@ function Router() {
     <BrowserRouter>
       <Nav />
       <Main>
-        <SideNav />
-        {/* <Blog /> */}
+        <CategoryList />
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route path="/blog/:article" element={<Blog />} />
+          <Route path="/:category/:id" element={<Blog />} />
         </Routes>
       </Main>
     </BrowserRouter>
@@ -23,6 +22,6 @@ function Router() {
 
 const Main = styled.main`
   display: inline-flex;
-  /* width: 100%; */
+  width: 100vw;
 `;
 export default Router;

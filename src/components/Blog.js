@@ -1,29 +1,18 @@
+import { useParams } from 'react-router';
+import Layout from './Layout';
 import styled from 'styled-components';
 import SyntaxHighlighter from 'react-syntax-highlighter';
-import { useState } from 'react';
-// import test from '../articles/test.md';
-// import blog from '../articles/blog.md';
 import Reactmarkdown from 'react-markdown';
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
 import rehypeRaw from 'rehype-raw';
 import postList from '../posts.json';
 
 const Blog = () => {
-  const { article } = useSelector(state => ({
-    article: state.article.article,
-  }));
-  const dispatch = useDispatch();
-  const [markdown, setMarkdown] = useState(null);
-
-  const string = `# 변수 \n변수는 하나의 값을 저장하기 위해 확보한 메모리 공간 자체 또는 그 메모리 공간을 식별하기 위해 붙인 이름을 말한다. \n> ### **변수의 선언이란?** `;
+  const { id } = useParams();
 
   return (
-    <BlogMain>
-      
-      <div>test</div>
+    <Layout>
       <Reactmarkdown
-        children={postList[1]?.content}
+        children={postList[id - 1].content}
         skipHtml={false}
         rehypePlugins={[rehypeRaw]}
         parserOptions={{ commonmark: true }}
@@ -43,7 +32,7 @@ const Blog = () => {
           ),
         }}
       />
-    </BlogMain>
+    </Layout>
   );
 };
 
@@ -64,6 +53,7 @@ const BlogMain = styled.main`
   /* width: 70vw; */
   /* display: inline-block; */
   /* width: 100%; */
+  width: 65%;
   height: 85vh;
   padding: 5vh 5vw 0 5vw;
   /* border: 1px solid red; */
