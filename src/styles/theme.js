@@ -11,10 +11,11 @@ const theme = {
     justify-content: center;
     align-items: center;
   `,
-  InlineFlexStart: css`
+  inlineFlexStart: css`
     display: inline-flex;
     justify-content: flex-start;
     align-items: center;
+    flex-direction: column;
   `,
   flexSpaceBetween: css`
     display: flex;

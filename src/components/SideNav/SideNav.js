@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import postList from '../../posts.json';
 import Category from './Category';
 import { useNavigate } from 'react-router';
 import navData from '../../nav.json';
@@ -20,7 +19,7 @@ const Layout = styled.nav`
   width: 30vw;
   height: 90vh;
   margin: 0;
-  padding: 10px 0 0 2vw;
+  padding: 2vh 1vw 0 1.4vw;
   border-right: 1px solid lightgrey;
   background-color:#FAFAFA;
   overflow-y: scroll;

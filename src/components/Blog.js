@@ -16,8 +16,8 @@ const Blog = () => {
       currentPost.content = post.content;
     }
   });
+  // console.log(currentPost);
 
-  console.log(currentPost);
   return (
     <Layout>
       <Reactmarkdown
@@ -46,7 +46,7 @@ const Blog = () => {
 };
 
 const Component = ({ children }) => {
-  console.log(`MARKDOWN`, children);
+  // console.log(`MARKDOWN`, children);
   const customStyle = {
     padding: '15px',
     borderRadius: '20px',
