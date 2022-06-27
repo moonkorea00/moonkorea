@@ -20,11 +20,12 @@ body {
     display: none;
 }
 }
-
+span{
+  color: #364149;
+}
 a {
   text-decoration: none;
 }
 `;
-
 
 export default GlobalStyle;

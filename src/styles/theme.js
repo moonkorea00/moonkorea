@@ -1,9 +1,19 @@
 import { css } from 'styled-components';
 
 const theme = {
+  flexStart: css`
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  `,
   flexCenter: css`
     display: flex;
     justify-content: center;
+    align-items: center;
+  `,
+  InlineFlexStart: css`
+    display: inline-flex;
+    justify-content: flex-start;
     align-items: center;
   `,
   flexSpaceBetween: css`
@@ -18,8 +28,8 @@ const theme = {
   `,
 
   bg: css`
-    background-color: #FAFAFA;
-  `
+    background-color: #fafafa;
+  `,
 };
 
 export default theme;

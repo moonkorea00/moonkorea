@@ -51,8 +51,9 @@ const getPosts = () => {
         // console.log(`CONTENT: `,content)
         post = {
           id: idx + 1,
-          title: metaData.title ? metaData.title : "제목 없음",
-          category: metaData.category ? metaData.category : '글쓴이 없음',
+          title: metaData.title,
+          category: metaData.category,
+          path: metaData.title.replace("?","").replaceAll(" ", "-"),
           date: metaData.date ? metaData.date : '날짜 없음',
           content: content ? content : '내용 없음',
         };

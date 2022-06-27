@@ -5,18 +5,11 @@ const Layout = ({ children }) => {
 };
 
 const Main = styled.section`
-  /* width: 70vw; */
-  /* display: inline-block; */
-  /* width: 100%; */
-  width: 65%;
+  width: 100%;
   height: 85vh;
   padding: 5vh 5vw 0 5vw;
-  /* border: 1px solid red; */
   overflow-y: scroll;
   overflow-x: hidden;
   overscroll-behavior-y: none;
-  /* ::-webkit-scrollbar {
-    display: none;
-} */
 `;
 export default Layout;

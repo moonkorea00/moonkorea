@@ -2,7 +2,6 @@
 title: REACT TEST
 category: React
 date: 2022년 3월 4일
-key: blah blah
 ---
 
 > ### var, let, const는 뭔가요?

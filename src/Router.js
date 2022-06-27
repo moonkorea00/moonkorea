@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import styled from 'styled-components';
 import Nav from './components/Nav';
-import CategoryList from './components/CategoryList/CategoryList';
+import SideNav from './components/SideNav/SideNav';
 import Home from './components/Home'
 import Blog from './components/Blog';
 
@@ -10,10 +10,10 @@ function Router() {
     <BrowserRouter>
       <Nav />
       <Main>
-        <CategoryList />
+        <SideNav />
         <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route path="/:category/:id" element={<Blog />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/:category/:path" element={<Blog />} />
         </Routes>
       </Main>
     </BrowserRouter>
