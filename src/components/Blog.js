@@ -48,8 +48,8 @@ const Blog = () => {
 const Component = ({ children }) => {
   // console.log(`MARKDOWN`, children);
   const customStyle = {
-    padding: '15px',
-    borderRadius: '20px',
+    padding: '10px 15px',
+    borderRadius: '10px',
   };
   return (
     <SyntaxHighlighter language="javascript" customStyle={customStyle}>

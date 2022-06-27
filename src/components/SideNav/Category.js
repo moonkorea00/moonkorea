@@ -13,33 +13,34 @@ const Category = ({ item }) => {
   const handleDisplaySubnav = () => {
     setSubNav(prev => !prev);
   };
-  
+
+  const condition = pathname.split('/')[1] === variant;
   useEffect(() => {
-    const condition = pathname.split('/')[1] === variant;
     condition && setSubNav(true);
   }, [name, pathname]);
 
   return (
     <CategoryWrapper>
-      <div>
+      <div style={{ display: 'flex', alignItems: 'center' }}>
         <TriangleIcon
           src={Triangle}
           alt="icon"
           subNav={subNav}
           onClick={handleDisplaySubnav}
         />
-        <CategoryItem onClick={handleDisplaySubnav}>{name}</CategoryItem>
+        <CategoryItem condition={condition} onClick={handleDisplaySubnav}>
+          {name}
+        </CategoryItem>
       </div>
       {subNav &&
         subCategory.map(({ id, title, category, path }) => {
-          const condition = decodeUri
+          const matchUriCondition = decodeUri
             .split('/')
             .includes(path.split('/').pop());
           return (
-            <PostWrapper>
+            <PostWrapper matchUriCondition={matchUriCondition}>
               -
               <Post
-                matchURI={condition}
                 onClick={() => {
                   navigate(`/${category}/${path}`);
                 }}
@@ -62,46 +63,47 @@ const CategoryWrapper = styled.section`
 const TriangleIcon = styled.img`
   width: 7px;
   height: 7px;
-  margin-bottom: 2px;
   transform: ${({ subNav }) => (subNav ? '' : 'rotate(-90deg)')};
   transition: all ease 0.3s;
   cursor: pointer;
 `;
 
 const CategoryItem = styled.span`
-  margin-left: 8px;
+  margin-left: 0.6vw;
+  font-weight: ${({ condition }) => condition && '700'};
   cursor: pointer;
 `;
+
 const PostWrapper = styled.div`
   display: inline-flex;
   align-items: center;
   padding-left: 1.2vw;
-`;
+  margin-bottom: 0.3vh;
 
-const Post = styled.span`
-  margin: 0 0 0vh 0vw;
-  padding: 0 0.5vw;
-  font-size: 15px;
-  line-height: 22px;
-  color: #5d666d;
-
-  ${({ matchURI }) =>
-    matchURI &&
+  ${({ matchUriCondition }) =>
+    matchUriCondition &&
     css`
       margin-left: 0.3vw;
-      border-radius: 10px;
+      border-radius: 4px;
       background-color: rgb(235, 235, 235);
       color: black;
-      cursor: pointer;
       transition: all ease 0.5s;
     `}
 
   &:hover {
-    border-radius: 10px;
-    background-color: rgb(242, 242, 242);
+    border-radius: 4px;
     color: black;
-    cursor: pointer;
+    background-color: rgb(235, 235, 235);
+    transition: all ease 0.5s;
   }
+`;
+
+const Post = styled.div`
+  padding: 0.8vh 0 0.8vh 0.5vw;
+  font-size: 14px;
+  line-height: 25px;
+  color: #364149;
+  cursor: pointer;
 `;
 
 export default Category;

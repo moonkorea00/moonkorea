@@ -1,10 +1,8 @@
 import styled from 'styled-components';
 import Category from './Category';
-import { useNavigate } from 'react-router';
 import navData from '../../nav.json';
 
 const SideNav = () => {
-  const navigate = useNavigate();
 
   return (
     <Layout>
