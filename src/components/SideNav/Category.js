@@ -17,7 +17,7 @@ const Category = ({ item }) => {
   const condition = pathname.split('/')[1] === variant;
   useEffect(() => {
     condition && setSubNav(true);
-  }, [name, pathname]);
+  }, [condition]);
 
   return (
     <CategoryWrapper>
@@ -70,7 +70,7 @@ const TriangleIcon = styled.img`
 
 const CategoryItem = styled.span`
   margin-left: 0.6vw;
-  font-weight: ${({ condition }) => condition && '700'};
+  font-weight: ${({ condition }) => condition && '900'};
   cursor: pointer;
 `;
 

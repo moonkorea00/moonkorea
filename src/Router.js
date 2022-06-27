@@ -4,7 +4,7 @@ import Nav from './components/Nav';
 import SideNav from './components/SideNav/SideNav';
 import Home from './components/Home'
 import Blog from './components/Blog';
-
+import NotFound from './components/NotFound';
 function Router() {
   return (
     <BrowserRouter>
@@ -12,6 +12,7 @@ function Router() {
       <Main>
         <SideNav />
         <Routes>
+          <Route path="*" element={<NotFound />}/>
           <Route path="/" element={<Home />} />
           <Route path="/:category/:path" element={<Blog />} />
         </Routes>
