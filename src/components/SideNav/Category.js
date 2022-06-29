@@ -42,7 +42,7 @@ const Category = ({ item }) => {
               -
               <Post
                 onClick={() => {
-                  navigate(`/${category}/${path}`);
+                  navigate(`/moonkorea/${category}/${path}`);
                 }}
               >
                 {title}

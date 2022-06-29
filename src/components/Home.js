@@ -1,11 +1,12 @@
 import Layout from './Layout';
-
 const Home = () => {
   return (
     <>
-      <Layout><div>Welcome to moonkorea's blog</div></Layout>
+      <Layout>
+          Welcome to moonkorea's blog
+          
+      </Layout>
     </>
   );
 };
-
 export default Home;

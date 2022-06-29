@@ -1,22 +1,22 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Nav from './components/Nav';
-import SideNav from './components/SideNav/SideNav';
-import Home from './components/Home'
+import Home from './components/Home';
 import Blog from './components/Blog';
 import NotFound from './components/NotFound';
 function Router() {
   return (
     <BrowserRouter>
       <Nav />
-      <Main>
-        <SideNav />
-        <Routes>
-          <Route path="*" element={<NotFound />}/>
-          <Route path="/" element={<Home />} />
-          <Route path="/:category/:path" element={<Blog />} />
-        </Routes>
-      </Main>
+      {/* <Main> */}
+
+      <Routes>
+        <Route path="/moonkorea" element={<Home />} />
+        <Route path="/moonkorea/:category/:path" element={<Blog />} />
+        <Route path="/moonkorea/page-not-found" element={<NotFound />} />
+        <Route path="/*" element={<Navigate to='/moonkorea/page-not-found' replace />} />
+      </Routes>
+      {/* </Main> */}
     </BrowserRouter>
   );
 }

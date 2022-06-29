@@ -6,8 +6,8 @@ import { useNavigate } from 'react-router';
 
 const Nav = () => {
   const navigate = useNavigate();
-  const directToMain = () => {
-    navigate('/');
+  const directToHome = () => {
+    navigate('/moonkorea');
   };
   return (
     <IconContext.Provider
@@ -15,8 +15,8 @@ const Nav = () => {
     >
       <NavMain>
         <HeadingWrapper>
-          <Favicon src={blogImg} onClick={directToMain}></Favicon>
-          <Heading onClick={directToMain}>{BLOGDATA.blog_name}</Heading>
+          <Favicon src={blogImg} onClick={directToHome}></Favicon>
+          <Heading onClick={directToHome}>{BLOGDATA.blog_name}</Heading>
         </HeadingWrapper>
         <Links>
           <a

@@ -1,9 +1,19 @@
 import styled from 'styled-components';
+import SideNav from './SideNav/SideNav';
 
 const Layout = ({ children }) => {
-  return <Main>{children}</Main>;
+  return (
+    <Container>
+      <SideNav />
+      <Main>{children}</Main>
+    </Container>
+  );
 };
 
+const Container = styled.main`
+  display: inline-flex;
+  width: 100vw;
+`;
 const Main = styled.section`
   width: 100%;
   height: 85vh;
