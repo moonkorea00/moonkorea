@@ -14,7 +14,8 @@ const Category = ({ item }) => {
     setSubNav(prev => !prev);
   };
 
-  const condition = pathname.split('/')[1] === variant;
+  const condition = pathname.split('/')[2] === variant;
+  console.log(pathname.split('/')[2])
   useEffect(() => {
     condition && setSubNav(true);
   }, [condition]);
