@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Nav from './components/Nav';
 import Home from './components/Home';
@@ -6,7 +6,7 @@ import Blog from './components/Blog';
 import NotFound from './components/NotFound';
 function Router() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Nav />
       {/* <Main> */}
 
@@ -17,7 +17,7 @@ function Router() {
         <Route path="/*" element={<Navigate to='/moonkorea/page-not-found' replace />} />
       </Routes>
       {/* </Main> */}
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
