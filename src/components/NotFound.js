@@ -12,7 +12,7 @@ const NotFound = () => {
       <h1>페이지를 찾을 수 없습니다.</h1>
       <RedirectButton
         onClick={() => {
-          navigate('/moonkorea', { replace: true });
+          navigate('/', { replace: true });
         }}
       >
         메인으로 돌아가기

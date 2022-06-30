@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from 'react-router';
 import styled from 'styled-components';
 import Triangle from '../../assets/icons/Triangle.png';
 import { css } from 'styled-components';
-const Category = ({ item }) => {
+const Category = ({ item, id }) => {
   const { name, variant, subCategory } = item;
   const [subNav, setSubNav] = useState(false);
   const navigate = useNavigate();
@@ -14,14 +14,13 @@ const Category = ({ item }) => {
     setSubNav(prev => !prev);
   };
 
-  const condition = pathname.split('/')[2] === variant;
-  console.log(pathname.split('/')[2])
+  const condition = pathname.split('/')[1] === variant;
   useEffect(() => {
     condition && setSubNav(true);
   }, [condition]);
 
   return (
-    <CategoryWrapper>
+    <CategoryWrapper key={id}>
       <div style={{ display: 'flex', alignItems: 'center' }}>
         <TriangleIcon
           src={Triangle}
@@ -39,11 +38,11 @@ const Category = ({ item }) => {
             .split('/')
             .includes(path.split('/').pop());
           return (
-            <PostWrapper matchUriCondition={matchUriCondition}>
+            <PostWrapper matchUriCondition={matchUriCondition} key={id}>
               -
               <Post
                 onClick={() => {
-                  navigate(`/moonkorea/${category}/${path}`);
+                  navigate(`/${category}/${path}`);
                 }}
               >
                 {title}

@@ -1,5 +1,4 @@
 import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
-import styled from 'styled-components';
 import Nav from './components/Nav';
 import Home from './components/Home';
 import Blog from './components/Blog';
@@ -8,21 +7,14 @@ function Router() {
   return (
     <HashRouter>
       <Nav />
-      {/* <Main> */}
-
       <Routes>
-        <Route path="/moonkorea" element={<Home />} />
-        <Route path="/moonkorea/:category/:path" element={<Blog />} />
-        <Route path="/moonkorea/page-not-found" element={<NotFound />} />
-        <Route path="/*" element={<Navigate to='/moonkorea/page-not-found' replace />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/:category/:path" element={<Blog />} />
+        <Route path="/page-not-found" element={<NotFound />} />
+        <Route path="*" element={<Navigate to='page-not-found' replace />} />
       </Routes>
-      {/* </Main> */}
     </HashRouter>
   );
 }
 
-const Main = styled.main`
-  display: inline-flex;
-  width: 100vw;
-`;
 export default Router;

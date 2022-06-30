@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router';
 const Nav = () => {
   const navigate = useNavigate();
   const directToHome = () => {
-    navigate('/moonkorea');
+    navigate('/');
   };
   return (
     <IconContext.Provider

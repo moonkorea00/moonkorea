@@ -20,7 +20,7 @@ const Blog = () => {
       postList.find(post => post.category === category && post.path === path)
     );
     if (!post) {
-      navigate('/moonkorea/page-not-found', { replace: true });
+      navigate('/page-not-found', { replace: true });
     }
   }, [category, post, path, navigate]);
 

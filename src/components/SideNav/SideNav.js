@@ -6,7 +6,7 @@ const SideNav = () => {
   return (
     <Layout>
       {navData.map((item, idx) => (
-        <Category item={item} key={idx} />
+        <Category item={item} key={idx} id={idx}/>
       ))}
     </Layout>
   );
