@@ -66,7 +66,7 @@ const getPosts = () => {
               .sort((a, b) => a.id - b.id);
           };
           if (idx === files.length - 1) {
-            const navData = initialData.map((el) => {
+            const navData = initialData.map(el => {
               if (el.variant === 'Browser&CS') {
                 return { ...el, subCategory: filterByCategory(el.variant) };
               }
@@ -80,8 +80,8 @@ const getPosts = () => {
             postList.sort((a, b) => a.id - b.id);
             const combinedPosts = JSON.stringify(postList);
             const navPosts = JSON.stringify(navData);
-            fs.writeFileSync('src/posts.json', combinedPosts);
-            fs.writeFileSync('src/nav.json', navPosts);
+            fs.writeFileSync('src/posts.json', combinedPosts, { flag: 'w' });
+            fs.writeFileSync('src/nav.json', navPosts, { flag: 'w' });
             // console.log('END, POSTS: ', idx);
           }
         }, 2000);
