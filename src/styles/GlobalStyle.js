@@ -3,11 +3,10 @@ import { createGlobalStyle } from 'styled-components';
 const GlobalStyle = createGlobalStyle`
 *{
   line-height: 30px;
+  box-sizing: border-box;
 }
 
 body {
-  box-sizing: border-box;
-  display: inline-flex;
   margin: 0;
   font-family: "Roboto","Arial",sans-serif;
   -webkit-font-smoothing: antialiased;

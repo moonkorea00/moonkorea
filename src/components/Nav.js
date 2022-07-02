@@ -38,21 +38,19 @@ const Nav = () => {
 const BLOGDATA = { blog_name: 'moonkorea', github: <FaIcons.FaGithub /> };
 
 const NavMain = styled.header`
-  ${({ theme }) => theme.flexSpaceBetween}
+  ${({ theme }) => theme.flexCustom(null, 'space-between', 'center')};
   height: 7vh;
-  margin: 0;
   padding: 0 3vw;
   border-bottom: 1px solid lightgrey;
 `;
 
 const HeadingWrapper = styled.div`
-  ${({ theme }) => theme.flexCenter}
-  height:6vh;
+  ${({ theme }) => theme.flexCustom(null, 'center', 'center')};
 `;
 
 const Favicon = styled.img`
-  width: 1.8vw;
-  height: 2.8vh;
+  width: 25px;
+  height: 25px;
   cursor: pointer;
 `;
 
@@ -64,7 +62,7 @@ const Heading = styled.span`
 `;
 
 const Links = styled.div`
-  ${({ theme }) => theme.flexCenter}
+  ${({ theme }) => theme.flexCustom(null, 'center', 'center')};
   gap: 1vw;
   height: 7vh;
   margin-top: 2px;

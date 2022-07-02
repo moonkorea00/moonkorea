@@ -13,11 +13,12 @@ const Layout = ({ children }) => {
 const Container = styled.main`
   display: inline-flex;
   width: 100vw;
+  height: 93vh;
 `;
 const Main = styled.section`
   width: 100%;
-  height: 85vh;
-  padding: 5vh 5vw 0 5vw;
+  height: 100%;
+  padding: 5vh 5vw;
   overflow-y: scroll;
   overflow-x: hidden;
   overscroll-behavior-y: none;

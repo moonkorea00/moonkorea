@@ -20,8 +20,8 @@ const Category = ({ item, id }) => {
   }, [condition]);
 
   return (
-    <CategoryWrapper key={id}>
-      <div style={{ display: 'flex', alignItems: 'center' }}>
+    <SideNavContainer key={id}>
+      <CategoryWrapper>
         <TriangleIcon
           src={Triangle}
           alt="icon"
@@ -31,7 +31,7 @@ const Category = ({ item, id }) => {
         <CategoryItem condition={condition} onClick={handleDisplaySubnav}>
           {name}
         </CategoryItem>
-      </div>
+      </CategoryWrapper>
       {subNav &&
         subCategory.map(({ id, title, category, path }) => {
           const matchUriCondition = decodeUri
@@ -50,14 +50,19 @@ const Category = ({ item, id }) => {
             </PostWrapper>
           );
         })}
-    </CategoryWrapper>
+    </SideNavContainer>
   );
 };
 
-const CategoryWrapper = styled.section`
+const SideNavContainer = styled.section`
+  ${({ theme }) => theme.flexCustom('column', null, null)};
   display: flex;
   flex-direction: column;
   margin-bottom: 1.5vh;
+`;
+
+const CategoryWrapper = styled.div`
+${({ theme }) => theme.flexCustom(null,null,'center')};
 `;
 
 const TriangleIcon = styled.img`
@@ -75,8 +80,7 @@ const CategoryItem = styled.span`
 `;
 
 const PostWrapper = styled.div`
-  display: inline-flex;
-  align-items: center;
+  ${({ theme }) => theme.flexCustom(null, null, 'center')};
   padding-left: 1.2vw;
   margin-bottom: 0.3vh;
 

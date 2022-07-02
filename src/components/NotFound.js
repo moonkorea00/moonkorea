@@ -21,10 +21,7 @@ const NotFound = () => {
   );
 };
 const Container = styled.main`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+${({ theme }) => theme.flexCustom('column','center','center')};
   width: 100vw;
   height: 90vh;
 `;
