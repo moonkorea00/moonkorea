@@ -1,4 +1,5 @@
 import { useParams } from 'react-router';
+import * as MarkdownComponents from './MarkdownCustomComponents/MardownCustomComponents';
 import Layout from './Layout';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import Reactmarkdown from 'react-markdown';
@@ -13,6 +14,8 @@ const Blog = () => {
   const [post, setPost] = useState({});
   const { category, path } = useParams();
   const navigate = useNavigate();
+  const { MarkdownBlockquote, MarkdownSpan, MarkdownImage, MarkdownHeader } =
+    MarkdownComponents;
   useTitle(`${path.replaceAll('-', ' ')} (${category})`);
 
   useEffect(() => {
@@ -33,18 +36,14 @@ const Blog = () => {
         parserOptions={{ commonmark: true }}
         components={{
           code: Component,
-          blockquote: ({ node, ...props }) => (
-            <blockquote
-              style={{
-                margin: '0',
-                marginBottom: '0.85em',
-                padding: '0 15px',
-                color: '#858585',
-                borderLeft: '4px solid #e5e5e5',
-              }}
-              {...props}
-            />
+          blockquote: ({ node, ...props }) => <MarkdownBlockquote {...props} />,
+          span: ({ node, ...props }) => (
+            <em>
+              <MarkdownSpan {...props} />
+            </em>
           ),
+          img: ({ node, ...props }) => <MarkdownImage alt="" {...props} />,
+          h3: ({ node, ...props }) => <MarkdownHeader {...props} />,
         }}
       />
     </Layout>

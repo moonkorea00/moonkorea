@@ -82,7 +82,7 @@ const getPosts = () => {
             const navPosts = JSON.stringify(navData);
             fs.writeFileSync('src/posts.json', combinedPosts, { flag: 'w' });
             fs.writeFileSync('src/nav.json', navPosts, { flag: 'w' });
-            // console.log('END, POSTS: ', idx);
+            console.log('END, POSTS: ', idx);
           }
         }, 2000);
       });

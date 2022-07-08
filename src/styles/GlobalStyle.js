@@ -2,7 +2,7 @@ import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
 *{
-  line-height: 30px;
+  line-height: 33px;
   box-sizing: border-box;
 }
 
@@ -21,6 +21,7 @@ span{
   color: #364149;
 }
 a {
+  color: #4182C4;
   text-decoration: none;
 }
 `;

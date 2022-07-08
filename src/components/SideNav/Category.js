@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router';
 import styled from 'styled-components';
 import Triangle from '../../assets/icons/Triangle.png';
@@ -9,11 +9,11 @@ const Category = ({ item, id }) => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const decodeUri = decodeURI(pathname);
-
+  const ref = useRef();
   const handleDisplaySubnav = () => {
     setSubNav(prev => !prev);
   };
-
+  const numOfArticles = subCategory.length;
   const condition = pathname.split('/')[1] === variant;
   useEffect(() => {
     condition && setSubNav(true);
@@ -29,7 +29,7 @@ const Category = ({ item, id }) => {
           onClick={handleDisplaySubnav}
         />
         <CategoryItem condition={condition} onClick={handleDisplaySubnav}>
-          {name}
+          {name} <NumberOfArticles>({numOfArticles})</NumberOfArticles>
         </CategoryItem>
       </CategoryWrapper>
       {subNav &&
@@ -56,13 +56,14 @@ const Category = ({ item, id }) => {
 
 const SideNavContainer = styled.section`
   ${({ theme }) => theme.flexCustom('column', null, null)};
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 1.5vh;
+  margin-bottom: 1.8vh;
 `;
 
 const CategoryWrapper = styled.div`
-${({ theme }) => theme.flexCustom(null,null,'center')};
+  ${({ theme }) => theme.flexCustom(null, null, 'center')};
+  margin-bottom: 0.5vh;
+  /* border: 1px solid red; */
+  
 `;
 
 const TriangleIcon = styled.img`
@@ -79,6 +80,10 @@ const CategoryItem = styled.span`
   cursor: pointer;
 `;
 
+const NumberOfArticles = styled.span`
+  margin-left: 2px;
+  font-size: 14px;
+`;
 const PostWrapper = styled.div`
   ${({ theme }) => theme.flexCustom(null, null, 'center')};
   padding-left: 1.2vw;
