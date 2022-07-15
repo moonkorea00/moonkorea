@@ -14,8 +14,13 @@ const Blog = () => {
   const [post, setPost] = useState({});
   const { category, path } = useParams();
   const navigate = useNavigate();
-  const { MarkdownBlockquote, MarkdownSpan, MarkdownImage, MarkdownHeader } =
-    MarkdownComponents;
+  const {
+    MarkdownBlockquote,
+    MarkdownSpan,
+    MarkdownImage,
+    MarkdownTitle,
+    MarkdownHeader,
+  } = MarkdownComponents;
   useTitle(`${path.replaceAll('-', ' ')} (${category})`);
 
   useEffect(() => {
@@ -43,6 +48,7 @@ const Blog = () => {
             </em>
           ),
           img: ({ node, ...props }) => <MarkdownImage alt="" {...props} />,
+          h1: ({ node, ...props }) => <MarkdownTitle {...props} />,
           h3: ({ node, ...props }) => <MarkdownHeader {...props} />,
         }}
       />
@@ -54,6 +60,7 @@ const Component = ({ children }) => {
   // console.log(`MARKDOWN`, children);
   const customStyle = {
     padding: '10px 15px',
+    margin: '22px 0',
     borderRadius: '10px',
   };
   return (

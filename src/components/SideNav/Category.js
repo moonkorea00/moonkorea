@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router';
 import styled from 'styled-components';
 import Triangle from '../../assets/icons/Triangle.png';
@@ -9,15 +9,14 @@ const Category = ({ item, id }) => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const decodeUri = decodeURI(pathname);
-  const ref = useRef();
   const handleDisplaySubnav = () => {
     setSubNav(prev => !prev);
   };
   const numOfArticles = subCategory.length;
-  const condition = pathname.split('/')[1] === variant;
+  const currentCategoryCondition = pathname.split('/')[1] === variant;
   useEffect(() => {
-    condition && setSubNav(true);
-  }, [condition]);
+    currentCategoryCondition && setSubNav(true);
+  }, [currentCategoryCondition]);
 
   return (
     <SideNavContainer key={id}>
@@ -28,7 +27,10 @@ const Category = ({ item, id }) => {
           subNav={subNav}
           onClick={handleDisplaySubnav}
         />
-        <CategoryItem condition={condition} onClick={handleDisplaySubnav}>
+        <CategoryItem
+          condition={currentCategoryCondition}
+          onClick={handleDisplaySubnav}
+        >
           {name} <NumberOfArticles>({numOfArticles})</NumberOfArticles>
         </CategoryItem>
       </CategoryWrapper>
@@ -62,8 +64,6 @@ const SideNavContainer = styled.section`
 const CategoryWrapper = styled.div`
   ${({ theme }) => theme.flexCustom(null, null, 'center')};
   margin-bottom: 0.5vh;
-  /* border: 1px solid red; */
-  
 `;
 
 const TriangleIcon = styled.img`

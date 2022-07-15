@@ -18,7 +18,7 @@ const Container = styled.main`
 const Main = styled.section`
   width: 100%;
   height: 100%;
-  padding: 5vh 5vw;
+  padding: 2.5vh 9vw;
   overflow-y: scroll;
   overflow-x: hidden;
   overscroll-behavior-y: none;
