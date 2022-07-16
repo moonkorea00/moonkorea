@@ -14,8 +14,7 @@ const SideNav = () => {
 
 const Layout = styled.nav`
   width: 30vw;
-  /* height: 90vh; */
-  /* height: 90vh; */
+  /* max-width: 450px; */
   margin: 0;
   padding: 2vh 1vw 0 1.4vw;
   border-right: 1px solid lightgrey;

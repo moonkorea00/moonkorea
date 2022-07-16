@@ -16,10 +16,16 @@ body {
   ::-webkit-scrollbar {
     display: none;
 }
+
 }
 span{
   color: #364149;
 }
+
+p{
+  word-spacing: 2px;
+}
+
 a {
   color: #4182C4;
   text-decoration: none;
