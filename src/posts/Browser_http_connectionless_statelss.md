@@ -12,7 +12,7 @@ date: 2022년 3월 4일
 
 &emsp;하지만 서버는 클라이언트를 식별할 수 없기 때문에 동일한 클라이언트의 모든 http 요청에 대해 매번 연결을 맺고 끊는 과정에서 처리 시간 및 메모리 등이 추가적으로 소모됩니다.
 
-<img src="https://readmedata.github.io/data/http_stateless1.2.png" width="560" height="280"/>
+<img src="https://readmedata.github.io/data/http_stateless1.2.png" alt="http 비연경설 무상태" width="560" height="280"/>
 
 <span>1.1 medium, cookie+session, https://medium.com/@maheshlsingh8412/cookie-session-story-of-a-stateless-http-3cd09cc01541</span>
 

@@ -106,13 +106,14 @@ let letVariable;
 > // 런타임 이전에 선언 단계 실행
 > console.log(letVariable); // Uncaught ReferenceError: letVariable is not defined
 > let letVariable; // 선언문 도달에 초기화 단계 실행
-> console.log(letVariable) // undefined
+> console.log(letVariable); // undefined
 > letVariable = 10; // 할당문에 할당 단계 실행
-> console.log(letVariable) // 10
->```
+> console.log(letVariable); // 10
+> ```
+
 <!-- </br> -->
 
-<img src="https://readmedata.github.io/data/tdz.png" width='650' height='270'>
+<img src="https://readmedata.github.io/data/tdz.png" alt="변수 일시적 사각지대 TDZ" width='650' height='270'>
 
 <span>1.1 다시 처음부터 JavaScript || 변수생명주기, var, let, const 키워드, https://velog.io/@vlrtpfdkxm/다시-처음부터-JavaScript-스코프-nicii94x</span>
 
