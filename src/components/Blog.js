@@ -9,6 +9,7 @@ import { useTitle } from '../hooks/useTitle';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import MetaData from './MetaData';
 
 const Blog = () => {
   const [post, setPost] = useState({});
@@ -21,7 +22,7 @@ const Blog = () => {
     MarkdownTitle,
     MarkdownHeader,
   } = MarkdownComponents;
-  useTitle(`${path.replaceAll('-', ' ')} (${category})`);
+  // useTitle(`${path.replaceAll('-', ' ')} (${category})`);
 
   useEffect(() => {
     setPost(
@@ -31,9 +32,10 @@ const Blog = () => {
       navigate('/page-not-found', { replace: true });
     }
   }, [category, post, path, navigate]);
-
+  console.log(post);
   return (
     <Layout>
+      <MetaData post={post} />
       <Reactmarkdown
         children={post?.content}
         skipHtml={false}

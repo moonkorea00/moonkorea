@@ -2,12 +2,15 @@ import { useTitle } from '../hooks/useTitle';
 import { useNavigate } from 'react-router';
 import styled from 'styled-components';
 import logo from '../assets/icons/moonkorea.png';
+import MetaData from './MetaData';
 const NotFound = () => {
   const navigate = useNavigate();
-  useTitle('404 페이지를 찾을 수 없습니다');
+  // useTitle('404 페이지를 찾을 수 없습니다');
+  const title = "404 페이지를 찾을 수 없습니다"
 
   return (
     <Container>
+      <MetaData metaTitle={title}/>
       <Logo src={logo} />
       <h1>페이지를 찾을 수 없습니다.</h1>
       <RedirectButton
