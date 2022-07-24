@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import * as FaIcons from 'react-icons/fa';
 import { IconContext } from 'react-icons';
-import blogImg from '../assets/icons/moonkorea.png';
+import favicon from '../assets/icons/moonkorea.png';
 import { useNavigate } from 'react-router';
 
 const Nav = () => {
@@ -15,7 +15,11 @@ const Nav = () => {
     >
       <NavMain>
         <HeadingWrapper>
-          <Favicon src={blogImg} onClick={directToHome}></Favicon>
+          <Favicon
+            src={favicon}
+            alt="moonkorea"
+            onClick={directToHome}
+          ></Favicon>
           <Heading onClick={directToHome}>{BLOGDATA.blog_name}</Heading>
         </HeadingWrapper>
         <Links>

@@ -1,7 +1,6 @@
 import { Helmet } from 'react-helmet';
 
-const MetaData = props => {
-  const { post, metaTitle } = props;
+const MetaData = ({ post, metaTitle }) => {
   return (
     <Helmet>
       <title>{metaTitle || `${post?.title} - ${post?.category}`}</title>

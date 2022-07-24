@@ -1,5 +1,6 @@
 import Layout from './Layout';
 import MetaData from './MetaData';
+
 const Home = () => {
   return (
     <Layout>
