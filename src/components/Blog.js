@@ -47,7 +47,7 @@ const Blog = () => {
               <MarkdownSpan {...props} />
             </em>
           ),
-          img: ({ node, ...props }) => <MarkdownImage alt="" {...props} />,
+          img: ({ node, ...props }) => <MarkdownImage {...props} />,
           h1: ({ node, ...props }) => <MarkdownTitle {...props} />,
           h3: ({ node, ...props }) => <MarkdownHeader {...props} />,
         }}
