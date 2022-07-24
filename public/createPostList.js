@@ -18,6 +18,7 @@ const getPosts = () => {
         { name: '브라우저 / CS', variant: 'Browser&CS' },
         { name: '자바스크립트', variant: 'Javascript' },
         { name: '리액트', variant: 'React' },
+        { name: 'AWS', variant: 'AWS' },
       ];
       fs.readFile(`${dirPath}/${file}`, 'utf8', (err, contents) => {
         const getMetaDataIndices = (acc, el, idx) => {
@@ -74,6 +75,9 @@ const getPosts = () => {
                 return { ...el, subCategory: filterByCategory(el.variant) };
               }
               if (el.variant === 'React') {
+                return { ...el, subCategory: filterByCategory(el.variant) };
+              }
+              if (el.variant === 'AWS') {
                 return { ...el, subCategory: filterByCategory(el.variant) };
               }
             });
