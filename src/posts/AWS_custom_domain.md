@@ -8,10 +8,10 @@ date: 2022년 7월 24일
 
 &emsp;AWS S3를 사용해서 버킷을 생성했으면 Route 53으로 도메인을 등록합니다. Route 53으로는 도메인의 인터넷 트래픽을 라우팅할 위치를 정의하기 때문에 별칭 레코드(alias)를 생성해 IP 주소 대신 S3 웹 사이트 엔드포인트를 사용합니다. 커스텀 도메인 설정은 트러블 슈팅할게 많지 않기에 아래 단계에서는 **moonkorea.com**을 도메인 예제로 생성하는 방법을 알아보겠습니다.
 
-<img src="https://readmedata.github.io/data/create_hostzone.png" alt="호스팅" width="1200" height="350">
+<img src="https://readmedata.github.io/data/create_hostzone.png" alt="호스팅" width="1100" height="350">
 <span>호스팅 영역 생성</span>
 
-&emsp;<a href="https://console.aws.amazon.com/route53/" target=”_blank”>https://console.aws.amazon.com/route53/</a>에서 **호스팅 영역**(Hosted zone)을 생성해줍니다.
+&emsp;<a href="https://console.aws.amazon.com/route53/" target=”_blank” rel="noreferrer">https://console.aws.amazon.com/route53/</a>에서 **호스팅 영역**(Hosted zone)을 생성해줍니다.
 
 <img src="https://readmedata.github.io/data/create_host_zone_detail.png" alt="">
 <span>도메인 이름 설정</span>
