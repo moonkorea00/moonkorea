@@ -1,5 +1,5 @@
 ---
-title: cloud front
+title: CloudFront
 category: AWS
 date: 2022년 7월 24일
 ---
