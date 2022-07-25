@@ -94,6 +94,7 @@ const PostWrapper = styled.div`
     css`
       margin-left: 0.3vw;
       border-radius: 4px;
+      font-weight: 500;
       background-color: rgb(235, 235, 235);
       color: black;
       transition: all ease 0.5s;

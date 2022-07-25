@@ -22,9 +22,9 @@ date: 2022년 7월 24일
 
 <span>원본 도메인 설정</span>
 
->버킷 웹 사이트 엔드포인트는 **S3 버킷 - 속성탭 하단**에서 확인이 가능합니다.
+> 버킷 웹 사이트 엔드포인트는 **S3 버킷 - 속성탭 하단**에서 확인이 가능합니다.
 >
->예) 엔드포인트 http://moonkorea00.com.s3-website.ap-northeast-2.amazonaws.com 를 복사 후 원본 도메인에 붙여넣기 합니다.
+> 예) 엔드포인트 http://moonkorea00.com.s3-website.ap-northeast-2.amazonaws.com 를 복사 후 원본 도메인에 붙여넣기 합니다.
 
 ### S3 버킷 설정
 
