@@ -6,7 +6,7 @@ date: 2022년 7월 24일
 
 # 커스텀 도메인 (Route 53)
 
-&emsp;AWS S3를 사용해서 버킷을 생성했으면 Route 53으로 도메인을 등록합니다. Route 53으로는 도메인의 인터넷 트래픽을 라우팅할 위치를 정의하기 때문에 별칭 레코드(alias)를 생성해 IP 주소 대신 S3 웹 사이트 엔드포인트를 사용합니다. 커스텀 도메인 설정은 트러블 슈팅할게 많지 않기에 아래 단계에서는 **moonkorea.com**을 도메인 예제로 생성하는 방법을 알아보겠습니다.
+&emsp;AWS S3를 사용해서 버킷을 생성했으면 Route 53으로 도메인을 등록합니다. Route 53으로는 도메인의 인터넷 트래픽을 라우팅할 위치를 정의하기 때문에 별칭 레코드(alias)를 생성해 IP 주소 대신 S3 웹 사이트 엔드포인트를 사용합니다. ACM(AWS Certificate Manager) 인증서없이 호스팅되기 때문에 http 프로토콜로 커스텀 도메인이 호스팅됩니다. 커스텀 도메인 설정은 트러블 슈팅할게 많지 않기에 아래 단계에서는 **moonkorea.dev**을 도메인 예제로 생성하는 방법을 알아보겠습니다.
 
 1. <a href="https://console.aws.amazon.com/route53/" target=”_blank” rel="noreferrer">https://console.aws.amazon.com/route53/</a>에서 **호스팅 영역**(Hosted zone)을 생성해줍니다.
 
