@@ -8,34 +8,25 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-18.04
+    env:
+    	  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+	  AWS_SECREY_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+	  AWS_REGION: 'ap-northeast-2'
+
     steps:
       - name: Checkout source code
         uses: actions/checkout@master
 
-      - name: Cache node modules
-        uses: actions/cache@v1
-        with:
-          path: node_modules
-          key: ${{ runner.OS }}-build-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.OS }}-build-
-            ${{ runner.OS }}-
-
-      - name: Install Dependencies
-        run: npm install
-
-      - name: Build
-        run: npm run build
-
-       - name: Configure AWS Credentials
-	uses: aws-actions/configure-aws-credentials@v1
-	with:
-	  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-	  AWS_SECREY_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-	  AWS_REGION: ${{ secrets.AWS_REGION }}
-
-  - name: Deploy to S3
-	run: aws s3 sync ./dist s3://${{ secrets.DEV_AWS_S3_BUCKET }} --delete
-
+      - name: Upload binary to S3 bucket
+      uses: jakejarvis/s3-sync-action@master
+      with:
+        args: --acl public-read --exclude '*' --include 'index.html' 
+      env:
+        AWS_S3_BUCKET: ${{ secrets.DEV_AWS_S3_BUCKET }}
+      
   - name: Invalidate CloudFront Cache
-	run: aws cloudfront create-invalidation --distribution-id ${{secrets.DEV_AWS_DISTRIBUTION_ID}} --paths "/*"
+  uses: chetan/invalidate-cloudfront-action@master
+  env:
+  DISTRIBUTION: ${{ secrets.DEV_AWS_DISTRIBUTION_ID }}
+  PATHS: '/index.html'
+	continue-on-error" true
