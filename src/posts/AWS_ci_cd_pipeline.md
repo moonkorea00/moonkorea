@@ -50,36 +50,37 @@ touch some-script-name.yml
 ```YAML
 name: some script name
 on:
-  push:
-    branches:
-      - main
+ push:
+   branches:
+     - main
+
 jobs:
-  deploy:
-    runs-on: ubuntu-18.04
-    steps:
-      - name: Checkout source code
-        uses: actions/checkout@master
-      - name: Cache node modules
-        uses: actions/cache@v1
-        with:
-          path: node_modules
-          key: ${{ runner.OS }}-build-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.OS }}-build-
-            ${{ runner.OS }}-
-      - name: Install Dependencies
-        run: npm install
-      - name: Build
-        run: npm run build
-      - name: Deploy
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        run: |
-          aws s3 cp \
-            --recursive \
-            --region ap-northeast-2 \
-            build s3://S3-Bucket-Name
+ Deploy:
+   runs-on: ubuntu-latest
+   steps:
+     - name: Checkout
+       uses: actions/checkout@v2
+
+     - name: Setup node
+       uses: actions/setup-node@v2
+
+     - name: Install dependencies
+       run: npm install
+
+     - name: Build static file
+       run: npm run build
+
+     - name: Configure AWS Credentials
+       uses: aws-actions/configure-aws-credentials@v1
+       with:
+         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+         aws-region: ap-northeast-2
+
+     - name: Deploy static site to S3 bucket
+       run: aws s3 sync ./build s3://S3 버킷 이름
 ```
 
-> 하단에 주석 처리된 **build s3:** 값으로는 생성한 S3 버킷 이름으로 해줍니다.
+기타 환경 변수는 하단에 주석 처리된 **build s3://** 값으로는 생성한 S3 버킷 이름으로 해줍니다.
+
+> CloudFront 액세스 허용, yarn 혹은 기타 환경 변수를 등록하고 사용할 그에 맞게 스크립트를 변경해주세요.
