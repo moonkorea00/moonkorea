@@ -1,5 +1,5 @@
 import { useParams } from 'react-router';
-import * as MarkdownComponents from './MarkdownCustomComponents/MardownCustomComponents';
+import * as MD from './MarkdownCustomComponents/MardownCustomComponents';
 import Layout from './Layout';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import Reactmarkdown from 'react-markdown';
@@ -14,13 +14,6 @@ const Blog = () => {
   const [post, setPost] = useState({});
   const { category, path } = useParams();
   const navigate = useNavigate();
-  const {
-    MarkdownBlockquote,
-    MarkdownSpan,
-    MarkdownImage,
-    MarkdownTitle,
-    MarkdownHeader,
-  } = MarkdownComponents;
 
   useEffect(() => {
     setPost(
@@ -30,7 +23,7 @@ const Blog = () => {
       navigate('/page-not-found', { replace: true });
     }
   }, [category, post, path, navigate]);
-  console.log(post);
+  
   return (
     <Layout>
       <MetaData post={post} />
@@ -41,15 +34,16 @@ const Blog = () => {
         parserOptions={{ commonmark: true }}
         components={{
           code: Component,
-          blockquote: ({ node, ...props }) => <MarkdownBlockquote {...props} />,
+          blockquote: ({ node, ...props }) => <MD.MarkdownBlockquote {...props} />,
           span: ({ node, ...props }) => (
             <em>
-              <MarkdownSpan {...props} />
+              <MD.MarkdownSpan {...props} />
             </em>
           ),
-          img: ({ node, ...props }) => <MarkdownImage {...props} />,
-          h1: ({ node, ...props }) => <MarkdownTitle {...props} />,
-          h3: ({ node, ...props }) => <MarkdownHeader {...props} />,
+          img: ({ node, ...props }) => <MD.MarkdownImage {...props} />,
+          h1: ({ node, ...props }) => <MD.MarkdownTitle {...props} />,
+          h2: ({ node, ...props }) => <MD.MarkdownSubTitle {...props} />,
+          h3: ({ node, ...props }) => <MD.MarkdownHeader {...props} />,
         }}
       />
     </Layout>
