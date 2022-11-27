@@ -1,29 +1,14 @@
-import { useParams } from 'react-router';
-import * as MD from './MarkdownCustomComponents/MardownCustomComponents';
-import Layout from './Layout';
+import * as MD from './Markdown/MardownCustomComponents';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import Reactmarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
-import postList from '../posts.json';
-import { useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
-import { useState } from 'react';
+import Layout from './Layout';
 import MetaData from './MetaData';
+import usePost from '../hooks/usePost';
 
 const Blog = () => {
-  const [post, setPost] = useState({});
-  const { category, path } = useParams();
-  const navigate = useNavigate();
+  const post = usePost();
 
-  useEffect(() => {
-    setPost(
-      postList.find(post => post.category === category && post.path === path)
-    );
-    if (!post) {
-      navigate('/page-not-found', { replace: true });
-    }
-  }, [category, post, path, navigate]);
-  
   return (
     <Layout>
       <MetaData post={post} />
@@ -33,8 +18,10 @@ const Blog = () => {
         rehypePlugins={[rehypeRaw]}
         parserOptions={{ commonmark: true }}
         components={{
-          code: Component,
-          blockquote: ({ node, ...props }) => <MD.MarkdownBlockquote {...props} />,
+          code: MarkdownCode,
+          blockquote: ({ node, ...props }) => (
+            <MD.MarkdownBlockquote {...props} />
+          ),
           span: ({ node, ...props }) => (
             <em>
               <MD.MarkdownSpan {...props} />
@@ -50,8 +37,7 @@ const Blog = () => {
   );
 };
 
-const Component = ({ children }) => {
-  // console.log(`MARKDOWN`, children);
+const MarkdownCode = ({ children }) => {
   const customStyle = {
     padding: '10px 15px',
     margin: '22px 0',
