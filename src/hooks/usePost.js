@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import postList from '../posts.json';
 
 const usePost = () => {
@@ -15,9 +14,8 @@ const usePost = () => {
     if (!post) {
       navigate('/page-not-found', { replace: true });
     }
-  }, [category, path]);
+  }, [post, navigate, category, path]);
 
-  console.log(Object.keys(post).length === 0);
   return post;
 };
 

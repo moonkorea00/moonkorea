@@ -6,10 +6,9 @@ date: 2022년 7월 24일
 
 # S3 CI/CD 파이프라인 구축 - Github Actions
 
-&emsp;S3 버킷을 사용해서 앱 배포까지 완료가 되었으면 Github Actions를 통해서 CI/CD 파이프라인을 구축합니다. 코드베이스에 변경 사항이 생길 때마다 빌드, 테스트, 배포 자동화까지 한 번에 처리합니다.
+&emsp;<!--  -->S3 버킷을 사용해서 앱 배포까지 완료가 되었으면 Github Actions를 통해서 CI/CD 파이프라인을 구축합니다. 코드베이스에 변경 사항이 생길 때마다 빌드, 테스트, 배포 자동화까지 한 번에 처리합니다.<!--  -->
 
 Github Actions를 사용하기 위해서는 S3 접근 권한이 필요하기 때문에 **AWS IAM**(Identity and Access Management)으로 리소스에 대한 권한을 허용할 수 있습니다.
-
 1. **IAM - 액세스 관리 - 사용자**탭에서 S3에 접근할 수 있도록 사용자를 새로 추가합니다.
 
 <img src="https://readmedata.github.io/data/add_user.png" alt="IAM 사용자 추가" width="850">

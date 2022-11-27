@@ -1,26 +1,23 @@
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import MetaData from '../components/common/SEO/MetaData';
 import logo from '../assets/icons/moonkorea.png';
-import MetaData from './MetaData';
+
 const NotFound = () => {
   const navigate = useNavigate();
-  const TITLE = '404 페이지를 찾을 수 없습니다';
 
   return (
     <Container>
-      <MetaData metaTitle={TITLE} />
+      <MetaData metaTitle="404 페이지를 찾을 수 없습니다" />
       <Logo src={logo} />
       <h1>페이지를 찾을 수 없습니다.</h1>
-      <RedirectButton
-        onClick={() => {
-          navigate('/', { replace: true });
-        }}
-      >
-        메인으로 돌아가기
+      <RedirectButton onClick={() => navigate('/', { replace: true })}>
+        홈으로 돌아가기
       </RedirectButton>
     </Container>
   );
 };
+
 const Container = styled.main`
   ${({ theme }) => theme.flexCustom('column', 'center', 'center')};
   width: 100vw;
@@ -35,10 +32,10 @@ const Logo = styled.img`
 `;
 
 const RedirectButton = styled.button`
-  padding: 0.8vh 1vw;
+  padding: 4px 18px;
   margin-top: 1vh;
   font-weight: 600;
-  border-radius: 10px;
+  border-radius: 14px;
   border: none;
   cursor: pointer;
 

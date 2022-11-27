@@ -69,23 +69,23 @@ const getPosts = () => {
           if (idx === files.length - 1) {
             const navData = initialData.map(el => {
               if (el.variant === 'Browser&CS') {
-                return { ...el, subCategory: filterByCategory(el.variant) };
+                return { ...el, posts: filterByCategory(el.variant) };
               }
               if (el.variant === 'Javascript') {
-                return { ...el, subCategory: filterByCategory(el.variant) };
+                return { ...el, posts: filterByCategory(el.variant) };
               }
               if (el.variant === 'React') {
-                return { ...el, subCategory: filterByCategory(el.variant) };
+                return { ...el, posts: filterByCategory(el.variant) };
               }
               if (el.variant === 'AWS') {
-                return { ...el, subCategory: filterByCategory(el.variant) };
+                return { ...el, posts: filterByCategory(el.variant) };
               }
             });
             postList.sort((a, b) => a.id - b.id);
-            const combinedPosts = JSON.stringify(postList);
-            const navPosts = JSON.stringify(navData);
-            fs.writeFileSync('src/posts.json', combinedPosts, { flag: 'w' });
-            fs.writeFileSync('src/nav.json', navPosts, { flag: 'w' });
+            const postsJSON = JSON.stringify(postList);
+            const navJSON = JSON.stringify(navData);
+            fs.writeFileSync('src/posts.json', postsJSON, { flag: 'w' });
+            fs.writeFileSync('src/nav.json', navJSON, { flag: 'w' });
             console.log('END, POSTS: ', idx);
           }
         }, 2000);
