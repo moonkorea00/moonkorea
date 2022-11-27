@@ -2,8 +2,9 @@ import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
 *{
-  line-height: 33px;
   box-sizing: border-box;
+  line-height: 35px;
+  
 }
 
 body {
@@ -23,13 +24,14 @@ span{
 }
 
 p{
-  word-spacing: 2px;
+  word-spacing: 3px;
 }
 
 a {
   color: #4182C4;
   text-decoration: none;
 }
+
 `;
 
 export default GlobalStyle;

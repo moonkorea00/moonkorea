@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from 'react-router';
 import styled from 'styled-components';
 import Triangle from '../../assets/icons/Triangle.png';
 import { css } from 'styled-components';
+
 const Category = ({ item, id }) => {
   const { name, variant, subCategory } = item;
   const [subNav, setSubNav] = useState(false);

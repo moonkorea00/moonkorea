@@ -15,6 +15,11 @@ export const MarkdownTitle = styled.h1`
   border-bottom: 1px solid rgb(219, 219, 219);
 `;
 
+export const MarkdownSubTitle = styled.h2`
+font-size: 1.4em;
+/* padding-bottom: 1vh; */
+`;
+
 export const MarkdownHeader = styled.h3`
   color: rgb(107, 107, 107);
   margin-bottom: -10px;

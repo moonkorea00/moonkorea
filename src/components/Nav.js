@@ -54,6 +54,7 @@ const HeadingWrapper = styled.div`
 
 const Favicon = styled.img`
   width: 25px;
+  min-width: 25px;
   height: 25px;
   cursor: pointer;
 `;

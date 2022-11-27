@@ -4,11 +4,11 @@ import logo from '../assets/icons/moonkorea.png';
 import MetaData from './MetaData';
 const NotFound = () => {
   const navigate = useNavigate();
-  const title = '404 페이지를 찾을 수 없습니다';
+  const TITLE = '404 페이지를 찾을 수 없습니다';
 
   return (
     <Container>
-      <MetaData metaTitle={title} />
+      <MetaData metaTitle={TITLE} />
       <Logo src={logo} />
       <h1>페이지를 찾을 수 없습니다.</h1>
       <RedirectButton
@@ -28,8 +28,9 @@ const Container = styled.main`
 `;
 
 const Logo = styled.img`
-  height: 30vh;
-  width: 18vw;
+  height: 300px;
+  width: 350px;
+  min-width: 200px;
   margin-bottom: 5vh;
 `;
 
