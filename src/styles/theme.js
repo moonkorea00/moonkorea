@@ -1,18 +1,13 @@
 import { css } from 'styled-components';
 
 const theme = {
-  flexCustom: (
-    flexDirection,
-    justifyContent,
-    alignItems
-  ) => 
+  flexCustom: (flexDirection, justifyContent, alignItems) =>
     css`
       display: flex;
       flex-direction: ${flexDirection};
       justify-content: ${justifyContent};
       align-items: ${alignItems};
-    `
-  ,
+    `,
   flexStart: css`
     display: flex;
     justify-content: flex-start;
@@ -39,7 +34,6 @@ const theme = {
     justify-content: space-around;
     align-items: center;
   `,
-
   bg: css`
     background-color: #fafafa;
   `,

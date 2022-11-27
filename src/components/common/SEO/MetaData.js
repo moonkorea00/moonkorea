@@ -6,7 +6,9 @@ const MetaData = ({ post, metaTitle }) => {
       <title>{metaTitle || `${post?.title} - ${post?.category}`}</title>
       <meta
         name="description"
-        content={post?.content || 'moonkorea 개발 블로그입니다.'}
+        content={
+          post?.content?.split('<!--  -->')[1] || 'moonkorea 개발 블로그입니다.'
+        }
         data-react-helmet="true"
       />
     </Helmet>
