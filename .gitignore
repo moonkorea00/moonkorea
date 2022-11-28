@@ -12,7 +12,7 @@
 
 # production
 /build
-posts/
+
 
 # misc
 .DS_Store
@@ -30,3 +30,5 @@ yarn-error.log*
 
 # does not ignore the README.md file
 !README.md
+
+src/posts
