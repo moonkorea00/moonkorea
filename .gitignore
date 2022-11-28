@@ -31,4 +31,4 @@ yarn-error.log*
 # does not ignore the README.md file
 !README.md
 
-src/posts
+/src/posts
