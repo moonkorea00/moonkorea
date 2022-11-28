@@ -1,7 +1,11 @@
-import * as S from './Layout.style'
+import * as S from './Layout.style';
 import Sider from '../../Sider/Sider';
 
-const Layout = ({ children }) => {
+interface LayoutProps {
+  children: React.ReactNode;
+}
+
+const Layout = ({ children }: LayoutProps) => {
   return (
     <S.Container>
       <Sider />

@@ -4,7 +4,6 @@ const GlobalStyle = createGlobalStyle`
 *{
   box-sizing: border-box;
   line-height: 35px;
-  
 }
 
 body {
@@ -17,13 +16,13 @@ body {
   ::-webkit-scrollbar {
     display: none;
 }
-
 }
-span{
+
+span {
   color: #364149;
 }
 
-p{
+p {
   word-spacing: 3px;
 }
 
@@ -32,6 +31,10 @@ a {
   text-decoration: none;
 }
 
+button {
+  border: none;
+  cursor: pointer;
+}
 `;
 
 export default GlobalStyle;

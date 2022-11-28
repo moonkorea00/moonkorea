@@ -1,9 +1,18 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import postList from '../posts.json';
+import postList from 'src/posts.json';
+
+interface Post {
+  id?: number;
+  title?: string;
+  category?: string;
+  content?: string;
+  path?: string;
+  date?: string;
+}
 
 const usePost = () => {
-  const [post, setPost] = useState({});
+  const [post, setPost] = useState<Post>({});
   const { category, path } = useParams();
   const navigate = useNavigate();
 

@@ -1,5 +1,5 @@
-import Layout from '../components/common/Layout/Layout';
-import Post from '../components/Post/Post';
+import Layout from 'src/components/common/Layout/Layout';
+import Post from 'src/components/Post/Post';
 
 const Article = () => {
   return (

@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const MarkdownBlockquote = styled.blockquote`
-  /* margin-bottom: 0.85em; */
   margin: 30px 0;
   padding: 0 15px;
   color: #858585;
@@ -34,6 +33,7 @@ export const MarkdownSpan = styled.span`
   margin-bottom: 12px;
   font-size: 0.9em;
   font-weight: 500;
+  font-style: italic;
   color: rgb(102, 102, 102);
   text-align: center;
 `;

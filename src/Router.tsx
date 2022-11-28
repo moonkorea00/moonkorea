@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Header from './components/common/Header/Header';
-import Home from './pages/Home';
-import Article from './pages/Article';
-import NotFound from './pages/NotFound';
+import Home from './pages/Home/Home';
+import Article from './pages/Article/Article';
+import NotFound from './pages/NotFound/NotFound';
 
 function Router() {
   return (

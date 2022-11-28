@@ -1,5 +1,5 @@
-import Layout from '../components/common/Layout/Layout';
-import MetaData from '../components/common/SEO/MetaData';
+import Layout from 'src/components/common/Layout/Layout';
+import MetaData from 'src/components/common/SEO/MetaData';
 
 const Home = () => {
   return (

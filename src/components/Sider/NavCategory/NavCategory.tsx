@@ -24,7 +24,7 @@ const NavCategory = ({ item: { name, variant, posts } }) => {
         <S.TriangleIcon
           src={Triangle}
           alt="icon"
-          isSubCategoryOpen={isSubCategoryOpen}
+          condition={isSubCategoryOpen}
           onClick={handleDisplaySubnav}
         />
         <S.CategoryItem

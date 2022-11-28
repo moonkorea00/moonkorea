@@ -1,11 +1,11 @@
 import styled, { css } from 'styled-components';
 
 export const PostContainer = styled.div`
-  ${({ theme }) => theme.flexCustom(null, null, 'center')};
+  ${({ theme }) => theme.flexDefault};
   padding-left: 1.2vw;
   margin-bottom: 0.3vh;
 
-  ${({ isPostSelected }) =>
+  ${({ isPostSelected }: { isPostSelected: boolean }) =>
     isPostSelected &&
     css`
       margin-left: 0.3vw;

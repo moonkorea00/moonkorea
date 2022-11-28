@@ -1,9 +1,14 @@
 import SyntaxHighlighter from 'react-syntax-highlighter';
 
-const MarkdownCode = ({ children }) => {
+interface MarkdownCodeProps {
+  children: string[];
+}
+
+const MarkdownCode = ({ children }: MarkdownCodeProps) => {
   const customStyle = {
     padding: '10px 15px',
     margin: '22px 0',
+    // lineHeight: "1px",
     borderRadius: '10px',
   };
   return (

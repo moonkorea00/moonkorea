@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 
 export const HeaderContainer = styled.header`
-  ${({ theme }) => theme.flexCustom(null, 'space-between', 'center')};
+  ${({ theme }) => theme.flexSpaceBetween};
   height: 7vh;
   padding: 0 3vw;
   border-bottom: 1px solid lightgrey;
 `;
 
 export const LogoContainer = styled.div`
-  ${({ theme }) => theme.flexCustom(null, 'center', 'center')};
+  ${({ theme }) => theme.flexCenter};
 `;
 
 export const Favicon = styled.img`
@@ -26,7 +26,7 @@ export const BlogTitle = styled.span`
 `;
 
 export const Links = styled.div`
-  ${({ theme }) => theme.flexCustom(null, 'center', 'center')};
+  ${({ theme }) => theme.flexCenter};
   gap: 1vw;
   height: 7vh;
   margin-top: 2px;
