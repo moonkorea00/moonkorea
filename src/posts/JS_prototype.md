@@ -1,0 +1,7 @@
+---
+title: 프로토타입
+category: Javascript
+date: 2022년 7월 10일
+---
+
+### 프로토타입
