@@ -1,4 +1,4 @@
-import * as S from './Sider.style'
+import * as S from './Sider.style';
 import NavCategory from './NavCategory/NavCategory';
 import navData from '../../nav.json';
 

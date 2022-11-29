@@ -4,7 +4,26 @@ import { useLocation } from 'react-router-dom';
 import Triangle from '../../../assets//icons/Triangle.png';
 import NavItem from '../NavItem/NavItem';
 
-const NavCategory = ({ item: { name, variant, posts } }) => {
+interface ItemProps {
+  id: number;
+  title: string;
+  category: string;
+  content: string;
+  path: string;
+  date: string;
+}
+
+interface CategoryProps {
+  name: string;
+  variant: string;
+  posts: ItemProps[];
+}
+
+const NavCategory = ({
+  item: { name, variant, posts },
+}: {
+  item: CategoryProps;
+}) => {
   const [isSubCategoryOpen, setIsSubCategoryOpen] = useState(false);
   const { pathname } = useLocation();
 
@@ -35,7 +54,7 @@ const NavCategory = ({ item: { name, variant, posts } }) => {
         </S.CategoryItem>
       </S.CategoryContainer>
       {isSubCategoryOpen &&
-        posts.map(({ id, title, category, path }) => (
+        posts.map(({ id, title, category, path }: ItemProps) => (
           <NavItem key={id} title={title} category={category} path={path} />
         ))}
     </S.Container>

@@ -6,9 +6,9 @@ interface Post {
   id?: number;
   title?: string;
   category?: string;
-  content?: string;
   path?: string;
   date?: string;
+  content?: string;
 }
 
 const usePost = () => {
@@ -18,7 +18,8 @@ const usePost = () => {
 
   useEffect(() => {
     setPost(
-      postList.find(post => post.category === category && post.path === path)
+      postList.find(post => post.category === category && post.path === path) ??
+        post
     );
     if (!post) {
       navigate('/page-not-found', { replace: true });

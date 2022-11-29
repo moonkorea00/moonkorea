@@ -7,6 +7,7 @@ import usePost from './hooks/usePost';
 
 const Post = () => {
   const post = usePost();
+  console.log(post);
   return (
     <>
       <MetaData post={post} />
@@ -27,7 +28,7 @@ const Post = () => {
           h3: ({ node, ...props }) => <MD.MarkdownSubHeader {...props} />,
         }}
       >
-        {post?.content}
+        {post?.content ?? ''}
       </Reactmarkdown>
     </>
   );

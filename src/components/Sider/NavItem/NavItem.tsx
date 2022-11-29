@@ -1,7 +1,12 @@
 import * as S from './NavItem.style';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-const NavItem = ({ title, category, path }) => {
+interface NavItemProps {
+  title: string;
+  category: string;
+  path: string;
+}
+const NavItem = ({ title, category, path }: NavItemProps) => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
 
