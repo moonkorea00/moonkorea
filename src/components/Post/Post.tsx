@@ -1,13 +1,13 @@
 import * as MD from '../Markdown/CustomMarkdown.style';
-import MarkdownCode from '../Markdown/MarkdownCode';
 import Reactmarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
+import MarkdownCode from '../Markdown/MarkdownCode';
 import MetaData from '../common/SEO/MetaData';
 import usePost from './hooks/usePost';
 
 const Post = () => {
   const post = usePost();
-  console.log(post);
+
   return (
     <>
       <MetaData post={post} />
@@ -15,6 +15,7 @@ const Post = () => {
         rehypePlugins={[rehypeRaw]}
         parserOptions={{ commonmark: true }}
         components={{
+          // TODO
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
           code: MarkdownCode,

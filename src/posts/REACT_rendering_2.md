@@ -28,7 +28,7 @@ const Component = () => {
   return (
     <>
       <ChildOne message={message} />
-      <ChildTwo /> // message 상태에 의존하지 않고 props의 변화 또한 없기 때문에 리렌더링이 발생하지 않습니다.
+      <ChildTwo /> // props가 message 상태에 의존하지 않고 변화 또한 없기 때문에 리렌더링이 발생하지 않습니다.
     </>
   );
 };
