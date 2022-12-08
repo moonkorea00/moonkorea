@@ -23,11 +23,7 @@ export const TriangleIcon = styled.img`
 
 export const CategoryItem = styled.span`
   margin-left: 0.6vw;
-  font-weight: ${({
-    condition,
-  }: {
-    condition: boolean;
-  }) => condition && '900'};
+  font-weight: ${({ condition }: { condition: boolean }) => condition && '900'};
   cursor: pointer;
 `;
 

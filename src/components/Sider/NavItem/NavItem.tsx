@@ -6,6 +6,7 @@ interface NavItemProps {
   category: string;
   path: string;
 }
+
 const NavItem = ({ title, category, path }: NavItemProps) => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
