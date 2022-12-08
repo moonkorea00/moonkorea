@@ -14,12 +14,13 @@ const getPosts = () => {
       // console.log('start');
       let obj = {};
       let post;
-      const initialData = [
+      const initialNavArr = [
         { name: '브라우저 / CS', variant: 'Browser&CS' },
         { name: '자바스크립트', variant: 'Javascript' },
         { name: '리액트', variant: 'React' },
         { name: 'AWS', variant: 'AWS' },
       ];
+      const categoryVariant = ['Browser&CS', 'Javascript', 'React', 'AWS'];
       fs.readFile(`${dirPath}/${file}`, 'utf8', (err, contents) => {
         const getMetaDataIndices = (acc, el, idx) => {
           if (/^---/.test(el)) {
@@ -67,17 +68,8 @@ const getPosts = () => {
               .sort((a, b) => a.id - b.id);
           };
           if (idx === files.length - 1) {
-            const navData = initialData.map(el => {
-              if (el.variant === 'Browser&CS') {
-                return { ...el, posts: filterByCategory(el.variant) };
-              }
-              if (el.variant === 'Javascript') {
-                return { ...el, posts: filterByCategory(el.variant) };
-              }
-              if (el.variant === 'React') {
-                return { ...el, posts: filterByCategory(el.variant) };
-              }
-              if (el.variant === 'AWS') {
+            const navData = initialNavArr.map((el, i) => {
+              if (el.variant === categoryVariant[i]) {
                 return { ...el, posts: filterByCategory(el.variant) };
               }
             });
