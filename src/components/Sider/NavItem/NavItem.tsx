@@ -1,24 +1,22 @@
 import * as S from './NavItem.style';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 interface NavItemProps {
   title: string;
-  category: string;
   path: string;
 }
 
-const NavItem = ({ title, category, path }: NavItemProps) => {
-  const { pathname } = useLocation();
-  const navigate = useNavigate();
-
-  const isPostSelected = decodeURI(pathname).split('/').includes(path);
+const NavItem = ({ title, path }: NavItemProps) => {
+  const { asPath } = useRouter();
+  const isPostSelected = decodeURI(asPath).split('/').includes(path);
 
   return (
     <S.PostContainer isPostSelected={isPostSelected}>
       -
-      <S.PostTitle onClick={() => navigate(`/${category}/${path}`)}>
-        {title}
-      </S.PostTitle>
+      <Link href={`/${path}`}>
+        <S.PostTitle>{title}</S.PostTitle>
+      </Link>
     </S.PostContainer>
   );
 };

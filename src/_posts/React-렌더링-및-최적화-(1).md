@@ -1,16 +1,16 @@
 ---
-title: React 렌더링 및 최적화 (1)
-category: React
-date: 2022년 11월 23일
+title: 'React 렌더링 및 최적화 (1)'
+category: 'React'
+date: '2022-11-23'
 ---
 
 # React 렌더링 및 최적화 (1)
 
 ## 렌더링이란?
 
-&emsp;<!--  -->리액트에서 렌더링이란 어떤 것을 의미할까요? 렌더링이란 다양한 레벨에서 사용되는 추상적인 개념이지만 이미지를 그려내는 과정, 즉 리액트에서 렌더링이란 화면에 특정한 요소를 그려내는 것을 의미합니다. 브라우저에서 HTML과 CSS를 파싱하여 DOM요소를 계산하고 그리면 개발자는 화면에서 보여줄 UI를 **선언**하기만 하고 DOM API와 Javascript를 통해 사용자에게 보일 화면을 변화시킵니다. 애플리케이션 규모가 커짐에 따라 UI관리가 어려운 Vanilla Javascript를 이용한 명령형의 DOM에 대한 조작보다는 리액트와 같이 선언적이고 컴포넌트 기반의 라이브러리나 프레임워크를 통해 실제 렌더링 과정을 최적화된 방법으로 대신 처리해 주고 개발자에게 UI를 설계하는 데만 집중하게 해주는 것이 리액트의 가장 큰 매력이자 장점이라고 볼 수 있습니다.<!--  -->
+&emsp;리액트에서 렌더링이란 어떤 것을 의미할까요? 렌더링이란 다양한 레벨에서 사용되는 추상적인 개념이지만 이미지를 그려내는 과정, 즉 리액트에서 렌더링이란 화면에 특정한 요소를 그려내는 것을 의미합니다. 브라우저에서 HTML과 CSS를 파싱하여 DOM요소를 계산하고 그리면 개발자는 화면에서 보여줄 UI를 **선언**하기만 하고 DOM API와 Javascript를 통해 사용자에게 보일 화면을 변화시킵니다. 애플리케이션 규모가 커짐에 따라 UI관리가 어려운 Vanilla Javascript를 이용한 명령형의 DOM에 대한 조작보다는 리액트와 같이 선언적이고 컴포넌트 기반의 라이브러리나 프레임워크를 통해 실제 렌더링 과정을 최적화된 방법으로 대신 처리해 주고 개발자에게 UI를 설계하는 데만 집중하게 해주는 것이 리액트의 가장 큰 매력이자 장점이라고 볼 수 있습니다.
 
-<img src="https://readmedata.github.io/data/React_home.png" alt="리액트" width="860" height="260"/>
+<img src="/assets/markdown-image/React-렌더링-최적화-1/React_home.png" alt="리액트" width="860" height="260"/>
 
 <span>1.1 React, https://reactjs.org/</span>
 
@@ -45,7 +45,7 @@ DOM을 바꿀 때 마다 브라우저는 기본적으로 Critical Rendering Path
 
 &emsp;Layout과 Paint과정은 간단하게 생각해 봐도 브라우저가 각 요소들이 화면상 어디에 출력될지 매번 계산하고 그 값들을 이용해서 픽셀점 하나하나 찍어주는 작업이기 때문에 브라우저에게 많은 연산을 요구하는 고비용의 프로세스입니다. UI를 변경하기 위해서는 많은 DOM 조작이 필요하고 매번 조작이 발생할 때마다 CRP가 수행되고 렌더링에 대한 고려 혹은 최적화가 이루어지지 않으면 당연히 퍼포먼스 저하로 연결됩니다. 렌더링 최적화라는 것은 결국 Critical Rendering Path의 최적화라고 볼 수 있습니다. 리액트는 이를 해결하고자 <b>Virtual DOM</b>을 사용합니다.
 
-<img src="https://readmedata.github.io/data/VDOM.png" alt="Virtual DOM" width="700" height="450"/>
+<img src="/assets/markdown-image/React-렌더링-최적화-1/VDOM.png" alt="Virtual DOM" width="700" height="450"/>
 
 <span>1.2 React Virtual DOM Explained in Simple English, https://programmingwithmosh.com/react/react-virtual-dom-explained/</span>
 

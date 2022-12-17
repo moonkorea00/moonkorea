@@ -1,15 +1,19 @@
 import * as S from './Layout.style';
-import Sider from '../../Sider/Sider';
+import Sider from '@components/Sider/Sider';
+import Header from '../Header/Header';
 
-interface LayoutProps {
+interface Props {
   children: React.ReactNode;
 }
 
-const Layout = ({ children }: LayoutProps) => {
+const Layout = ({ children }: Props) => {
   return (
     <S.Container>
-      <Sider />
-      <S.Section>{children}</S.Section>
+      <Header />
+      <S.Main>
+        <S.Article>{children}</S.Article>
+        <Sider />
+      </S.Main>
     </S.Container>
   );
 };

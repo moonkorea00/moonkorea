@@ -1,28 +1,17 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const Container = styled.section`
   ${({ theme }) => theme.flexColumn};
-  margin-bottom: 1.8vh;
+  margin-bottom: 16px;
 `;
 
 export const CategoryContainer = styled.div`
   ${({ theme }) => theme.flexDefault};
-  margin-bottom: 0.5vh;
-`;
-
-export const TriangleIcon = styled.img`
-  width: 7px;
-  height: 7px;
-
-  transform: ${({ condition }: { condition: boolean }) =>
-    condition ? '' : 'rotate(-90deg)'};
-
-  transition: all ease 0.3s;
-  cursor: pointer;
+  margin-bottom: 4px;
 `;
 
 export const CategoryItem = styled.span`
-  margin-left: 0.6vw;
+  margin-left: 10px;
   font-weight: ${({ condition }: { condition: boolean }) => condition && '900'};
   cursor: pointer;
 `;

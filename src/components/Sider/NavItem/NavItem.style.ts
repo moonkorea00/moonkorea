@@ -1,14 +1,14 @@
 import styled, { css } from 'styled-components';
 
-export const PostContainer = styled.div`
+export const PostContainer = styled.nav`
   ${({ theme }) => theme.flexDefault};
-  padding-left: 1.2vw;
-  margin-bottom: 0.3vh;
+  padding-left: 12px;
+  margin-bottom: 3px;
 
   ${({ isPostSelected }: { isPostSelected: boolean }) =>
     isPostSelected &&
     css`
-      margin-left: 0.3vw;
+      margin-left: 4px;
       border-radius: 4px;
       font-weight: 500;
       background-color: rgb(235, 235, 235);
@@ -25,7 +25,7 @@ export const PostContainer = styled.div`
 `;
 
 export const PostTitle = styled.div`
-  padding: 0.8vh 0 0.8vh 0.5vw;
+  padding: 7px 0 7px 10px;
   font-size: 14px;
   line-height: 25px;
   color: #364149;

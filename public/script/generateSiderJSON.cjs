@@ -3,12 +3,12 @@ const fs = require('fs');
 const matter = require('gray-matter');
 
 const INITIAL_SIDER_LIST = [
-  { name: '브라우저 / CS', variant: 'Browser-CS' },
+  { name: '브라우저 / CS', variant: 'Browser' },
   { name: '자바스크립트', variant: 'Javascript' },
   { name: '리액트', variant: 'React' },
   { name: 'AWS', variant: 'AWS' },
 ];
-const CATEGORY_VARIANT = ['Browser-CS', 'Javascript', 'React', 'AWS'];
+const CATEGORY_VARIANT = ['Browser', 'Javascript', 'React', 'AWS'];
 
 const generateSiderJSON = () => {
   const postsDir = join(process.cwd(), '/src/_posts');

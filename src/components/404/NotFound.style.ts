@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 
-export const Container = styled.main`
+export const Container = styled.section`
   ${({ theme }) => theme.flexColumnCenter};
-  width: 100vw;
-  height: 90vh;
+  height: calc(90vh - 54px);
 `;
 
 export const Logo = styled.img`

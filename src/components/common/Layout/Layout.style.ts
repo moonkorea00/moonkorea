@@ -1,16 +1,21 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-export const Container = styled.main`
-  display: inline-flex;
-  width: 100vw;
-  height: 93vh;
+export const Container = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100vh;
 `;
 
-export const Section = styled.section`
+export const Main = styled.main`
+  display: flex;
   width: 100%;
-  height: 100%;
-  padding: 2.5vh 9vw;
+  height: calc(100vh - 54px);
+`;
+
+export const Article = styled.article`
+  width: 100%;
+  padding: 25px 50px;
   overflow-y: scroll;
-  overflow-x: hidden;
   overscroll-behavior-y: none;
 `;

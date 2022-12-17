@@ -1,7 +1,6 @@
 import fs from 'fs';
 import { join } from 'path';
 import matter from 'gray-matter';
-import { serialize } from 'next-mdx-remote/serialize';
 
 // eslint-disable-next-line no-undef
 const postsDir = join(process.cwd(), '/src/_posts');
@@ -9,7 +8,7 @@ const fileNames = fs.readdirSync(postsDir);
 
 export const getPostPaths = () => {
   return fileNames.map(fileName => {
-    const path = fileName.replace(/\.mdx$/, '');
+    const path = fileName.replace(/\.md$/, '');
     return {
       params: {
         postId: path,
@@ -23,8 +22,9 @@ export const getAllPosts = () => {
     const filePath = join(postsDir, fileName);
     const metaData = fs.readFileSync(filePath, 'utf8');
 
-    const id = fileName.replace(/\.mdx$/, '');
+    const id = fileName.replace(/\.md$/, '');
     const { data } = matter(metaData);
+
     return {
       id,
       ...data,
@@ -35,16 +35,12 @@ export const getAllPosts = () => {
 };
 
 export const getPostById = async (id: string) => {
-  const filePath = join(postsDir, `${id}.mdx`);
+  const filePath = join(postsDir, `${id}.md`);
   const metaData = fs.readFileSync(filePath, 'utf8');
 
-  const { data, content } = matter(metaData);
-
-  const mdxSource = await serialize(content);
+  const { content } = matter(metaData);
 
   return {
-    id,
-    mdxSource,
-    ...data,
+    content,
   };
 };

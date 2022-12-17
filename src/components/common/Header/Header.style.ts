@@ -1,13 +1,14 @@
 import styled from 'styled-components';
 
-export const HeaderContainer = styled.header`
+export const Container = styled.header`
   ${({ theme }) => theme.flexSpaceBetween};
-  height: 7vh;
-  padding: 0 3vw;
+  width: 100%;
+  height: 54px;
+  padding: 0 40px;
   border-bottom: 1px solid lightgrey;
 `;
 
-export const LogoContainer = styled.div`
+export const LogoContainer = styled.nav`
   ${({ theme }) => theme.flexCenter};
 `;
 
@@ -19,16 +20,15 @@ export const Favicon = styled.img`
 `;
 
 export const BlogTitle = styled.span`
-  margin-left: 0.5vw;
+  margin-left: 8px;
   font-size: 20px;
   font-weight: 600;
   cursor: pointer;
 `;
 
-export const Links = styled.div`
+export const LinkContainer = styled.nav`
   ${({ theme }) => theme.flexCenter};
-  gap: 1vw;
-  height: 7vh;
+  gap: 14px;
   margin-top: 2px;
 `;
 

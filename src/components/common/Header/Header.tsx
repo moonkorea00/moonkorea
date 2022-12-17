@@ -1,21 +1,24 @@
 import * as S from './Header.style';
 import * as FaIcons from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
+import { memo } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
 import { IconContext } from 'react-icons';
-import favicon from '../../../assets/icons/moonkorea.png';
+import favicon from 'public/assets/favicon/moonkorea.png';
 
 const Header = () => {
-  const navigate = useNavigate();
   const TITLE = 'moonkorea';
 
   return (
     <IconContext.Provider value={S.customIconStyle}>
-      <S.HeaderContainer>
-        <S.LogoContainer onClick={() => navigate('/')}>
-          <S.Favicon src={favicon} alt={TITLE}></S.Favicon>
-          <S.BlogTitle>{TITLE}</S.BlogTitle>
-        </S.LogoContainer>
-        <S.Links>
+      <S.Container>
+        <Link href="/">
+          <S.LogoContainer>
+            <Image src={favicon} alt={TITLE} width={25} height={25}></Image>
+            <S.BlogTitle>{TITLE}</S.BlogTitle>
+          </S.LogoContainer>
+        </Link>
+        <S.LinkContainer>
           <a
             href="https://github.com/moonkorea00"
             target="_blank"
@@ -23,13 +26,11 @@ const Header = () => {
           >
             <FaIcons.FaGithub />
           </a>
-          <S.Copyright>
-            &copy; {TITLE} {new Date().getFullYear()}
-          </S.Copyright>
-        </S.Links>
-      </S.HeaderContainer>
+          <S.Copyright>&copy; {TITLE}</S.Copyright>
+        </S.LinkContainer>
+      </S.Container>
     </IconContext.Provider>
   );
 };
 
-export default Header;
+export default memo(Header);

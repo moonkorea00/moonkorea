@@ -1,7 +1,7 @@
 ---
-title: 클로저
-category: Javascript
-date: 2022년 7월 10일
+title: '클로저'
+category: 'Javascript'
+date: '2022-07-10'
 ---
 
 # 클로저

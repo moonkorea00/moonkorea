@@ -1,14 +1,13 @@
 import * as S from './NavCategory.style';
 import { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
-import Triangle from '../../../assets//icons/Triangle.png';
+import { useRouter } from 'next/router';
+import Image from 'next/image';
+import Triangle from 'public/assets/sider/Triangle.png';
 import NavItem from '../NavItem/NavItem';
 
 interface ItemProps {
-  id: number;
   title: string;
   category: string;
-  content: string;
   path: string;
   date: string;
 }
@@ -25,9 +24,10 @@ const NavCategory = ({
   item: CategoryProps;
 }) => {
   const [isSubCategoryOpen, setIsSubCategoryOpen] = useState(false);
-  const { pathname } = useLocation();
+  const { asPath } = useRouter();
 
-  const isUserOnSelectedCategory = pathname.split('/')[1] === variant;
+  const isUserOnSelectedCategory =
+    asPath.split('/')[1].split('-')[0] === variant;
 
   const handleDisplaySubnav = () => {
     setIsSubCategoryOpen(prev => !prev);
@@ -40,11 +40,17 @@ const NavCategory = ({
   return (
     <S.Container>
       <S.CategoryContainer>
-        <S.TriangleIcon
+        <Image
           src={Triangle}
           alt="icon"
-          condition={isSubCategoryOpen}
           onClick={handleDisplaySubnav}
+          width={7}
+          height={7}
+          style={{
+            transform: isSubCategoryOpen ? '' : 'rotate(-90deg)',
+            transition: 'all ease 0.3s',
+            cursor: 'pointer',
+          }}
         />
         <S.CategoryItem
           condition={isUserOnSelectedCategory}
@@ -54,8 +60,8 @@ const NavCategory = ({
         </S.CategoryItem>
       </S.CategoryContainer>
       {isSubCategoryOpen &&
-        posts.map(({ id, title, category, path }: ItemProps) => (
-          <NavItem key={id} title={title} category={category} path={path} />
+        posts.map(({ title, path }: ItemProps, idx) => (
+          <NavItem key={idx} title={title} path={path} />
         ))}
     </S.Container>
   );
