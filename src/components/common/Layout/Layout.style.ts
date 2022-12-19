@@ -14,8 +14,13 @@ export const Main = styled.main`
 `;
 
 export const Article = styled.article`
-  width: 100%;
+  width: calc(100vw - 360px);
   padding: 25px 50px;
+  line-height: 35px;
   overflow-y: scroll;
   overscroll-behavior-y: none;
+
+  @media screen and (max-width: 1023px) {
+    width: 100vw;
+  }
 `;

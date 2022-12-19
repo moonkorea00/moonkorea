@@ -1,14 +1,19 @@
 import * as S from './Sider.style';
 import NavCategory from './NavCategory/NavCategory';
 import siderData from 'public/script/sider.json';
+import useResizeSider from '@hooks/useResizeSider';
 
 const Sider = () => {
+  const { isSiderVisible } = useResizeSider() as { isSiderVisible: boolean };
+
   return (
-    <S.Container>
-      {siderData.map((item, idx) => (
-        <NavCategory item={item} key={idx} />
-      ))}
-    </S.Container>
+    <>
+      <S.Container isSiderVisible={isSiderVisible}>
+        {siderData.map((item, idx) => (
+          <NavCategory item={item} key={idx} />
+        ))}
+      </S.Container>
+    </>
   );
 };
 

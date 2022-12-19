@@ -9,7 +9,7 @@ const App = ({ Component, pageProps }: AppProps) => {
     <>
       <GlobalStyle />
       <ThemeProvider theme={theme}>
-        <Layout>
+        <Layout test={'hi'}>
           <Component {...pageProps} />
         </Layout>
       </ThemeProvider>

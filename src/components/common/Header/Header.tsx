@@ -1,12 +1,13 @@
 import * as S from './Header.style';
-import * as FaIcons from 'react-icons/fa';
-import { memo } from 'react';
+import * as Gr from 'react-icons/gr';
 import Link from 'next/link';
 import Image from 'next/image';
 import { IconContext } from 'react-icons';
+import useResizeSider from '@hooks/useResizeSider';
 import favicon from 'public/assets/favicon/moonkorea.png';
 
 const Header = () => {
+  const { isSiderVisible } = useResizeSider();
   const TITLE = 'moonkorea';
 
   return (
@@ -24,7 +25,8 @@ const Header = () => {
             target="_blank"
             rel="noreferrer"
           >
-            <FaIcons.FaGithub />
+            {isSiderVisible && <Gr.GrMenu />}
+            <Gr.GrGithub />
           </a>
           <S.Copyright>&copy; {TITLE}</S.Copyright>
         </S.LinkContainer>
@@ -33,4 +35,4 @@ const Header = () => {
   );
 };
 
-export default memo(Header);
+export default Header;

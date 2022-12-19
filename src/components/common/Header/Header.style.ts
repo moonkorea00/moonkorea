@@ -5,7 +5,7 @@ export const Container = styled.header`
   width: 100%;
   height: 54px;
   padding: 0 40px;
-  border-bottom: 1px solid lightgrey;
+  border-bottom: 1px solid #D3D3D3;
 `;
 
 export const LogoContainer = styled.nav`
