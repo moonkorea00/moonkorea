@@ -12,6 +12,7 @@ export const CategoryContainer = styled.div`
 
 export const CategoryItem = styled.span`
   margin-left: 10px;
+  font-size: 0.9em;
   font-weight: ${({ condition }: { condition: boolean }) => condition && '900'};
   cursor: pointer;
 `;
