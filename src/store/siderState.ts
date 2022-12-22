@@ -2,7 +2,7 @@ import { atom } from "recoil";
 
 const isSiderVisibleOnInitialRender = () => {
   if (typeof window !== 'undefined') {
-    return window.innerWidth < 1024;
+    return window.innerWidth > 1024;
   }
 };
 
