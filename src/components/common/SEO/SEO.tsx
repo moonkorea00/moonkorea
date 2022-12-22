@@ -1,18 +1,12 @@
 import Head from 'next/head';
 
 interface SEOProps {
-  metaData: {
-    id?: string;
-    title?: string;
-    excerpt?: string;
-  };
+  metaData: { id?: string; title?: string; excerpt?: string };
 }
 
 const SEO = ({ metaData }: SEOProps) => {
   const TITLE = 'moonkorea 개발 블로그';
   const DESCRIPTION = 'moonkorea 개발 블로그입니다.';
-  const DOMAIN = 'https://www.moonkorea.dev/';
-  const IMG_URL = 'https://www.moonkorea.dev/assets/favicon/moonkorea.png';
 
   return (
     <>
@@ -20,10 +14,12 @@ const SEO = ({ metaData }: SEOProps) => {
         <title>{metaData.title || TITLE}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="description" content={metaData.excerpt || DESCRIPTION} />
-
         <meta
           property="og:url"
-          content={`${DOMAIN}/${metaData.id}` || `${DOMAIN}`}
+          content={
+            `${process.env.NEXT_PUBLIC_DOMAIN_URL}/${metaData.id}` ||
+            `${process.env.NEXT_PUBLIC_DOMAIN_URL}`
+          }
         />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content={TITLE} />
@@ -32,7 +28,7 @@ const SEO = ({ metaData }: SEOProps) => {
           property="og:description"
           content={metaData.excerpt || DESCRIPTION}
         />
-        <meta property="og:image" content={IMG_URL} />
+        <meta property="og:image" content={process.env.NEXT_PUBLIC_IMG_URL} />
       </Head>
     </>
   );

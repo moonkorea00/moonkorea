@@ -2,7 +2,7 @@
   "name": "moonkorea",
   "version": "0.1.0",
   "private": true,
-  "type": "module",
+  "type": "commonjs",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
@@ -17,12 +17,14 @@
     "react-syntax-highlighter": "^15.5.0",
     "recoil": "^0.7.6",
     "rehype-raw": "^6.1.1",
+    "sharp": "^0.31.3",
     "styled-components": "^5.3.5",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "next-sitemap",
     "start": "next start",
     "server": "node public/script/generateSiderJSON.cjs"
   },
@@ -56,6 +58,7 @@
     "eslint": "^8.30.0",
     "eslint-plugin-react": "^7.31.11",
     "file-loader": "^6.2.0",
+    "next-sitemap": "^3.1.43",
     "typescript": "^4.9.3"
   }
 }

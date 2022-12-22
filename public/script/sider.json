@@ -1,1 +1,144 @@
-[{"name":"브라우저 / CS","variant":"Browser","posts":[{"path":"Browser-CS-브라우저-렌더링","title":"브라우저 렌더링","category":"Browser","excerpt":"웹 브라우저는 프론트엔드 개발자들이 만든 앱이 실행되는 환경이자 우리가 일상생활에서 가장 많이 사용하는 소프트웨어일 것입니다. 사용자에게 웹 페이지를 그려주는 일을 하기 위해 주소창에 url이 입력된 시점부터 웹 페이지가 보여지기까지 화면 뒤에서 무수히 많은 작업들을 합니다.","date":"2022-07-06"}]},{"name":"자바스크립트","variant":"Javascript","posts":[{"path":"Javascipt-순수함수","title":"순수 함수와 부수 효과","category":"Javascript","excerpt":"함수형 프로그래밍에서는 함수의 인자와 return값을 이용해서 소통하는 것을 권장합니다. 이를 토대로 안정적이고 예측 가능한 코드를 만들고자 하는 목적과 방향성에서 더욱 주목받게 되었습니다. 순수 함수는 동일한 입력값을 전달했을 때 언제나 동일한 결과값을 반환하는 함수입니다.","date":"2022-07-17"},{"path":"Javascript-promise","title":"Promise","category":"Javascript","excerpt":"","date":"2022-04-01"},{"path":"Javascript-prototype","title":"프로토타입","category":"Javascript","excerpt":"","date":"2022-07-10"},{"path":"Javascript-리스트-순회와-이터러블-이터레이터-(ES6)","title":"리스트 순회와 이터러블, 이터레이터(ES6)","category":"Javascript","excerpt":"es6에서는 리스트를 어떻게 순회하는지 명령적으로 기술하기 보다는 선언적으로 리스트안에 있는 값들을 순회합니다. es6에서 for문이 어떤식으로 추상화돼있고 어떻게 이터러블 / 이터레이터라는 규약을 따르는지 알아보겠습니다.","date":"2022-12-08"},{"path":"Javascript-변수-var-let-const","title":"변수 var let const","category":"Javascript","excerpt":"변수는 하나의 값을 저장하기 위해 확보한 메모리 공간 또는 그 메모리 공간을 식별하기 위해 붙인 이름을 말합니다. 변수의 이름을 식별자라고도 합니다. 식별자는 어떤 값을 구별해서 식별할 수 있는 고유한 이름을 말하고 어떤 값을 구별하기 위해서 식별자는 값이 아니라 메모리 주소를 기억하고 있습니다.","date":"2022-07-10"},{"path":"Javascript-스코프","title":"스코프","category":"Javascript","excerpt":"스코프란 식별자(변수)가 유효한 범위를 의미합니다. 자바스크립트 엔진은 스코프를 사용하여 식별자를 검색하거나 변수를 참조합니다. 전역 스코프, 지역 스코프 그리고 렉시컬 스코프에 대해 간략하게 알아보겠습니다.","date":"2022-07-10"},{"path":"Javascript-실행-컨텍스트","title":"실행 컨텍스트","category":"Javascript","excerpt":"실행 컨텍스트는 자바스크립트 코드의 실행부터 종료까지 전부 관리하기 때문에 자바스크립트에서 핵심 개념입니다.브라우저는 자바스크립트 코드를 해석하고 실행하기에 앞서 자바스크립트가 실행될 수 있도록 특별한 환경인 실행 컨텍스트를 생성합니다.","date":"2022-12-03"},{"path":"Javascript-이벤트-루프","title":"이벤트 루프","category":"Javascript","excerpt":"","date":"2022-04-01"},{"path":"Javascript-클로저","title":"클로저","category":"Javascript","date":"2022-07-10"},{"path":"Javascript-호이스팅","title":"호이스팅","category":"Javascript","excerpt":"자바스크립트 엔진은 모든 선언문을 소스코드내 위치와 상관없이 런타임 이전에 먼저 실행을 합니다. 선언문은 런타임 이전 평가 과정에서 스코프에 등록이 되고 어디서든 참조할 수 있는 것 처럼 만들어집니다. 자바스크립트에서 이러한 특징을 호이스팅이라고 합니다.","date":"2022-07-10"}]},{"name":"리액트","variant":"React","posts":[{"path":"React-렌더링-및-최적화-(1)","title":"React 렌더링 및 최적화 (1)","category":"React","excerpt":"리액트에서 렌더링이란 어떤 것을 의미할까요? 렌더링이란 다양한 레벨에서 사용되는 추상적인 개념이지만 이미지를 그려내는 과정, 즉 리액트에서 렌더링이란 화면에 특정한 요소를 그려내는 것을 의미합니다. 리렌더링의 프로세스가 복잡해지거나 빈도가 잦으면 그에 따른 실행 비용이 올라가고 결국 퍼포먼스의 저하로 이어지게 됩니다.","date":"2022-11-23"},{"path":"React-렌더링-및-최적화-(2)-React-memo","title":"React 렌더링 및 최적화 (2) React.memo","category":"React","excerpt":"컴포넌트의 상태가 업데이트될 경우 해당 컴포넌트와 하위에 있는 모든 컴포넌트들은 모두 리렌더링됩니다. 해당 컴포넌트의 상태가 변했을 때는 변경된 상태에 맞게 UI가 다시 그려지는 것이 당연한 것인데 하위 컴포넌트의 props가 변하지 않았을 경우 불필요하게 새로운 함수를 호출하기 보다 초기 렌더링에서 저장한 값을 재사용하는 것이 효율적입니다.","date":"2022-11-23"}]},{"name":"AWS","variant":"AWS","posts":[{"path":"AWS-CloudFront-도메인-에러","title":"CloudFront 에러 - This XML file does not appear to have any style information associated with it","category":"AWS","excerpt":"로컬 서버에서는 앱이 문제없이 작동하다가 CloudFront 배포 후 대체 도메인 이름으로 접근하려고 하면 다음과 같은 텍스트가 출력이 되는 경우가 있습니다.","date":"2022-07-24"},{"path":"AWS-CloudFront","title":"CloudFront","category":"AWS","excerpt":"AWS CloudFront는 캐싱 서버와 CDN 서비스를 제공하고 html, css, js 및 이미지 파일 등과 같은 정적/동적 콘텐츠를 최종 사용자에게 더 빨리 배포하도록 지원하는 서비스입니다.","date":"2022-07-24"},{"path":"AWS-S3-CICD-파이프라인-구축","title":"S3 CI-CD 파이프라인 구축 (Github Actions)","category":"AWS","excerpt":"S3 버킷을 사용해서 앱 배포까지 완료가 되었으면 Github Actions를 통해서 CI/CD 파이프라인을 구축합니다. 코드베이스에 변경 사항이 생길 때마다 빌드, 테스트, 배포 자동화까지 한 번에 처리합니다.","date":"2022-07-24"},{"path":"AWS-커스텀 도메인-(Route53)","title":"커스텀 도메인 (Route 53)","category":"AWS","excerpt":"Route 53으로는 도메인의 인터넷 트래픽을 라우팅할 위치를 정의하기 때문에 별칭 레코드(alias)를 생성해 IP 주소 대신 S3 웹 사이트 엔드포인트를 사용합니다. AWS S3를 사용해서 버킷을 생성했으면 Route 53으로 도메인을 등록합니다.","date":"2022-07-24"}]}]
+[
+  {
+    "name": "브라우저 / CS",
+    "variant": "Browser",
+    "posts": [
+      {
+        "path": "Browser-CS-브라우저-렌더링",
+        "title": "브라우저 렌더링",
+        "category": "Browser",
+        "excerpt": "웹 브라우저는 프론트엔드 개발자들이 만든 앱이 실행되는 환경이자 우리가 일상생활에서 가장 많이 사용하는 소프트웨어일 것입니다. 사용자에게 웹 페이지를 그려주는 일을 하기 위해 주소창에 url이 입력된 시점부터 웹 페이지가 보여지기까지 화면 뒤에서 무수히 많은 작업들을 합니다.",
+        "date": "2022-07-06"
+      }
+    ]
+  },
+  {
+    "name": "자바스크립트",
+    "variant": "Javascript",
+    "posts": [
+      {
+        "path": "Javascipt-순수함수",
+        "title": "순수 함수와 부수 효과",
+        "category": "Javascript",
+        "excerpt": "함수형 프로그래밍에서는 함수의 인자와 return값을 이용해서 소통하는 것을 권장합니다. 이를 토대로 안정적이고 예측 가능한 코드를 만들고자 하는 목적과 방향성에서 더욱 주목받게 되었습니다. 순수 함수는 동일한 입력값을 전달했을 때 언제나 동일한 결과값을 반환하는 함수입니다.",
+        "date": "2022-07-17"
+      },
+      {
+        "path": "Javascript-promise",
+        "title": "Promise",
+        "category": "Javascript",
+        "excerpt": "",
+        "date": "2022-04-01"
+      },
+      {
+        "path": "Javascript-prototype",
+        "title": "프로토타입",
+        "category": "Javascript",
+        "excerpt": "",
+        "date": "2022-07-10"
+      },
+      {
+        "path": "Javascript-리스트-순회와-이터러블-이터레이터-(ES6)",
+        "title": "리스트 순회와 이터러블, 이터레이터(ES6)",
+        "category": "Javascript",
+        "excerpt": "es6에서는 리스트를 어떻게 순회하는지 명령적으로 기술하기 보다는 선언적으로 리스트안에 있는 값들을 순회합니다. es6에서 for문이 어떤식으로 추상화돼있고 어떻게 이터러블 / 이터레이터라는 규약을 따르는지 알아보겠습니다.",
+        "date": "2022-12-08"
+      },
+      {
+        "path": "Javascript-변수-var-let-const",
+        "title": "변수 var let const",
+        "category": "Javascript",
+        "excerpt": "변수는 하나의 값을 저장하기 위해 확보한 메모리 공간 또는 그 메모리 공간을 식별하기 위해 붙인 이름을 말합니다. 변수의 이름을 식별자라고도 합니다. 식별자는 어떤 값을 구별해서 식별할 수 있는 고유한 이름을 말하고 어떤 값을 구별하기 위해서 식별자는 값이 아니라 메모리 주소를 기억하고 있습니다.",
+        "date": "2022-07-10"
+      },
+      {
+        "path": "Javascript-스코프",
+        "title": "스코프",
+        "category": "Javascript",
+        "excerpt": "스코프란 식별자(변수)가 유효한 범위를 의미합니다. 자바스크립트 엔진은 스코프를 사용하여 식별자를 검색하거나 변수를 참조합니다. 전역 스코프, 지역 스코프 그리고 렉시컬 스코프에 대해 간략하게 알아보겠습니다.",
+        "date": "2022-07-10"
+      },
+      {
+        "path": "Javascript-실행-컨텍스트",
+        "title": "실행 컨텍스트",
+        "category": "Javascript",
+        "excerpt": "실행 컨텍스트는 자바스크립트 코드의 실행부터 종료까지 전부 관리하기 때문에 자바스크립트에서 핵심 개념입니다.브라우저는 자바스크립트 코드를 해석하고 실행하기에 앞서 자바스크립트가 실행될 수 있도록 특별한 환경인 실행 컨텍스트를 생성합니다.",
+        "date": "2022-12-03"
+      },
+      {
+        "path": "Javascript-이벤트-루프",
+        "title": "이벤트 루프",
+        "category": "Javascript",
+        "excerpt": "",
+        "date": "2022-04-01"
+      },
+      {
+        "path": "Javascript-클로저",
+        "title": "클로저",
+        "category": "Javascript",
+        "date": "2022-07-10"
+      },
+      {
+        "path": "Javascript-호이스팅",
+        "title": "호이스팅",
+        "category": "Javascript",
+        "excerpt": "자바스크립트 엔진은 모든 선언문을 소스코드내 위치와 상관없이 런타임 이전에 먼저 실행을 합니다. 선언문은 런타임 이전 평가 과정에서 스코프에 등록이 되고 어디서든 참조할 수 있는 것 처럼 만들어집니다. 자바스크립트에서 이러한 특징을 호이스팅이라고 합니다.",
+        "date": "2022-07-10"
+      }
+    ]
+  },
+  {
+    "name": "리액트",
+    "variant": "React",
+    "posts": [
+      {
+        "path": "React-렌더링-및-최적화-(1)",
+        "title": "React 렌더링 및 최적화 (1)",
+        "category": "React",
+        "excerpt": "리액트에서 렌더링이란 어떤 것을 의미할까요? 렌더링이란 다양한 레벨에서 사용되는 추상적인 개념이지만 이미지를 그려내는 과정, 즉 리액트에서 렌더링이란 화면에 특정한 요소를 그려내는 것을 의미합니다. 리렌더링의 프로세스가 복잡해지거나 빈도가 잦으면 그에 따른 실행 비용이 올라가고 결국 퍼포먼스의 저하로 이어지게 됩니다.",
+        "date": "2022-11-23"
+      },
+      {
+        "path": "React-렌더링-및-최적화-(2)-React-memo",
+        "title": "React 렌더링 및 최적화 (2) React.memo",
+        "category": "React",
+        "excerpt": "컴포넌트의 상태가 업데이트될 경우 해당 컴포넌트와 하위에 있는 모든 컴포넌트들은 모두 리렌더링됩니다. 해당 컴포넌트의 상태가 변했을 때는 변경된 상태에 맞게 UI가 다시 그려지는 것이 당연한 것인데 하위 컴포넌트의 props가 변하지 않았을 경우 불필요하게 새로운 함수를 호출하기 보다 초기 렌더링에서 저장한 값을 재사용하는 것이 효율적입니다.",
+        "date": "2022-11-23"
+      }
+    ]
+  },
+  {
+    "name": "AWS",
+    "variant": "AWS",
+    "posts": [
+      {
+        "path": "AWS-CloudFront-도메인-에러",
+        "title": "CloudFront 에러 - This XML file does not appear to have any style information associated with it",
+        "category": "AWS",
+        "excerpt": "로컬 서버에서는 앱이 문제없이 작동하다가 CloudFront 배포 후 대체 도메인 이름으로 접근하려고 하면 다음과 같은 텍스트가 출력이 되는 경우가 있습니다.",
+        "date": "2022-07-24"
+      },
+      {
+        "path": "AWS-CloudFront",
+        "title": "CloudFront",
+        "category": "AWS",
+        "excerpt": "AWS CloudFront는 캐싱 서버와 CDN 서비스를 제공하고 html, css, js 및 이미지 파일 등과 같은 정적/동적 콘텐츠를 최종 사용자에게 더 빨리 배포하도록 지원하는 서비스입니다.",
+        "date": "2022-07-24"
+      },
+      {
+        "path": "AWS-S3-CICD-파이프라인-구축",
+        "title": "S3 CI-CD 파이프라인 구축 (Github Actions)",
+        "category": "AWS",
+        "excerpt": "S3 버킷을 사용해서 앱 배포까지 완료가 되었으면 Github Actions를 통해서 CI/CD 파이프라인을 구축합니다. 코드베이스에 변경 사항이 생길 때마다 빌드, 테스트, 배포 자동화까지 한 번에 처리합니다.",
+        "date": "2022-07-24"
+      },
+      {
+        "path": "AWS-커스텀 도메인-(Route53)",
+        "title": "커스텀 도메인 (Route 53)",
+        "category": "AWS",
+        "excerpt": "Route 53으로는 도메인의 인터넷 트래픽을 라우팅할 위치를 정의하기 때문에 별칭 레코드(alias)를 생성해 IP 주소 대신 S3 웹 사이트 엔드포인트를 사용합니다. AWS S3를 사용해서 버킷을 생성했으면 Route 53으로 도메인을 등록합니다.",
+        "date": "2022-07-24"
+      }
+    ]
+  }
+]

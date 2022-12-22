@@ -1,3 +1,9 @@
-# https://www.robotstxt.org/robotstxt.html
+# *
 User-agent: *
-Disallow:
+Allow: /
+
+# Host
+Host: https://www.moonkorea.dev
+
+# Sitemaps
+Sitemap: https://www.moonkorea.dev/sitemap.xml
