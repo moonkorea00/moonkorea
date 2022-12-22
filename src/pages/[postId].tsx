@@ -4,7 +4,7 @@ import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import Reactmarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 import { getPostPaths, getPostById } from '@utils/api';
-import { ArticleContainer } from '@components/common/Article/ArticleContainer';
+import ArticleLayout from '@components/common/ArticleLayout/ArticleLayout';
 
 interface Props {
   params: {
@@ -14,7 +14,7 @@ interface Props {
 
 const Post = ({ content }: InferGetStaticPropsType<GetStaticProps>) => {
   return (
-    <ArticleContainer>
+    <ArticleLayout pageType="post">
       <Reactmarkdown
         rehypePlugins={[rehypeRaw]}
         components={{
@@ -37,7 +37,7 @@ const Post = ({ content }: InferGetStaticPropsType<GetStaticProps>) => {
       >
         {content}
       </Reactmarkdown>
-    </ArticleContainer>
+    </ArticleLayout>
   );
 };
 

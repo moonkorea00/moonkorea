@@ -4,7 +4,7 @@ export const Container = styled.header`
   ${({ theme }) => theme.flexSpaceBetween};
   width: 100%;
   height: 54px;
-  padding: 0 40px;
+  padding: 0 50px;
   border-bottom: 1px solid #d3d3d3;
 
   @media screen and (max-width: 1024px) {

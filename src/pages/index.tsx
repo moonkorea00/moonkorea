@@ -2,7 +2,7 @@ import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import Link from 'next/link';
 import { getAllPosts } from '@utils/api';
 import PreviewPost from '@components/Home/PreviewPost';
-import { ArticleContainer } from '@components/common/Article/ArticleContainer';
+import ArticleLayout from '@components/common/ArticleLayout/ArticleLayout';
 
 interface FrontMatterProps {
   id: string;
@@ -14,7 +14,7 @@ const Home = ({
   metaData,
 }: InferGetServerSidePropsType<GetServerSideProps>) => {
   return (
-    <ArticleContainer>
+    <ArticleLayout>
       {metaData.map(({ id, date, title, excerpt }: FrontMatterProps) => (
         <PreviewPost
           key={id}
@@ -24,7 +24,7 @@ const Home = ({
           excerpt={excerpt}
         />
       ))}
-    </ArticleContainer>
+    </ArticleLayout>
   );
 };
 export default Home;

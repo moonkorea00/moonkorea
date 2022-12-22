@@ -5,7 +5,6 @@ import Image from 'next/image';
 import { IconContext } from 'react-icons';
 import useResizeSider from '@hooks/useResizeSider';
 import favicon from 'public/assets/favicon/moonkorea.png';
-import styled, { css } from 'styled-components';
 
 const Header = () => {
   const { setIsSiderVisible } = useResizeSider();
@@ -21,9 +20,9 @@ const Header = () => {
           </S.LogoContainer>
         </Link>
         <S.LinkContainer>
-          <MenuIcon onClick={() => setIsSiderVisible(prev => !prev)}>
+          <S.MenuIcon onClick={() => setIsSiderVisible(prev => !prev)}>
             <Gr.GrMenu />
-          </MenuIcon>
+          </S.MenuIcon>
           <a
             href="https://github.com/moonkorea00"
             target="_blank"
@@ -39,18 +38,3 @@ const Header = () => {
 };
 
 export default Header;
-
-const MenuIcon = styled.div`
-  display: none;
-  height: 100%;
-  opacity: 0.5;
-  cursor: pointer;
-
-  @media screen and (max-width: 1023px) {
-    display: block;
-  }
-
-  &:hover {
-    opacity: 1;
-  }
-`;
