@@ -21,8 +21,17 @@ export const Article = styled.article`
   overflow-y: scroll;
   overscroll-behavior-y: none;
 
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
   @media screen and (max-width: 1024px) {
     width: 100vw;
     padding: 10px 25px;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 100vw;
+    padding: 10px 20px;
   }
 `;

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.aside`
   width: 360px;
-  min-width: 310px;
+  min-width: 320px;
   height: 100%;
   padding: 16px 16px 0 20px;
   line-height: 35px;

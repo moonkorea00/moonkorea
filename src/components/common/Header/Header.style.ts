@@ -7,8 +7,12 @@ export const Container = styled.header`
   padding: 0 40px;
   border-bottom: 1px solid #d3d3d3;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1024px) {
     padding: 0 25px;
+  }
+
+  @media screen and (max-width: 768px) {
+    padding: 0 20px;
   }
 `;
 
