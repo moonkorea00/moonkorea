@@ -1,6 +1,7 @@
 ---
 title: 'CloudFront'
 category: 'AWS'
+excerpt: 'AWS CloudFront는 캐싱 서버와 CDN 서비스를 제공하고 html, css, js 및 이미지 파일 등과 같은 정적/동적 콘텐츠를 최종 사용자에게 더 빨리 배포하도록 지원하는 서비스입니다.'
 date: '2022-07-24'
 ---
 

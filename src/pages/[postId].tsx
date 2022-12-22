@@ -3,8 +3,9 @@ import * as MDX from '@components/Markdown/MarkDownComponent';
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import Reactmarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
-import { getPostPaths, getPostById } from '@utils/api';
 import ArticleLayout from '@components/common/ArticleLayout/ArticleLayout';
+import { getPostPaths, getPostById } from '@utils/api';
+import SEO from '@components/common/SEO/SEO';
 
 interface Props {
   params: {
@@ -12,9 +13,10 @@ interface Props {
   };
 }
 
-const Post = ({ content }: InferGetStaticPropsType<GetStaticProps>) => {
+const Post = ({ metaData }: InferGetStaticPropsType<GetStaticProps>) => {
   return (
     <ArticleLayout pageType="post">
+      <SEO metaData={metaData}/>
       <Reactmarkdown
         rehypePlugins={[rehypeRaw]}
         components={{
@@ -33,7 +35,7 @@ const Post = ({ content }: InferGetStaticPropsType<GetStaticProps>) => {
           code: MDX.MarkdownCode,
         }}
       >
-        {content}
+        {metaData.content}
       </Reactmarkdown>
     </ArticleLayout>
   );
@@ -47,8 +49,8 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({ params }: Props) => {
-  const { content } = await getPostById(params.postId);
+  const metaData = await getPostById(params.postId);
   return {
-    props: { content },
+    props: { metaData },
   };
 };
