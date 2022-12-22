@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/react';
 import type { AppProps } from 'next/app';
 import { RecoilRoot } from 'recoil';
 import { ThemeProvider } from 'styled-components';
@@ -12,6 +13,7 @@ const App = ({ Component, pageProps }: AppProps) => {
       <ThemeProvider theme={theme}>
         <Layout>
           <Component {...pageProps} />
+          <Analytics />
         </Layout>
       </ThemeProvider>
     </RecoilRoot>
