@@ -18,13 +18,11 @@ const Post = ({ content }: InferGetStaticPropsType<GetStaticProps>) => {
       <Reactmarkdown
         rehypePlugins={[rehypeRaw]}
         components={{
-          h1: ({ node, ...props }) => <MD.MarkdownH1 {...props} />,
-          h2: ({ node, ...props }) => <MD.MarkdownH2 {...props} />,
-          h3: ({ node, ...props }) => <MD.MarkdownH3 {...props} />,
-          span: ({ node, ...props }) => <MD.MarkdownSpan {...props} />,
-          blockquote: ({ node, ...props }) => (
-            <MD.MarkdownBlockquote {...props} />
-          ),
+          h1: ({ ...props }) => <MD.MarkdownH1 {...props} />,
+          h2: ({ ...props }) => <MD.MarkdownH2 {...props} />,
+          h3: ({ ...props }) => <MD.MarkdownH3 {...props} />,
+          span: ({ ...props }) => <MD.MarkdownSpan {...props} />,
+          blockquote: ({ ...props }) => <MD.MarkdownBlockquote {...props} />,
           // TODO
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore

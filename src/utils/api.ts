@@ -2,7 +2,6 @@ import fs from 'fs';
 import { join } from 'path';
 import matter from 'gray-matter';
 
-// eslint-disable-next-line no-undef
 const postsDir = join(process.cwd(), '/src/_posts');
 const fileNames = fs.readdirSync(postsDir);
 

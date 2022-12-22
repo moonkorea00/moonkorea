@@ -4,7 +4,7 @@ import Link from 'next/link';
 import logo from 'public/assets/favicon/moonkorea.png'
 
 const NotFound = () => {
-  const title = '404';
+  // const title = '404';
 
   return (
     <S.Container>
