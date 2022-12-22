@@ -18,7 +18,7 @@ const generateSiderJSON = () => {
     const filePath = join(postsDir, fileName);
     const metaData = fs.readFileSync(filePath, 'utf8');
 
-    const path = fileName.replace(/\.mdx$/, '');
+    const path = fileName.replace(/\.md$/, '');
     const { data } = matter(metaData);
 
     return {

@@ -1,6 +1,7 @@
 ---
 title: 'S3 CI-CD 파이프라인 구축 (Github Actions)'
 category: 'AWS'
+excerpt: 'S3 버킷을 사용해서 앱 배포까지 완료가 되었으면 Github Actions를 통해서 CI/CD 파이프라인을 구축합니다. 코드베이스에 변경 사항이 생길 때마다 빌드, 테스트, 배포 자동화까지 한 번에 처리합니다.'
 date: '2022-07-24'
 ---
 

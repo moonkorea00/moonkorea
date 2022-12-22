@@ -38,9 +38,11 @@ export const getPostById = async (id: string) => {
   const filePath = join(postsDir, `${id}.md`);
   const metaData = fs.readFileSync(filePath, 'utf8');
 
-  const { content } = matter(metaData);
+  const { data, content } = matter(metaData);
 
   return {
+    id,
+    ...data,
     content,
   };
 };
