@@ -1,10 +1,11 @@
 import * as S from './Sider.style';
+import { useRecoilValue } from 'recoil';
+import { siderState } from '@store/siderState';
 import NavCategory from './NavCategory/NavCategory';
 import siderData from 'public/script/sider.json';
-import useResizeSider from '@hooks/useResizeSider';
 
 const Sider = () => {
-  const { isSiderVisible } = useResizeSider() as { isSiderVisible: boolean };
+  const isSiderVisible = useRecoilValue(siderState);
 
   return (
     <>

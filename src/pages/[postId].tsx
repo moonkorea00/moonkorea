@@ -4,6 +4,7 @@ import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import Reactmarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 import { getPostPaths, getPostById } from '@utils/api';
+import { PostContainer } from '@components/Post/PostContainer.style';
 
 interface Props {
   params: {
@@ -13,27 +14,31 @@ interface Props {
 
 const Post = ({ content }: InferGetStaticPropsType<GetStaticProps>) => {
   return (
-    <Reactmarkdown
-      rehypePlugins={[rehypeRaw]}
-      components={{
-        // TODO
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        code: MDX.MarkdownCode,
-        blockquote: ({ node, ...props }) => (
-          <MD.MarkdownBlockquote {...props} />
-        ),
-        span: ({ node, ...props }) => <MD.MarkdownSpan {...props} />,
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        img: MDX.MarkDownImage,
-        h1: ({ node, ...props }) => <MD.MarkdownH1 {...props} />,
-        h2: ({ node, ...props }) => <MD.MarkdownH2 {...props} />,
-        h3: ({ node, ...props }) => <MD.MarkdownH3 {...props} />,
-      }}
-    >
-      {content}
-    </Reactmarkdown>
+    <PostContainer>
+      <Reactmarkdown
+        rehypePlugins={[rehypeRaw]}
+        components={{
+          h1: ({ node, ...props }) => <MD.MarkdownH1 {...props} />,
+          h2: ({ node, ...props }) => <MD.MarkdownH2 {...props} />,
+          h3: ({ node, ...props }) => <MD.MarkdownH3 {...props} />,
+          // p: ({ node, ...props }) => <MD.MarkdownP {...props} />,
+          span: ({ node, ...props }) => <MD.MarkdownSpan {...props} />,
+          blockquote: ({ node, ...props }) => (
+            <MD.MarkdownBlockquote {...props} />
+          ),
+          // TODO
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          img: MDX.MarkDownImage,
+          // TODO
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          code: MDX.MarkdownCode,
+        }}
+      >
+        {content}
+      </Reactmarkdown>
+    </PostContainer>
   );
 };
 

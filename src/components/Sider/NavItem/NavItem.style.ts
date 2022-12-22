@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-export const PostContainer = styled.nav`
+export const Container = styled.nav`
   ${({ theme }) => theme.flexDefault};
   padding-left: 12px;
   margin-bottom: 3px;

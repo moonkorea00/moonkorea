@@ -5,7 +5,11 @@ export const Container = styled.header`
   width: 100%;
   height: 54px;
   padding: 0 40px;
-  border-bottom: 1px solid #D3D3D3;
+  border-bottom: 1px solid #d3d3d3;
+
+  @media screen and (max-width: 768px) {
+    padding: 0 25px;
+  }
 `;
 
 export const LogoContainer = styled.nav`
@@ -32,9 +36,28 @@ export const LinkContainer = styled.nav`
   margin-top: 2px;
 `;
 
+export const MenuIcon = styled.div`
+  display: none;
+  height: 100%;
+  opacity: 0.5;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  @media screen and (max-width: 1024px) {
+    display: block;
+  }
+`;
+
 export const Copyright = styled.span`
   font-size: 14px;
   font-weight: 600;
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 `;
 
 export const customIconStyle = {

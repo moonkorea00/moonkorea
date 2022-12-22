@@ -15,7 +15,7 @@ export const MarkdownH1 = styled.h1`
 `;
 
 export const MarkdownH2 = styled.h2`
-  font-size: 1.4em;
+  font-size: 1.5em;
 `;
 
 export const MarkdownH3 = styled.h3`
@@ -32,3 +32,4 @@ export const MarkdownSpan = styled.span`
   color: rgb(102, 102, 102);
   text-align: center;
 `;
+

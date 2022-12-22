@@ -4,6 +4,7 @@ export const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
   width: 100%;
+  min-width: 360px;
   height: 100vh;
 `;
 
@@ -20,7 +21,8 @@ export const Article = styled.article`
   overflow-y: scroll;
   overscroll-behavior-y: none;
 
-  @media screen and (max-width: 1023px) {
+  @media screen and (max-width: 1024px) {
     width: 100vw;
+    padding: 10px 25px;
   }
 `;

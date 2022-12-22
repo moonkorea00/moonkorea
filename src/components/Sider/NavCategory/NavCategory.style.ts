@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.section`
   ${({ theme }) => theme.flexColumn};
-  margin-bottom: 10px;
+  margin-bottom: 6px;
 `;
 
 export const CategoryContainer = styled.div`
