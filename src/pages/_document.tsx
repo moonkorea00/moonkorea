@@ -11,14 +11,7 @@ export default class MyDocument extends Document {
   render() {
     return (
       <Html lang="en">
-        <Head>
-          {/* <meta charSet="utf-8" /> */}
-          <link rel="icon" href="/assets/favicon/moonkorea.ico" />
-          {/* <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#000000" /> */}
-          <link rel="apple-touch-icon" href="/assets/favicon/moonkorea.ico" />
-          <link rel="manifest" href="/manifest.json" />
-        </Head>
+        <Head />
         <body>
           <Main />
           <NextScript />
