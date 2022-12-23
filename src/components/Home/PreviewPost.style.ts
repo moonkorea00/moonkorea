@@ -1,16 +1,54 @@
 import styled from 'styled-components';
 
 export const Container = styled.section`
-  /* width: 750px; */
+  ${({ theme }) => theme.flexColumn}
   margin: 0 auto;
-  border-bottom: 1px solid grey;
-  line-height: 18px;
+  padding: 1px 12px;
+  border-bottom: 1px solid #e6e6e6;
+  line-height: 125%;
 `;
 
-export const FlexContainer = styled.nav``;
+export const TagContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+`;
 
-export const Title = styled.h1``;
+export const Tags = styled.span`
+  padding: 1px 8px;
+  font-size: 0.85em;
+  font-weight: 600;
+  border-radius: 10px;
+  background-color: #ededed;
 
-export const PublishDate = styled.span``;
+  @media screen and (max-width: 768px) {
+    font-size: 0.8em;
+  }
+`;
 
-export const Excerpt = styled.p``;
+export const Title = styled.h2`
+  font-size: 1.65em;
+
+  @media screen and (max-width: 768px) {
+    font-size: 1.4em;
+  }
+`;
+
+export const Description = styled.h3`
+  font-size: 1em;
+  color: black;
+
+  @media screen and (max-width: 768px) {
+    font-size: 0.85em;
+  }
+`;
+
+export const PublishDate = styled.h4`
+  font-size: 0.8em;
+  font-weight:400;
+  color: black;
+
+  @media screen and (max-width: 768px) {
+    font-size: 0.7.5em;
+  }
+`;

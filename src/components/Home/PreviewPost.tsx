@@ -2,22 +2,31 @@ import * as S from './PreviewPost.style';
 import Link from 'next/link';
 
 interface PreviewPostProps {
-  id: string;
-  title: string;
-  date: string;
-  excerpt: string;
+  postData: {
+    id: string;
+    title: string;
+    tags: string;
+    description: string;
+    date: string;
+  };
 }
 
-const PreviewPost = ({ id, title, date, excerpt }: PreviewPostProps) => {
+const PreviewPost = ({ postData }: PreviewPostProps) => {
+  const { id, title, date, tags, description } = postData;
+  const tagsArray = tags?.split(', ');
+
   return (
     <S.Container>
-      <S.FlexContainer>
-        <Link href={`/${id}`}>
-          <S.Title>{title}</S.Title>
-        </Link>
-        <S.PublishDate>{date}</S.PublishDate>
-      </S.FlexContainer>
-      <S.Excerpt>{excerpt}</S.Excerpt>
+      <Link href={`/${id}`}>
+        <S.Title>{title}</S.Title>
+        <S.Description>{description}</S.Description>
+        <S.TagContainer>
+          {tagsArray?.map(tag => (
+            <S.Tags>{tag}</S.Tags>
+          ))}
+        </S.TagContainer>
+        <S.PublishDate>{date.replaceAll('-', '.')}</S.PublishDate>
+      </Link>
     </S.Container>
   );
 };

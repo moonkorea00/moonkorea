@@ -30,4 +30,8 @@ export const PostTitle = styled.div`
   line-height: 25px;
   color: #364149;
   cursor: pointer;
+
+  @media screen and (max-width: 768px) {
+    line-height: 20px;
+  }
 `;

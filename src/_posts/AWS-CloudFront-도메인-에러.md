@@ -2,6 +2,8 @@
 title: 'CloudFront 에러 - This XML file does not appear to have any style information associated with it'
 category: 'AWS'
 excerpt: '로컬 서버에서는 앱이 문제없이 작동하다가 CloudFront 배포 후 대체 도메인 이름으로 접근하려고 하면 다음과 같은 텍스트가 출력이 되는 경우가 있습니다.'
+description: 'CloudFront 배포 트러블슈팅'
+tags: '트러블슈팅, DevOps, AWS, CloudFront'
 date: '2022-07-24'
 ---
 
