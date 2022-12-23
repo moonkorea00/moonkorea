@@ -25,6 +25,7 @@ const Header = () => {
           </S.MenuIcon>
           <a
             href="https://github.com/moonkorea00"
+            aria-label="moonkorea00 GitHub"
             target="_blank"
             rel="noreferrer"
           >
