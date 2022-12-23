@@ -33,5 +33,6 @@ export const Article = styled.article`
   @media screen and (max-width: 768px) {
     width: 100vw;
     padding: 10px 20px;
+    line-height: 32px;
   }
 `;

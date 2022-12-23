@@ -22,12 +22,11 @@ export const getAllPosts = () => {
     const metaData = fs.readFileSync(filePath, 'utf8');
 
     const id = fileName.replace(/\.md$/, '');
-    const { data, content } = matter(metaData);
+    const { data } = matter(metaData);
 
     return {
       id,
       ...data,
-      content,
     };
   });
 

@@ -12,10 +12,18 @@ export const MarkdownH1 = styled.h1`
   padding-bottom: 8px;
   font-size: 1.8em;
   border-bottom: 1px solid rgb(219, 219, 219);
+
+  @media screen and (max-width: 768px){
+    font-size: 1.6em;
+  }
 `;
 
 export const MarkdownH2 = styled.h2`
   font-size: 1.5em;
+
+  @media screen and (max-width: 768px){
+    font-size: 1.3em;
+  }
 `;
 
 export const MarkdownH3 = styled.h3`

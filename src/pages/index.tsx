@@ -1,28 +1,28 @@
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { getAllPosts } from '@utils/api';
-import PreviewPost from '@components/Home/PreviewPost';
-import ArticleLayout from '@components/common/ArticleLayout/ArticleLayout';
 import SEO from '@components/common/SEO/SEO';
+import ArticleLayout from '@components/common/ArticleLayout/ArticleLayout';
+import PreviewPost from '@components/Home/PreviewPost';
 
 interface FrontMatterProps {
   id: string;
-  date: string;
   title: string;
-  excerpt: string;
+  tags: string;
+  description: string;
+  date: string;
 }
+
 const Home = ({ metaData }: InferGetStaticPropsType<GetStaticProps>) => {
   return (
     <ArticleLayout>
-      <SEO metaData={metaData}/>
-      {metaData.map(({ id, date, title, excerpt }: FrontMatterProps) => (
-        <PreviewPost
-          key={id}
-          id={id}
-          date={date}
-          title={title}
-          excerpt={excerpt}
-        />
-      ))}
+      <SEO metaData={metaData} />
+      {metaData
+        .sort((a: FrontMatterProps, b: FrontMatterProps) =>
+          a.date > b.date ? -1 : 1
+        )
+        .map((postData: FrontMatterProps) => (
+          <PreviewPost key={postData.id} postData={postData} />
+        ))}
     </ArticleLayout>
   );
 };
