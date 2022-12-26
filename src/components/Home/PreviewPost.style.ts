@@ -45,7 +45,7 @@ export const Description = styled.h3`
 
 export const PublishDate = styled.h4`
   font-size: 0.8em;
-  font-weight:400;
+  font-weight: 400;
   color: black;
 
   @media screen and (max-width: 768px) {
