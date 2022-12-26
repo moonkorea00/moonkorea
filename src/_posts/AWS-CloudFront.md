@@ -32,7 +32,7 @@ AWS CloudFront는 캐싱 서버와 CDN 서비스를 제공하고 html, css, js �
 
 >캐시 키 및 원본 요청 설정을 **CachingOptimized**로 설정하면 CloudFront가 24시간 동안 웹 콘텐츠를 캐싱하게 합니다.
 
-5. **대체 도메인 이름**(CNAME)에 도메인을 추가하고 발급받은 <a href="https://us-east-1.console.aws.amazon.com/acm/home?region=us-east-1#/certificates/request/public" target="_blank" rel="noreferrer">SSL 인증서</a>를 선택합니다.
+5. **대체 도메인 이름**(CNAME)에 도메인을 추가하고 발급받은 <a href="https://us-east-1.console.aws.amazon.com/acm/home?region=us-east-1#/certificates/request/public" target="_blank">SSL 인증서</a>를 선택합니다.
 
 <img src="/assets/markdown-image/AWS-cloudfront/cloudfront4.png" alt="cloudfront CNAME / SSL 인증서" width="550" height="400">
 <span>CloudFront CNAME / SSL 인증서</span>

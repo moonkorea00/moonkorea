@@ -64,4 +64,4 @@ diffing:
 
 &emsp;그래서 렌더링 최적화는 당연히 중요하지만 왜 중요할까요? 리렌더링은 앞서 말했듯이 리액트 내부적으로 diffing 알고리즘을 통해 업데이트될 실제 DOM에 적용될 사항들을 파악하고 함수를 호출하는 작업을 실행한다고 설명했습니다. 당연히 리렌더링이 의도와는 다르게 또는 불필요하게 많이 발생한다면 함수가 계속 호출되고 return 문에 있는 값들이 반복적으로 실행됩니다. 리렌더링의 프로세스가 복잡해지거나 빈도가 잦으면 그에 따른 실행 비용이 올라가고 결국 퍼포먼스의 저하로 이어지게 됩니다.
 
-React 렌더링 및 최적화 2부에서는 React.memo를 활용한 렌더링 최적화에 대해 알아보겠습니다. <a href="https://moonkorea00.com/React/React-렌더링-및-최적화-(2)-React.memo" target=”_blank” rel="noreferrer">2부 보러 가기</a>
+React 렌더링 및 최적화 2부에서는 React.memo를 활용한 렌더링 최적화에 대해 알아보겠습니다. <a href="https://www.moonkorea.dev/React-%EB%A0%8C%EB%8D%94%EB%A7%81-%EB%B0%8F-%EC%B5%9C%EC%A0%81%ED%99%94-(2)-React-memo" target=”_blank”>2부 보러 가기</a>
