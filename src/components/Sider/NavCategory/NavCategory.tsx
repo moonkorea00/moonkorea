@@ -42,7 +42,7 @@ const NavCategory = ({
       <S.CategoryContainer>
         <Image
           src={Triangle}
-          alt="icon"
+          alt="triangle icon"
           onClick={handleDisplaySubnav}
           width={7}
           height={7}

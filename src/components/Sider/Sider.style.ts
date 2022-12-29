@@ -10,7 +10,6 @@ export const Container = styled.aside`
   border-left: 1px solid #d3d3d3;
   overflow-y: scroll;
   overscroll-behavior-y: none;
-  z-index: 1;
 
   @media screen and (max-width: 1024px) {
     display: ${({ isSiderVisible }: { isSiderVisible: boolean }) =>

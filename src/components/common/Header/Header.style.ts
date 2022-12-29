@@ -6,7 +6,12 @@ export const Container = styled.header`
   height: 54px;
   padding: 0 50px;
   border-bottom: 1px solid #d3d3d3;
+  opacity: 0.85;
+  transition: all ease 0.25s;
 
+  &:hover {
+    opacity: 1;
+  }
   @media screen and (max-width: 1024px) {
     padding: 0 25px;
   }
@@ -37,7 +42,6 @@ export const BlogTitle = styled.span`
 export const LinkContainer = styled.nav`
   ${({ theme }) => theme.flexCenter};
   gap: 14px;
-  margin-top: 2px;
 `;
 
 export const MenuIcon = styled.div`
@@ -52,6 +56,17 @@ export const MenuIcon = styled.div`
 
   @media screen and (max-width: 1024px) {
     display: block;
+  }
+`;
+
+export const IconContainer = styled.div`
+  ${({ theme }) => theme.flexCenter};
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  cursor: pointer;
+  &:hover {
+    background-color: rgb(240, 240, 240);
   }
 `;
 

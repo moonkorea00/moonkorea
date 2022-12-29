@@ -1,6 +1,7 @@
 ---
 title: '클로저'
 category: 'Javascript'
+excerpt: ''
 date: '2022-07-10'
 ---
 
