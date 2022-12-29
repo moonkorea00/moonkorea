@@ -59,7 +59,7 @@ export default class MyDocument extends Document {
     }
   })();
   ChannelIO('boot', {
-    "pluginKey": "${process.env.NEXT_PUBLIC_CHANNEL_IO_KEY}",
+    "pluginKey": "43caf3fb-f316-4c0e-9c22-936b3bf66631",
     "profile" : {
       "name" : "moonkorea",
     }
