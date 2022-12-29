@@ -12,24 +12,26 @@ const Header = () => {
 
   return (
     <IconContext.Provider value={S.customIconStyle}>
-        <S.Container>
-          <Link href="/">
-            <S.LogoContainer>
-              <Image src={favicon} alt={TITLE} width={25} height={25}></Image>
-              <S.BlogTitle>{TITLE}</S.BlogTitle>
-            </S.LogoContainer>
-          </Link>
-          <S.LinkContainer>
+      <S.Container>
+        <Link href="/">
+          <S.LogoContainer>
+            <Image src={favicon} alt={TITLE} width={25} height={25}></Image>
+            <S.BlogTitle>{TITLE}</S.BlogTitle>
+          </S.LogoContainer>
+        </Link>
+        <S.LinkContainer>
           <S.MenuIcon onClick={() => setIsSiderVisible(prev => !prev)}>
             <Gr.GrMenu />
           </S.MenuIcon>
-          <a
-            href="https://github.com/moonkorea00"
-            aria-label="moonkorea00 GitHub"
-            target="_blank"
-          >
-            <Gr.GrGithub />
-          </a>
+          <S.IconContainer>
+            <a
+              href="https://github.com/moonkorea00"
+              aria-label="moonkorea00 GitHub"
+              target="_blank"
+            >
+              <Gr.GrGithub />
+            </a>
+          </S.IconContainer>
           <S.Copyright>&copy; {TITLE}</S.Copyright>
         </S.LinkContainer>
       </S.Container>
