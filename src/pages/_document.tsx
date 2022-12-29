@@ -6,6 +6,7 @@ import Document, {
   DocumentContext,
 } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
+import Script from 'next/script';
 
 export default class MyDocument extends Document {
   render() {
@@ -18,8 +19,9 @@ export default class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
-          <script
-            // eslint-disable-next-line react/no-danger
+          <Script
+            id="channelTalk"
+            strategy="lazyOnload"
             dangerouslySetInnerHTML={{
               __html: `(function() {
     var w = window;
@@ -58,13 +60,14 @@ export default class MyDocument extends Document {
   })();
   ChannelIO('boot', {
     "pluginKey": "${process.env.NEXT_PUBLIC_CHANNEL_IO_KEY}",
-    "profile": {
-      "name": "moonkorea",
+    "profile" : {
+      "name" : "moonkorea",
     }
   });
 	`,
             }}
           />
+          ;
         </body>
       </Html>
     );
