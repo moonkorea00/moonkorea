@@ -57,10 +57,10 @@ export default class MyDocument extends Document {
     }
   })();
   ChannelIO('boot', {
-    "pluginKey": ${process.env.NEXT_PUBLIC_CHANNEL_IO_KEY}
+    "pluginKey": "${process.env.NEXT_PUBLIC_CHANNEL_IO_KEY}",
     "profile": {
-      "name": "moonkorea", //fill with user name
-      "이메일": "moonkorea00@gmail.com",
+      "name": "moonkorea",
+    }
   });
 	`,
             }}
