@@ -20,8 +20,7 @@ export default class MyDocument extends Document {
           <Main />
           <NextScript />
           <Script
-            id="channelTalk"
-            strategy="lazyOnload"
+            strategy="afterInteractive"
             dangerouslySetInnerHTML={{
               __html: `(function() {
     var w = window;

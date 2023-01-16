@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const ArticleContainer = styled.section`
+export const Container = styled.section`
   min-width: 320px;
   animation: fade-in 0.25s;
 
