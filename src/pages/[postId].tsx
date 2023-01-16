@@ -16,7 +16,7 @@ interface Props {
 const Post = ({ metaData }: InferGetStaticPropsType<GetStaticProps>) => {
   return (
     <ArticleLayout pageType="post">
-      <SEO metaData={metaData}/>
+      <SEO metaData={metaData} />
       <Reactmarkdown
         rehypePlugins={[rehypeRaw]}
         components={{
@@ -29,7 +29,6 @@ const Post = ({ metaData }: InferGetStaticPropsType<GetStaticProps>) => {
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
           img: MDX.MarkDownImage,
-          // TODO
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
           code: MDX.MarkdownCode,
