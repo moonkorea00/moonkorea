@@ -1,5 +1,5 @@
 ---
-title: 'Google 검색 : 크롤링부터 검색 노출까지'
+title: 'Google 검색 : 크롤링부터 검색 노출'
 category: 'Browser'
 excerpt: ''
 description: '구글 검색 엔진이 검색 결과를 보여주기까지의 간략한 과정 소개'
