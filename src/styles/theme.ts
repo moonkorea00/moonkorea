@@ -25,6 +25,10 @@ const theme: DefaultTheme = {
     justify-content: space-between;
     align-items: center;
   `,
+  flexAlignCenter: css`
+    display: flex;
+    align-items: center;
+  `,
 };
 
 export default theme;

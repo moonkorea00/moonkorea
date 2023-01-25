@@ -7,5 +7,6 @@ declare module 'styled-components' {
     flexColumn: ThemedCssFunction;
     flexColumnCenter: ThemedCssFunction;
     flexSpaceBetween: ThemedCssFunction;
+    flexAlignCenter: ThemedCssFunction;
   }
 }
