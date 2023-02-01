@@ -1,5 +1,4 @@
 import * as S from './NavItem.style';
-import { useRouter } from 'next/router';
 import { useSetRecoilState } from 'recoil';
 import Link from 'next/link';
 import { siderState } from '@store/siderState';
@@ -9,11 +8,10 @@ interface NavItemProps {
   path: string;
 }
 
-
 const NavItem = ({ title, path }: NavItemProps) => {
   const setIsSiderVisible = useSetRecoilState(siderState);
-  const { asPath } = useRouter();
-  const isPostSelected = decodeURI(asPath).split('/').includes(path);
+
+  const isPostSelected = decodeURI(window.location.pathname.slice(1)) === path;
 
   return (
     <S.Container isPostSelected={isPostSelected}>
