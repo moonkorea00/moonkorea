@@ -2,15 +2,16 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import prisma from '@server/db/client';
 
 const fetchComments = async (req: NextApiRequest, res: NextApiResponse) => {
-  const postId = req.headers.referer?.split('/').pop() as string;
+  const { pathname } = new URL(req.headers.referer as string);
+  const postId = decodeURI(pathname.slice(1));
 
   try {
     const comments = await prisma.comment.findMany({
       where: {
-        postId: decodeURI(postId),
+        postId,
       },
       orderBy: {
-          createdAt: 'asc',
+        createdAt: 'asc',
       },
       include: {
         user: true,
