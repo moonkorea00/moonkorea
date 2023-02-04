@@ -8,6 +8,8 @@ const deleteComment = async (req: NextApiRequest, res: NextApiResponse) => {
   const { id } = req.body;
 
   if (!session) return res.status(401).json({ message: 'Unauthorized' });
+  if (!id)
+    return res.status(400).json({ message: 'Missing required parameter(s)' });
 
   try {
     await prisma.comment.update({

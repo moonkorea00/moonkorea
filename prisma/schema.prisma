@@ -68,6 +68,7 @@ model Comment {
   postId String
 
   children Comment[] @relation("comment_children")
+
   parent   Comment?  @relation("comment_children", fields: [parentId], references: [id])
   parentId String?
 

@@ -1,37 +1,45 @@
-export interface CommentProps {
-  id: number;
-  body: string;
-  userId: number;
+export interface RawCommentProps {
+  id: string;
+  body: string | null;
+  userId: string;
   postId: string;
-  children: CommentProps[];
   user: UserProps;
-  parentId?: number;
+  parentId: string | null;
   isDeleted: boolean;
   createdAt: Date;
   updatedAt: Date;
-  deletedAt?: Date;
+  deletedAt: Date | null;
+}
+
+export interface CommentProps extends RawCommentProps {
+  children: CommentProps[];
+  depth: number;
 }
 
 export interface UserProps {
-  id: number;
-  name: string;
-  email: string;
-  emailVerified?: string;
-  image?: string;
+  id: string;
+  name: string | null;
+  email: string | null;
+  emailVerified: Date | null;
+  image: string | null;
 }
 
-export interface createCommentParams {
+export interface ReadCommentsParams {
+  queryKey: string[];
+}
+
+export interface CreateCommentParams {
   postId: string;
   body: string;
-  userId: number;
-  parentId?: number;
+  userId: string;
+  parentId?: string;
 }
 
-export interface updateCommentParams {
-  id?: number;
-  body?: string;
+export interface UpdateCommentParams {
+  id: string;
+  body: string;
 }
 
-export interface deleteCommentParams {
-  id: number;
+export interface DeleteCommentParams {
+  id: string;
 }
