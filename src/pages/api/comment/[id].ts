@@ -33,6 +33,9 @@ const fetchComments = async (req: NextApiRequest, res: NextApiResponse) => {
       .status(200)
       .json({ total_comments: rawComments.length, comments });
   } catch (err) {
+    if (err instanceof Error && err.message === 'Infinite loop found') {
+      return res.status(400).json({ message: 'Infinite loop found' });
+    }
     return res.status(400).json({ message: 'something went wrong' });
   }
 };

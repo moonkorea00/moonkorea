@@ -17,27 +17,30 @@ export const nestCommentsWithChildren = (comments: CommentProps[]) => {
 };
 
 export const getActiveComments = (comments: RawCommentProps[]) =>
-  comments.map(el => {
-    return el.isDeleted
+  comments.map(el =>
+    el.isDeleted
       ? {
           ...el,
           body: null,
           user: { ...el.user, name: null, email: null, image: null },
         }
-      : el;
-  });
+      : el
+  );
 
 export const addDepthKeyToElement = (
   arr: CommentProps[],
-  depth = 1
-): CommentProps[] =>
-  arr?.map(el => {
-    return {
-      ...el,
-      depth,
-      children: addDepthKeyToElement(el.children, depth + 1),
-    };
-  });
+  depth = 1,
+  maxDepth = 50
+): CommentProps[] | boolean => {
+  if (depth > maxDepth) {
+    throw new Error('Inifnite loop found');
+  }
+  return arr?.map(el => ({
+    ...el,
+    depth,
+    children: addDepthKeyToElement(el.children, depth + 1, maxDepth),
+  })) as CommentProps[];
+};
 
 export const pipe =
   (...fns: Function[]) =>
