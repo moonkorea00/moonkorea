@@ -33,7 +33,7 @@ export const addDepthKeyToElement = (
   maxDepth = 50
 ): CommentProps[] | boolean => {
   if (depth > maxDepth) {
-    throw new Error('Inifnite loop found');
+    throw new Error('Infinite loop found');
   }
   return arr?.map(el => ({
     ...el,
