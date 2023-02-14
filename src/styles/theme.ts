@@ -20,6 +20,11 @@ const theme: DefaultTheme = {
     justify-content: center;
     align-items: center;
   `,
+  flexCenterEnd: css`
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+  `,
   flexSpaceBetween: css`
     display: flex;
     justify-content: space-between;

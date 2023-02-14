@@ -22,7 +22,7 @@ export const MarkdownH2 = styled.h2`
   font-size: 1.55em;
 
   @media screen and (max-width: 768px) {
-    font-size: 1.35em;
+    font-size: 1.3em;
   }
 `;
 
@@ -31,7 +31,13 @@ export const MarkdownH3 = styled.h3`
   margin-bottom: -10px;
 
   @media screen and (max-width: 768px) {
-    font-size: 1.2em;
+    font-size: 1.15em;
+  }
+`;
+
+export const MarkdownP = styled.p`
+  @media screen and (max-width: 768px) {
+    font-size: 0.95em;
   }
 `;
 

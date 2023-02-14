@@ -24,6 +24,7 @@ const Post = ({ metaData }: InferGetStaticPropsType<GetStaticProps>) => {
           h2: ({ ...props }) => <MD.MarkdownH2 {...props} />,
           h3: ({ ...props }) => <MD.MarkdownH3 {...props} />,
           span: ({ ...props }) => <MD.MarkdownSpan {...props} />,
+          p: ({ ...props }) => <MD.MarkdownP {...props} />,
           blockquote: ({ ...props }) => <MD.MarkdownBlockquote {...props} />,
           // TODO
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
