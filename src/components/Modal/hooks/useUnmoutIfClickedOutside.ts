@@ -1,12 +1,21 @@
-import { useEffect, Dispatch, SetStateAction } from 'react';
+import {
+  useEffect,
+  RefObject,
+  SetStateAction,
+  Dispatch,
+  BaseSyntheticEvent,
+} from 'react';
 
-export const useUnmountIfClickedOutside = (
-  ref: React.RefObject<HTMLDivElement>,
-  cb: Dispatch<SetStateAction<boolean>>
+const useUnmountIfClickedOutside = (
+  ref: RefObject<HTMLDivElement>,
+  onClose: null | (() => void),
+  setState?: Dispatch<SetStateAction<boolean>>
 ) => {
-  const handleClick = (e: React.BaseSyntheticEvent | MouseEvent) => {
-    if (ref.current && !ref.current.contains(e.target)) {
-      cb(false);
+  const handleClick = (e: BaseSyntheticEvent | MouseEvent) => {
+    if (!ref.current?.contains(e.target)) {
+      e.stopPropagation();
+      if (setState) return setState(false);
+      if (onClose) return onClose();
     }
   };
 

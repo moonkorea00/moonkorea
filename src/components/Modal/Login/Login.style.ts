@@ -49,8 +49,8 @@ export const HeadingContainer = styled.div`
 `;
 
 export const FaviconContainer = styled.div`
-  animation: ${({ isOAuthLoading }: { isOAuthLoading: boolean }) =>
-    isOAuthLoading && 'flicker 0.7s infinite alternate;'};
+  animation: ${({ isOAuthServerLoading }: { isOAuthServerLoading: boolean }) =>
+    isOAuthServerLoading && 'flicker 0.7s infinite alternate;'};
 
   @keyframes flicker {
     from {

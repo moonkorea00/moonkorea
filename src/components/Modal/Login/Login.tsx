@@ -1,5 +1,5 @@
 import * as S from './Login.style';
-import { Dispatch, SetStateAction, useState, useRef } from 'react';
+import { useState, useRef } from 'react';
 import Image from 'next/image';
 import { signIn } from 'next-auth/react';
 import favicon from 'public/assets/favicon/moonkorea.png';
@@ -8,25 +8,22 @@ import { OAUTH_LOGIN_DATA } from '@constants/nextAuth';
 import useUnmountIfClickedOutside from '../hooks/useUnmoutIfClickedOutside';
 
 interface LoginModalProps {
-  setIsModalVisible: Dispatch<SetStateAction<boolean>>;
+  onClose?: () => void;
 }
 
-const LoginModal = ({ setIsModalVisible }: LoginModalProps) => {
-  const [isOAuthLoading, setIsOAuthLoading] = useState(false);
+const LoginModal = ({ onClose }: LoginModalProps) => {
+  const [isOAuthServerLoading, setIsOAuthServerLoading] = useState(false);
   const modalRef = useRef<HTMLDivElement>(null);
-
-  const handleCloseModal = () => setIsModalVisible(false);
-
-  useUnmountIfClickedOutside(modalRef, handleCloseModal);
+  useUnmountIfClickedOutside(modalRef, onClose!);
 
   return (
     <ModalLayout>
       <S.Container ref={modalRef}>
         <S.ButtonWrapper>
-          <S.CloseButton onClick={handleCloseModal}>&#10005;</S.CloseButton>
+          <S.CloseButton onClick={onClose}>&#10005;</S.CloseButton>
         </S.ButtonWrapper>
         <S.HeadingContainer>
-          <S.FaviconContainer isOAuthLoading={isOAuthLoading}>
+          <S.FaviconContainer isOAuthServerLoading={isOAuthServerLoading}>
             <Image src={favicon} alt="moonkorea" width={50} height={50} />
           </S.FaviconContainer>
           <S.Text>로그인</S.Text>
@@ -37,7 +34,7 @@ const LoginModal = ({ setIsModalVisible }: LoginModalProps) => {
               key={i}
               onClick={() => {
                 signIn(platform);
-                setIsOAuthLoading(true);
+                setIsOAuthServerLoading(true);
               }}
             >
               <Image src={img_src} alt={alt} width={40} height={40} />
