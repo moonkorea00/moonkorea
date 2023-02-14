@@ -13,16 +13,10 @@ interface ItemProps {
 }
 
 interface CategoryProps {
-  name: string;
-  variant: string;
-  posts: ItemProps[];
+  item: { name: string; variant: string; posts: ItemProps[] };
 }
 
-const NavCategory = ({
-  item: { name, variant, posts },
-}: {
-  item: CategoryProps;
-}) => {
+const NavCategory = ({ item: { name, variant, posts } }: CategoryProps) => {
   const [isSubCategoryOpen, setIsSubCategoryOpen] = useState(false);
   const { asPath } = useRouter();
 

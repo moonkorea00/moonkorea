@@ -2,6 +2,7 @@ import * as S from './NavItem.style';
 import { useSetRecoilState } from 'recoil';
 import Link from 'next/link';
 import { siderState } from '@store/siderState';
+import { getPostId } from '@components/Comments/Comments.utils';
 
 interface NavItemProps {
   title: string;
@@ -10,8 +11,8 @@ interface NavItemProps {
 
 const NavItem = ({ title, path }: NavItemProps) => {
   const setIsSiderVisible = useSetRecoilState(siderState);
-
-  const isPostSelected = decodeURI(window.location.pathname.slice(1)) === path;
+  const postId = getPostId();
+  const isPostSelected = postId === path;
 
   return (
     <S.Container isPostSelected={isPostSelected}>

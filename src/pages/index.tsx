@@ -1,5 +1,5 @@
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
-import { getAllPosts } from '@lib/getPost';
+import { getAllPosts } from '@lib/post/getPost';
 import SEO from '@components/common/SEO/SEO';
 import ArticleLayout from '@components/common/ArticleLayout/ArticleLayout';
 import PreviewPost from '@components/Home/PreviewPost';
