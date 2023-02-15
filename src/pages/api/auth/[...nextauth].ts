@@ -1,11 +1,11 @@
 import NextAuth from 'next-auth';
-import { PrismaAdapter } from "@next-auth/prisma-adapter"
+import { PrismaAdapter } from '@next-auth/prisma-adapter';
 import GoogleProvider from 'next-auth/providers/google';
 import GithubProvider from 'next-auth/providers/github';
 import FacebookProvider from 'next-auth/providers/facebook';
 import prisma from '@server/db/client';
 
-const authOptions = {
+export default NextAuth({
   adapter: PrismaAdapter(prisma),
   providers: [
     GoogleProvider({
@@ -21,6 +21,17 @@ const authOptions = {
       clientSecret: process.env.FACEBOOK_CLIENT_SECRET as string,
     }),
   ],
-};
-
-export default NextAuth(authOptions);
+  callbacks: {
+    session({ session, token }) {
+      if (session.user) {
+        // @ts-ignore
+        session.user.id = token.sub;
+      }
+      return session;
+    },
+  },
+  secret: process.env.SECRET,
+  session: {
+    strategy: 'jwt',
+  },
+});
