@@ -18,7 +18,7 @@ const Comment = ({ comments }: { comments: CommentProps }) => {
 
   const {
     deleteToastConfig,
-    showDeleteToast,
+    showModal: showDeleteToast,
     closeDeleteToast,
     onDeleteComment,
     isDeleting,

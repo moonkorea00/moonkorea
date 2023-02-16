@@ -9,7 +9,7 @@ const useDeleteComment = (comments: CommentProps) => {
   const queryClient = useQueryClient();
   const {
     modalConfig: deleteToastConfig,
-    showModal: showDeleteToast,
+    showModal,
     closeModal: closeDeleteToast,
   } = useModal();
 
@@ -23,7 +23,7 @@ const useDeleteComment = (comments: CommentProps) => {
         if (!err.response) {
           throw Error('no existing response');
         }
-        return showDeleteToast(MODAL_CONFIG.ERROR);
+        return showModal(MODAL_CONFIG.ERROR);
       }
     },
   });
@@ -36,14 +36,14 @@ const useDeleteComment = (comments: CommentProps) => {
         if (!err.response) {
           throw Error('no existing response');
         }
-        return showDeleteToast(MODAL_CONFIG.ERROR);
+        return showModal(MODAL_CONFIG.ERROR);
       }
     }
   };
 
   return {
     deleteToastConfig,
-    showDeleteToast,
+    showModal,
     closeDeleteToast,
     onDeleteComment,
     isDeleting,
