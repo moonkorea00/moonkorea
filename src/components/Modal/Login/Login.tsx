@@ -14,7 +14,7 @@ interface LoginModalProps {
 const LoginModal = ({ onClose }: LoginModalProps) => {
   const [isOAuthServerLoading, setIsOAuthServerLoading] = useState(false);
   const modalRef = useRef<HTMLDivElement>(null);
-  useUnmountIfClickedOutside(modalRef, onClose!);
+  useUnmountIfClickedOutside(modalRef, onClose as VoidFunction);
 
   return (
     <ModalLayout>

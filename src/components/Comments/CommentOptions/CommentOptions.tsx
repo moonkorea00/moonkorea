@@ -30,7 +30,8 @@ const CommentOptions = ({
     null,
     setIsCommentOptionsVisible
   );
-
+  
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   const isAuthor = session?.user?.id == comments?.user.id;
 

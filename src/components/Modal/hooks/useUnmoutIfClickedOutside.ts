@@ -13,7 +13,6 @@ const useUnmountIfClickedOutside = (
 ) => {
   const handleClick = (e: BaseSyntheticEvent | MouseEvent) => {
     if (!ref.current?.contains(e.target)) {
-      e.stopPropagation();
       if (setState) return setState(false);
       if (onClose) return onClose();
     }

@@ -12,7 +12,7 @@ const instance = axios.create({
 });
 
 export const readComments = ({ queryKey }: ReadCommentsParams) => {
-  const [_, id] = queryKey;
+  const id = queryKey[1];
   return instance.get(`/api/comment/${id}`);
 };
 

@@ -24,6 +24,8 @@ export default NextAuth({
   callbacks: {
     session({ session, token }) {
       if (session.user) {
+        // TODO
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         session.user.id = token.sub;
       }

@@ -44,6 +44,8 @@ const useCreateComment = (
       mutate({
         postId,
         body: comment,
+        // TODO
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         //@ts-ignore
         userId: session?.user?.id,
         parentId: comments?.id,

@@ -7,12 +7,16 @@ const useModal = () => {
 
   useEffect(() => {
     return () => {
-      clearTimeout(timeoutId.current!);
+      if (timeoutId.current !== null) {
+        clearTimeout(timeoutId.current);
+      }
     };
   }, []);
 
   const showModal = (props: ModalProps) => {
-    clearTimeout(timeoutId.current!);
+    if (timeoutId.current !== null) {
+      clearTimeout(timeoutId.current);
+    }
     setModalConfig(props);
     if (props.duration) {
       timeoutId.current = window.setTimeout(() => {
@@ -22,7 +26,9 @@ const useModal = () => {
   };
 
   const closeModal = () => {
-    clearTimeout(timeoutId.current!);
+    if (timeoutId.current !== null) {
+      clearTimeout(timeoutId.current);
+    }
     setModalConfig(null);
   };
 
