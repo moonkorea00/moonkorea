@@ -4,7 +4,7 @@ export const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  min-width: 360px;
+  min-width: 320px;
   height: 100vh;
 `;
 
@@ -15,7 +15,7 @@ export const Main = styled.main`
 `;
 
 export const Article = styled.article`
-  width: calc(100vw - 360px);
+  width: calc(100vw - 320px);
   padding: 25px 50px;
   line-height: 35px;
   overflow-y: scroll;
@@ -32,7 +32,7 @@ export const Article = styled.article`
 
   @media screen and (max-width: 768px) {
     width: 100vw;
-    padding: 10px 20px;
+    padding: 10px 10px;
     line-height: 32px;
   }
 `;

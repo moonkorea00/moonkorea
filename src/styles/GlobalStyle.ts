@@ -21,6 +21,21 @@ span {
   color: #364149;
 }
 
+input:focus{
+  outline: none;
+  border: none;
+}
+
+textarea {
+  font-size: inherit;
+  font-family: inherit; 
+  resize: none;
+}
+
+textarea:focus{
+    outline: none;
+}
+
 p {
   word-spacing: 3px;
 }

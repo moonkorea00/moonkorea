@@ -4,7 +4,7 @@ import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import Reactmarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 import ArticleLayout from '@components/common/ArticleLayout/ArticleLayout';
-import { getPostPaths, getPostById } from '@utils/api';
+import { getPostPaths, getPostById } from '@lib/post/getPost';
 import SEO from '@components/common/SEO/SEO';
 
 interface Props {
@@ -24,6 +24,7 @@ const Post = ({ metaData }: InferGetStaticPropsType<GetStaticProps>) => {
           h2: ({ ...props }) => <MD.MarkdownH2 {...props} />,
           h3: ({ ...props }) => <MD.MarkdownH3 {...props} />,
           span: ({ ...props }) => <MD.MarkdownSpan {...props} />,
+          p: ({ ...props }) => <MD.MarkdownP {...props} />,
           blockquote: ({ ...props }) => <MD.MarkdownBlockquote {...props} />,
           // TODO
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment

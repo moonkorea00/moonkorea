@@ -1,5 +1,5 @@
 import * as S from './ArticleLayout.style';
-import Utterances from '@components/Utterances/Utterances';
+import CommentSection from '@components/Comments/CommentSection';
 
 interface ArticleLayoutProps {
   children: React.ReactNode;
@@ -10,7 +10,7 @@ const ArticleLayout = ({ children, pageType }: ArticleLayoutProps) => {
   return (
     <S.Container>
       {children}
-      {pageType === 'post' && <Utterances />}
+      {pageType === 'post' && <CommentSection />}
     </S.Container>
   );
 };
