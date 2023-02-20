@@ -2,6 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import prisma from '@server/db/client';
 import { getSession } from 'next-auth/react';
 import { Session } from 'next-auth';
+import sendNotification from '@lib/comment/notification/notification';
 
 const createComment = async (req: NextApiRequest, res: NextApiResponse) => {
   const session: Session | null = await getSession({ req });
@@ -34,7 +35,8 @@ const createComment = async (req: NextApiRequest, res: NextApiResponse) => {
         }),
       },
     });
-    return res.status(201).json({ message: 'success' });
+    res.status(201).json({ message: 'success' });
+    return await sendNotification(postId, body);
   } catch (err) {
     return res.status(400).json({ message: 'something went wrong' });
   }

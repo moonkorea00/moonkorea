@@ -11,7 +11,8 @@ import { MODAL_CONFIG } from '@components/Modal/Modal.utils';
 const useCreateComment = (
   comments: CommentProps,
   setIsReplyMode: Dispatch<SetStateAction<boolean>>,
-  type: string
+  type: string,
+  isReplyMode?: boolean
 ) => {
   const [comment, setComment] = useState('');
   const { data: session } = useSession();
@@ -23,7 +24,7 @@ const useCreateComment = (
     onSuccess: () => {
       queryClient.invalidateQueries(['comments']);
       setComment('');
-      type === 'new_comment' && setIsReplyMode(false);
+      type === 'new_comment' && isReplyMode && setIsReplyMode(false);
     },
     onError: err => {
       if (isAxiosError(err)) {
@@ -48,6 +49,7 @@ const useCreateComment = (
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         //@ts-ignore
         userId: session?.user?.id,
+        userEmail: session?.user?.email as string,
         parentId: comments?.id,
       });
     } catch (err) {

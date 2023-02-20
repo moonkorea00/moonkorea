@@ -2,10 +2,11 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import prisma from '@server/db/client';
 import { getSession } from 'next-auth/react';
 import { Session } from 'next-auth';
+import sendNotification from '@lib/comment/notification/notification';
 
 const deleteComment = async (req: NextApiRequest, res: NextApiResponse) => {
   const session: Session | null = await getSession({ req });
-  const { id } = req.body;
+  const { id, postId } = req.body;
 
   if (!session) return res.status(401).json({ message: 'Unauthorized' });
   if (!id)
@@ -21,7 +22,8 @@ const deleteComment = async (req: NextApiRequest, res: NextApiResponse) => {
         deletedAt: new Date(),
       },
     });
-    return res.status(204).json({ message: 'success' });
+    res.status(204).json({ message: 'success' });
+    return await sendNotification(postId);
   } catch (err) {
     return res.status(400).json({ message: 'something went wrong' });
   }

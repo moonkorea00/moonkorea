@@ -25,14 +25,15 @@ const CommentForm = ({
   comments,
   type,
 }: CommentFormProps) => {
-  const { modalConfig, showModal, closeModal } = useModal();
+  const { modalConfig: loginConfig, showModal, closeModal } = useModal();
   const { data: session } = useSession();
 
   const { comment, handleComment, onCreateComment, isSubmitting } =
     useCreateComment(
       comments as CommentProps,
       setIsReplyMode as Dispatch<SetStateAction<boolean>>,
-      type
+      type,
+      isReplyMode
     );
 
   const {
@@ -104,7 +105,7 @@ const CommentForm = ({
           </S.SubmitButton>
         </S.ButtonContainer>
       </form>
-      {modalConfig && <Portal modalConfig={modalConfig} onClose={closeModal} />}
+      {loginConfig && <Portal modalConfig={loginConfig} onClose={closeModal} />}
     </S.Container>
   );
 };

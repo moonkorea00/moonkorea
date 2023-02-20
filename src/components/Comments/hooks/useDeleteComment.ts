@@ -4,9 +4,12 @@ import useModal from '@components/Modal/hooks/useModal';
 import { deleteComment } from '@lib/comment';
 import { CommentProps } from '@@types/comments';
 import { MODAL_CONFIG } from '@components/Modal/Modal.utils';
+import { getPostId } from '../Comments.utils';
 
 const useDeleteComment = (comments: CommentProps) => {
   const queryClient = useQueryClient();
+  const postId = getPostId();
+
   const {
     modalConfig: deleteToastConfig,
     showModal,
@@ -30,7 +33,7 @@ const useDeleteComment = (comments: CommentProps) => {
 
   const onDeleteComment = () => {
     try {
-      mutate({ id: comments.id });
+      mutate({ id: comments.id, postId });
     } catch (err) {
       if (isAxiosError(err)) {
         if (!err.response) {

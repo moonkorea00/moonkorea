@@ -8,7 +8,6 @@ import {
 
 const instance = axios.create({
   baseURL: process.env.NEXT_PUBLIC_APP_ENV,
-  timeout: 3000,
 });
 
 export const readComments = ({ queryKey }: ReadCommentsParams) => {
