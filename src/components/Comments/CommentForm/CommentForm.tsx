@@ -101,7 +101,7 @@ const CommentForm = ({
                 : isEditMode
                 ? '수정'
                 : '댓글 작성'
-              : '로그인'}
+              : '간편 로그인'}
           </S.SubmitButton>
         </S.ButtonContainer>
       </form>

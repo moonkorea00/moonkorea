@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { colors } from '@styles/colors';
 
 export const Container = styled.section`
   position: relative;
@@ -8,8 +9,8 @@ export const Container = styled.section`
   height: 500px;
   gap: 16px;
   border-radius: 16px;
-  background-color: white;
-  box-shadow: 2px 2px 6px rgb(173, 173, 173);
+  background-color: ${colors.white};
+  box-shadow: 2px 2px 6px ${colors.boxShadow};
   animation: fadeIn 0.2s ease-in;
 
   @keyframes fadeIn {
@@ -38,7 +39,7 @@ export const CloseButton = styled.button`
   font-size: 16px;
 
   &:hover {
-    background-color: rgb(240, 240, 240);
+    background-color: ${colors.gray200};
   }
 `;
 
@@ -74,11 +75,11 @@ export const OAuthButton = styled.button`
   width: 240px;
   padding: 3px 10px;
   gap: 20px;
-  background-color: rgb(239, 239, 239);
+  background-color: ${colors.gray200};
   border-radius: 24px;
 
   &:hover {
-    background-color: rgb(230, 230, 230);
+    background-color: ${colors.gray300};
   }
 `;
 

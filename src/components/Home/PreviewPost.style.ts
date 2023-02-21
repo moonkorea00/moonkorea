@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { colors } from '@styles/colors';
 
 export const Container = styled.section`
   ${({ theme }) => theme.flexColumn}
@@ -19,7 +20,7 @@ export const Tags = styled.span`
   font-size: 0.85em;
   font-weight: 600;
   border-radius: 10px;
-  background-color: #ededed;
+  background-color: ${colors.gray200};
 
   @media screen and (max-width: 768px) {
     font-size: 0.8em;
@@ -36,7 +37,7 @@ export const Title = styled.h2`
 
 export const Description = styled.h3`
   font-size: 1em;
-  color: black;
+  color: ${colors.black};
 
   @media screen and (max-width: 768px) {
     font-size: 0.85em;
@@ -46,7 +47,7 @@ export const Description = styled.h3`
 export const PublishDate = styled.h4`
   font-size: 0.8em;
   font-weight: 400;
-  color: black;
+  color: ${colors.black};
 
   @media screen and (max-width: 768px) {
     font-size: 0.7.5em;

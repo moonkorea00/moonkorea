@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { colors } from '@styles/colors';
 
 export const Container = styled.div`
   position: relative;
@@ -8,8 +9,8 @@ export const Container = styled.div`
   height: 70px;
   gap: 16px;
   border-radius: 8px;
-  color: white;
-  background-color: #323232;
+  color: ${colors.white};
+  background-color: ${colors.gray800};
   box-shadow: 2px 2px 6px rgb(230, 230, 230);
   transform: translateY(-100%);
 

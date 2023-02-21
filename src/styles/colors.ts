@@ -1,0 +1,18 @@
+export const colors = {
+  white: '#FFF',
+  black: '#000',
+  red: '#D32F2E',
+  blue: '#4081C4',
+  darkBlue: '#3C7AB7',
+  grayDefault: '#FAFAFA',
+  gray100: '#F5F5F5',
+  gray200: '#EDEDED',
+  gray300: '#E5E5E5',
+  gray400: '#A2A2A2',
+  gray500: '#888888',
+  gray600: '#6E6E6E',
+  gray700: '#565656',
+  gray800: '#323232',
+  overlay: 'rgba(0, 0, 0, 0.2)',
+  boxShadow: 'rgba(0, 0, 0, 0.1)',
+};

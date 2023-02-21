@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { colors } from '@styles/colors';
 
 export const Container = styled.header`
   ${({ theme }) => theme.flexSpaceBetween};
@@ -65,8 +66,9 @@ export const IconContainer = styled.div`
   height: 26px;
   border-radius: 50%;
   cursor: pointer;
+
   &:hover {
-    background-color: rgb(240, 240, 240);
+    background-color: ${colors.gray100};
   }
 `;
 
@@ -81,6 +83,6 @@ export const Copyright = styled.span`
 
 export const customIconStyle = {
   size: '18',
-  color: 'black',
+  color: `${colors.black}`,
   cursor: 'pointer',
 };
