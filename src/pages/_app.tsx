@@ -13,12 +13,16 @@ import { Analytics } from '@vercel/analytics/react';
 import theme from '@styles/theme';
 import Layout from '@components/common/Layout/Layout';
 import ChannelTalk from '@components/common/Script/ChannelTalk';
+import GoogleAnalytics from '@components/common/Script/GoogleAnalytics';
+import useGoogleAnalytics from '@utils/useGoogleAnalytics';
 
 const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps) => {
   const queryClient = new QueryClient();
-
+  useGoogleAnalytics();
+  
   return (
     <>
+      <GoogleAnalytics />
       <ChannelTalk />
       <QueryClientProvider client={queryClient}>
         <Hydrate state={pageProps.dehydratedState}>
