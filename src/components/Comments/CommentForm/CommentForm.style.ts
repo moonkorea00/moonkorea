@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { colors } from '@styles/colors';
 
 export const Container = styled.section`
   ${({ theme }) => theme.flexColumn}
@@ -11,7 +12,7 @@ export const Input = styled.textarea`
   padding: 10px 16px;
   font-size: 14px;
   line-height: 18px;
-  border: 1px solid #f0f3f5;
+  border: 1px solid ${colors.gray100};
   border-radius: 6px;
   cursor: ${({ disabled }) => disabled && 'not-allowed'};
 `;
@@ -29,16 +30,16 @@ export const ButtonContainer = styled.div`
 `;
 
 export const SubmitButton = styled.button`
-  width: 88px;
+  width: 100px;
   height: 34px;
-  background-color: #4081c4;
-  color: white;
+  background-color: ${colors.blue};
+  color: ${colors.white};
   font-size: 1em;
   font-weight: 500;
   border-radius: 6px;
 
   &:hover {
-    background-color: rgb(60, 122, 183);
+    background-color: ${colors.darkBlue};
   }
 
   @media screen and (max-width: 768px) {

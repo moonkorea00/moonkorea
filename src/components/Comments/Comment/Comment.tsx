@@ -18,7 +18,7 @@ const Comment = ({ comments }: { comments: CommentProps }) => {
 
   const {
     deleteToastConfig,
-    showDeleteToast,
+    showModal: showDeleteToast,
     closeDeleteToast,
     onDeleteComment,
     isDeleting,
@@ -39,7 +39,7 @@ const Comment = ({ comments }: { comments: CommentProps }) => {
           />
         </S.AvatarContainer>
         <S.ContentContainer>
-          <S.UpperContainer>
+          <S.CommentInformation>
             <div>
               <S.User>
                 {comments.isDeleted ? '알 수 없음' : comments?.user?.name}
@@ -69,7 +69,7 @@ const Comment = ({ comments }: { comments: CommentProps }) => {
                 setIsCommentOptionsVisible={setIsCommentOptionsVisible}
               />
             )}
-          </S.UpperContainer>
+          </S.CommentInformation>
           {isEditMode ? (
             <CommentForm
               isEditMode={isEditMode}

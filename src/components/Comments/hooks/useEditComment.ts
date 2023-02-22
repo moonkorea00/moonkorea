@@ -5,6 +5,7 @@ import useModal from '@components/Modal/hooks/useModal';
 import { CommentProps } from '@@types/comments';
 import { updateComment } from '@lib/comment';
 import { MODAL_CONFIG } from '@components/Modal/Modal.utils';
+import { getPostId } from '../Comments.utils';
 
 const useEditComment = (
   comments: CommentProps,
@@ -12,6 +13,7 @@ const useEditComment = (
 ) => {
   const [edittedComment, setEdittedComment] = useState(comments?.body);
   const queryClient = useQueryClient();
+  const postId = getPostId();
   const { showModal } = useModal();
 
   const { mutate, isLoading: isSubmittingEdittedComment } = useMutation(
@@ -41,6 +43,7 @@ const useEditComment = (
       mutate({
         id: comments.id,
         body: edittedComment as string,
+        postId,
       });
     } catch (err) {
       if (isAxiosError(err)) {

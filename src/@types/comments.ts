@@ -32,14 +32,17 @@ export interface CreateCommentParams {
   postId: string;
   body: string;
   userId: string;
+  userEmail: string;
   parentId?: string;
 }
 
 export interface UpdateCommentParams {
   id: string;
   body: string;
+  postId: string;
 }
 
 export interface DeleteCommentParams {
   id: string;
+  postId: string;
 }

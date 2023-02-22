@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { colors } from '@styles/colors';
 
 export const Container = styled.nav`
   ${({ theme }) => theme.flexDefault};
@@ -11,15 +12,15 @@ export const Container = styled.nav`
       margin-left: 4px;
       border-radius: 4px;
       font-weight: 500;
-      background-color: rgb(235, 235, 235);
+      background-color: ${colors.gray200};
       color: black;
       transition: all ease 0.5s;
     `}
 
   &:hover {
     border-radius: 4px;
-    color: black;
-    background-color: rgb(235, 235, 235);
+    color: ${colors.black};
+    background-color: ${colors.gray200};
     transition: all ease 0.5s;
   }
 `;
@@ -28,7 +29,7 @@ export const PostTitle = styled.div`
   padding: 7px 0 7px 10px;
   font-size: 14px;
   line-height: 25px;
-  color: #364149;
+  color: ${colors.gray800};
   cursor: pointer;
 
   @media screen and (max-width: 768px) {

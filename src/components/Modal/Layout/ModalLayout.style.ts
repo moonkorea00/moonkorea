@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { colors } from '@styles/colors';
 
 export const Container = styled.div`
   position: fixed;
@@ -10,7 +11,7 @@ export const Container = styled.div`
   bottom: 0;
   padding: ${({ type }) => type === 'toast' && '0 20px'};
   background-color: ${({ type }: { type?: string }) =>
-    type ? 'inherit' : 'rgba(0, 0, 0, 0.2)'};
+    type ? 'inherit' : colors.overlay};
   animation: fade-in 0.25s;
 
   @keyframes fade-in {

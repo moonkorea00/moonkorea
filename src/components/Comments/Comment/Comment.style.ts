@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { colors } from '@styles/colors';
 
 interface ChildrenCommentStyleProps {
   parentId?: string;
@@ -39,7 +40,7 @@ export const ContentContainer = styled.div`
   }
 `;
 
-export const UpperContainer = styled.div`
+export const CommentInformation = styled.div`
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -77,28 +78,6 @@ export const PublishDate = styled.span`
   }
 `;
 
-export const Option = styled.button`
-  padding: 0 10px 0 0;
-  font-size: 14px;
-  font-weight: 400;
-  color: rgb(105, 105, 105);
-  background-color: inherit;
-  ${({ isAuthor }: { isAuthor?: boolean }) =>
-    isAuthor &&
-    css`
-      color: rgb(0, 0, 0);
-    `}
-
-  &:hover {
-    color: rgb(0, 0, 0);
-    text-decoration: underline;
-  }
-
-  &:last-child {
-    margin-right: 2px;
-  }
-`;
-
 export const OptionsButton = styled.button`
   position: absolute;
   top: 0;
@@ -114,5 +93,5 @@ export const OptionsButton = styled.button`
 export const Content = styled.div`
   font-size: 0.95em;
   line-height: 26px;
-  color: ${({ isDeleted }: { isDeleted: boolean }) => isDeleted && '#565656'};
+  color: ${({ isDeleted }: { isDeleted: boolean }) => isDeleted && colors.gray700};
 `;

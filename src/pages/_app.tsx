@@ -12,27 +12,31 @@ import { ThemeProvider } from 'styled-components';
 import { Analytics } from '@vercel/analytics/react';
 import theme from '@styles/theme';
 import Layout from '@components/common/Layout/Layout';
+import ChannelTalk from '@components/common/Script/ChannelTalk';
 
 const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps) => {
   const queryClient = new QueryClient();
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <Hydrate state={pageProps.dehydratedState}>
-        <RecoilRoot>
-          <SessionProvider session={session}>
-            <GlobalStyle />
-            <ThemeProvider theme={theme}>
-              <Layout>
-                <Component {...pageProps} />
-                <Analytics />
-              </Layout>
-            </ThemeProvider>
-          </SessionProvider>
-        </RecoilRoot>
-      </Hydrate>
-      <ReactQueryDevtools />
-    </QueryClientProvider>
+    <>
+      <ChannelTalk />
+      <QueryClientProvider client={queryClient}>
+        <Hydrate state={pageProps.dehydratedState}>
+          <RecoilRoot>
+            <SessionProvider session={session}>
+              <GlobalStyle />
+              <ThemeProvider theme={theme}>
+                <Layout>
+                  <Component {...pageProps} />
+                  <Analytics />
+                </Layout>
+              </ThemeProvider>
+            </SessionProvider>
+          </RecoilRoot>
+        </Hydrate>
+        <ReactQueryDevtools />
+      </QueryClientProvider>
+    </>
   );
 };
 

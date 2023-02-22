@@ -6,16 +6,14 @@ export const nestCommentsWithChildren = (comments: RawCommentProps[]) => {
     (arr, comment, i) => {
       map.set(comment.id, i);
       const parentIdIdx = map.get(comment.parentId);
-      const commentWithChildren = {
-        ...comment,
-        children: [],
-        depth: 1,
-      };
-      arr[parentIdIdx]?.children.push(commentWithChildren);
+      (comment as CommentProps).children = [];
+      (comments[parentIdIdx] as CommentProps)?.children.push(
+        comment as CommentProps
+      );
 
-      return comment.parentId ? arr : [...arr, commentWithChildren];
+      return (comment.parentId ? arr : [...arr, comment]) as CommentProps[];
     },
-    []
+    [] as CommentProps[]
   );
   return commentsWithChildren;
 };
