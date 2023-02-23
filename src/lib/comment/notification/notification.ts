@@ -1,9 +1,9 @@
 import nodemailer from 'nodemailer';
 
 const transporter = nodemailer.createTransport({
-  host: 'smtp.gmail.com', // smtp server host for gmail
-  port: 587,
-  secure: false,
+  host: 'smtp.zoho.com',
+  port: 465, // SSL은 465 TLS는 587
+  secure: true, // TLS는 false
   auth: {
     user: process.env.NEXT_PUBLIC_NODEMAILER_USER,
     pass: process.env.NEXT_PUBLIC_NODEMAILER_PASS,
@@ -20,7 +20,10 @@ const sendNotification = async (postId: string, body?: string) => {
       body || 'none'
     }</p>`,
   };
-
-  await transporter.sendMail(mailOptions);
+  try {
+    await transporter.sendMail(mailOptions);
+  } catch (err) {
+    console.log('error occured sending email : ', err);
+  }
 };
 export default sendNotification;
