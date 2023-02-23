@@ -17,9 +17,16 @@ import GoogleAnalytics from '@components/common/Script/GoogleAnalytics';
 import useGoogleAnalytics from '@utils/useGoogleAnalytics';
 
 const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps) => {
-  const queryClient = new QueryClient();
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        retryOnMount: false,
+        refetchOnWindowFocus: false,
+      },
+    },
+  });
   useGoogleAnalytics();
-  
+
   return (
     <>
       <GoogleAnalytics />
