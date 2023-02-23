@@ -32,7 +32,7 @@
     "build": "next build",
     "postbuild": "next-sitemap",
     "start": "next start",
-    "server": "node public/script/generateSiderJSON.cjs"
+    "sider": "node public/script/generateSiderJSON.cjs"
   },
   "eslintConfig": {
     "extends": [

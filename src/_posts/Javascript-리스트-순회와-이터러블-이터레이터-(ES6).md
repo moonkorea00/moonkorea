@@ -132,7 +132,7 @@ iterator.next(); // 호출
 
 <!-- 이터러블은 [symbol.iterator]()를 실행했을 때 이터레이터를 반환하게 돼있고 이터레이터는 value와 done을 갖는 객체를 next()를 통해서 반환 -->
 
-정리를 해보자면 Array의 **[Symbol.iterator] ()**라는 내장 메소드로 결과를 평가해보면 이터러블의 [Symbol.iterator]은 f values() { [native code] }라는 함수를 가지고 있습니다. 평가 결과를 실행했을 때는 이터레이터인 Array Iterator {}가 반환됩니다. for of문의 동작 흐름과 함께 살펴보면 Iterator를 실행했을 때 반환되는 객체의 value값을 a에 담아서 결과를 출력하고 다음 value의 값을 출력하면서 순회하다가 마지막 순회에는 done의 값이 true가 되며 반복문에서 빠져나옵니다.
+정리를 해보자면 Array의 <b>[Symbol.iterator] ()</b>라는 내장 메소드로 결과를 평가해보면 이터러블의 [Symbol.iterator]은 f values() { [native code] }라는 함수를 가지고 있습니다. 평가 결과를 실행했을 때는 이터레이터인 Array Iterator {}가 반환됩니다. for of문의 동작 흐름과 함께 살펴보면 Iterator를 실행했을 때 반환되는 객체의 value값을 a에 담아서 결과를 출력하고 다음 value의 값을 출력하면서 순회하다가 마지막 순회에는 done의 값이 true가 되며 반복문에서 빠져나옵니다.
 
 > set과 map 역시 마찬가지로 set[Symbol.iterator]로 전근하는 값과 map[Symbol.iterator]로 접근하는 내장 값이 있습니다.
 >
