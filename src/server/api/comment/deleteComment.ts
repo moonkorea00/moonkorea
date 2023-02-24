@@ -2,7 +2,6 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import prisma from '@server/db/client';
 import { getSession } from 'next-auth/react';
 import { Session } from 'next-auth';
-import sendNotification from '@lib/comment/notification/notification';
 
 const deleteComment = async (req: NextApiRequest, res: NextApiResponse) => {
   const session: Session | null = await getSession({ req });
@@ -22,8 +21,7 @@ const deleteComment = async (req: NextApiRequest, res: NextApiResponse) => {
         deletedAt: new Date(),
       },
     });
-    res.status(204).json({ message: 'success' });
-    return await sendNotification(postId);
+    return res.status(204).json({ message: 'success' });
   } catch (err) {
     return res.status(400).json({ message: 'something went wrong' });
   }
