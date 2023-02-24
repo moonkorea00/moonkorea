@@ -5,6 +5,7 @@ import { deleteComment } from '@lib/comment';
 import { CommentProps } from '@@types/comments';
 import { MODAL_CONFIG } from '@components/Modal/Modal.utils';
 import { getPostId } from '../Comments.utils';
+import { sendNotificationEmail } from '@lib/notificationEmail';
 
 const useDeleteComment = (comments: CommentProps) => {
   const queryClient = useQueryClient();
@@ -20,6 +21,7 @@ const useDeleteComment = (comments: CommentProps) => {
     onSuccess: () => {
       closeDeleteToast();
       queryClient.invalidateQueries(['comments']);
+      sendNotificationEmail({ postId });
     },
     onError: err => {
       if (isAxiosError(err)) {

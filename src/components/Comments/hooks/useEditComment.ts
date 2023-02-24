@@ -6,6 +6,7 @@ import { CommentProps } from '@@types/comments';
 import { updateComment } from '@lib/comment';
 import { MODAL_CONFIG } from '@components/Modal/Modal.utils';
 import { getPostId } from '../Comments.utils';
+import { sendNotificationEmail } from '@lib/notificationEmail';
 
 const useEditComment = (
   comments: CommentProps,
@@ -22,6 +23,7 @@ const useEditComment = (
       onSuccess: () => {
         queryClient.invalidateQueries(['comments']);
         setIsEditMode(false);
+        sendNotificationEmail({ postId, body: edittedComment as string });
       },
       onError: err => {
         if (isAxiosError(err)) {
@@ -38,7 +40,7 @@ const useEditComment = (
     setEdittedComment(e.target.value);
 
   const onEditComment = () => {
-    if (edittedComment === comments?.body) return;
+    if (edittedComment === comments?.body || !edittedComment) return;
     try {
       mutate({
         id: comments.id,

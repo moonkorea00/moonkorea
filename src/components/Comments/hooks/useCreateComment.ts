@@ -7,6 +7,7 @@ import { CommentProps } from '@@types/comments';
 import { createComment } from '@lib/comment';
 import { getPostId } from '../Comments.utils';
 import { MODAL_CONFIG } from '@components/Modal/Modal.utils';
+import { sendNotificationEmail } from '@lib/notificationEmail';
 
 const useCreateComment = (
   comments: CommentProps,
@@ -21,10 +22,11 @@ const useCreateComment = (
   const postId = getPostId();
 
   const { mutate, isLoading: isSubmitting } = useMutation(createComment, {
-    onSuccess: () => {
+    onSuccess: async () => {
       queryClient.invalidateQueries(['comments']);
       setComment('');
       type === 'new_comment' && isReplyMode && setIsReplyMode(false);
+      await sendNotificationEmail({ postId, body: comment });
     },
     onError: err => {
       if (isAxiosError(err)) {

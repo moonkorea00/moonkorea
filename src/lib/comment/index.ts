@@ -1,14 +1,10 @@
-import axios from 'axios';
 import {
   ReadCommentsParams,
   CreateCommentParams,
   UpdateCommentParams,
   DeleteCommentParams,
 } from '@@types/comments';
-
-const instance = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_APP_ENV,
-});
+import { instance } from '@lib';
 
 export const readComments = ({ queryKey }: ReadCommentsParams) => {
   const id = queryKey[1];
