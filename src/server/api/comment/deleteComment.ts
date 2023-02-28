@@ -5,7 +5,7 @@ import { Session } from 'next-auth';
 
 const deleteComment = async (req: NextApiRequest, res: NextApiResponse) => {
   const session: Session | null = await getSession({ req });
-  const { id, postId } = req.body;
+  const { id } = req.body;
 
   if (!session) return res.status(401).json({ message: 'Unauthorized' });
   if (!id)
