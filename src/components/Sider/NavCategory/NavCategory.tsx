@@ -22,7 +22,7 @@ const NavCategory = ({ item: { name, variant, posts } }: CategoryProps) => {
 
   const isUserOnSelectedCategory =
     asPath.split('/')[1].split('-')[0] === variant;
-
+    
   const handleDisplaySubnav = () => {
     setIsSubCategoryOpen(prev => !prev);
   };
@@ -50,7 +50,8 @@ const NavCategory = ({ item: { name, variant, posts } }: CategoryProps) => {
           condition={isUserOnSelectedCategory}
           onClick={handleDisplaySubnav}
         >
-          {name} <S.TotalPosts>({posts.length})</S.TotalPosts>
+          <S.Title>{name}</S.Title>
+          <S.TotalPosts>({posts.length})</S.TotalPosts>
         </S.CategoryItem>
       </S.CategoryContainer>
       {isSubCategoryOpen &&

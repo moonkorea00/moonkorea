@@ -3,7 +3,7 @@ import * as MDX from '@components/Markdown/MarkDownComponent';
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import Reactmarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
-import ArticleLayout from '@components/common/ArticleLayout/ArticleLayout';
+import ArticleLayout from '@components/common/Layout/ArticleLayout/ArticleLayout';
 import { getPostPaths, getPostById } from '@lib/post/getPost';
 import SEO from '@components/common/SEO/SEO';
 

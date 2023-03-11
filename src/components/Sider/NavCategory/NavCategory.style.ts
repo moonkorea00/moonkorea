@@ -10,6 +10,12 @@ export const CategoryContainer = styled.div`
   margin-bottom: 4px;
 `;
 
+export const Title = styled.span`
+  &:hover {
+    font-weight: 600;
+  }
+`;
+
 export const CategoryItem = styled.span`
   margin-left: 10px;
   font-size: 0.9em;

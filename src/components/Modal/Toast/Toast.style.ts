@@ -30,6 +30,6 @@ export const ButtonWrapper = styled.div`
 export const Button = styled.button`
   font-size: 14px;
   color: ${({ action }: { action?: string }) =>
-    action === 'delete' ? '#D32F2E' : 'white'};
+    action === 'delete' ? colors.red : colors.white};
   background-color: inherit;
 `;

@@ -1,5 +1,5 @@
 ---
-title: 'React 렌더링 및 최적화 (2) React.memo'
+title: 'React 렌더링 (2) React.memo'
 category: 'React'
 excerpt: '컴포넌트의 상태가 업데이트될 경우 해당 컴포넌트와 하위에 있는 모든 컴포넌트들은 모두 리렌더링됩니다. 해당 컴포넌트의 상태가 변했을 때는 변경된 상태에 맞게 UI가 다시 그려지는 것이 당연한 것인데 하위 컴포넌트의 props가 변하지 않았을 경우 불필요하게 새로운 함수를 호출하기 보다 초기 렌더링에서 저장한 값을 재사용하는 것이 효율적입니다.'
 description: 'memo를 통한 컴포넌트 리렌더링 방지'
@@ -7,9 +7,9 @@ tags: '렌더링, 상태, memo'
 date: '2022-11-23'
 ---
 
-# React 렌더링 및 최적화 (2) React.memo
+# React 렌더링 (2) React.memo
 
-&emsp;앞서 <a href="https://www.moonkorea.dev/React-%EB%A0%8C%EB%8D%94%EB%A7%81-%EB%B0%8F-%EC%B5%9C%EC%A0%81%ED%99%94-(1)" target=”_blank”>리액트 렌더링 최적화(1)</a>에서 설명했듯 상태가 업데이트될 경우 해당 컴포넌트와 하위에 있는 모든 컴포넌트들은 모두 리렌더링됩니다. 해당 컴포넌트의 상태가 변했을 때는 변경된 상태에 맞게 UI가 다시 그려지는 것이 당연한 것인데 하위 컴포넌트의 props가 변하지 않았을 경우 불필요하게 새로운 함수를 호출하기 보다 초기 렌더링에서 저장한 값을 재사용하는 것이 효율적입니다. 
+&emsp;앞서 <a href="https://www.moonkorea.dev/React-%EB%A0%8C%EB%8D%94%EB%A7%81-%EB%B0%8F-%EC%B5%9C%EC%A0%81%ED%99%94-(1)" target=”_blank”>React 렌더링(1)</a>에서 설명했듯 상태가 업데이트될 경우 해당 컴포넌트와 하위에 있는 모든 컴포넌트들은 모두 리렌더링됩니다. 해당 컴포넌트의 상태가 변했을 때는 변경된 상태에 맞게 UI가 다시 그려지는 것이 당연한 것인데 하위 컴포넌트의 props가 변하지 않았을 경우 불필요하게 새로운 함수를 호출하기 보다 초기 렌더링에서 저장한 값을 재사용하는 것이 효율적입니다. 
 
 ```js
 const Component = () => {
@@ -22,6 +22,8 @@ const Component = () => {
   );
 };
 ```
+
+## memo
 
 React.memo는 컴포넌트를 인자로 받아서 컴포넌트를 리턴하는 컴포넌트(HOC)입니다. 함수 컴포넌트를 React.memo로 감싸게 되면 동일한 input으로 호출될 경우, 즉 이전 props와 다음 렌더링에 사용될 props의 변화가 없을 경우 캐싱된 해당 컴포넌트의 결과값을 반환합니다.
 
@@ -79,11 +81,14 @@ const ChildTwo = React.memo((props) => {
 
 &emsp;세상에 공짜가 없듯 React.memo는 얕은 비교에 드는 소요 시간과 함께 함수를 캐싱하는 작업을 수행하기 때문에 한정된 메모리에서 너무 잦은 memoization이나 '큰' 컴포넌트들은 메모리 shortage로 이어집니다.
 
->### children
+><b>children</b>
+>
 >children을 사용하는 자식 컴포넌트의 경우 어떻게 될까요? children props는 언제나 새로운 reference이기 때문에 매번 자식 컴포넌트의 렌더링을 발생시킵니다.
 >
->### 비순수 함수
+><b>비순수 함수</b>
+>
 >부수효과를 갖는 컴포넌트의 경우 어떻게 될까요? 자식 컴포넌트에서 new Date()와 같이 호출 시 매번 다른 output이 예상되는 컴포넌트, 즉 비순수 컴포넌트의 memoization은 해당 컴포넌트의 렌더를 막기 때문에 memo의 사용을 지양해야 합니다.
 >
->### props reference
+><b>props reference</b>
+>
 >부모 컴포넌트로부터 함수(object), 변수 등을 전달받을 경우 어떻게 될까요? 부모 컴포넌트가 렌더링 될 때마다 선언된 변수는 새로운 메모리 주소를 갖게 됩니다. 따라서 매 렌더링마다 식별자의 값이 같더라도 메모리 주소가 다르기 때문에 memoize된 컴포넌트는 memoize 여부를 떠나 렌더링됩니다. 이와 같이 컴포넌트의 memoize를 해야하는 상황이라면 useMemo / useCallback hook을 사용해서 리렌더링을 방지할 수 있습니다.

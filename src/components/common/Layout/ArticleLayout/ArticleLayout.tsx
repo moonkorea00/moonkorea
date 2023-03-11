@@ -3,7 +3,7 @@ import CommentSection from '@components/Comments/CommentSection';
 
 interface ArticleLayoutProps {
   children: React.ReactNode;
-  pageType?: string;
+  pageType?: 'post';
 }
 
 const ArticleLayout = ({ children, pageType }: ArticleLayoutProps) => {

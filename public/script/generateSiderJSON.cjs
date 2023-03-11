@@ -5,14 +5,14 @@ const fs = require('fs');
 const matter = require('gray-matter');
 
 const INITIAL_SIDER_LIST = [
-  { name: '웹', variant: 'Web' },
+  { name: '웹', variant: 'Browser' },
   { name: '자바스크립트', variant: 'Javascript' },
   { name: '리액트', variant: 'React' },
   { name: 'AWS', variant: 'AWS' },
   { name: '튜토리얼 / 트러블슈팅', variant: 'Tutorial' },
 ];
 
-const CATEGORY_VARIANT = ['Web', 'Javascript', 'React', 'AWS', 'Tutorial'];
+const CATEGORY_VARIANT = ['Browser', 'Javascript', 'React', 'AWS', 'Tutorial'];
 
 const generateSiderJSON = () => {
   const postsDir = join(process.cwd(), '/src/_posts');

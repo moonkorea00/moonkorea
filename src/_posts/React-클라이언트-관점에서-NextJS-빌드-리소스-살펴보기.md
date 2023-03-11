@@ -2,7 +2,7 @@
 title: '클라이언트 관점에서 NextJS 빌드 리소스 살펴보기'
 category: 'React'
 excerpt: '앞서 NextJS 빌드 리소스 살펴보기 에서는 빌드 결과와 빌드 디렉토리에 어떤 파일들이 만들어졌는지 간략하게 알아봤습니다. 이어서 클라이언트 브라우저에서 어떤 리소스들이 응답으로 서빙되는지 살펴보겠습니다.'
-description: '클라이언트는 Next서버에서 어떤 리소스들을 응답으로 받는지 알아보기'
+description: '클라이언트는 Next 서버에서 어떤 리소스들을 응답으로 받는지 알아보기'
 tags: 'NextJS, 서버 사이드 렌더링, 개발자 도구'
 date: '2023-03-01'
 ---
@@ -13,7 +13,7 @@ date: '2023-03-01'
 
 &emsp;앞서 <a href='https://www.moonkorea.dev/React-NextJS-빌드-리소스-살펴보기' target="_blank">NextJS 빌드 리소스 살펴보기</a>에서는 빌드 결과와 빌드 디렉토리에 어떤 파일들이 만들어졌는지 간략하게 알아봤습니다. 이어서 클라이언트 브라우저에서 어떤 리소스들이 응답으로 서빙되는지 살펴보겠습니다.
 
-캐시를 지우고 새로고침해서 메인 페이지의 서버 응답을 확인해 보겠습니다.
+캐시를 지우고 메인 페이지의 서버 응답을 확인해 보겠습니다.
 
 <img src="/assets/markdown-image/React-NextJS-빌드-리소스/initial-render.gif" alt="서버 응답" width="550" height="120">
 

@@ -70,14 +70,14 @@ const CommentForm = ({
                 : '로그인하고 댓글 작성하기'
             }
             disabled={!session}
-            autoFocus
+            autoFocus={isReplyMode}
           />
         )}
         {type === 'edit' && (
           <S.EditInput
             defaultValue={edittedComment as string}
             onChange={handleEditComment}
-            autoFocus
+            autoFocus={isEditMode}
           />
         )}
         <S.ButtonContainer>
