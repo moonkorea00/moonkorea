@@ -16,3 +16,4 @@ export const MODAL_CONFIG = {
     duration: 1500,
   },
 };
+  

@@ -10,11 +10,7 @@ body {
   font-family: "Roboto","Arial",sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-overflow: ellipsis;
-  
-  ::-webkit-scrollbar {
-    display: none;
-}
+  text-overflow: ellipsis;  
 }
 
 span {

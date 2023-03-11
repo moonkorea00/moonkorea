@@ -32,7 +32,7 @@ export const formatDateToElapsedTime = (date: Date) => {
 
   switch (true) {
     case secondsElapsed < 1:
-      return `방금 전`;
+      return `방금 전`;
     case secondsElapsed < 60:
       return `${secondsElapsed}분 전`;
     case hoursElapsed < 24:

@@ -1,5 +1,5 @@
 import NotFound from '@components/404/NotFound';
-import ArticleLayout from '@components/common/ArticleLayout/ArticleLayout';
+import ArticleLayout from '@components/common/Layout/ArticleLayout/ArticleLayout';
 import SEO from '@components/common/SEO/SEO';
 
 const metaData = {

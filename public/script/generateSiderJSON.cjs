@@ -1,9 +1,11 @@
+/* eslint-disable no-undef */
+/* eslint-disable @typescript-eslint/no-var-requires */
 const { join } = require('path');
 const fs = require('fs');
 const matter = require('gray-matter');
 
 const INITIAL_SIDER_LIST = [
-  { name: '브라우저 / CS', variant: 'Browser' },
+  { name: '웹', variant: 'Browser' },
   { name: '자바스크립트', variant: 'Javascript' },
   { name: '리액트', variant: 'React' },
   { name: 'AWS', variant: 'AWS' },

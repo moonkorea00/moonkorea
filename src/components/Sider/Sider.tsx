@@ -8,13 +8,11 @@ const Sider = () => {
   const isSiderVisible = useRecoilValue(siderState);
 
   return (
-    <>
-      <S.Container isSiderVisible={isSiderVisible}>
-        {siderData.map((item, idx) => (
-          <NavCategory item={item} key={idx} />
-        ))}
-      </S.Container>
-    </>
+    <S.Container isSiderVisible={isSiderVisible}>
+      {siderData.map((item, idx) => (
+        <NavCategory item={item} key={idx} />
+      ))}
+    </S.Container>
   );
 };
 

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { CommentProps, RawCommentProps } from '@@types/comments';
 
 export const nestCommentsWithChildren = (comments: RawCommentProps[]) => {

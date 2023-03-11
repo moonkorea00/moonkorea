@@ -2,9 +2,11 @@ import styled from 'styled-components';
 import { colors } from '@styles/colors';
 
 export const Container = styled.aside`
+  position: sticky;
+  top: 54px;
   width: 360px;
   min-width: 320px;
-  height: 100%;
+  height: calc(100vh - 54px);
   padding: 16px 16px 0 20px;
   line-height: 35px;
   background-color: ${colors.grayDefault};
