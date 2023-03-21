@@ -7,10 +7,10 @@ const GlobalStyle = createGlobalStyle`
 
 body {
   margin: 0;
-  font-family: "Roboto","Arial",sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-overflow: ellipsis;  
+  /* text-overflow: ellipsis; */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
 span {

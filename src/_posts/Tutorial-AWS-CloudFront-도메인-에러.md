@@ -7,8 +7,6 @@ tags: '트러블슈팅, AWS, CloudFront'
 date: '2022-07-24'
 ---
 
-# CloudFront 도메인 에러 - This XML file does not appear to have any style information associated with it
-
 로컬 서버에서는 앱이 문제없이 작동하다가 CloudFront 배포 후 대체 도메인 이름으로 접근하려고 하면 다음과 같은 텍스트가 출력이 되는 경우가 있습니다.
 
 <img src="/assets/markdown-image/Tutorial-AWS-cloudfront-도메인-에러/cloudfront_edit.png" alt="This XML file does not appear to have any style information associated with it" width='550' height='400'>

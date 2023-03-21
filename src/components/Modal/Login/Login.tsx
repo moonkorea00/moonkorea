@@ -3,9 +3,9 @@ import { useState, useRef } from 'react';
 import Image from 'next/image';
 import { signIn } from 'next-auth/react';
 import favicon from 'public/assets/favicon/moonkorea.png';
-import ModalLayout from '../Layout/ModalLayout';
+import Overlay from '@components/common/Layout/Overlay/Overlay';
 import { OAUTH_LOGIN_DATA } from '@constants/nextAuth';
-import useUnmountIfClickedOutside from '../hooks/useUnmoutIfClickedOutside';
+import useUnmountIfClickedOutside from '../../../hooks/useUnmoutIfClickedOutside';
 
 interface LoginModalProps {
   onClose?: () => void;
@@ -17,7 +17,7 @@ const LoginModal = ({ onClose }: LoginModalProps) => {
   useUnmountIfClickedOutside(modalRef, onClose as VoidFunction);
 
   return (
-    <ModalLayout>
+    <Overlay>
       <S.Container ref={modalRef}>
         <S.ButtonWrapper>
           <S.CloseButton onClick={onClose}>&#10005;</S.CloseButton>
@@ -43,7 +43,7 @@ const LoginModal = ({ onClose }: LoginModalProps) => {
           );
         })}
       </S.Container>
-    </ModalLayout>
+    </Overlay>
   );
 };
 

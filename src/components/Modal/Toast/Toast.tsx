@@ -1,7 +1,7 @@
 import * as S from './Toast.style';
 import { useRef } from 'react';
-import ModalLayout from '../Layout/ModalLayout';
-import useUnmountIfClickedOutside from '../hooks/useUnmoutIfClickedOutside';
+import Overlay from '@components/common/Layout/Overlay/Overlay';
+import useUnmountIfClickedOutside from '../../../hooks/useUnmoutIfClickedOutside';
 import { ModalProps } from '@@types/modal';
 
 interface ToastProps {
@@ -15,7 +15,7 @@ const Toast = ({ modalConfig, onConfirm, onClose }: ToastProps) => {
   useUnmountIfClickedOutside(toastRef, onClose);
 
   return (
-    <ModalLayout layoutType="toast">
+    <Overlay layoutType="toast">
       <S.Container ref={toastRef}>
         <div>{modalConfig.content as string}</div>
         {modalConfig.type === 'dialog' && (
@@ -27,7 +27,7 @@ const Toast = ({ modalConfig, onConfirm, onClose }: ToastProps) => {
           </S.ButtonWrapper>
         )}
       </S.Container>
-    </ModalLayout>
+    </Overlay>
   );
 };
 

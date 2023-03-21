@@ -3,9 +3,9 @@ import * as MDX from '@components/Markdown/MarkDownComponent';
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import Reactmarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
-import ArticleLayout from '@components/common/Layout/ArticleLayout/ArticleLayout';
 import { getPostPaths, getPostById } from '@lib/post/getPost';
 import SEO from '@components/common/SEO/SEO';
+import Layout from '@components/common/Layout/Layout';
 
 interface Props {
   params: {
@@ -15,7 +15,7 @@ interface Props {
 
 const Post = ({ metaData }: InferGetStaticPropsType<GetStaticProps>) => {
   return (
-    <ArticleLayout pageType="post">
+    <Layout metaData={metaData} pageType="post">
       <SEO metaData={metaData} />
       <Reactmarkdown
         rehypePlugins={[rehypeRaw]}
@@ -37,7 +37,7 @@ const Post = ({ metaData }: InferGetStaticPropsType<GetStaticProps>) => {
       >
         {metaData.content}
       </Reactmarkdown>
-    </ArticleLayout>
+    </Layout>
   );
 };
 

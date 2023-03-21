@@ -3,10 +3,9 @@ import { colors } from '@styles/colors';
 
 export const Container = styled.section`
   ${({ theme }) => theme.flexColumn}
-  margin: 0 auto;
   padding: 1px 12px;
-  border-bottom: 1px solid #e6e6e6;
-  line-height: 125%;
+  border-bottom: 1px solid ${colors.gray300};
+  line-height: 150%;
 `;
 
 export const TagContainer = styled.div`
@@ -50,6 +49,6 @@ export const PublishDate = styled.h4`
   color: ${colors.black};
 
   @media screen and (max-width: 768px) {
-    font-size: 0.7.5em;
+    font-size: 0.75em;
   }
 `;
