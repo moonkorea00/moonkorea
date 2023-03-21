@@ -8,6 +8,7 @@ import useDeleteComment from '../hooks/useDeleteComment';
 import { formatDateToElapsedTime, isEdittedComment } from '../Comments.utils';
 import Portal from '@components/Modal/Portal';
 import CommentOptions from '../CommentOptions/CommentOptions';
+import { assets } from '@utils/assetsPath';
 
 const Comment = ({ comments }: { comments: CommentProps }) => {
   const [isEditMode, setIsEditMode] = useState(false);
@@ -31,9 +32,8 @@ const Comment = ({ comments }: { comments: CommentProps }) => {
           <S.Avatar
             src={
               comments.isDeleted
-                ? '/assets/Comments/abstract-user-flat-4.svg'
-                : comments.user.image ||
-                  '/assets/Comments/abstract-user-flat-4.svg'
+                ? assets.defaultUserAvatar
+                : comments.user.image || assets.defaultUserAvatar
             }
             alt="avatar"
           />
@@ -52,12 +52,7 @@ const Comment = ({ comments }: { comments: CommentProps }) => {
             <S.OptionsButton
               onClick={() => setIsCommentOptionsVisible(prev => !prev)}
             >
-              <Image
-                src="/assets/Comments/option-dots.svg"
-                alt="옵션"
-                width={30}
-                height={30}
-              />
+              <Image src={assets.options} alt="옵션" width={30} height={30} />
             </S.OptionsButton>
             {isCommentOptionsVisible && (
               <CommentOptions

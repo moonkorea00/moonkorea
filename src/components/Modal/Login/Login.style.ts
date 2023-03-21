@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 import { colors } from '@styles/colors';
 
+interface FaviconContainerProps {
+  isOAuthServerLoading: boolean;
+}
+
 export const Container = styled.section`
   position: relative;
   ${({ theme }) => theme.flexColumnCenter}
@@ -49,8 +53,8 @@ export const HeadingContainer = styled.div`
   margin-bottom: 56px;
 `;
 
-export const FaviconContainer = styled.div`
-  animation: ${({ isOAuthServerLoading }: { isOAuthServerLoading: boolean }) =>
+export const FaviconContainer = styled.div<FaviconContainerProps>`
+  animation: ${({ isOAuthServerLoading }) =>
     isOAuthServerLoading && 'flicker 0.7s infinite alternate;'};
 
   @keyframes flicker {

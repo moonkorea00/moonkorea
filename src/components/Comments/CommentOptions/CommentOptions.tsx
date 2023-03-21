@@ -1,7 +1,7 @@
 import * as S from './CommentOptions.style';
 import { Dispatch, SetStateAction, useRef } from 'react';
 import { useSession } from 'next-auth/react';
-import useUnmountIfClickedOutside from '@components/Modal/hooks/useUnmoutIfClickedOutside';
+import useUnmountIfClickedOutside from '@hooks/useUnmoutIfClickedOutside';
 import { MODAL_CONFIG } from '@components/Modal/Modal.utils';
 import { CommentProps } from '@@types/comments';
 import { ModalProps } from '@@types/modal';

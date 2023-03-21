@@ -1,5 +1,5 @@
 import * as S from './NavCategory.style';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import Triangle from 'public/assets/sider/Triangle.png';
@@ -18,17 +18,21 @@ interface CategoryProps {
 
 const NavCategory = ({ item: { name, variant, posts } }: CategoryProps) => {
   const [isSubCategoryOpen, setIsSubCategoryOpen] = useState(false);
+  const [containerHeight, setContainerHeight] = useState(0);
+  const navItemContainerRef = useRef<HTMLDivElement>(null);
   const { asPath } = useRouter();
 
   const isUserOnSelectedCategory =
     asPath.split('/')[1].split('-')[0] === variant;
-    
-  const handleDisplaySubnav = () => {
-    setIsSubCategoryOpen(prev => !prev);
-  };
+
+  const handleDisplaySubnav = () => setIsSubCategoryOpen(prev => !prev);
 
   useEffect(() => {
     isUserOnSelectedCategory && setIsSubCategoryOpen(true);
+    if (navItemContainerRef.current) {
+      const currentContainerHeight = navItemContainerRef.current.scrollHeight;
+      setContainerHeight(currentContainerHeight);
+    }
   }, [isUserOnSelectedCategory]);
 
   return (
@@ -36,7 +40,7 @@ const NavCategory = ({ item: { name, variant, posts } }: CategoryProps) => {
       <S.CategoryContainer>
         <Image
           src={Triangle}
-          alt="triangle icon"
+          alt="triangle"
           onClick={handleDisplaySubnav}
           width={7}
           height={7}
@@ -54,10 +58,15 @@ const NavCategory = ({ item: { name, variant, posts } }: CategoryProps) => {
           <S.TotalPosts>({posts.length})</S.TotalPosts>
         </S.CategoryItem>
       </S.CategoryContainer>
-      {isSubCategoryOpen &&
-        posts.map(({ title, path }: ItemProps, idx) => (
+      <S.NavItemContainer
+        isSubCategoryOpen={isSubCategoryOpen}
+        height={containerHeight}
+        ref={navItemContainerRef}
+      >
+        {posts.map(({ title, path }: ItemProps, idx) => (
           <NavItem key={idx} title={title} path={path} />
         ))}
+      </S.NavItemContainer>
     </S.Container>
   );
 };

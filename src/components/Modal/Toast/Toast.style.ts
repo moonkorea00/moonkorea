@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 import { colors } from '@styles/colors';
 
+interface ButtonProps {
+  action?: string;
+}
+
 export const Container = styled.div`
   position: relative;
   ${({ theme }) => theme.flexSpaceBetween}
@@ -27,9 +31,8 @@ export const ButtonWrapper = styled.div`
   gap: 2px;
 `;
 
-export const Button = styled.button`
+export const Button = styled.button<ButtonProps>`
   font-size: 14px;
-  color: ${({ action }: { action?: string }) =>
-    action === 'delete' ? colors.red : colors.white};
+  color: ${({ action }) => (action === 'delete' ? colors.red : colors.white)};
   background-color: inherit;
 `;

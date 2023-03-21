@@ -1,5 +1,5 @@
 import NotFound from '@components/404/NotFound';
-import ArticleLayout from '@components/common/Layout/ArticleLayout/ArticleLayout';
+import Layout from '@components/common/Layout/Layout';
 import SEO from '@components/common/SEO/SEO';
 
 const metaData = {
@@ -8,10 +8,10 @@ const metaData = {
 
 const NotFoundPage = () => {
   return (
-    <ArticleLayout>
+    <Layout>
       <SEO metaData={metaData} />
       <NotFound />
-    </ArticleLayout>
+    </Layout>
   );
 };
 

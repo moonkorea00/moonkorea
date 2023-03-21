@@ -1,29 +1,33 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  width: 100%;
-  min-width: 320px;
-  min-height:100vh;
+  min-width: 280px;
 `;
 
 export const Main = styled.main`
   display: flex;
-  width: 100%;
-`;
-
-export const Article = styled.article`
-  width: calc(100vw - 320px);
-  padding: 25px 50px;
+  justify-content: center;
+  padding: 20px;
+  min-width: 280px;
   line-height: 35px;
+  animation: fade-in 0.25s;
 
-  @media screen and (max-width: 1024px) {
-    width: 100vw;
-    padding: 10px 25px;
+  @keyframes fade-in {
+    0% {
+      opacity: 0.1;
+    }
+    100% {
+      opacity: 1;
+    }
   }
 
   @media screen and (max-width: 768px) {
-    width: 100vw;
-    padding: 10px 10px;
-    line-height: 32px;
+    padding: 14px;
   }
+`;
+
+export const ChildrenContainer = styled.div`
+  min-width: 280px;
+  max-width: 700px;
+  margin: 0 auto;
 `;

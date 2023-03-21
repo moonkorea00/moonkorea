@@ -8,11 +8,11 @@ const INITIAL_SIDER_LIST = [
   { name: '웹', variant: 'Browser' },
   { name: '자바스크립트', variant: 'Javascript' },
   { name: '리액트', variant: 'React' },
-  { name: 'AWS', variant: 'AWS' },
+  { name: 'VScode', variant: 'vscode' },
   { name: '튜토리얼 / 트러블슈팅', variant: 'Tutorial' },
 ];
 
-const CATEGORY_VARIANT = ['Browser', 'Javascript', 'React', 'AWS', 'Tutorial'];
+const CATEGORY_VARIANT = ['Browser', 'Javascript', 'React', 'vscode', 'Tutorial'];
 
 const generateSiderJSON = () => {
   const postsDir = join(process.cwd(), '/src/_posts');

@@ -1,7 +1,7 @@
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { getAllPosts } from '@lib/post/getPost';
+import Layout from '@components/common/Layout/Layout';
 import SEO from '@components/common/SEO/SEO';
-import ArticleLayout from '@components/common/Layout/ArticleLayout/ArticleLayout';
 import PreviewPost from '@components/Home/PreviewPost';
 
 interface FrontMatterProps {
@@ -14,7 +14,7 @@ interface FrontMatterProps {
 
 const Home = ({ metaData }: InferGetStaticPropsType<GetStaticProps>) => {
   return (
-    <ArticleLayout>
+    <Layout>
       <SEO metaData={null} />
       {metaData
         .sort((a: FrontMatterProps, b: FrontMatterProps) =>
@@ -23,7 +23,7 @@ const Home = ({ metaData }: InferGetStaticPropsType<GetStaticProps>) => {
         .map((postData: FrontMatterProps) => (
           <PreviewPost key={postData.id} postData={postData} />
         ))}
-    </ArticleLayout>
+    </Layout>
   );
 };
 export default Home;

@@ -1,7 +1,11 @@
 import styled from 'styled-components';
 import { colors } from '@styles/colors';
 
-export const Container = styled.div`
+interface ContainerProps {
+  type?: string;
+}
+
+export const Container = styled.div<ContainerProps>`
   position: fixed;
   ${({ theme, type }) =>
     type === 'toast' ? theme.flexCenterEnd : theme.flexCenter}
@@ -10,8 +14,7 @@ export const Container = styled.div`
   right: 0;
   bottom: 0;
   padding: ${({ type }) => type === 'toast' && '0 20px'};
-  background-color: ${({ type }: { type?: string }) =>
-    type ? 'inherit' : colors.overlay};
+  background-color: ${({ type }) => (type ? 'inherit' : colors.overlay)};
   animation: fade-in 0.25s;
 
   @keyframes fade-in {

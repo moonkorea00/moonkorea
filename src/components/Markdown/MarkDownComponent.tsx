@@ -1,5 +1,5 @@
-import SyntaxHighlighter from 'react-syntax-highlighter';
 import Image from 'next/image';
+import SyntaxHighlighter from 'react-syntax-highlighter';
 
 interface MarkdownCodeProps {
   children: string[];

@@ -1,12 +1,15 @@
 import styled, { css } from 'styled-components';
 import { colors } from '@styles/colors';
 
-export const Container = styled.nav`
+interface ContainerProps {
+  isPostSelected: boolean;
+}
+
+export const Container = styled.nav<ContainerProps>`
   ${({ theme }) => theme.flexDefault};
   padding-left: 12px;
-  margin-bottom: 3px;
 
-  ${({ isPostSelected }: { isPostSelected: boolean }) =>
+  ${({ isPostSelected }) =>
     isPostSelected &&
     css`
       margin-left: 4px;
@@ -14,7 +17,6 @@ export const Container = styled.nav`
       font-weight: 500;
       background-color: ${colors.gray200};
       color: black;
-      transition: all ease 0.5s;
     `}
 
   &:hover {

@@ -1,41 +1,37 @@
 import * as S from './Header.style';
-import * as Gr from 'react-icons/gr';
-import Link from 'next/link';
-import Image from 'next/image';
-import { IconContext } from 'react-icons';
-import useResizeSider from '@hooks/useResizeSider';
-import favicon from 'public/assets/favicon/moonkorea.png';
+import { useRef } from 'react';
+import Nav from '../Nav/Nav';
+import PostHeader from './PostHeader/PostHeader';
+import useIsIntersected from '../../../hooks/useIsIntersected';
 
-const Header = () => {
-  const { setIsSiderVisible } = useResizeSider();
-  const TITLE = 'moonkorea';
+interface HeaderProps {
+  metaData?: {
+    id: string;
+    title: string;
+    tags: string;
+    description: string;
+    date: string;
+  };
+  pageType?: string;
+}
+
+const Header = ({ metaData, pageType }: HeaderProps) => {
+  const headerRef = useRef(null);
+  const isIntersected = useIsIntersected(headerRef);
 
   return (
-    <IconContext.Provider value={S.customIconStyle}>
-      <S.Container>
-        <Link href="/">
-          <S.LogoContainer>
-            <Image src={favicon} alt={TITLE} width={25} height={25}></Image>
-            <S.BlogTitle>{TITLE}</S.BlogTitle>
-          </S.LogoContainer>
-        </Link>
-        <S.LinkContainer>
-          <S.MenuIcon onClick={() => setIsSiderVisible(prev => !prev)}>
-            <Gr.GrMenu />
-          </S.MenuIcon>
-          <S.IconContainer>
-            <a
-              href="https://github.com/moonkorea00"
-              aria-label="moonkorea00 GitHub"
-              target="_blank"
-            >
-              <Gr.GrGithub />
-            </a>
-          </S.IconContainer>
-          <S.Copyright>&copy; {TITLE}</S.Copyright>
-        </S.LinkContainer>
-      </S.Container>
-    </IconContext.Provider>
+    <S.Container ref={headerRef}>
+      <Nav isIntersected={isIntersected} />
+      <S.HeadingContainer>
+        {pageType === 'post' && metaData ? (
+          <PostHeader metaData={metaData} />
+        ) : (
+          <S.Heading>moonkorea | Tech Blog</S.Heading>
+        )}
+      </S.HeadingContainer>
+      <S.FilledSection />
+      <div />
+    </S.Container>
   );
 };
 
