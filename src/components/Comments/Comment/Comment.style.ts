@@ -6,7 +6,7 @@ interface ChildrenCommentStyleProps {
   depth: number;
 }
 
-export const Container = styled.div`
+export const Container = styled.div<ChildrenCommentStyleProps>`
   ${({ theme }) => theme.flexColumn}
   width : 100%;
   min-height: 100px;
@@ -14,7 +14,7 @@ export const Container = styled.div`
   border: 1px solid #f0f3f5;
   border-radius: 6px;
 
-  ${({ parentId, depth }: ChildrenCommentStyleProps) => css`
+  ${({ parentId, depth }) => css`
     padding: ${parentId ? '7px 0px 7px 15px' : '7px 7px 7px 15px'};
     border-right: ${parentId && depth !== 2 && 'none'};
     border-top-right-radius: ${depth >= 3 && '0'};
@@ -90,8 +90,8 @@ export const OptionsButton = styled.button`
   }
 `;
 
-export const Content = styled.div`
+export const Content = styled.div<{ isDeleted: boolean }>`
   font-size: 0.95em;
   line-height: 26px;
-  color: ${({ isDeleted }: { isDeleted: boolean }) => isDeleted && colors.gray700};
+  color: ${({ isDeleted }) => isDeleted && colors.gray700};
 `;
