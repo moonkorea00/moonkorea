@@ -8,7 +8,7 @@ const metaData = {
 
 const NotFoundPage = () => {
   return (
-    <Layout>
+    <Layout pageType='404'>
       <SEO metaData={metaData} />
       <NotFound />
     </Layout>
