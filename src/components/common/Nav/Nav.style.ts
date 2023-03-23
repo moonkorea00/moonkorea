@@ -5,6 +5,10 @@ interface NavStyleProps {
   isIntersected: boolean;
 }
 
+interface NavItemProps {
+  noCursor?: boolean;
+}
+
 export const Container = styled.nav<NavStyleProps>`
   position: ${({ isIntersected }) => (isIntersected ? 'fixed' : 'absolute')};
   border-bottom: ${({ isIntersected }) =>
@@ -17,7 +21,7 @@ export const Container = styled.nav<NavStyleProps>`
   left: 0;
   right: 0;
   min-width: 280px;
-  opacity: 0.85;
+  opacity: ${({ isIntersected }) => (isIntersected ? '0.8' : '1')};
   transition: all ease 0.25s;
 
   &:hover {
@@ -68,9 +72,9 @@ export const NavBar = styled.ul`
   }
 `;
 
-export const NavItem = styled.li`
+export const NavItem = styled.li<NavItemProps>`
   list-style: none;
-  cursor: pointer;
+  cursor: ${({ noCursor }) => (noCursor ? 'auto' : 'pointer')};
 `;
 
 export const Style = {

@@ -1,5 +1,5 @@
 import * as S from './NavCategory.style';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, Dispatch, SetStateAction } from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import Triangle from 'public/assets/sider/Triangle.png';
@@ -14,9 +14,13 @@ interface ItemProps {
 
 interface CategoryProps {
   item: { name: string; variant: string; posts: ItemProps[] };
+  setIsSiderVisible: Dispatch<SetStateAction<boolean>>;
 }
 
-const NavCategory = ({ item: { name, variant, posts } }: CategoryProps) => {
+const NavCategory = ({
+  item: { name, variant, posts },
+  setIsSiderVisible,
+}: CategoryProps) => {
   const [isSubCategoryOpen, setIsSubCategoryOpen] = useState(false);
   const [containerHeight, setContainerHeight] = useState(0);
   const navItemContainerRef = useRef<HTMLDivElement>(null);
@@ -64,7 +68,12 @@ const NavCategory = ({ item: { name, variant, posts } }: CategoryProps) => {
         ref={navItemContainerRef}
       >
         {posts.map(({ title, path }: ItemProps, idx) => (
-          <NavItem key={idx} title={title} path={path} />
+          <NavItem
+            key={idx}
+            title={title}
+            path={path}
+            setIsSiderVisible={setIsSiderVisible}
+          />
         ))}
       </S.NavItemContainer>
     </S.Container>

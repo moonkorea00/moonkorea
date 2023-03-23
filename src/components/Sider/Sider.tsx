@@ -21,7 +21,7 @@ const Sider = ({ isSiderVisible, setIsSiderVisible }: SiderProps) => {
           </S.CloseButton>
         </S.ButtonWrapper>
         {siderData.map((item, idx) => (
-          <NavCategory item={item} key={idx} />
+          <NavCategory item={item} key={idx} setIsSiderVisible={setIsSiderVisible}/>
         ))}
       </S.Container>
   );

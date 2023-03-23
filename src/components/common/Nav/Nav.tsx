@@ -1,5 +1,5 @@
 import * as S from './Nav.style';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import Sider from '@components/Sider/Sider';
@@ -11,6 +11,10 @@ interface NavProps {
 
 const Nav = ({ isIntersected }: NavProps) => {
   const [isSiderVisible, setIsSiderVisible] = useState(false);
+
+  useEffect(() => {
+    document.body.style.overflow = isSiderVisible ? 'hidden' : 'auto';
+  }, [isSiderVisible]);
 
   return (
     <>
@@ -38,7 +42,7 @@ const Nav = ({ isIntersected }: NavProps) => {
                 GITHUB
               </a>
             </S.NavItem>
-            |
+            <S.NavItem noCursor>|</S.NavItem>
             <S.NavItem onClick={() => setIsSiderVisible(true)}>
               CATEGORIES
             </S.NavItem>
