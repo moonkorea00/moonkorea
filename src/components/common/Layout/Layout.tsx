@@ -1,13 +1,12 @@
 import * as S from './Layout.style';
 import Header from '../Header/Header';
-import CommentSection from '@components/Comments/CommentSection';
 
 interface LayoutProps {
   children: React.ReactNode;
   metaData?: {
     id: string;
     title: string;
-    tags:string;
+    tags: string;
     description: string;
     date: string;
   };
@@ -19,10 +18,7 @@ const Layout = ({ children, ...props }: LayoutProps) => {
     <S.Container>
       <Header metaData={props.metaData} pageType={props.pageType} />
       <S.Main>
-        <S.ChildrenContainer>
-          {children}
-          {props.pageType === 'post' && <CommentSection />}
-        </S.ChildrenContainer>
+        <S.ChildrenContainer>{children}</S.ChildrenContainer>
       </S.Main>
     </S.Container>
   );
