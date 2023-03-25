@@ -1,5 +1,9 @@
 import Image from 'next/image';
+import dynamic from 'next/dynamic';
 import SyntaxHighlighter from 'react-syntax-highlighter';
+
+const ReactPlayer = dynamic(() => import('react-player/lazy'), { ssr: false });
+// load client side. see https://github.com/cookpete/react-player/issues/1474
 
 interface MarkdownCodeProps {
   children: string[];
@@ -10,6 +14,10 @@ interface MarkdownImageProps {
   alt: string;
   width: number;
   height?: number;
+}
+
+interface MarkdownVideoProps {
+  url :string;
 }
 
 export const MarkdownCode = ({ children }: MarkdownCodeProps) => {
@@ -25,7 +33,7 @@ export const MarkdownCode = ({ children }: MarkdownCodeProps) => {
   );
 };
 
-export const MarkDownImage = ({
+export const MarkdownImage = ({
   src,
   alt,
   width,
@@ -40,5 +48,17 @@ export const MarkDownImage = ({
       style={{ display: 'block', margin: '0 auto 2vh auto' }}
       layout="intrinsic"
     />
+  );
+};
+
+export const MarkdownVideo = ({ url, ...props }:MarkdownVideoProps) => {
+  return (
+      <ReactPlayer
+        url={url}
+        playing={true}
+        loop={true}
+        muted={true}
+        {...props}
+      />
   );
 };

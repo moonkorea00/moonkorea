@@ -14,9 +14,9 @@ export const Container = styled.nav<NavStyleProps>`
   border-bottom: ${({ isIntersected }) =>
     isIntersected ? `1px solid ${colors.gray300}` : 'none'};
   color: ${({ isIntersected }) =>
-    isIntersected ? `${colors.gray700}` : 'white'};
+    isIntersected ? `${colors.gray700}` : `${colors.white}`};
   background-color: ${({ isIntersected }) =>
-    isIntersected ? 'white' : 'inherit'};
+    isIntersected ? `${colors.white}` : 'inherit'};
   top: 0;
   left: 0;
   right: 0;
@@ -43,7 +43,7 @@ export const LogoContainer = styled.nav<NavStyleProps>`
   ${({ theme }) => theme.flexCenter};
   gap: 10px;
   color: ${({ isIntersected }) =>
-    isIntersected ? `${colors.gray700}` : 'white'};
+    isIntersected ? `${colors.gray700}` : `${colors.white}`};
   font-weight: 700;
 
   @media screen and (max-width: 768px) {
@@ -53,7 +53,7 @@ export const LogoContainer = styled.nav<NavStyleProps>`
 `;
 
 export const BlogName = styled.span`
-  color: inherit;
+  color: 'inherit';
   cursor: pointer;
 
   @media screen and (max-width: 768px) {

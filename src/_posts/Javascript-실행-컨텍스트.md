@@ -41,7 +41,7 @@ function functionA() {
 
 </br>
 
-<img src="/assets/markdown-image/Javascript-실행-컨텍스트/execution-context-stack.gif" alt="실행 컨텍스트 스택" width="700" height="300"/>
+<video url="/assets/markdown-image/Javascript-실행-컨텍스트/execution-context-stack.webm" width="100%" height="auto"></video>
 
 <span>1.1 실행 컨텍스트 스택, https://medium.com/@happymishra66/execution-context-in-javascript-319dd72e8e2c</span>
 

@@ -13,7 +13,7 @@ date: '2023-03-01'
 
 캐시를 지우고 메인 페이지의 서버 응답을 확인해 보겠습니다.
 
-<img src="/assets/markdown-image/React-NextJS-빌드-리소스/initial-render.gif" alt="서버 응답" width="550" height="120">
+<video url="/assets/markdown-image/React-NextJS-빌드-리소스/initial-render.webm" width="100%" height="auto"></video>
 
 <span>1.1 서버 응답</span>
 
@@ -40,7 +40,7 @@ date: '2023-03-01'
 
 서버는 웹팩 런타임 코드 외에도 프레임워크 스크립트(framework.js)와 리액트 스크립트(main.js)도 응답에 실어서 보내네요. 전부 빌드 타임에 생성된 static 디렉토리에서 전송되고 있습니다.
 
-<img src="/assets/markdown-image/React-NextJS-빌드-리소스/next-static.gif" alt="서버 응답" width="550" height="120">
+<video url="/assets/markdown-image/React-NextJS-빌드-리소스/next-static.webm" width="100%" height="auto"></video>
 
 <span>1.4 서버 응답</span>
 
@@ -61,7 +61,7 @@ HTML과 클라이언트 스크립트뿐만 아니라 이미지 데이터도 응�
 
 서버에서 전달되는 핵심 리소스들을 몇 가지 살펴봤는데 페이지를 좀 더 탐험해 보겠습니다.
 
-<img src="/assets/markdown-image/React-NextJS-빌드-리소스/link-pre-fetch.gif" alt="링크 pre-fetch" width="550" height="120">
+<video url="/assets/markdown-image/React-NextJS-빌드-리소스/link-pre-fetch.webm" width="100%" height="auto"></video>
 
 <span>1.7 link pre-fetch</span>
 
@@ -75,7 +75,8 @@ HTML과 클라이언트 스크립트뿐만 아니라 이미지 데이터도 응�
 
 NextJS의 기본 cache-control 값이 must-revalidate로 설정돼 있어서 커서를 링크에 올렸을 때 무조건 서버에 revalidate 요청을 보내네요. 링크를 타고 이동해 보겠습니다.
 
-<img src="/assets/markdown-image/React-NextJS-빌드-리소스/page-route.gif" alt="페이지 라우트" width="550" height="120">
+<video url="/assets/markdown-image/React-NextJS-빌드-리소스/page-route.webm" width="100%" height="auto"></video>
+
 
 <span>1.9 페이지 이동</span>
 
