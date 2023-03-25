@@ -39,13 +39,17 @@ const Post = ({ metaData }: InferGetStaticPropsType<GetStaticProps>) => {
           span: ({ ...props }) => <MD.MarkdownSpan {...props} />,
           p: ({ ...props }) => <MD.MarkdownP {...props} />,
           blockquote: ({ ...props }) => <MD.MarkdownBlockquote {...props} />,
-          img: MDX.MarkDownImage as DetailedHTMLFactory<
+          img: MDX.MarkdownImage as DetailedHTMLFactory<
             ImgHTMLAttributes<HTMLImageElement>,
             HTMLImageElement
           >,
           code: MDX.MarkdownCode as DetailedHTMLFactory<
             HTMLAttributes<HTMLElement>,
             HTMLElement
+          >,
+          video: MDX.MarkdownVideo as DetailedHTMLFactory<
+            React.VideoHTMLAttributes<HTMLVideoElement>,
+            HTMLVideoElement
           >,
         }}
       >

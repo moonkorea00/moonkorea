@@ -15,11 +15,9 @@ date: '2023-03-12'
 
 ## 네이버 맞춤법 검사기 살펴보기
 
-&emsp;저는 vscode 클라이언트에서도 네이버 맞춤법 검사 api를 호출할 수 있는 점, 다른 맞춤법 검사기와 비교했을 때 빠른 서버 응답, 그리고 간단한 응답 형태 등을 근거로 네이버 맞춤법 검사기를 채택했어요. 개발하기 앞서 기술적으로 가능한지부터 네이버는 어떻게 원문을 검사해서 교정 결과를 화면에 출력하는지 알아봤어요.
+&emsp;개발하기 앞서 기술적으로 가능한지부터 네이버는 어떻게 원문을 검사해서 교정 결과를 화면에 출력하는지 알아봤어요.
 
 <img src="/assets/markdown-image/vscode-맞춤법-검사-extension-생성기/서버-응답.png" alt="네이버 맞춤법 검사기" width="900" height="900"/>
-
-<!-- <img src="/assets/markdown-image/vscode-맞춤법-검사-extension-생성기/html.png" alt="네이버 맞춤법 검사기" width="1000" height="1000"/> -->
 
 <span>1.1 네이버 맞춤법 검사기 응답</span>
 
@@ -29,12 +27,25 @@ date: '2023-03-12'
 
 &emsp;vscode 공식 문서에는 [개발부터 부터 배포까지 가이드](https://code.visualstudio.com/api)가 개발 친화적으로 정리돼있었어요. 에디터 내장 api를 사용하면서 사용자 입장에서 필요한 핵심 기능과 발생할 수 있는 여러 상황들을 중점적으로 생각하면서 개발을 했어요.
 
-<img src="/assets/markdown-image/vscode-맞춤법-검사-extension-생성기/flow-diagram.gif" alt="Korean Grammar Checker" width="650" height="600"/>
+<video url='/assets/markdown-image/vscode-맞춤법-검사-extension-생성기/flow-diagram.webm' width='100%' height='auto'><video />
 
 <span>1.2 flow diagram</span>
 
 <details><summary><i>Demo 보기</i></summary>
-<img src="/assets/markdown-image/vscode-맞춤법-검사-extension-생성기/전체-검사.gif" alt="Korean Grammar Checker 전체 검사" width="550" height="120"><span>2.1 전체 검사</span><img src="/assets/markdown-image/vscode-맞춤법-검사-extension-생성기/선택-검사.gif" alt="Korean Grammar Checker 선택 검사" width="550" height="120"> <span>2.2 선택 검사</span> <img src="/assets/markdown-image/vscode-맞춤법-검사-extension-생성기/수정.gif" alt="Korean Grammar Checker 수정" width="550" height="120"><span>2.3 수정</span></details>
+
+<video url='/assets/markdown-image/vscode-맞춤법-검사-extension-생성기/전체-검사.webm' width='100%' height='auto'><video />
+
+<span>2.1 전체 검사</span> 
+ 
+<video url='/assets/markdown-image/vscode-맞춤법-검사-extension-생성기/선택-검사.webm' width='100%' height='auto'><video /> 
+ 
+<span>2.2 선택 검사</span> 
+ 
+<video url='/assets/markdown-image/vscode-맞춤법-검사-extension-생성기/수정.webm' width='100%' height='auto'><video /> 
+ 
+<span>2.3 수정</span>
+
+</details>
 
 저는 vscode에서 동작하는 [VS Code API](https://code.visualstudio.com/api/references/vscode-api)를 사용해서 교정 결과를 담을 패널(결과 화면) 출력, 클라이언트/서버 상태 저장, 예외 처리 결과를 출력할 알림 등을 이렇게 처리했어요 :
 
