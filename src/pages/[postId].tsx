@@ -1,11 +1,19 @@
 import * as MD from '@components/Markdown/CustomMarkdown.style';
 import * as MDX from '@components/Markdown/MarkDownComponent';
+import {
+  useRef,
+  DetailedHTMLFactory,
+  ImgHTMLAttributes,
+  HTMLAttributes,
+} from 'react';
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import Reactmarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
-import { getPostPaths, getPostById } from '@lib/post/getPost';
-import SEO from '@components/common/SEO/SEO';
 import Layout from '@components/common/Layout/Layout';
+import SEO from '@components/common/SEO/SEO';
+import CommentSection from '@components/Comments/CommentSection';
+import { getPostPaths, getPostById } from '@lib/post/getPost';
+import useIsIntersected from '@hooks/useIsIntersected';
 
 interface Props {
   params: {
@@ -14,6 +22,11 @@ interface Props {
 }
 
 const Post = ({ metaData }: InferGetStaticPropsType<GetStaticProps>) => {
+  const commentSectionRef = useRef<HTMLDivElement>(null);
+  const isIntersected = useIsIntersected(commentSectionRef, {
+    once: true,
+  });
+
   return (
     <Layout metaData={metaData} pageType="post">
       <SEO metaData={metaData} />
@@ -26,17 +39,20 @@ const Post = ({ metaData }: InferGetStaticPropsType<GetStaticProps>) => {
           span: ({ ...props }) => <MD.MarkdownSpan {...props} />,
           p: ({ ...props }) => <MD.MarkdownP {...props} />,
           blockquote: ({ ...props }) => <MD.MarkdownBlockquote {...props} />,
-          // TODO
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore
-          img: MDX.MarkDownImage,
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore
-          code: MDX.MarkdownCode,
+          img: MDX.MarkDownImage as DetailedHTMLFactory<
+            ImgHTMLAttributes<HTMLImageElement>,
+            HTMLImageElement
+          >,
+          code: MDX.MarkdownCode as DetailedHTMLFactory<
+            HTMLAttributes<HTMLElement>,
+            HTMLElement
+          >,
         }}
       >
         {metaData.content}
       </Reactmarkdown>
+      <div ref={commentSectionRef} />
+      {isIntersected && <CommentSection />}
     </Layout>
   );
 };
