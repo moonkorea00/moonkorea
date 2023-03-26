@@ -42,7 +42,7 @@ const Nav = ({ isIntersected }: NavProps) => {
                 GITHUB
               </a>
             </S.NavItem>
-            <S.NavItem noCursor>|</S.NavItem>
+            <S.NavItem noCursor>&#124;</S.NavItem>
             <S.NavItem onClick={() => setIsSiderVisible(true)}>
               CATEGORIES
             </S.NavItem>

@@ -1,6 +1,6 @@
 import Script from 'next/script';
 
-const ChannelTalk = () => {
+const ChannelIo = () => {
   return (
     <Script
       strategy="afterInteractive"
@@ -41,7 +41,7 @@ const ChannelTalk = () => {
     }
   })();
   ChannelIO('boot', {
-    "pluginKey": "43caf3fb-f316-4c0e-9c22-936b3bf66631",
+    "pluginKey": "${process.env.NEXT_PUBLIC_CHANNEL_TALK_KEY}",
     "profile" : {
       "name" : "moonkorea",
     }
@@ -52,4 +52,4 @@ const ChannelTalk = () => {
   );
 };
 
-export default ChannelTalk;
+export default ChannelIo;

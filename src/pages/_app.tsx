@@ -10,7 +10,7 @@ import GlobalStyle from '@styles/GlobalStyle';
 import { ThemeProvider } from 'styled-components';
 import { Analytics } from '@vercel/analytics/react';
 import theme from '@styles/theme';
-import ChannelTalk from '@components/common/Script/ChannelTalk';
+import ChannelIo from '@components/common/Script/ChannelIO';
 import GoogleAnalytics from '@components/common/Script/GoogleAnalytics';
 import useGoogleAnalytics from '@utils/useGoogleAnalytics';
 
@@ -28,7 +28,7 @@ const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps) => {
   return (
     <>
       <GoogleAnalytics />
-      <ChannelTalk />
+      <ChannelIo />
       <QueryClientProvider client={queryClient}>
         <Hydrate state={pageProps.dehydratedState}>
             <SessionProvider session={session}>
