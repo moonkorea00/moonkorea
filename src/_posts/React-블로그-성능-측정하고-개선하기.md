@@ -55,7 +55,7 @@ WebM 포맷으로 변환 전과 후로 서버에서 넘어오는 응답을 확�
 
 > WCAG (Web Content Accessibility Guidelines)은 모든 사용자에게 콘텐츠 접근성을 보장합니다. 가이드라인 기준에 부합하려면 4.5 : 1 이상의 색 대비가 필요합니다.
 
-> 대비 비율은 [여기서](https://webaim.org/resources/contrastchecker/) 계산할 수 있습니다.
+> 대비 비율은 <a href="https://webaim.org/resources/contrastchecker" target="_blank">여기서</a> 계산할 수 있습니다.
 
 <br>
 
@@ -67,7 +67,7 @@ WebM 포맷으로 변환 전과 후로 서버에서 넘어오는 응답을 확�
 
 <span>1.6 쿠키 관련 이슈</span>
 
-&emsp;본 블로그는 챗봇 시스템으로 [채널톡](https://channel.io/ko)을 사용하고 있어요. 검사 결과 로컬 쿠키와 관련된 이슈가 출력이 됐는데 제품 팀에 문의해 보니 로컬 쿠키는 사용자 인증과 판별에만 사용되고 보안적으로는 문제가 되지 않는다는 답변을 받았어요. 출력된 이슈는 추측건대 쿠키가 자바스크립트로 조작이 가능해서 lighthouse에서 유의하고 인지하라는 정도로 생각돼요.
+&emsp;본 블로그는 챗봇 시스템으로 <a href="https://channel.io/ko" target="_blank">채널톡</a>을 사용하고 있어요. 검사 결과 로컬 쿠키와 관련된 이슈가 출력이 됐는데 제품 팀에 문의해 보니 로컬 쿠키는 사용자 인증과 판별에만 사용되고 보안적으로는 문제가 되지 않는다는 답변을 받았어요. 출력된 이슈는 추측건대 쿠키가 자바스크립트로 조작이 가능해서 lighthouse에서 유의하고 인지하라는 정도로 생각돼요.
 
 <img src="/assets/markdown-image/React-블로그-성능-측정/문의.png" alt="채널톡" width="350" height="300" />
 

@@ -7,9 +7,9 @@ tags: 'vscode extension, 맞춤법 검사기, linter'
 date: '2023-03-12'
 ---
 
-> Korean Grammar Checker는 [마켓플레이스](https://marketplace.visualstudio.com/items?itemName=moonkorea.vscode-korean-grammar-checker) 또는 vscode-확장에서 검색 후 설치가 가능합니다.
+> Korean Grammar Checker는 <a href="https://marketplace.visualstudio.com/items?itemName=moonkorea.vscode-korean-grammar-checker" target="_blank">마켓플레이스</a> 또는 vscode-확장에서 검색 후 설치가 가능합니다.
 
-&emsp;저는 블로그 포스트를 쓸 때 vscode에서 마크다운 형태로 글을 전부 관리하는데요. 발행하기 전에 혹시모를 맞춤법 오류를 [네이버 맞춤법 검사기](https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=%EB%A7%9E%EC%B6%A4%EB%B2%95+%EA%B2%80%EC%82%AC%EA%B8%B0)로 확인을 합니다. 브라우저를 키고 화면 이동하는 게 가끔 번거로워서 에디터에서도 간편하게 사용할 수 있는 검사 플러그인이 있으면 좋겠다는 생각에 만들게 되었습니다.
+&emsp;저는 블로그 포스트를 쓸 때 vscode에서 마크다운 형태로 글을 전부 관리하는데요. 발행하기 전에 혹시모를 맞춤법 오류를 <a href="https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=%EB%A7%9E%EC%B6%A4%EB%B2%95+%EA%B2%80%EC%82%AC%EA%B8%B0" target="_blank">네이버 맞춤법 검사기</a>로 확인을 합니다. 브라우저를 키고 화면 이동하는 게 가끔 번거로워서 에디터에서도 간편하게 사용할 수 있는 검사 플러그인이 있으면 좋겠다는 생각에 만들게 되었습니다.
 
 &emsp;저 처럼 마크다운으로 글을 쓰는 사용자들이 적지 않기 때문에 시장 조사를 해보니 이미 배포된 익스텐션이 있더라고요. 쏘카 기술 블로그팀은 자동화에 중점을 둬서 PR이 생성된 후 코멘트에 <b>/맞춤법</b>을 입력하면 Github Action이 실행되는 프로세스를 구축했어요. 다만 몇몇 익스텐션에서는 검사 알고리즘이 태그 속성값이나 &lt;code&gt;태그 내 영문 문자열까지 교정하는 패턴이 있어서 마크다운 형태로 글을 쓰는 사용자들에게는 간혹 불필요할 수 있겠다고 생각한 점, 에디터내에서 바로 맞춤법 오류를 확인할 수 있는 편의가 제공되면 좋겠다고 생각한 점 등을 이유로 새롭게 만들어봤습니다.
 
@@ -25,7 +25,7 @@ date: '2023-03-12'
 
 ## Korean Grammar Checker
 
-&emsp;vscode 공식 문서에는 [개발부터 부터 배포까지 가이드](https://code.visualstudio.com/api)가 개발 친화적으로 정리돼있었어요. 에디터 내장 api를 사용하면서 사용자 입장에서 필요한 핵심 기능과 발생할 수 있는 여러 상황들을 중점적으로 생각하면서 개발을 했어요.
+&emsp;vscode 공식 문서에는 <a href="https://code.visualstudio.com/api" target="_blank">개발부터 부터 배포까지 가이드</a>가 개발 친화적으로 정리돼있었어요. 에디터 내장 api를 사용하면서 사용자 입장에서 필요한 핵심 기능과 발생할 수 있는 여러 상황들을 중점적으로 생각하면서 개발을 했어요.
 
 <video url='/assets/markdown-image/vscode-맞춤법-검사-extension-생성기/flow-diagram.webm' width='100%' height='auto'><video />
 
@@ -47,7 +47,7 @@ date: '2023-03-12'
 
 </details>
 
-저는 vscode에서 동작하는 [VS Code API](https://code.visualstudio.com/api/references/vscode-api)를 사용해서 교정 결과를 담을 패널(결과 화면) 출력, 클라이언트/서버 상태 저장, 예외 처리 결과를 출력할 알림 등을 이렇게 처리했어요 :
+저는 vscode에서 동작하는 <a href="https://code.visualstudio.com/api/references/vscode-api" target="_blank">VS Code API</a>를 사용해서 교정 결과를 담을 패널(결과 화면) 출력, 클라이언트/서버 상태 저장, 예외 처리 결과를 출력할 알림 등을 이렇게 처리했어요 :
 
 1. 에디터에 있는 원문을 GET 요청에 담아서 서버에 검사 요청을 보냅니다. 네이버 맞춤법 검사기는 요청 당 500자 제한이 있기 때문에 요청 문자열이 500자 이상일 경우 원문을 500자 이내의 문자열로 나눈 후 병렬적으로 전송해요.
 
