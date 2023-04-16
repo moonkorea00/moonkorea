@@ -5,6 +5,14 @@ import SyntaxHighlighter from 'react-syntax-highlighter';
 const ReactPlayer = dynamic(() => import('react-player/lazy'), { ssr: false });
 // load client side. see https://github.com/cookpete/react-player/issues/1474
 
+export const MDIframe = dynamic(
+  () =>
+    import('src/components/Markdown/MarkDownComponent').then(
+      module => module.MarkdownIframe
+    ),
+  { ssr: false }
+);
+
 interface MarkdownCodeProps {
   children: string[];
 }
@@ -17,7 +25,7 @@ interface MarkdownImageProps {
 }
 
 interface MarkdownVideoProps {
-  url :string;
+  url: string;
 }
 
 export const MarkdownCode = ({ children }: MarkdownCodeProps) => {
@@ -51,14 +59,12 @@ export const MarkdownImage = ({
   );
 };
 
-export const MarkdownVideo = ({ url, ...props }:MarkdownVideoProps) => {
+export const MarkdownVideo = ({ url, ...props }: MarkdownVideoProps) => {
   return (
-      <ReactPlayer
-        url={url}
-        playing={true}
-        loop={true}
-        muted={true}
-        {...props}
-      />
+    <ReactPlayer url={url} playing={true} loop={true} muted={true} {...props} />
   );
+};
+
+export const MarkdownIframe = ({ ...props }) => {
+  return <iframe {...props}></iframe>;
 };

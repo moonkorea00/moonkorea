@@ -31,6 +31,7 @@
     "build": "next build",
     "postbuild": "next-sitemap",
     "start": "next start",
+    "analyze": "next-bundle-analyzer",
     "sider": "node public/script/generateSiderJSON.cjs"
   },
   "eslintConfig": {

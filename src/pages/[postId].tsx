@@ -51,6 +51,7 @@ const Post = ({ metaData }: InferGetStaticPropsType<GetStaticProps>) => {
             React.VideoHTMLAttributes<HTMLVideoElement>,
             HTMLVideoElement
           >,
+          iframe: ({ ...props }) => <MDX.MarkdownIframe {...props} />,
         }}
       >
         {metaData.content}
