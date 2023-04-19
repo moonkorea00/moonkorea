@@ -1,5 +1,4 @@
-import { useState, useEffect } from 'react';
-import { RefObject } from 'react';
+import { useState, useEffect, RefObject } from 'react';
 
 const useIsIntersected = <T extends HTMLElement>(
   ref: RefObject<T>,
