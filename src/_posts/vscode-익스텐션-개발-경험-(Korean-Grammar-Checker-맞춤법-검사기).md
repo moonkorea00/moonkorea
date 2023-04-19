@@ -1,7 +1,7 @@
 ---
 title: 'VScode 익스텐션 개발 경험 (Korean Grammar Checker 맞춤법 검사기)'
 category: 'vscode'
-excerpt: 'Korean Grammar Checker는 vscode에서도 맞춤법 검사를 할 수 있는 익스텐션입니다. 이번 글에서는 익스텐션을 만든 과정과 만들며 고민했던 점 등 개발 과정에 대해 알아보겠습니다.'
+excerpt: 'Korean Grammar Checker는 vscode에서도 한글 맞춤법 검사를 할 수 있는 익스텐션입니다. 이번 글에서는 익스텐션을 만든 과정과 만들며 고민했던 점 등 개발 과정에 대해 알아보겠습니다.'
 description: '맞춤법 검사 익스텐션 생성기'
 tags: 'vscode extension, 맞춤법 검사기, linter'
 date: '2023-03-12'
