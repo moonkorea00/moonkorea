@@ -31,7 +31,7 @@ Canvas API는 다음과 같은 주요 기능을 제공합니다 :
 
 canvas 요소는 화면에 지정한 빈 공간입니다. 2D 그래픽이나 이미지를 그릴 때 이 공간 안에 결과물이 출력됩니다. 2D 그래픽이라고 하면 직선, 사각형, 원, 이미지 등을 그리기 위한 기능들을 말하며 예로 그림판과 같은 그래픽 애플리케이션은 일반적으로 Canvas API를 사용하여 만들어집니다. 아래는 Canvas API를 사용해서 선을 그릴 수 있는 간단한 예시입니다 :
 
-<iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/moonkorea00/embed/LYgGpWx?default-tab=js%2Cresult&theme-id=light" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/moonkorea00/embed/dygMOwy?default-tab=result&theme-id=light" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
 </iframe>
 
 <span>1.1 canvas에 선 그리기</span>
