@@ -1,7 +1,7 @@
 import * as S from './CommentOptions.style';
 import { Dispatch, SetStateAction, useRef } from 'react';
 import { useSession } from 'next-auth/react';
-import useUnmountIfClickedOutside from '@hooks/useUnmoutIfClickedOutside';
+import useOnClickOutside from '@hooks/useOnClickOutside';
 import { MODAL_CONFIG } from '@components/Modal/Modal.utils';
 import { CommentProps } from '@@types/comments';
 import { ModalProps } from '@@types/modal';
@@ -25,12 +25,8 @@ const CommentOptions = ({
 }: CommentOptionsProps) => {
   const commentOptionsRef = useRef<HTMLDivElement>(null);
   const { data: session } = useSession();
-  useUnmountIfClickedOutside(
-    commentOptionsRef,
-    null,
-    setIsCommentOptionsVisible
-  );
-  
+  useOnClickOutside(commentOptionsRef, () => setIsCommentOptionsVisible(false));
+
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   const isAuthor = session?.user?.id == comments?.user.id;
