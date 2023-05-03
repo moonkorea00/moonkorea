@@ -2,7 +2,7 @@ import * as S from './Sider.style';
 import { Dispatch, SetStateAction, useRef } from 'react';
 import NavCategory from './NavCategory/NavCategory';
 import siderData from 'public/script/sider.json';
-import useUnmountIfClickedOutside from '@hooks/useUnmoutIfClickedOutside';
+import useOnClickOutside from '@hooks/useOnClickOutside';
 
 interface SiderProps {
   isSiderVisible: boolean;
@@ -11,19 +11,23 @@ interface SiderProps {
 
 const Sider = ({ isSiderVisible, setIsSiderVisible }: SiderProps) => {
   const siderRef = useRef(null);
-  useUnmountIfClickedOutside(siderRef, null, setIsSiderVisible);
+  useOnClickOutside(siderRef, () => setIsSiderVisible(false));
 
   return (
-      <S.Container isSiderVisible={isSiderVisible} ref={siderRef}>
-        <S.ButtonWrapper>
-          <S.CloseButton onClick={() => setIsSiderVisible(false)}>
-            &#10005;
-          </S.CloseButton>
-        </S.ButtonWrapper>
-        {siderData.map((item, idx) => (
-          <NavCategory item={item} key={idx} setIsSiderVisible={setIsSiderVisible}/>
-        ))}
-      </S.Container>
+    <S.Container isSiderVisible={isSiderVisible} ref={siderRef}>
+      <S.ButtonWrapper>
+        <S.CloseButton onClick={() => setIsSiderVisible(false)}>
+          &#10005;
+        </S.CloseButton>
+      </S.ButtonWrapper>
+      {siderData.map((item, idx) => (
+        <NavCategory
+          key={idx}
+          item={item}
+          setIsSiderVisible={setIsSiderVisible}
+        />
+      ))}
+    </S.Container>
   );
 };
 

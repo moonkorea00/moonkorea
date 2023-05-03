@@ -5,7 +5,7 @@ import { signIn } from 'next-auth/react';
 import favicon from 'public/assets/favicon/moonkorea.png';
 import Overlay from '@components/common/Layout/Overlay/Overlay';
 import { OAUTH_LOGIN_DATA } from '@constants/nextAuth';
-import useUnmountIfClickedOutside from '../../../hooks/useUnmoutIfClickedOutside';
+import useOnClickOutside from '../../../hooks/useOnClickOutside';
 
 interface LoginModalProps {
   onClose?: () => void;
@@ -14,7 +14,7 @@ interface LoginModalProps {
 const LoginModal = ({ onClose }: LoginModalProps) => {
   const [isOAuthServerLoading, setIsOAuthServerLoading] = useState(false);
   const modalRef = useRef<HTMLDivElement>(null);
-  useUnmountIfClickedOutside(modalRef, onClose as VoidFunction);
+  useOnClickOutside(modalRef, onClose as VoidFunction);
 
   return (
     <Overlay>

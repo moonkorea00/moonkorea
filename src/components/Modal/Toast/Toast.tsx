@@ -1,7 +1,7 @@
 import * as S from './Toast.style';
 import { useRef } from 'react';
 import Overlay from '@components/common/Layout/Overlay/Overlay';
-import useUnmountIfClickedOutside from '../../../hooks/useUnmoutIfClickedOutside';
+import useOnClickOutside from '../../../hooks/useOnClickOutside';
 import { ModalProps } from '@@types/modal';
 
 interface ToastProps {
@@ -12,7 +12,7 @@ interface ToastProps {
 
 const Toast = ({ modalConfig, onConfirm, onClose }: ToastProps) => {
   const toastRef = useRef<HTMLDivElement>(null);
-  useUnmountIfClickedOutside(toastRef, onClose);
+  useOnClickOutside(toastRef, onClose);
 
   return (
     <Overlay layoutType="toast">
