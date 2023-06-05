@@ -33,6 +33,7 @@ export const MarkdownCode = ({ children }: MarkdownCodeProps) => {
     padding: '10px 15px',
     margin: '22px 0',
     borderRadius: '10px',
+    lineHeight: '24px'
   };
   return (
     <SyntaxHighlighter language="javascript" customStyle={customStyle}>
