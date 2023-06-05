@@ -7,12 +7,13 @@ const matter = require('gray-matter');
 const INITIAL_SIDER_LIST = [
   { name: '웹', variant: 'Browser' },
   { name: '자바스크립트', variant: 'Javascript' },
+  { name: '타입스크립트', variant: 'Typescript' },
   { name: '리액트', variant: 'React' },
   { name: 'VScode', variant: 'vscode' },
   { name: '튜토리얼 / 트러블슈팅', variant: 'Tutorial' },
 ];
 
-const CATEGORY_VARIANT = ['Browser', 'Javascript', 'React', 'vscode', 'Tutorial'];
+const CATEGORY_VARIANT = ['Browser', 'Javascript', 'Typescript', 'React', 'vscode', 'Tutorial'];
 
 const generateSiderJSON = () => {
   const postsDir = join(process.cwd(), '/src/_posts');
