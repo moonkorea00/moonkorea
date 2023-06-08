@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import * as S from './CommentForm.style';
 import { Dispatch, SetStateAction } from 'react';
 import { useSession } from 'next-auth/react';
@@ -5,6 +6,7 @@ import Portal from '@components/Modal/Portal';
 import useModal from '@components/Modal/hooks/useModal';
 import useCreateComment from '../hooks/useCreateComment';
 import useEditComment from '../hooks/useEditComment';
+import useKeyPress from '@hooks/useKeyPress';
 import { CommentProps } from '@@types/comments';
 
 interface CommentFormProps {
@@ -19,13 +21,20 @@ interface CommentFormProps {
 const CommentForm = ({
   isReplyMode,
   isEditMode,
-  setIsEditMode,
-  setIsReplyMode,
+  setIsEditMode = () => {},
+  setIsReplyMode = () => {},
   comments,
   type,
 }: CommentFormProps) => {
   const { modalConfig: login, showModal, closeModal } = useModal();
   const { data: session } = useSession();
+
+  useKeyPress({
+    Escape: () => {
+      setIsEditMode(false);
+      setIsReplyMode(false);
+    },
+  });
 
   const {
     comment,
@@ -91,8 +100,8 @@ const CommentForm = ({
           {(isEditMode || isReplyMode) && (
             <S.SubmitButton
               onClick={() => {
-                setIsEditMode && setIsEditMode(false);
-                setIsReplyMode && setIsReplyMode(false);
+                setIsEditMode(false);
+                setIsReplyMode(false);
               }}
             >
               취소
