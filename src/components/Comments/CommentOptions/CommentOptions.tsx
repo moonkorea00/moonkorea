@@ -2,14 +2,12 @@ import * as S from './CommentOptions.style';
 import { Dispatch, SetStateAction, useRef } from 'react';
 import { useSession } from 'next-auth/react';
 import useOnClickOutside from '@hooks/useOnClickOutside';
-import { MODAL_CONFIG } from '@components/Modal/Modal.utils';
 import { CommentProps } from '@@types/comments';
-import { ModalProps } from '@@types/modal';
 
 interface CommentOptionsProps {
   comments: CommentProps;
   isDeleting: boolean;
-  showDeleteToast: (props: ModalProps) => void;
+  showDeleteToast: (modalKey: 'delete_comment') => void;
   setIsEditMode: Dispatch<SetStateAction<boolean>>;
   setIsReplyMode: Dispatch<SetStateAction<boolean>>;
   setIsCommentOptionsVisible: Dispatch<SetStateAction<boolean>>;
@@ -56,7 +54,7 @@ const CommentOptions = ({
           <S.Option
             onClick={() => {
               setIsCommentOptionsVisible(false);
-              showDeleteToast(MODAL_CONFIG.DELETE_CONFIRMATION);
+              showDeleteToast('delete_comment');
             }}
             disabled={isDeleting}
           >

@@ -6,7 +6,6 @@ import useModal from '@components/Modal/hooks/useModal';
 import { CommentProps } from '@@types/comments';
 import { createComment } from '@lib/comment';
 import { getPostId } from '../Comments.utils';
-import { MODAL_CONFIG } from '@components/Modal/Modal.utils';
 import { sendNotificationEmail } from '@lib/notificationEmail';
 
 const useCreateComment = (
@@ -18,7 +17,8 @@ const useCreateComment = (
   const [comment, setComment] = useState('');
   const { data: session } = useSession();
   const queryClient = useQueryClient();
-  const { showModal } = useModal();
+  
+  const { modalConfig: createCommentErr, showModal } = useModal();
   const postId = getPostId();
 
   const { mutate, isLoading: isSubmitting } = useMutation(createComment, {
@@ -30,10 +30,7 @@ const useCreateComment = (
     },
     onError: err => {
       if (isAxiosError(err)) {
-        if (!err.response) {
-          throw Error('no existing response');
-        }
-        return showModal(MODAL_CONFIG.ERROR);
+        return showModal('error');
       }
     },
   });
@@ -56,10 +53,7 @@ const useCreateComment = (
       });
     } catch (err) {
       if (isAxiosError(err)) {
-        if (!err.response) {
-          throw Error('no existing response');
-        }
-        return showModal(MODAL_CONFIG.ERROR);
+        return showModal('error');
       }
     }
   };
@@ -69,6 +63,7 @@ const useCreateComment = (
     handleComment,
     onCreateComment,
     isSubmitting,
+    createCommentErr,
   };
 };
 

@@ -2,11 +2,10 @@ import * as S from './CommentForm.style';
 import { Dispatch, SetStateAction } from 'react';
 import { useSession } from 'next-auth/react';
 import Portal from '@components/Modal/Portal';
-import { CommentProps } from '@@types/comments';
 import useModal from '@components/Modal/hooks/useModal';
 import useCreateComment from '../hooks/useCreateComment';
 import useEditComment from '../hooks/useEditComment';
-import { MODAL_CONFIG } from '@components/Modal/Modal.utils';
+import { CommentProps } from '@@types/comments';
 
 interface CommentFormProps {
   isReplyMode?: boolean;
@@ -25,26 +24,34 @@ const CommentForm = ({
   comments,
   type,
 }: CommentFormProps) => {
-  const { modalConfig: loginConfig, showModal, closeModal } = useModal();
+  const { modalConfig: login, showModal, closeModal } = useModal();
   const { data: session } = useSession();
 
-  const { comment, handleComment, onCreateComment, isSubmitting } =
-    useCreateComment(
-      comments as CommentProps,
-      setIsReplyMode as Dispatch<SetStateAction<boolean>>,
-      type,
-      isReplyMode
-    );
+  const {
+    comment,
+    handleComment,
+    onCreateComment,
+    isSubmitting,
+    createCommentErr,
+  } = useCreateComment(
+    comments as CommentProps,
+    setIsReplyMode as Dispatch<SetStateAction<boolean>>,
+    type,
+    isReplyMode
+  );
 
   const {
     edittedComment,
     handleEditComment,
     onEditComment,
     isSubmittingEdittedComment,
+    editCommentErr,
   } = useEditComment(
     comments as CommentProps,
     setIsEditMode as Dispatch<SetStateAction<boolean>>
   );
+
+  const modalConfig = login || createCommentErr || editCommentErr;
 
   return (
     <S.Container>
@@ -55,7 +62,7 @@ const CommentForm = ({
             ? type === 'new_comment'
               ? onCreateComment()
               : onEditComment()
-            : showModal(MODAL_CONFIG.LOGIN);
+            : showModal('login');
         }}
       >
         {type === 'new_comment' && (
@@ -105,7 +112,7 @@ const CommentForm = ({
           </S.SubmitButton>
         </S.ButtonContainer>
       </form>
-      {loginConfig && <Portal modalConfig={loginConfig} onClose={closeModal} />}
+      {modalConfig && <Portal modalConfig={modalConfig} onClose={closeModal} />}
     </S.Container>
   );
 };

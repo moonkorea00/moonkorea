@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
+import { MODAL_CONFIG } from '../Modal.utils';
 import { ModalProps } from '@@types/modal';
 
 const useModal = () => {
@@ -13,15 +14,18 @@ const useModal = () => {
     };
   }, []);
 
-  const showModal = (props: ModalProps) => {
+  const showModal = (modalKey: keyof typeof MODAL_CONFIG) => {
+    const config = MODAL_CONFIG[modalKey];
+
     if (timeoutId.current !== null) {
       clearTimeout(timeoutId.current);
     }
-    setModalConfig(props);
-    if (props.duration) {
+    setModalConfig(config);
+
+    if ('duration' in config) {
       timeoutId.current = window.setTimeout(() => {
         setModalConfig(null);
-      }, props.duration);
+      }, config.duration);
     }
   };
 

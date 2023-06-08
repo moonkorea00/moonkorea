@@ -4,7 +4,6 @@ import { isAxiosError } from 'axios';
 import useModal from '@components/Modal/hooks/useModal';
 import { CommentProps } from '@@types/comments';
 import { updateComment } from '@lib/comment';
-import { MODAL_CONFIG } from '@components/Modal/Modal.utils';
 import { getPostId } from '../Comments.utils';
 import { sendNotificationEmail } from '@lib/notificationEmail';
 
@@ -14,8 +13,9 @@ const useEditComment = (
 ) => {
   const [edittedComment, setEdittedComment] = useState(comments?.body);
   const queryClient = useQueryClient();
+
+  const { modalConfig: editCommentErr, showModal } = useModal();
   const postId = getPostId();
-  const { showModal } = useModal();
 
   const { mutate, isLoading: isSubmittingEdittedComment } = useMutation(
     updateComment,
@@ -27,10 +27,7 @@ const useEditComment = (
       },
       onError: err => {
         if (isAxiosError(err)) {
-          if (!err.response) {
-            throw Error('no existing response');
-          }
-          return showModal(MODAL_CONFIG.ERROR);
+          return showModal('error');
         }
       },
     }
@@ -49,10 +46,7 @@ const useEditComment = (
       });
     } catch (err) {
       if (isAxiosError(err)) {
-        if (!err.response) {
-          throw Error('no existing response');
-        }
-        return showModal(MODAL_CONFIG.ERROR);
+        return showModal('error');
       }
     }
   };
@@ -62,6 +56,7 @@ const useEditComment = (
     handleEditComment,
     onEditComment,
     isSubmittingEdittedComment,
+    editCommentErr,
   };
 };
 
