@@ -3,6 +3,7 @@ import { Dispatch, SetStateAction, useRef } from 'react';
 import NavCategory from './NavCategory/NavCategory';
 import siderData from 'public/script/sider.json';
 import useOnClickOutside from '@hooks/useOnClickOutside';
+import useKeyPress from '@hooks/useKeyPress';
 
 interface SiderProps {
   isSiderVisible: boolean;
@@ -11,7 +12,9 @@ interface SiderProps {
 
 const Sider = ({ isSiderVisible, setIsSiderVisible }: SiderProps) => {
   const siderRef = useRef(null);
+
   useOnClickOutside(siderRef, () => setIsSiderVisible(false));
+  useKeyPress({ Escape: () => setIsSiderVisible(false) });
 
   return (
     <S.Container isSiderVisible={isSiderVisible} ref={siderRef}>
