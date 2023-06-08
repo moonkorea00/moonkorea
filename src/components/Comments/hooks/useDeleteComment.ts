@@ -3,7 +3,6 @@ import { isAxiosError } from 'axios';
 import useModal from '@components/Modal/hooks/useModal';
 import { deleteComment } from '@lib/comment';
 import { CommentProps } from '@@types/comments';
-import { MODAL_CONFIG } from '@components/Modal/Modal.utils';
 import { getPostId } from '../Comments.utils';
 import { sendNotificationEmail } from '@lib/notificationEmail';
 
@@ -25,10 +24,7 @@ const useDeleteComment = (comments: CommentProps) => {
     },
     onError: err => {
       if (isAxiosError(err)) {
-        if (!err.response) {
-          throw Error('no existing response');
-        }
-        return showModal(MODAL_CONFIG.ERROR);
+        return showModal('error');
       }
     },
   });
@@ -38,10 +34,7 @@ const useDeleteComment = (comments: CommentProps) => {
       mutate({ id: comments.id, postId });
     } catch (err) {
       if (isAxiosError(err)) {
-        if (!err.response) {
-          throw Error('no existing response');
-        }
-        return showModal(MODAL_CONFIG.ERROR);
+        return showModal('error');
       }
     }
   };
