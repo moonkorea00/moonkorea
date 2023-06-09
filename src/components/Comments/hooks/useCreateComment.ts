@@ -17,7 +17,7 @@ const useCreateComment = (
   const [comment, setComment] = useState('');
   const { data: session } = useSession();
   const queryClient = useQueryClient();
-  
+
   const { modalConfig: createCommentErr, showModal } = useModal();
   const postId = getPostId();
 
@@ -40,22 +40,16 @@ const useCreateComment = (
 
   const onCreateComment = () => {
     if (!comment) return;
-    try {
-      mutate({
-        postId,
-        body: comment,
-        // TODO
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        //@ts-ignore
-        userId: session?.user?.id,
-        userEmail: session?.user?.email as string,
-        parentId: comments?.id,
-      });
-    } catch (err) {
-      if (isAxiosError(err)) {
-        return showModal('error');
-      }
-    }
+    mutate({
+      postId,
+      body: comment,
+      // TODO
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      //@ts-ignore
+      userId: session?.user?.id,
+      userEmail: session?.user?.email as string,
+      parentId: comments?.id,
+    });
   };
 
   return {

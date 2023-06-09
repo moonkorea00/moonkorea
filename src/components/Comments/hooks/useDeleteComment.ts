@@ -29,15 +29,7 @@ const useDeleteComment = (comments: CommentProps) => {
     },
   });
 
-  const onDeleteComment = () => {
-    try {
-      mutate({ id: comments.id, postId });
-    } catch (err) {
-      if (isAxiosError(err)) {
-        return showModal('error');
-      }
-    }
-  };
+  const onDeleteComment = () => mutate({ id: comments.id, postId });
 
   return {
     deleteToastConfig,

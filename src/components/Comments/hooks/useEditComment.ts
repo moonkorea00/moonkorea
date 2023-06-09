@@ -38,17 +38,11 @@ const useEditComment = (
 
   const onEditComment = () => {
     if (edittedComment === comments?.body || !edittedComment) return;
-    try {
-      mutate({
-        id: comments.id,
-        body: edittedComment as string,
-        postId,
-      });
-    } catch (err) {
-      if (isAxiosError(err)) {
-        return showModal('error');
-      }
-    }
+    mutate({
+      id: comments.id,
+      body: edittedComment as string,
+      postId,
+    });
   };
 
   return {
