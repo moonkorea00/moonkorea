@@ -1,4 +1,4 @@
-import { instance } from '@lib';
+import { instance } from '@api';
 
 interface sendNotificationEmailProps {
   postId: string;
