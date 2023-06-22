@@ -29,7 +29,7 @@ export const ButtonContainer = styled.div`
   gap: 12px;
 `;
 
-export const SubmitButton = styled.button`
+export const ActionButton = styled.button`
   width: 100px;
   height: 34px;
   background-color: ${colors.blue};

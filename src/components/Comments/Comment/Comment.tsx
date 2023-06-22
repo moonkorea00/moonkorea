@@ -1,29 +1,21 @@
+import type { CommentProps } from '@@types/comments';
 import * as S from './Comment.style';
 import { useState } from 'react';
 import Image from 'next/image';
-import { CommentProps } from '@@types/comments';
-import CommentForm from '../CommentForm/CommentForm';
+import EditCommentForm from '../CommentForm/EditCommentForm';
+import NewCommentForm from '../CommentForm/NewCommentForm';
 import CommentList from '../CommentList/CommentList';
-import useDeleteComment from '../hooks/useDeleteComment';
-import { formatDateToElapsedTime, isEdittedComment } from '../Comments.utils';
-import Portal from '@components/Modal/Portal';
 import CommentOptions from '../CommentOptions/CommentOptions';
+import {
+  formatDateToElapsedTime,
+  checkIfIsEdittedComment,
+} from '../Comments.utils';
 import { assets } from '@utils/assetsPath';
 
 const Comment = ({ comments }: { comments: CommentProps }) => {
   const [isEditMode, setIsEditMode] = useState(false);
   const [isReplyMode, setIsReplyMode] = useState(false);
   const [isCommentOptionsVisible, setIsCommentOptionsVisible] = useState(false);
-
-  const isEditted = isEdittedComment(comments);
-
-  const {
-    deleteToastConfig,
-    showModal: showDeleteToast,
-    closeDeleteToast,
-    onDeleteComment,
-    isDeleting,
-  } = useDeleteComment(comments);
 
   return (
     <S.Container parentId={comments?.parentId as string} depth={comments.depth}>
@@ -46,7 +38,9 @@ const Comment = ({ comments }: { comments: CommentProps }) => {
               </S.User>
               <S.PublishDate>
                 {formatDateToElapsedTime(comments.createdAt)}{' '}
-                {isEditted && !comments.isDeleted && '(수정됨)'}
+                {checkIfIsEdittedComment(comments) &&
+                  !comments.isDeleted &&
+                  '(수정됨)'}
               </S.PublishDate>
             </div>
             <S.OptionsButton
@@ -57,8 +51,6 @@ const Comment = ({ comments }: { comments: CommentProps }) => {
             {isCommentOptionsVisible && (
               <CommentOptions
                 comments={comments}
-                isDeleting={isDeleting}
-                showDeleteToast={showDeleteToast}
                 setIsEditMode={setIsEditMode}
                 setIsReplyMode={setIsReplyMode}
                 setIsCommentOptionsVisible={setIsCommentOptionsVisible}
@@ -66,11 +58,10 @@ const Comment = ({ comments }: { comments: CommentProps }) => {
             )}
           </S.CommentInformation>
           {isEditMode ? (
-            <CommentForm
+            <EditCommentForm
               isEditMode={isEditMode}
               setIsEditMode={setIsEditMode}
               comments={comments}
-              type="edit"
             />
           ) : (
             <S.Content isDeleted={comments.isDeleted}>
@@ -78,24 +69,16 @@ const Comment = ({ comments }: { comments: CommentProps }) => {
             </S.Content>
           )}
           {isReplyMode && (
-            <CommentForm
+            <NewCommentForm
               isReplyMode={isReplyMode}
               setIsReplyMode={setIsReplyMode}
               comments={comments}
-              type="new_comment"
             />
           )}
         </S.ContentContainer>
       </S.FlexWrapContainer>
       {comments?.children?.length > 0 && (
         <CommentList comments={comments.children} />
-      )}
-      {deleteToastConfig && (
-        <Portal
-          modalConfig={deleteToastConfig}
-          onConfirm={onDeleteComment}
-          onClose={closeDeleteToast}
-        />
       )}
     </S.Container>
   );

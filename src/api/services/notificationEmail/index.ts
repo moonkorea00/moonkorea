@@ -8,5 +8,5 @@ interface sendNotificationEmailProps {
 export const sendNotificationEmail = async (
   params: sendNotificationEmailProps
 ) => {
-  return await instance.post('/api/notificationMail', { ...params });
+  return await instance.post('/api/notificationMail', params);
 };
