@@ -5,7 +5,7 @@ export const MODAL_CONFIG = {
     type: 'default',
     content: <LoginModal />,
   },
-  'delete_comment': {
+  delete_comment: {
     type: 'dialog',
     content: '댓글을 삭제하시겠습니까?',
     confirmText: '삭제',

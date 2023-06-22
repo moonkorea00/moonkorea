@@ -10,18 +10,22 @@ interface ToastProps {
   onClose: () => void;
 }
 
-const Toast = ({ modalConfig, onConfirm, onClose }: ToastProps) => {
+const Toast = ({ modalConfig, onClose }: ToastProps) => {
   const toastRef = useRef<HTMLDivElement>(null);
   useOnClickOutside(toastRef, onClose);
 
   return (
     <Overlay layoutType="toast">
       <S.Container ref={toastRef}>
-        <div>{modalConfig.content as string}</div>
+        <div>{modalConfig.content}</div>
         {modalConfig.type === 'dialog' && (
           <S.ButtonWrapper>
             <S.Button onClick={onClose}>취소</S.Button>
-            <S.Button onClick={onConfirm} action="delete">
+            <S.Button
+              onClick={modalConfig.props.onConfirm}
+              action="destroy"
+              disabled={modalConfig.props.disabled}
+            >
               {modalConfig.confirmText}
             </S.Button>
           </S.ButtonWrapper>

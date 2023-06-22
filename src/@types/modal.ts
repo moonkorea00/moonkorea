@@ -3,4 +3,5 @@ export interface ModalProps {
   content: string | JSX.Element;
   confirmText?: string;
   duration?: number;
+  props: any;
 }
