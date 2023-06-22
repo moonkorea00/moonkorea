@@ -15,17 +15,21 @@ date: '2023-06-01'
 
 ## 브라우저 호환성 문제
 
-&emsp;최근에 Web Speech API를 활용한 프로젝트를 진행했는데요. 브라우저 별로 어떻게 동작하고 출력되는지 확인해 보고자 앱을 preview build로 실행했는데 특정 브라우저(Firefox, Opera)에서 애플리케이션 에러가 발생하는 문제를 발견했습니다.
+&emsp;최근에 Web Speech API를 활용한 프로젝트를 진행했는데요. 브라우저 별로 어떻게 동작하고 출력되는지 확인해 보고자 앱을 preview build로 실행했는데 특정 브라우저(Firefox, Opera)에서 애플리케이션 에러가 발생하는 문제를 발견했습니다. 배포 전에 테스트를 했어야 했는데 아니나 다를까 사용자가 깃헙 이슈로 Opera에서는 동작을 하지 않는다는 피드백을 받았어요.
 
 <br>
 
+<img src="/assets/markdown-image/Tutorial-web-speech-api/github-issue.png" alt="github 이슈" width="550" height="300" />
+
+<span>1.1 깃헙 이슈</span>
+
 <img src="/assets/markdown-image/Tutorial-web-speech-api/firefox-err.png" alt="firefox application error" width="800" height="300" />
 
-<span>1.1 Firefox</span>
+<span>1.2 Firefox</span>
 
 <img src="/assets/markdown-image/Tutorial-web-speech-api/opera-err.png" alt="opera application error" width="800" height="300" />
 
-<span>1.2 Opera</span>
+<span>1.3 Opera</span>
 
 <br>
 
@@ -40,7 +44,7 @@ const recognition = new SpeechRecognition();
 
 <img src="/assets/markdown-image/Tutorial-web-speech-api/js-bundle.png" alt="opera application error" width="800" height="400" />
 
-<span>1.3 자바스크립트 번들</span>
+<span>1.4 자바스크립트 번들</span>
 
 <br>
 
@@ -91,10 +95,10 @@ if(speechRecognitionError) return <ErrorFallback {...speechRecognitionError} />;
 
 <video url='/assets/markdown-image/Tutorial-web-speech-api/compatible.webm' width='100%' height='auto'><video /> 
 
-<span>1.4 호환 O</span>
+<span>1.5 호환 O</span>
 
 <video url='/assets/markdown-image/Tutorial-web-speech-api/not-compatible.webm' width='100%' height='auto'><video />
  
-<span>1.5 호환 X</span>
+<span>1.6 호환 X</span>
 
 <br>

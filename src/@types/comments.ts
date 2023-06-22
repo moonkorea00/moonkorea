@@ -1,3 +1,5 @@
+import type { QueryKey } from "@tanstack/react-query";
+
 export interface RawCommentProps {
   id: string;
   body: string | null;
@@ -25,7 +27,7 @@ export interface UserProps {
 }
 
 export interface ReadCommentsParams {
-  queryKey: string[];
+  queryKey: QueryKey
 }
 
 export interface CreateCommentParams {

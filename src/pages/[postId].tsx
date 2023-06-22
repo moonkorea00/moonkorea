@@ -12,7 +12,7 @@ import rehypeRaw from 'rehype-raw';
 import Layout from '@components/common/Layout/Layout';
 import SEO from '@components/common/SEO/SEO';
 import CommentSection from '@components/Comments/CommentSection';
-import { getPostPaths, getPostById } from '@lib/post/getPost';
+import { getPostPaths, getPostById } from '@api/services/post';
 import useIsIntersected from '@hooks/useIsIntersected';
 
 interface Props {

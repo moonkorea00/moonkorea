@@ -1,13 +1,16 @@
+import type { Dispatch, SetStateAction } from 'react';
+import type { CommentProps } from '@@types/comments';
 import * as S from './CommentOptions.style';
-import { Dispatch, SetStateAction, useRef } from 'react';
+import { useRef } from 'react';
 import { useSession } from 'next-auth/react';
+import useModal from '@hooks/useModal';
+import { useDeleteComment } from '@api/hooks/Comments/mutation';
 import useOnClickOutside from '@hooks/useOnClickOutside';
-import { CommentProps } from '@@types/comments';
+import { getPostId } from '../Comments.utils';
+import { sendNotificationEmail } from '@api/services/notificationEmail';
 
 interface CommentOptionsProps {
   comments: CommentProps;
-  isDeleting: boolean;
-  showDeleteToast: (modalKey: 'delete_comment') => void;
   setIsEditMode: Dispatch<SetStateAction<boolean>>;
   setIsReplyMode: Dispatch<SetStateAction<boolean>>;
   setIsCommentOptionsVisible: Dispatch<SetStateAction<boolean>>;
@@ -15,26 +18,42 @@ interface CommentOptionsProps {
 
 const CommentOptions = ({
   comments,
-  isDeleting,
-  showDeleteToast,
   setIsEditMode,
   setIsReplyMode,
   setIsCommentOptionsVisible,
 }: CommentOptionsProps) => {
   const commentOptionsRef = useRef<HTMLDivElement>(null);
   const { data: session } = useSession();
-  useOnClickOutside(commentOptionsRef, () => setIsCommentOptionsVisible(false));
+
+  const { mutateAsync, isLoading } = useDeleteComment();
+  const { showModal, closeModal } = useModal();
+  const postId = getPostId();
 
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   const isAuthor = session?.user?.id == comments?.user.id;
+
+  // TODO : see why onSuccess callback doesnt work with mutate
+  const onDeleteComment = async () => {
+    try {
+      await mutateAsync({ id: comments.id, postId });
+      closeModal();
+      setIsEditMode(false);
+      setIsReplyMode(false);
+      sendNotificationEmail({ postId });
+    } catch (e) {
+      showModal({ name: 'error' });
+    }
+  };
+
+  useOnClickOutside(commentOptionsRef, () => setIsCommentOptionsVisible(false));
 
   return (
     <S.Container ref={commentOptionsRef}>
       <S.Option
         onClick={() => {
           setIsEditMode(false);
-          setIsReplyMode((prev: boolean) => !prev);
+          setIsReplyMode(true);
           setIsCommentOptionsVisible(false);
         }}
       >
@@ -45,7 +64,7 @@ const CommentOptions = ({
           <S.Option
             onClick={() => {
               setIsReplyMode(false);
-              setIsEditMode((prev: boolean) => !prev);
+              setIsEditMode(true);
               setIsCommentOptionsVisible(false);
             }}
           >
@@ -54,9 +73,12 @@ const CommentOptions = ({
           <S.Option
             onClick={() => {
               setIsCommentOptionsVisible(false);
-              showDeleteToast('delete_comment');
+              showModal({
+                name: 'delete_comment',
+                props: { onConfirm: onDeleteComment, disabled: isLoading },
+              });
             }}
-            disabled={isDeleting}
+            disabled={isLoading}
           >
             삭제
           </S.Option>

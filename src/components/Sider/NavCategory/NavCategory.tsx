@@ -2,8 +2,8 @@ import * as S from './NavCategory.style';
 import { useState, useEffect, useRef, Dispatch, SetStateAction } from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
-import Triangle from 'public/assets/sider/Triangle.png';
 import NavItem from '../NavItem/NavItem';
+import { assets } from '@utils/assetsPath';
 
 interface ItemProps {
   title: string;
@@ -43,7 +43,7 @@ const NavCategory = ({
     <S.Container>
       <S.CategoryContainer>
         <Image
-          src={Triangle}
+          src={assets.triangle}
           alt="triangle"
           onClick={handleDisplaySubnav}
           width={7}

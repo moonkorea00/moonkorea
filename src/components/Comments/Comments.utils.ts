@@ -44,7 +44,7 @@ export const formatDateToElapsedTime = (date: Date) => {
   }
 };
 
-export const isEdittedComment = (comments: CommentProps) => {
+export const checkIfIsEdittedComment = (comments: CommentProps) => {
   const isEditted =
     new Date(comments?.updatedAt).getTime() -
       new Date(comments?.createdAt).getTime() >
