@@ -1,6 +1,6 @@
 ---
 title: '리스트 순회와 이터러블, 이터레이터(ES6)'
-category: 'Javascript'
+category: '자바스크립트'
 excerpt: 'es6에서는 리스트를 어떻게 순회하는지 명령적으로 기술하기 보다는 선언적으로 리스트안에 있는 값들을 순회합니다. es6에서 for문이 어떤식으로 추상화돼있고 어떻게 이터러블 / 이터레이터라는 규약을 따르는지 알아보겠습니다.'
 description: 'ES6에서 for문의 추상화 간략하게 훑어보기'
 tags: 'Iterable, Iterator, ES6, 반복문'

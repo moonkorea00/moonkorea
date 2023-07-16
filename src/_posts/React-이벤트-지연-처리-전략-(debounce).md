@@ -1,6 +1,6 @@
 ---
 title: '이벤트 지연 처리 전략 (debounce)'
-category: 'React'
+category: '리액트'
 excerpt: '이번 글에서는 UI의 반응성과 성능을 개선할 수 있는 전략인 debounce의 동작 원리와 실용적인 사용 예시에 대해 알아보겠습니다.'
 description: '디바운스 동작 탐구'
 tags: 'debounce, 리렌더링, 성능'

@@ -1,6 +1,6 @@
 ---
 title: 'nodemailer로 이메일 전송(Zoho mail)'
-category: 'Tutorial'
+category: '튜토리얼 / 트러블슈팅'
 excerpt: 'nodemailer로 사용자에게 이메일을 보내 사용자 인증 프로세스를 처리하거나 알림의 기능이 필요한 경우의 과정을 다뤄보겠습니다. nodemailer 모듈은 발신자와 수신자 정보, 보낼 내용만 설정하여 간편하게 서드파티 앱에서 이메일을 보낼 수 있게 도와줍니다'
 description: '비즈니스 계정으로 사용자에게 이메일 보내기'
 tags: '튜토리얼, nodemailer, Node.js'

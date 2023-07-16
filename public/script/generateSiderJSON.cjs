@@ -5,15 +5,13 @@ const fs = require('fs');
 const matter = require('gray-matter');
 
 const INITIAL_SIDER_LIST = [
-  { name: '웹', variant: 'Browser' },
-  { name: '자바스크립트', variant: 'Javascript' },
-  { name: '타입스크립트', variant: 'Typescript' },
-  { name: '리액트', variant: 'React' },
-  { name: 'VScode', variant: 'vscode' },
-  { name: '튜토리얼 / 트러블슈팅', variant: 'Tutorial' },
+  { name: '웹' },
+  { name: '자바스크립트' },
+  { name: '타입스크립트' },
+  { name: '리액트' },
+  { name: 'VSCode' },
+  { name: '튜토리얼 / 트러블슈팅' },
 ];
-
-const CATEGORY_VARIANT = ['Browser', 'Javascript', 'Typescript', 'React', 'vscode', 'Tutorial'];
 
 const generateSiderJSON = () => {
   const postsDir = join(process.cwd(), '/src/_posts');
@@ -32,14 +30,10 @@ const generateSiderJSON = () => {
     };
   });
 
-  const filterByCategory = cat =>
-    frontMatter.filter(post => post.category === cat);
-
-  const siderData = INITIAL_SIDER_LIST.map((el, i) => {
-    if (el.variant === CATEGORY_VARIANT[i]) {
-      return { ...el, posts: filterByCategory(el.variant) };
-    }
-  });
+  const siderData = INITIAL_SIDER_LIST.map(category => ({
+    ...category,
+    posts: frontMatter.filter(post => post.category === category.name),
+  }));
 
   const siderJSON = JSON.stringify(siderData);
   fs.writeFileSync('public/script/sider.json', siderJSON, { flag: 'w' });

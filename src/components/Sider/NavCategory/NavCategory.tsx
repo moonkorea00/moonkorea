@@ -13,12 +13,12 @@ interface ItemProps {
 }
 
 interface CategoryProps {
-  item: { name: string; variant: string; posts: ItemProps[] };
+  item: { name: string; posts: ItemProps[] };
   setIsSiderVisible: Dispatch<SetStateAction<boolean>>;
 }
 
 const NavCategory = ({
-  item: { name, variant, posts },
+  item: { name, posts },
   setIsSiderVisible,
 }: CategoryProps) => {
   const [isSubCategoryOpen, setIsSubCategoryOpen] = useState(false);
@@ -26,8 +26,9 @@ const NavCategory = ({
   const navItemContainerRef = useRef<HTMLDivElement>(null);
   const { asPath } = useRouter();
 
-  const isUserOnSelectedCategory =
-    asPath.split('/')[1].split('-')[0] === variant;
+  const isUserOnSelectedCategory = posts.some(
+    post => `/${post.path}` === decodeURI(asPath)
+  );
 
   const handleDisplaySubnav = () => setIsSubCategoryOpen(prev => !prev);
 
