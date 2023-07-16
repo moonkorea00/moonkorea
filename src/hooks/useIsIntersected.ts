@@ -7,22 +7,20 @@ const useIsIntersected = <T extends HTMLElement>(
   const [isIntersected, setIsIntersected] = useState(false);
   const shouldStopObserving = 'once' in options;
 
-  if (typeof window !== 'undefined') {
-    useEffect(() => {
-      const observer = new IntersectionObserver(([entry]) => {
-        setIsIntersected(
-          shouldStopObserving ? entry.isIntersecting : !entry.isIntersecting
-        );
-        if (shouldStopObserving && entry.isIntersecting) observer.disconnect();
-      }, options);
+  useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      setIsIntersected(
+        shouldStopObserving ? entry.isIntersecting : !entry.isIntersecting
+      );
+      if (shouldStopObserving && entry.isIntersecting) observer.disconnect();
+    }, options);
 
-      if (ref.current) observer.observe(ref.current);
+    if (ref.current) observer.observe(ref.current);
 
-      return () => {
-        observer.disconnect();
-      };
-    }, []);
-  }
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
 
   return isIntersected;
 };

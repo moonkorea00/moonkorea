@@ -1,6 +1,6 @@
 ---
 title: 'Web Speech API 브라우저 호환성 문제 해결하기'
-category: 'Tutorial'
+category: '튜토리얼 / 트러블슈팅'
 excerpt: '브라우저 간의 Web Speech API(SpeechRecognition API) 크로스 브라우징 문제를 해결하는 방법에 대해 알아봅니다.'
 description: '웹 API 크로스 브라우징 문제 대응하기'
 tags: 'Web Speech API, Speech Recognition API, 크로스 브라우징, 트러블슈팅'

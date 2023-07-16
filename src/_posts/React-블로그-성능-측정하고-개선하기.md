@@ -1,6 +1,6 @@
 ---
 title: '블로그 성능 측정하고 개선하기'
-category: 'React'
+category: '리액트'
 excerpt: 'NextJS 프레임워크가 여러 도구와 기능들로 다양한 최적화 작업을 대신해 주지만 구글 lighthouse와 서버에서 넘어오는 리소스들을 살펴보면서 블로그의 성능을 개선할 수 있는 부분들을 살펴보겠습니다.'
 description: '구글 lighthouse의 평가 메트릭들을 보고 개선할 수 있는 부분 살펴보기'
 tags: 'Google Lighthouse, webM, 지연 로딩'
