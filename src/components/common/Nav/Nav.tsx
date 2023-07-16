@@ -1,8 +1,9 @@
 import * as S from './Nav.style';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import Sider from '@components/Sider/Sider';
+import useLockBodyScroll from '@hooks/useLockBodyScroll';
 import favicon from 'public/assets/favicon/moonkorea.png';
 
 interface NavProps {
@@ -12,9 +13,7 @@ interface NavProps {
 const Nav = ({ isIntersected }: NavProps) => {
   const [isSiderVisible, setIsSiderVisible] = useState(false);
 
-  useEffect(() => {
-    document.body.style.overflow = isSiderVisible ? 'hidden' : 'auto';
-  }, [isSiderVisible]);
+  useLockBodyScroll(isSiderVisible);
 
   return (
     <>
