@@ -1,6 +1,6 @@
 import type { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { useRef } from 'react';
-import Layout from '@components/common/Layout/Layout';
+import DefaultLayout from '@components/common/Layout/DefaultLayout/DefaultLayout';
 import SEO from '@components/common/SEO/SEO';
 import Markdown from '@components/Markdown';
 import { CommentSectionPlaceholder } from '@components/Comments/CommentSection.style.';
@@ -22,7 +22,7 @@ const Post = ({ metaData }: InferGetStaticPropsType<GetStaticProps>) => {
   });
 
   return (
-    <Layout metaData={metaData} pageType="post">
+    <>
       <SEO metaData={metaData} />
       <Markdown content={metaData.content} />
       <CommentSectionPlaceholder
@@ -32,11 +32,14 @@ const Post = ({ metaData }: InferGetStaticPropsType<GetStaticProps>) => {
       />
       {isIntersected && <CommentSection />}
       <PostSider metaData={metaData} />
-    </Layout>
+    </>
   );
 };
 
 export default Post;
+
+Post.getLayout = DefaultLayout;
+Post.pageType = 'post';
 
 export const getStaticPaths = async () => {
   const paths = getPostPaths();

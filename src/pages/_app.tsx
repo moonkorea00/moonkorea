@@ -1,4 +1,6 @@
+import type { NextComponentType } from 'next';
 import type { AppProps } from 'next/app';
+import type { NextPageWithLayout } from '@@types/layout';
 import { SessionProvider } from 'next-auth/react';
 import { ThemeProvider } from 'styled-components';
 import { Analytics } from '@vercel/analytics/react';
@@ -12,6 +14,12 @@ import KakaoScript from '@components/common/Script/Kakao';
 import useGoogleAnalytics from '@hooks/useGoogleAnalytics';
 
 const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps) => {
+  const getLayout =
+    (Component as NextPageWithLayout).getLayout ??
+    ((Page: NextComponentType, props: AppProps['pageProps']) => (
+      <Page {...props} />
+    ));
+
   useGoogleAnalytics();
 
   return (
@@ -24,7 +32,7 @@ const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps) => {
           <ModalProvider>
             <ReactQueryClientProvider pageProps={pageProps}>
               <GlobalStyle />
-              <Component {...pageProps} />
+              {getLayout(Component, pageProps)}
               <Analytics />
             </ReactQueryClientProvider>
           </ModalProvider>
