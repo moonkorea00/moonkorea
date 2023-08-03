@@ -7,7 +7,7 @@ const ReactPlayer = dynamic(() => import('react-player/lazy'), { ssr: false });
 
 export const MDIframe = dynamic(
   () =>
-    import('src/components/Markdown/MarkDownComponent').then(
+    import('src/components/Markdown/CustomMarkdown').then(
       module => module.MarkdownIframe
     ),
   { ssr: false }
@@ -15,17 +15,6 @@ export const MDIframe = dynamic(
 
 interface MarkdownCodeProps {
   children: string[];
-}
-
-interface MarkdownImageProps {
-  src: string;
-  alt: string;
-  width: number;
-  height?: number;
-}
-
-interface MarkdownVideoProps {
-  url: string;
 }
 
 export const MarkdownCode = ({ children }: MarkdownCodeProps) => {
@@ -41,6 +30,13 @@ export const MarkdownCode = ({ children }: MarkdownCodeProps) => {
     </SyntaxHighlighter>
   );
 };
+
+interface MarkdownImageProps {
+  src: string;
+  alt: string;
+  width: number;
+  height?: number;
+}
 
 export const MarkdownImage = ({
   src,
@@ -59,6 +55,10 @@ export const MarkdownImage = ({
     />
   );
 };
+
+interface MarkdownVideoProps {
+  url: string;
+}
 
 export const MarkdownVideo = ({ url, ...props }: MarkdownVideoProps) => {
   return (
