@@ -15,7 +15,7 @@ export const Container = styled.div<{ scrollDirection: 'up' | 'down' | null }>`
   z-index: 1;
 
   @media screen and (max-width: 1024px) {
-    top: -100px;
+    top: -110px;
     right: 0;
   }
 `;
