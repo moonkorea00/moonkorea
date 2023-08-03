@@ -1,7 +1,8 @@
+import type { MetaData } from '@@types/metaData';
 import Head from 'next/head';
 
 interface SEOProps {
-  metaData: { id?: string; title?: string; excerpt?: string } | null;
+  metaData?: Partial<Pick<MetaData, 'id' | 'excerpt' | 'title'>>;
 }
 
 const SEO = ({ metaData }: SEOProps) => {
@@ -28,6 +29,21 @@ const SEO = ({ metaData }: SEOProps) => {
         content={metaData?.excerpt || DESCRIPTION}
       />
       <meta property="og:image" content={process.env.NEXT_PUBLIC_IMG_URL} />
+      {/* Twitter */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content={metaData?.title || TITLE} />
+      <meta
+        property="twitter:url"
+        content={
+          `${process.env.NEXT_PUBLIC_DOMAIN_URL}/${metaData?.id}` ||
+          `${process.env.NEXT_PUBLIC_DOMAIN_URL}`
+        }
+      />
+      <meta
+        name="twitter:description"
+        content={metaData?.excerpt || DESCRIPTION}
+      />
+      <meta name="twitter:image" content={process.env.NEXT_PUBLIC_IMG_URL} />
     </Head>
   );
 };

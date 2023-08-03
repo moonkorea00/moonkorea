@@ -1,16 +1,12 @@
+import type { MetaData } from '@@types/metaData';
 import * as S from './Layout.style';
 import Header from '../Header/Header';
+// import PostSider from '@components/PostSider/PostSider';
 
 interface LayoutProps {
   children: React.ReactNode;
-  metaData?: {
-    id: string;
-    title: string;
-    tags: string;
-    description: string;
-    date: string;
-  };
-  pageType?: string;
+  metaData?: MetaData;
+  pageType?: 'post' | '404';
 }
 
 const Layout = ({ children, ...props }: LayoutProps) => {
