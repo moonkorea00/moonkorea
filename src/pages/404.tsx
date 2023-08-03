@@ -1,4 +1,4 @@
-import Layout from '@components/common/Layout/Layout';
+import DefaultLayout from '@components/common/Layout/DefaultLayout/DefaultLayout';
 import SEO from '@components/common/SEO/SEO';
 import NotFound from '@components/404/NotFound';
 
@@ -8,11 +8,14 @@ const metaData = {
 
 const NotFoundPage = () => {
   return (
-    <Layout pageType='404'>
+    <>
       <SEO metaData={metaData} />
       <NotFound />
-    </Layout>
+    </>
   );
 };
 
 export default NotFoundPage;
+
+NotFoundPage.getLayout = DefaultLayout;
+NotFoundPage.pagType = '404';

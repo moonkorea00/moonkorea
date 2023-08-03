@@ -1,21 +1,13 @@
 import type { GetStaticProps, InferGetStaticPropsType } from 'next';
-import type {
-  DetailedHTMLFactory,
-  ImgHTMLAttributes,
-  HTMLAttributes,
-} from 'react';
-import * as MD from '@components/Markdown/CustomMarkdown.style';
-import * as MDX from '@components/Markdown/MarkDownComponent';
 import { useRef } from 'react';
-import Reactmarkdown from 'react-markdown';
-import rehypeRaw from 'rehype-raw';
-import Layout from '@components/common/Layout/Layout';
+import DefaultLayout from '@components/common/Layout/DefaultLayout/DefaultLayout';
 import SEO from '@components/common/SEO/SEO';
-import CommentSection from '@components/Comments/CommentSection';
+import Markdown from '@components/Markdown';
 import { CommentSectionPlaceholder } from '@components/Comments/CommentSection.style.';
+import CommentSection from '@components/Comments/CommentSection';
+import PostSider from '@components/PostSider/PostSider';
 import { getPostPaths, getPostById } from '@api/services/post';
 import useIsIntersected from '@hooks/useIsIntersected';
-import PostSider from '@components/PostSider/PostSider';
 
 interface PostPageProps {
   params: {
@@ -30,34 +22,9 @@ const Post = ({ metaData }: InferGetStaticPropsType<GetStaticProps>) => {
   });
 
   return (
-    <Layout metaData={metaData} pageType="post">
+    <>
       <SEO metaData={metaData} />
-      <Reactmarkdown
-        rehypePlugins={[rehypeRaw]}
-        components={{
-          h1: ({ ...props }) => <MD.MarkdownH1 {...props} />,
-          h2: ({ ...props }) => <MD.MarkdownH2 {...props} />,
-          h3: ({ ...props }) => <MD.MarkdownH3 {...props} />,
-          span: ({ ...props }) => <MD.MarkdownSpan {...props} />,
-          p: ({ ...props }) => <MD.MarkdownP {...props} />,
-          blockquote: ({ ...props }) => <MD.MarkdownBlockquote {...props} />,
-          img: MDX.MarkdownImage as DetailedHTMLFactory<
-            ImgHTMLAttributes<HTMLImageElement>,
-            HTMLImageElement
-          >,
-          code: MDX.MarkdownCode as DetailedHTMLFactory<
-            HTMLAttributes<HTMLElement>,
-            HTMLElement
-          >,
-          video: MDX.MarkdownVideo as DetailedHTMLFactory<
-            React.VideoHTMLAttributes<HTMLVideoElement>,
-            HTMLVideoElement
-          >,
-          iframe: ({ ...props }) => <MDX.MarkdownIframe {...props} />,
-        }}
-      >
-        {metaData.content}
-      </Reactmarkdown>
+      <Markdown content={metaData.content} />
       <CommentSectionPlaceholder
         id="comment-section"
         isIntersected={isIntersected}
@@ -65,11 +32,14 @@ const Post = ({ metaData }: InferGetStaticPropsType<GetStaticProps>) => {
       />
       {isIntersected && <CommentSection />}
       <PostSider metaData={metaData} />
-    </Layout>
+    </>
   );
 };
 
 export default Post;
+
+Post.getLayout = DefaultLayout;
+Post.pageType = 'post';
 
 export const getStaticPaths = async () => {
   const paths = getPostPaths();

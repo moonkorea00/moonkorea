@@ -6,3 +6,5 @@ export interface MetaData {
   excerpt: string;
   date: string;
 }
+
+export type FrontMatter = Omit<MetaData, 'excerpt'>;

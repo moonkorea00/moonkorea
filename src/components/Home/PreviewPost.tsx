@@ -1,14 +1,9 @@
+import type { FrontMatter } from '@@types/metaData';
 import * as S from './PreviewPost.style';
 import Link from 'next/link';
 
 interface PreviewPostProps {
-  postData: {
-    id: string;
-    title: string;
-    tags: string;
-    description: string;
-    date: string;
-  };
+  postData: FrontMatter;
 }
 
 const PreviewPost = ({ postData }: PreviewPostProps) => {
