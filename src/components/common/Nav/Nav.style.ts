@@ -5,10 +5,6 @@ interface NavStyleProps {
   isIntersected: boolean;
 }
 
-interface NavItemProps {
-  noCursor?: boolean;
-}
-
 export const Container = styled.nav<NavStyleProps>`
   position: ${({ isIntersected }) => (isIntersected ? 'fixed' : 'absolute')};
   border-bottom: ${({ isIntersected }) =>
@@ -72,9 +68,9 @@ export const NavBar = styled.ul`
   }
 `;
 
-export const NavItem = styled.li<NavItemProps>`
+export const NavItem = styled.li`
   list-style: none;
-  cursor: ${({ noCursor }) => (noCursor ? 'auto' : 'pointer')};
+  cursor: pointer;
 `;
 
 export const Style = {

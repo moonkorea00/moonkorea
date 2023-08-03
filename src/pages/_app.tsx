@@ -8,6 +8,7 @@ import theme from '@styles/theme';
 import ModalProvider from '@context/Modal';
 import GoogleAnalytics from '@components/common/Script/GoogleAnalytics';
 import ChannelIo from '@components/common/Script/ChannelIO';
+import KakaoScript from '@components/common/Script/Kakao';
 import useGoogleAnalytics from '@hooks/useGoogleAnalytics';
 
 const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps) => {
@@ -17,6 +18,7 @@ const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps) => {
     <>
       <GoogleAnalytics />
       <ChannelIo />
+      <KakaoScript />
       <ThemeProvider theme={theme}>
         <SessionProvider session={session}>
           <ModalProvider>

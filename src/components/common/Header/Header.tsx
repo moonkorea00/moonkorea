@@ -1,17 +1,12 @@
+import type { MetaData } from '@@types/metaData';
 import * as S from './Header.style';
 import { useRef } from 'react';
 import Nav from '../Nav/Nav';
 import HeaderContent from './HeaderContent/HeaderContent';
-import useIsIntersected from '../../../hooks/useIsIntersected';
+import useIsIntersected from '@hooks/useIsIntersected';
 
 interface HeaderProps {
-  metaData?: {
-    id: string;
-    title: string;
-    tags: string;
-    description: string;
-    date: string;
-  };
+  metaData?: MetaData;
   pageType?: string;
 }
 
@@ -20,7 +15,7 @@ const Header = ({ metaData, pageType }: HeaderProps) => {
   const isIntersected = useIsIntersected(headerRef);
 
   return (
-    <S.Container ref={headerRef}>
+    <S.Container ref={headerRef} data-header-element>
       <Nav isIntersected={isIntersected} />
       <S.HeadingContainer>
         <HeaderContent pageType={pageType} metaData={metaData} />

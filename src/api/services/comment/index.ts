@@ -1,10 +1,10 @@
-import { instance } from '@api';
-import {
+import type {
   ReadCommentsParams,
   CreateCommentParams,
   UpdateCommentParams,
   DeleteCommentParams,
 } from '@@types/comments';
+import { instance } from '@api';
 
 export const readComments = ({ queryKey: [, id] }: ReadCommentsParams) => {
   return instance.get(`/api/comment/${id}`);

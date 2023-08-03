@@ -1,22 +1,18 @@
+import type { MetaData } from '@@types/metaData';
 import * as S from './HeaderContent.style';
 import PostHeader from '../PostHeader/PostHeader';
 
+type HeaderMetaData = Omit<MetaData, 'id'>;
+
 interface HeaderContentProps {
-  metaData?: metDataProps;
+  metaData?: HeaderMetaData;
   pageType?: string;
 }
 
-interface metDataProps {
-  title: string;
-  tags: string;
-  description: string;
-  date: string;
-}
-
-const HeaderContent = ({ pageType, metaData }: HeaderContentProps) => {
+const HeaderContent = ({ metaData, pageType }: HeaderContentProps) => {
   switch (pageType) {
     case 'post':
-      return <PostHeader metaData={metaData as metDataProps} />;
+      return <PostHeader metaData={metaData as HeaderMetaData} />;
     case '404':
       return <S.Heading>404</S.Heading>;
     default:

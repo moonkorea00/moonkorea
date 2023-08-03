@@ -1,21 +1,23 @@
-import * as MD from '@components/Markdown/CustomMarkdown.style';
-import * as MDX from '@components/Markdown/MarkDownComponent';
-import {
-  useRef,
+import type { GetStaticProps, InferGetStaticPropsType } from 'next';
+import type {
   DetailedHTMLFactory,
   ImgHTMLAttributes,
   HTMLAttributes,
 } from 'react';
-import { GetStaticProps, InferGetStaticPropsType } from 'next';
+import * as MD from '@components/Markdown/CustomMarkdown.style';
+import * as MDX from '@components/Markdown/MarkDownComponent';
+import { useRef } from 'react';
 import Reactmarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 import Layout from '@components/common/Layout/Layout';
 import SEO from '@components/common/SEO/SEO';
 import CommentSection from '@components/Comments/CommentSection';
+import { CommentSectionPlaceholder } from '@components/Comments/CommentSection.style.';
 import { getPostPaths, getPostById } from '@api/services/post';
 import useIsIntersected from '@hooks/useIsIntersected';
+import PostSider from '@components/PostSider/PostSider';
 
-interface Props {
+interface PostPageProps {
   params: {
     postId: string;
   };
@@ -56,8 +58,13 @@ const Post = ({ metaData }: InferGetStaticPropsType<GetStaticProps>) => {
       >
         {metaData.content}
       </Reactmarkdown>
-      <div ref={commentSectionRef} />
+      <CommentSectionPlaceholder
+        id="comment-section"
+        isIntersected={isIntersected}
+        ref={commentSectionRef}
+      />
       {isIntersected && <CommentSection />}
+      <PostSider metaData={metaData} />
     </Layout>
   );
 };
@@ -69,7 +76,7 @@ export const getStaticPaths = async () => {
   return { paths, fallback: false };
 };
 
-export const getStaticProps = async ({ params }: Props) => {
+export const getStaticProps = async ({ params }: PostPageProps) => {
   const metaData = await getPostById(params.postId);
   return {
     props: { metaData },

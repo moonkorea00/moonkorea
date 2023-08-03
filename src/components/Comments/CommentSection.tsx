@@ -14,7 +14,7 @@ const CommentSection = () => {
         <S.CommentCount>{comments.data.total_comments}개 댓글</S.CommentCount>
       )}
       <NewCommentForm />
-      <CommentList comments={comments?.data.comments} />
+      {comments?.data && <CommentList comments={comments?.data.comments} />}
     </S.Container>
   );
 };
