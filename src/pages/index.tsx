@@ -1,8 +1,8 @@
-import { GetStaticProps, InferGetStaticPropsType } from 'next';
-import { getAllPosts } from '@api/services/post';
+import type { GetStaticProps, InferGetStaticPropsType } from 'next';
 import Layout from '@components/common/Layout/Layout';
 import SEO from '@components/common/SEO/SEO';
 import PreviewPost from '@components/Home/PreviewPost';
+import { getAllPosts } from '@api/services/post';
 
 interface FrontMatterProps {
   id: string;
@@ -15,7 +15,7 @@ interface FrontMatterProps {
 const Home = ({ metaData }: InferGetStaticPropsType<GetStaticProps>) => {
   return (
     <Layout>
-      <SEO metaData={null} />
+      <SEO />
       {metaData
         .sort((a: FrontMatterProps, b: FrontMatterProps) =>
           a.date > b.date ? -1 : 1

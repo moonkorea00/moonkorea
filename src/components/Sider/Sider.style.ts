@@ -22,6 +22,7 @@ export const Container = styled.aside<ContainerProps>`
     isSiderVisible ? 'translateX(0)' : 'translateX(-100%)'};
   overflow-y: scroll;
   overscroll-behavior-y: none;
+  z-index: 1;
 `;
 
 export const ButtonWrapper = styled.div`
