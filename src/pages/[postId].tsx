@@ -1,10 +1,11 @@
 import type { GetStaticProps, InferGetStaticPropsType } from 'next';
-import { useRef } from 'react';
+import { Suspense, useRef } from 'react';
 import DefaultLayout from '@components/common/Layout/DefaultLayout/DefaultLayout';
 import SEO from '@components/common/SEO/SEO';
 import Markdown from '@components/Markdown';
-import { CommentSectionPlaceholder } from '@components/Comments/CommentSection.style.';
+import { CommentSectionPlaceholder } from '@components/Comments/CommentSection.style';
 import CommentSection from '@components/Comments/CommentSection';
+import CommentSectionLoader from '@components/Comments/Loader/Loader';
 import PostSider from '@components/PostSider/PostSider';
 import { getPostPaths, getPostById } from '@api/services/post';
 import useIsIntersected from '@hooks/useIsIntersected';
@@ -30,7 +31,11 @@ const Post = ({ metaData }: InferGetStaticPropsType<GetStaticProps>) => {
         isIntersected={isIntersected}
         ref={commentSectionRef}
       />
-      {isIntersected && <CommentSection />}
+      {isIntersected && (
+        <Suspense fallback={<CommentSectionLoader />}>
+          <CommentSection />
+        </Suspense>
+      )}
       <PostSider metaData={metaData} />
     </>
   );

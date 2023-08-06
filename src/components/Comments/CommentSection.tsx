@@ -1,4 +1,4 @@
-import * as S from './CommentSection.style.';
+import * as S from './CommentSection.style';
 import CommentList from './CommentList/CommentList';
 import { useGetComments } from '@api/hooks/Comments/query';
 import { getPostId } from './Comments.utils';
