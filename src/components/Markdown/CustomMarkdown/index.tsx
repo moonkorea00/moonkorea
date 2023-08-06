@@ -22,7 +22,7 @@ export const MarkdownCode = ({ children }: MarkdownCodeProps) => {
     padding: '10px 15px',
     margin: '22px 0',
     borderRadius: '10px',
-    lineHeight: '24px'
+    lineHeight: '24px',
   };
   return (
     <SyntaxHighlighter language="javascript" customStyle={customStyle}>
@@ -51,6 +51,8 @@ export const MarkdownImage = ({
       width={width}
       height={height}
       style={{ display: 'block', margin: '0 auto 2vh auto' }}
+      placeholder="blur"
+      blurDataURL="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=="
       layout="intrinsic"
     />
   );

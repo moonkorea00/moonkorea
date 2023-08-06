@@ -56,8 +56,8 @@ const SocialSharePanel = ({
   const onCloseModal = () => setIsSocialSharePanelVisible(false);
 
   const onShareWithKakaoAndCloseModal = () => {
-    onCloseModal();
     onShareWithKakao();
+    onCloseModal();
   };
 
   useOnClickOutside(SocialShareRef, onCloseModal);
