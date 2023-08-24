@@ -14,12 +14,12 @@ interface ItemProps {
 
 interface CategoryProps {
   item: { name: string; posts: ItemProps[] };
-  setIsSiderVisible: Dispatch<SetStateAction<boolean>>;
+  onCloseSider: () => void;
 }
 
 const NavCategory = ({
   item: { name, posts },
-  setIsSiderVisible,
+  onCloseSider,
 }: CategoryProps) => {
   const [isSubCategoryOpen, setIsSubCategoryOpen] = useState(false);
   const [containerHeight, setContainerHeight] = useState(0);
@@ -30,7 +30,7 @@ const NavCategory = ({
     post => `/${post.path}` === decodeURI(asPath)
   );
 
-  const handleDisplaySubnav = () => setIsSubCategoryOpen(prev => !prev);
+  const onToggleSubnav = () => setIsSubCategoryOpen(prev => !prev);
 
   useEffect(() => {
     isUserOnSelectedCategory && setIsSubCategoryOpen(true);
@@ -46,7 +46,7 @@ const NavCategory = ({
         <Image
           src={assets.triangle}
           alt="triangle"
-          onClick={handleDisplaySubnav}
+          onClick={onToggleSubnav}
           width={7}
           height={7}
           style={{
@@ -57,7 +57,7 @@ const NavCategory = ({
         />
         <S.CategoryItem
           condition={isUserOnSelectedCategory}
-          onClick={handleDisplaySubnav}
+          onClick={onToggleSubnav}
         >
           <S.Title>{name}</S.Title>
           <S.TotalPosts>({posts.length})</S.TotalPosts>
@@ -72,8 +72,8 @@ const NavCategory = ({
           <NavItem
             key={idx}
             title={title}
-            path={path}
-            setIsSiderVisible={setIsSiderVisible}
+            path={`/${path}`}
+            onCloseSider={onCloseSider}
           />
         ))}
       </S.NavItemContainer>
