@@ -1,8 +1,9 @@
 import * as S from './NavCategory.style';
-import { useState, useEffect, useRef, Dispatch, SetStateAction } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import NavItem from '../NavItem/NavItem';
+import useExpandAndCollapse from '../hooks/useExpandAndCollapse';
 import { assets } from '@utils/assetsPath';
 
 interface ItemProps {
@@ -22,23 +23,18 @@ const NavCategory = ({
   onCloseSider,
 }: CategoryProps) => {
   const [isSubCategoryOpen, setIsSubCategoryOpen] = useState(false);
-  const [containerHeight, setContainerHeight] = useState(0);
-  const navItemContainerRef = useRef<HTMLDivElement>(null);
   const { asPath } = useRouter();
+
+  const onToggleSubnav = () => setIsSubCategoryOpen(prev => !prev);
 
   const isUserOnSelectedCategory = posts.some(
     post => `/${post.path}` === decodeURI(asPath)
   );
 
-  const onToggleSubnav = () => setIsSubCategoryOpen(prev => !prev);
-
-  useEffect(() => {
-    isUserOnSelectedCategory && setIsSubCategoryOpen(true);
-    if (navItemContainerRef.current) {
-      const currentContainerHeight = navItemContainerRef.current.scrollHeight;
-      setContainerHeight(currentContainerHeight);
-    }
-  }, [isUserOnSelectedCategory]);
+  const { containerHeight, ref: navItemContainerRef } = useExpandAndCollapse<
+    HTMLDivElement,
+    VoidFunction
+  >(isUserOnSelectedCategory, () => setIsSubCategoryOpen(true));
 
   return (
     <S.Container>
@@ -56,7 +52,7 @@ const NavCategory = ({
           }}
         />
         <S.CategoryItem
-          condition={isUserOnSelectedCategory}
+          isActive={isUserOnSelectedCategory}
           onClick={onToggleSubnav}
         >
           <S.Title>{name}</S.Title>
