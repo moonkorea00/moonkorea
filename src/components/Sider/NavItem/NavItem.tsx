@@ -15,7 +15,7 @@ const NavItem = ({ title, path, onCloseSider }: NavItemProps) => {
   return (
     <S.Container isPostSelected={isPostSelected}>
       -
-      <Link href={path}>
+      <Link href={`/${path}`}>
         <S.PostTitle onClick={onCloseSider}>{title}</S.PostTitle>
       </Link>
     </S.Container>

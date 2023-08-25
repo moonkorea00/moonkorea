@@ -68,7 +68,7 @@ const NavCategory = ({
           <NavItem
             key={idx}
             title={title}
-            path={`/${path}`}
+            path={path}
             onCloseSider={onCloseSider}
           />
         ))}
