@@ -34,13 +34,16 @@ const PostSider = ({ metaData }: PostSiderProps) => {
       headerHeight={headerHeight}
       scrollDirection={scrollDirection}
     >
-      <S.SiderButton onClick={onPrefetchAndScrollToComments}>
+      <S.SiderButton onClick={onPrefetchAndScrollToComments} title="댓글">
         <S.ButtonImageContainer>
           <S.ButtonImage src={assets.comment} />
         </S.ButtonImageContainer>
       </S.SiderButton>
       <S.Seperator />
-      <S.SiderButton onClick={() => setIsSocialSharePanelVisible(true)}>
+      <S.SiderButton
+        onClick={() => setIsSocialSharePanelVisible(true)}
+        title="공유하기"
+      >
         <S.ButtonImageContainer>
           <S.ButtonImage src={assets.share} />
         </S.ButtonImageContainer>
