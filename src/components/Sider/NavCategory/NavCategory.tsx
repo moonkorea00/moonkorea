@@ -1,8 +1,9 @@
 import * as S from './NavCategory.style';
-import { useState, useEffect, useRef, Dispatch, SetStateAction } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import NavItem from '../NavItem/NavItem';
+import useExpandAndCollapse from '../hooks/useExpandAndCollapse';
 import { assets } from '@utils/assetsPath';
 
 interface ItemProps {
@@ -14,31 +15,26 @@ interface ItemProps {
 
 interface CategoryProps {
   item: { name: string; posts: ItemProps[] };
-  setIsSiderVisible: Dispatch<SetStateAction<boolean>>;
+  onCloseSider: () => void;
 }
 
 const NavCategory = ({
   item: { name, posts },
-  setIsSiderVisible,
+  onCloseSider,
 }: CategoryProps) => {
   const [isSubCategoryOpen, setIsSubCategoryOpen] = useState(false);
-  const [containerHeight, setContainerHeight] = useState(0);
-  const navItemContainerRef = useRef<HTMLDivElement>(null);
   const { asPath } = useRouter();
+
+  const onToggleSubnav = () => setIsSubCategoryOpen(prev => !prev);
 
   const isUserOnSelectedCategory = posts.some(
     post => `/${post.path}` === decodeURI(asPath)
   );
 
-  const handleDisplaySubnav = () => setIsSubCategoryOpen(prev => !prev);
-
-  useEffect(() => {
-    isUserOnSelectedCategory && setIsSubCategoryOpen(true);
-    if (navItemContainerRef.current) {
-      const currentContainerHeight = navItemContainerRef.current.scrollHeight;
-      setContainerHeight(currentContainerHeight);
-    }
-  }, [isUserOnSelectedCategory]);
+  const { containerHeight, ref: navItemContainerRef } = useExpandAndCollapse<
+    HTMLDivElement,
+    VoidFunction
+  >(isUserOnSelectedCategory, () => setIsSubCategoryOpen(true));
 
   return (
     <S.Container>
@@ -46,7 +42,7 @@ const NavCategory = ({
         <Image
           src={assets.triangle}
           alt="triangle"
-          onClick={handleDisplaySubnav}
+          onClick={onToggleSubnav}
           width={7}
           height={7}
           style={{
@@ -56,8 +52,8 @@ const NavCategory = ({
           }}
         />
         <S.CategoryItem
-          condition={isUserOnSelectedCategory}
-          onClick={handleDisplaySubnav}
+          isActive={isUserOnSelectedCategory}
+          onClick={onToggleSubnav}
         >
           <S.Title>{name}</S.Title>
           <S.TotalPosts>({posts.length})</S.TotalPosts>
@@ -72,8 +68,8 @@ const NavCategory = ({
           <NavItem
             key={idx}
             title={title}
-            path={path}
-            setIsSiderVisible={setIsSiderVisible}
+            path={`/${path}`}
+            onCloseSider={onCloseSider}
           />
         ))}
       </S.NavItemContainer>

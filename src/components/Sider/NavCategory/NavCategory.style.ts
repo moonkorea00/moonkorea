@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 interface TitleProps {
-  condition: boolean;
+  isActive: boolean;
 }
 
 interface NavItemContainerProps {
@@ -24,7 +24,7 @@ export const Title = styled.span``;
 export const CategoryItem = styled.span<TitleProps>`
   margin-left: 10px;
   font-size: 0.9em;
-  font-weight: ${({ condition }) => condition && '900'};
+  font-weight: ${({ isActive }) => isActive && '900'};
   cursor: pointer;
 `;
 

@@ -13,22 +13,18 @@ interface SiderProps {
 const Sider = ({ isSiderVisible, setIsSiderVisible }: SiderProps) => {
   const siderRef = useRef(null);
 
-  useOnClickOutside(siderRef, () => setIsSiderVisible(false));
-  useKeyPress({ Escape: () => setIsSiderVisible(false) });
+  const onCloseSider = () => setIsSiderVisible(false);
+
+  useOnClickOutside(siderRef, onCloseSider);
+  useKeyPress({ Escape: onCloseSider });
 
   return (
     <S.Container isSiderVisible={isSiderVisible} ref={siderRef}>
       <S.ButtonWrapper>
-        <S.CloseButton onClick={() => setIsSiderVisible(false)}>
-          &#10005;
-        </S.CloseButton>
+        <S.CloseButton onClick={onCloseSider}>&#10005;</S.CloseButton>
       </S.ButtonWrapper>
       {siderData.map((item, idx) => (
-        <NavCategory
-          key={idx}
-          item={item}
-          setIsSiderVisible={setIsSiderVisible}
-        />
+        <NavCategory key={idx} item={item} onCloseSider={onCloseSider} />
       ))}
     </S.Container>
   );
