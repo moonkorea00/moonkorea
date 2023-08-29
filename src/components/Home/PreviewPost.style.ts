@@ -1,10 +1,9 @@
 import styled from 'styled-components';
-import { colors } from '@styles/colors';
 
 export const Container = styled.section`
   ${({ theme }) => theme.flexColumn}
   padding: 1px 12px;
-  border-bottom: 1px solid ${colors.gray300};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.base.gray300};
   line-height: 150%;
 `;
 
@@ -19,7 +18,7 @@ export const Tags = styled.span`
   font-size: 0.85em;
   font-weight: 600;
   border-radius: 10px;
-  background-color: ${colors.gray200};
+  background-color: ${({ theme }) => theme.colors.base.gray200};
 
   @media screen and (max-width: 768px) {
     font-size: 0.8em;
@@ -36,7 +35,7 @@ export const Title = styled.h2`
 
 export const Description = styled.h3`
   font-size: 1em;
-  color: ${colors.black};
+  color: ${({ theme }) => theme.colors.base.black};
 
   @media screen and (max-width: 768px) {
     font-size: 0.85em;
@@ -46,7 +45,7 @@ export const Description = styled.h3`
 export const PublishDate = styled.h4`
   font-size: 0.8em;
   font-weight: 400;
-  color: ${colors.black};
+  color: ${({ theme }) => theme.colors.base.black};
 
   @media screen and (max-width: 768px) {
     font-size: 0.75em;

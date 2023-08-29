@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { colors } from '@styles/colors';
 
 interface FaviconContainerProps {
   isOAuthServerLoading: boolean;
@@ -13,8 +12,8 @@ export const Container = styled.section`
   height: 500px;
   gap: 16px;
   border-radius: 16px;
-  background-color: ${colors.white};
-  box-shadow: 2px 2px 6px ${colors.boxShadow};
+  background-color: ${({ theme }) => theme.colors.base.white};
+  box-shadow: 2px 2px 6px ${({ theme }) => theme.colors.shadow.default};
   animation: fadeIn 0.2s ease-in;
 
   @keyframes fadeIn {
@@ -43,7 +42,7 @@ export const CloseButton = styled.button`
   font-size: 16px;
 
   &:hover {
-    background-color: ${colors.gray200};
+    background-color: ${({ theme }) => theme.colors.base.gray200};
   }
 `;
 

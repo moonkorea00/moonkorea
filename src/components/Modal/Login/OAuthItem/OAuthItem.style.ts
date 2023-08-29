@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { colors } from '@styles/colors';
 
 export const OAuthButton = styled.button`
   ${({ theme }) => theme.flexAlignCenter}
@@ -8,11 +7,11 @@ export const OAuthButton = styled.button`
   width: 240px;
   padding: 3px 10px;
   gap: 20px;
-  background-color: ${colors.gray200};
+  background-color: ${({ theme }) => theme.colors.base.gray200};
   border-radius: 24px;
 
   &:hover {
-    background-color: ${colors.gray300};
+    background-color: ${({ theme }) => theme.colors.base.gray300};
   }
 `;
 

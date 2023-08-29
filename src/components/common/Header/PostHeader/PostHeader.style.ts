@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { colors } from '@styles/colors';
 
 export const Container = styled.div`
   ${({ theme }) => theme.flexColumn}
@@ -15,7 +14,7 @@ export const Title = styled.h1`
 `;
 
 export const Description = styled.p`
-  color: ${colors.gray300};
+  color: ${({ theme }) => theme.colors.base.gray300};
   font-size: 22px;
   font-weight: 500;
 `;
@@ -24,8 +23,8 @@ export const Date = styled.span`
   padding: 3px 8px;
   font-size: 0.85em;
   border-radius: 10px;
-  color: ${colors.black};
-  background-color: ${colors.pinkGrey};
+  color: ${({ theme }) => theme.colors.base.black};
+  background-color: ${({ theme }) => theme.colors.base.pinkGrey};
 `;
 
 export const TagContainer = styled.div`
@@ -40,5 +39,5 @@ export const Tags = styled.span`
   font-size: 0.85em;
   font-weight: 500;
   border-radius: 10px;
-  background-color: ${colors.darkYellow};
+  background-color: ${({ theme }) => theme.colors.base.darkYellow};
 `;

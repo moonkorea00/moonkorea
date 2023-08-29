@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { colors } from '@styles/colors';
 
 interface ContainerProps {
   type?: string;
@@ -14,7 +13,8 @@ export const Container = styled.div<ContainerProps>`
   right: 0;
   bottom: 0;
   padding: ${({ type }) => type === 'toast' && '0 20px'};
-  background-color: ${({ type }) => (type ? 'inherit' : colors.overlay)};
+  background-color: ${({ type, theme }) =>
+    type ? 'inherit' : theme.colors.overlay};
   animation: fade-in 0.25s;
 
   @keyframes fade-in {

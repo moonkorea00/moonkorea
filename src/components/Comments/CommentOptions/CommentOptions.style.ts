@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { colors } from '@styles/colors';
 
 export const Container = styled.div`
   position: absolute;
@@ -8,10 +7,10 @@ export const Container = styled.div`
   ${({ theme }) => theme.flexColumnCenter}
   width: 100px;
   padding: 4px 0px 4px;
-  background: ${colors.white};
-  border: 1px solid ${colors.gray100};
+  background: ${({ theme }) => theme.colors.base.white};
+  border: 1px solid ${({ theme }) => theme.colors.base.gray100};
   border-radius: 8px;
-  box-shadow: 0 5px 16px ${colors.boxShadow};
+  box-shadow: 0 5px 16px ${({ theme }) => theme.colors.shadow.default};
   z-index: 1;
 
   @media screen and (max-width: 768px) {
@@ -23,10 +22,10 @@ export const Option = styled.button`
   width: 100%;
   height: 100%;
   padding: 8px 0;
-  color: ${colors.blue};
+  color: ${({ theme }) => theme.colors.secondary.main};
   font-weight: 500;
   background-color: inherit;
-  border-bottom: 1px solid ${colors.gray100};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.base.gray100};
 
   &:last-child {
     border-bottom: none;

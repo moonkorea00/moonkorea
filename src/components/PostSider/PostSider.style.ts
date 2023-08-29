@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { colors } from '@styles/colors';
 
 interface SiderContainerProps {
   isMounted: boolean;
@@ -25,7 +24,7 @@ export const Container = styled.section<SiderContainerProps>`
     flex-direction: row;
     gap: 10px;
     padding: 4px 20px;
-    border: 1px solid ${colors.gray300};
+    border: 1px solid ${({ theme }) => theme.colors.base.gray300};
     border-radius: 25px;
     transition: transform 0.4s ease-in-out;
     transform: ${({ scrollDirection }) =>
@@ -47,11 +46,11 @@ export const SiderButton = styled.button`
   width: 40px;
   height: 40px;
   background-color: white;
-  border: 1px solid ${colors.gray300};
+  border: 1px solid ${({ theme }) => theme.colors.base.gray300};
   border-radius: 8px;
 
   &:hover {
-    background-color: ${colors.grayDefault};
+    background-color: ${({ theme }) => theme.colors.base.grayDefault};
   }
 
   @media screen and (max-width: 1024px) {
@@ -69,7 +68,7 @@ export const ButtonImageContainer = styled.div`
 `;
 
 export const ButtonImage = styled.img`
-  color: ${colors.gray300};
+  color: ${({ theme }) => theme.colors.base.gray300};
 `;
 
 export const Seperator = styled.div`
@@ -77,6 +76,6 @@ export const Seperator = styled.div`
 
   @media screen and (max-width: 1024px) {
     display: block;
-    border-right: 1px solid ${colors.gray300};
+    border-right: 1px solid ${({ theme }) => theme.colors.base.gray300};
   }
 `;

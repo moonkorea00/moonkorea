@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { colors } from '@styles/colors';
 
 export const Container = styled.div<{ scrollDirection: 'up' | 'down' | null }>`
   position: absolute;
@@ -9,7 +8,7 @@ export const Container = styled.div<{ scrollDirection: 'up' | 'down' | null }>`
   align-items: flex-start;
   gap: 16px;
   padding: 28px 20px 18px;
-  border: 1px solid ${colors.gray300};
+  border: 1px solid ${({ theme }) => theme.colors.base.gray300};
   border-radius: 8px;
   background-color: white;
   z-index: 1;
@@ -27,13 +26,13 @@ export const CloseButtonContainer = styled.div`
 `;
 
 export const CloseButton = styled.button`
-  color: ${colors.gray600};
+  color: ${({ theme }) => theme.colors.base.gray600};
   background-color: inherit;
   border-radius: 50%;
   font-size: 16px;
 
   &:hover {
-    background-color: ${colors.gray100};
+    background-color: ${({ theme }) => theme.colors.base.gray100};
   }
 `;
 

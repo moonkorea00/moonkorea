@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { colors } from '@styles/colors';
 
 interface ButtonProps {
   action?: string;
@@ -13,8 +12,8 @@ export const Container = styled.div`
   height: 70px;
   gap: 16px;
   border-radius: 8px;
-  color: ${colors.white};
-  background-color: ${colors.gray800};
+  color: ${({ theme }) => theme.colors.base.white};
+  background-color: ${({ theme }) => theme.colors.base.gray800};
   box-shadow: 2px 2px 6px rgb(230, 230, 230);
   transform: translateY(-100%);
 
@@ -33,6 +32,9 @@ export const ButtonWrapper = styled.div`
 
 export const Button = styled.button<ButtonProps>`
   font-size: 14px;
-  color: ${({ action }) => (action === 'destroy' ? colors.red : colors.white)};
+  color: ${({ action, theme }) =>
+    action === 'destroy'
+      ? theme.colors.action.delete
+      : theme.colors.base.white};
   background-color: inherit;
 `;

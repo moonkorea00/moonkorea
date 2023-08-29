@@ -1,18 +1,17 @@
 import styled from 'styled-components';
-import { colors } from '@styles/colors';
 
 export const MarkdownBlockquote = styled.blockquote`
   margin: 30px 0;
   padding: 0 15px;
   color: #858585;
-  border-left: 4px solid ${colors.gray200};
+  border-left: 4px solid ${({ theme }) => theme.colors.base.gray200};
 `;
 
 export const MarkdownH1 = styled.h1`
   margin-top: 20px;
   padding-bottom: 8px;
   font-size: 1.8em;
-  border-bottom: 1px solid ${colors.gray300};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.base.gray300};
 
   @media screen and (max-width: 768px) {
     font-size: 1.6em;
@@ -48,6 +47,6 @@ export const MarkdownSpan = styled.span`
   font-size: 0.9em;
   font-weight: 500;
   font-style: italic;
-  color: ${colors.gray600};
+  color: ${({ theme }) => theme.colors.base.gray600};
   text-align: center;
 `;
