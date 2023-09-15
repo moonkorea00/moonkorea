@@ -7,20 +7,22 @@ import useLockBodyScroll from '@hooks/useLockBodyScroll';
 import favicon from 'public/assets/favicon/moonkorea.png';
 
 interface NavProps {
-  isIntersected: boolean;
+  isHeaderInView: boolean;
 }
 
-const Nav = ({ isIntersected }: NavProps) => {
+const Nav = ({ isHeaderInView }: NavProps) => {
   const [isSiderVisible, setIsSiderVisible] = useState(false);
+
+  const onCloseSider = () => setIsSiderVisible(false);
 
   useLockBodyScroll(isSiderVisible);
 
   return (
     <>
-      <S.Container isIntersected={isIntersected}>
-        <S.FlexBox isIntersected={isIntersected}>
+      <S.Container isHeaderInView={isHeaderInView}>
+        <S.FlexBox isHeaderInView={isHeaderInView}>
           <Link href="/">
-            <S.LogoContainer isIntersected={isIntersected}>
+            <S.LogoContainer isHeaderInView={isHeaderInView}>
               <Image
                 src={favicon}
                 alt="moonkorea"
@@ -49,7 +51,7 @@ const Nav = ({ isIntersected }: NavProps) => {
       </S.Container>
       <Sider
         isSiderVisible={isSiderVisible}
-        setIsSiderVisible={setIsSiderVisible}
+        onCloseSider={onCloseSider}
       />
     </>
   );

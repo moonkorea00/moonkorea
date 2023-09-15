@@ -6,21 +6,21 @@ import HeaderContent from './HeaderContent/HeaderContent';
 import useIsIntersected from '@hooks/useIsIntersected';
 
 interface HeaderProps {
-  metaData?: MetaData;
+  postFrontMatter?: MetaData;
   pageType?: string;
 }
 
-const Header = ({ metaData, pageType }: HeaderProps) => {
+const Header = ({ postFrontMatter, pageType }: HeaderProps) => {
   const headerRef = useRef<HTMLHeadElement>(null);
-  const isIntersected = useIsIntersected(headerRef);
+  const isHeaderInView = useIsIntersected(headerRef);
 
   return (
     <S.Container ref={headerRef} data-header-element>
-      <Nav isIntersected={isIntersected} />
+      <Nav isHeaderInView={isHeaderInView} />
       <S.HeadingContainer>
-        <HeaderContent pageType={pageType} metaData={metaData} />
+        <HeaderContent pageType={pageType} postFrontMatter={postFrontMatter} />
       </S.HeadingContainer>
-      <S.FilledSection />
+      <S.FilledHeaderSeperator />
     </S.Container>
   );
 };

@@ -1,24 +1,24 @@
 import styled from 'styled-components';
 
 interface NavStyleProps {
-  isIntersected: boolean;
+  isHeaderInView: boolean;
 }
 
 export const Container = styled.nav<NavStyleProps>`
-  position: ${({ isIntersected }) => (isIntersected ? 'fixed' : 'absolute')};
-  border-bottom: ${({ isIntersected, theme }) =>
-    isIntersected ? `1px solid ${theme.colors.base.gray300}` : 'none'};
-  color: ${({ isIntersected, theme }) =>
-    isIntersected
+  position: ${({ isHeaderInView }) => (isHeaderInView ? 'fixed' : 'absolute')};
+  border-bottom: ${({ isHeaderInView, theme }) =>
+    isHeaderInView ? `1px solid ${theme.colors.base.gray300}` : 'none'};
+  color: ${({ isHeaderInView, theme }) =>
+    isHeaderInView
       ? `${theme.colors.base.gray700}`
       : `${theme.colors.base.white}`};
-  background-color: ${({ isIntersected, theme }) =>
-    isIntersected ? `${theme.colors.base.white}` : 'inherit'};
+  background-color: ${({ isHeaderInView, theme }) =>
+    isHeaderInView ? `${theme.colors.base.white}` : 'inherit'};
   top: 0;
   left: 0;
   right: 0;
   min-width: 280px;
-  opacity: ${({ isIntersected }) => (isIntersected ? '0.8' : '1')};
+  opacity: ${({ isHeaderInView }) => (isHeaderInView ? '0.8' : '1')};
   transition: all ease 0.25s;
 
   &:hover {
@@ -39,8 +39,8 @@ export const FlexBox = styled.div<NavStyleProps>`
 export const LogoContainer = styled.nav<NavStyleProps>`
   ${({ theme }) => theme.flexCenter};
   gap: 10px;
-  color: ${({ isIntersected, theme }) =>
-    isIntersected
+  color: ${({ isHeaderInView, theme }) =>
+    isHeaderInView
       ? `${theme.colors.base.gray700}`
       : `${theme.colors.base.white}`};
   font-weight: 700;

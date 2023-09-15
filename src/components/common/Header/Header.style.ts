@@ -17,7 +17,7 @@ export const HeadingContainer = styled.div`
   background-color: ${({ theme }) => theme.colors.secondary.light};
 `;
 
-export const FilledSection = styled.div`
+export const FilledHeaderSeperator = styled.div`
   ${({ theme }) => theme.flexCenter}
   height: 50px;
   background-color: ${({ theme }) => theme.colors.base.lightOrange};

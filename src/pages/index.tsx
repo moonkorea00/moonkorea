@@ -14,8 +14,8 @@ const Home = ({ postFrontMatter }: HomeProps) => {
       <SEO />
       {postFrontMatter
         .sort((a: FrontMatter, b: FrontMatter) => (a.date > b.date ? -1 : 1))
-        .map((postData: FrontMatter) => (
-          <PreviewPost key={postData.id} {...postData} />
+        .map((frontMatter: FrontMatter) => (
+          <PreviewPost key={frontMatter.id} {...frontMatter} />
         ))}
     </>
   );
