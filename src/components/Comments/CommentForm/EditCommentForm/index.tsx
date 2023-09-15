@@ -14,9 +14,11 @@ interface EditCommentFormProps {
   comments: CommentProps;
 }
 
-const EditCommentForm = (props: EditCommentFormProps) => {
-  const { isEditMode, setIsEditMode, comments } = props;
-
+const EditCommentForm = ({
+  isEditMode,
+  setIsEditMode,
+  comments,
+}: EditCommentFormProps) => {
   const [edittedComment, handleCommentChange] = useInput<HTMLTextAreaElement>(
     comments?.body as string
   );

@@ -16,9 +16,11 @@ interface NewCommentFormProps {
   comments?: CommentProps;
 }
 
-const NewCommentForm = (props: NewCommentFormProps) => {
-  const { isReplyMode, setIsReplyMode = () => {}, comments } = props;
-
+const NewCommentForm = ({
+  isReplyMode,
+  setIsReplyMode = () => {},
+  comments,
+}: NewCommentFormProps) => {
   const [comment, handleCommentChange, resetInput] =
     useInput<HTMLTextAreaElement>('');
   const { data: session } = useSession();

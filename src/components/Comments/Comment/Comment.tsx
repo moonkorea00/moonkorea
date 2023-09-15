@@ -1,4 +1,4 @@
-import type { CommentProps } from '@@types/comments';
+import type { CommentProps as IComment } from '@@types/comments';
 import * as S from './Comment.style';
 import { useState } from 'react';
 import Image from 'next/image';
@@ -12,7 +12,11 @@ import {
 } from '../Comments.utils';
 import { assets } from '@utils/assetsPath';
 
-const Comment = ({ comments }: { comments: CommentProps }) => {
+interface CommentProps {
+  comments: IComment;
+}
+
+const Comment = ({ comments }: CommentProps) => {
   const [isEditMode, setIsEditMode] = useState(false);
   const [isReplyMode, setIsReplyMode] = useState(false);
   const [isCommentOptionsVisible, setIsCommentOptionsVisible] = useState(false);

@@ -1,7 +1,11 @@
 import Comment from '../Comment/Comment';
 import { CommentProps } from '@@types/comments';
 
-const CommentList = ({ comments }: { comments: CommentProps[] }) => {
+interface CommentListProps {
+  comments: CommentProps[];
+}
+
+const CommentList = ({ comments }: CommentListProps) => {
   return (
     <>
       {comments?.map((comments: CommentProps) => (
