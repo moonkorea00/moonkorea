@@ -1,12 +1,13 @@
-import type { MetaData } from '@@types/metaData';
 import * as S from './PostHeader.style';
 
 interface PostHeaderProps {
-  metaData: Omit<MetaData, 'id'>;
+  title: string;
+  date: string;
+  tags: string;
+  description: string;
 }
 
-const PostHeader = ({ metaData }: PostHeaderProps) => {
-  const { title, date, tags, description } = metaData;
+const PostHeader = ({ title, date, tags, description }: PostHeaderProps) => {
   const tagsArray = tags?.split(', ');
 
   return (
