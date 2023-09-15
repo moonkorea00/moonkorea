@@ -14,13 +14,13 @@ import useOnClickOutside from '@hooks/useOnClickOutside';
 import { assets } from '@utils/assetsPath';
 
 interface ShareSocialsProps {
-  metaData: MetaData;
+  postFrontMatter: MetaData;
   setIsSocialSharePanelVisible: Dispatch<SetStateAction<boolean>>;
   scrollDirection: 'up' | 'down' | null;
 }
 
 const SocialSharePanel = ({
-  metaData,
+  postFrontMatter,
   setIsSocialSharePanelVisible,
   scrollDirection,
 }: ShareSocialsProps) => {
@@ -33,8 +33,8 @@ const SocialSharePanel = ({
     await window.Kakao.Share.sendDefault({
       objectType: 'feed',
       content: {
-        title: metaData.title,
-        description: metaData.excerpt,
+        title: postFrontMatter.title,
+        description: postFrontMatter.excerpt,
         imageUrl: process.env.NEXT_PUBLIC_IMG_URL,
         link: {
           mobileWebUrl: process.env.NEXT_PUBLIC_DOMAIN_URL,

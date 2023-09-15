@@ -1,4 +1,4 @@
-import type { GetStaticProps, InferGetStaticPropsType } from 'next';
+import type { MetaData } from '@@types/metaData';
 import { Suspense, useRef } from 'react';
 import DefaultLayout from '@components/common/Layout/DefaultLayout/DefaultLayout';
 import SEO from '@components/common/SEO/SEO';
@@ -10,33 +10,31 @@ import PostSider from '@components/PostSider/PostSider';
 import { getPostPaths, getPostById } from '@api/services/post';
 import useIsIntersected from '@hooks/useIsIntersected';
 
-interface PostPageProps {
-  params: {
-    postId: string;
-  };
+interface PostProps {
+  postFrontMatter: MetaData & { content: string };
 }
 
-const Post = ({ metaData }: InferGetStaticPropsType<GetStaticProps>) => {
+const Post = ({ postFrontMatter }: PostProps) => {
   const commentSectionRef = useRef<HTMLDivElement>(null);
-  const isIntersected = useIsIntersected(commentSectionRef, {
+  const isCommentSectionInView = useIsIntersected(commentSectionRef, {
     once: true,
   });
 
   return (
     <>
-      <SEO metaData={metaData} />
-      <Markdown content={metaData.content} />
+      <SEO metaData={postFrontMatter} />
+      <Markdown content={postFrontMatter.content} />
       <CommentSectionPlaceholder
         id="comment-section"
-        isIntersected={isIntersected}
+        isIntersected={isCommentSectionInView}
         ref={commentSectionRef}
       />
-      {isIntersected && (
+      {isCommentSectionInView && (
         <Suspense fallback={<CommentSectionLoader />}>
           <CommentSection />
         </Suspense>
       )}
-      <PostSider metaData={metaData} />
+      <PostSider postFrontMatter={postFrontMatter} />
     </>
   );
 };
@@ -46,14 +44,20 @@ export default Post;
 Post.getLayout = DefaultLayout;
 Post.pageType = 'post';
 
+interface PostParams {
+  params: {
+    postId: string;
+  };
+}
+
 export const getStaticPaths = async () => {
   const paths = getPostPaths();
   return { paths, fallback: false };
 };
 
-export const getStaticProps = async ({ params }: PostPageProps) => {
-  const metaData = await getPostById(params.postId);
+export const getStaticProps = async ({ params }: PostParams) => {
+  const postFrontMatter = await getPostById(params.postId);
   return {
-    props: { metaData },
+    props: { postFrontMatter },
   };
 };

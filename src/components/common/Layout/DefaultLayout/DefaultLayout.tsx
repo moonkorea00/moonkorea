@@ -9,7 +9,7 @@ const DefaultLayout = (
 ) => {
   return (
     <S.Container>
-      <Header metaData={pageProps.metaData} pageType={Page.pageType} />
+      <Header postFrontMatter={pageProps.postFrontMatter} pageType={Page.pageType} />
       <S.Main>
         <S.ChildrenContainer>
           <Page {...pageProps} />
