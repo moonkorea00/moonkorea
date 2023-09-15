@@ -1,10 +1,9 @@
-import styled from "styled-components";
-import { colors } from "@styles/colors";
+import styled from 'styled-components';
 
 export const Heading = styled.h1`
   font-size: 70px;
   font-weight: 900;
-  color: ${colors.white};
+  color: ${({ theme }) => theme.colors.base.white};
   text-align: center;
 
   @media screen and (max-width: 1024px) {

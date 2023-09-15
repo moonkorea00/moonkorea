@@ -1,4 +1,3 @@
-import { colors } from '@styles/colors';
 import styled from 'styled-components';
 
 export const Container = styled.section`
@@ -13,6 +12,6 @@ export const RedirectButton = styled.button`
   border-radius: 14px;
 
   &:hover {
-    background-color: ${colors.gray300};
+    background-color: ${({ theme }) => theme.colors.base.gray300};
   }
 `;

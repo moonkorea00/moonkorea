@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { colors } from '@styles/colors';
 
 interface NavStyleProps {
   isIntersected: boolean;
@@ -7,12 +6,14 @@ interface NavStyleProps {
 
 export const Container = styled.nav<NavStyleProps>`
   position: ${({ isIntersected }) => (isIntersected ? 'fixed' : 'absolute')};
-  border-bottom: ${({ isIntersected }) =>
-    isIntersected ? `1px solid ${colors.gray300}` : 'none'};
-  color: ${({ isIntersected }) =>
-    isIntersected ? `${colors.gray700}` : `${colors.white}`};
-  background-color: ${({ isIntersected }) =>
-    isIntersected ? `${colors.white}` : 'inherit'};
+  border-bottom: ${({ isIntersected, theme }) =>
+    isIntersected ? `1px solid ${theme.colors.base.gray300}` : 'none'};
+  color: ${({ isIntersected, theme }) =>
+    isIntersected
+      ? `${theme.colors.base.gray700}`
+      : `${theme.colors.base.white}`};
+  background-color: ${({ isIntersected, theme }) =>
+    isIntersected ? `${theme.colors.base.white}` : 'inherit'};
   top: 0;
   left: 0;
   right: 0;
@@ -38,8 +39,10 @@ export const FlexBox = styled.div<NavStyleProps>`
 export const LogoContainer = styled.nav<NavStyleProps>`
   ${({ theme }) => theme.flexCenter};
   gap: 10px;
-  color: ${({ isIntersected }) =>
-    isIntersected ? `${colors.gray700}` : `${colors.white}`};
+  color: ${({ isIntersected, theme }) =>
+    isIntersected
+      ? `${theme.colors.base.gray700}`
+      : `${theme.colors.base.white}`};
   font-weight: 700;
 
   @media screen and (max-width: 768px) {

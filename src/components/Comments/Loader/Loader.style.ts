@@ -1,10 +1,9 @@
 import styled, { css } from 'styled-components';
 import { Container, CommentCount } from '../CommentSection.style';
 import { Container as CommentFormContainer } from '../CommentForm/CommentForm.style';
-import { colors } from '@styles/colors';
 
 const PlaceholderMixin = css`
-  background-color: ${colors.gray100};
+  background-color: ${({ theme }) => theme.colors.base.gray100};
   border-radius: 6px;
 `;
 

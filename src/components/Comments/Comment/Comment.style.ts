@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components';
-import { colors } from '@styles/colors';
 
 interface ChildrenCommentStyleProps {
   parentId?: string;
@@ -93,5 +92,5 @@ export const OptionsButton = styled.button`
 export const Content = styled.div<{ isDeleted: boolean }>`
   font-size: 0.95em;
   line-height: 26px;
-  color: ${({ isDeleted }) => isDeleted && colors.gray700};
+  color: ${({ isDeleted, theme }) => isDeleted && theme.colors.base.gray700};
 `;
