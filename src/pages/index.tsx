@@ -12,7 +12,7 @@ const Home = ({ metaData }: InferGetStaticPropsType<GetStaticProps>) => {
       {metaData
         .sort((a: FrontMatter, b: FrontMatter) => (a.date > b.date ? -1 : 1))
         .map((postData: FrontMatter) => (
-          <PreviewPost key={postData.id} postData={postData} />
+          <PreviewPost key={postData.id} {...postData} />
         ))}
     </>
   );
