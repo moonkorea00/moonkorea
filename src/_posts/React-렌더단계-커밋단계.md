@@ -138,3 +138,5 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
 위 예제에서 렌더 간 변한 것은 h1의 children인 time값이기 때문에 리액트는 다음 렌더에 h1 요소만 변경 사항으로 인식합니다, 즉 커밋 단계에는 h1 요소만 업데이트되어 DOM에 새로운 요소로 그려지는 것이죠.
 
 정리해 보자면 앱이 실행되거나 리렌더가 발생하면 리액트는 컴포넌트 트리를 따라 컴포넌트를 연쇄적으로 호출하는데요, 반환된 JSX는 리액트 요소로 변환되어 가상 DOM 트리로 만들어져요. 리액트는 렌더 간 변경된 부분을 가상 DOM 트리를 비교해서 찾아내고 실제 DOM에 반영해요. 최종적으로 브라우저 렌더링 단계에서 화면에 UI가 그려지죠.
+
+> 출처 : <a href="https://react.dev/learn/render-and-commit" target="_blank" rel="noopener">Render and Commit - React</a>
