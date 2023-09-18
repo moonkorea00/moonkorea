@@ -24,7 +24,7 @@ export const Container = styled.div<ChildrenCommentStyleProps>`
   `}
 `;
 
-export const FlexWrapContainer = styled.div`
+export const CommentContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
 `;
@@ -39,7 +39,7 @@ export const ContentContainer = styled.div`
   }
 `;
 
-export const CommentInformation = styled.div`
+export const CommentHeader = styled.div`
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -59,7 +59,7 @@ export const Avatar = styled.img`
   width: 100%;
 `;
 
-export const User = styled.span`
+export const Author = styled.span`
   margin-right: 10px;
   font-weight: 700;
 
@@ -89,7 +89,7 @@ export const OptionsButton = styled.button`
   }
 `;
 
-export const Content = styled.div<{ isDeleted: boolean }>`
+export const CommentBody = styled.div<{ isDeleted: boolean }>`
   font-size: 0.95em;
   line-height: 26px;
   color: ${({ isDeleted, theme }) => isDeleted && theme.colors.base.gray700};

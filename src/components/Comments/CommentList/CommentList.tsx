@@ -1,5 +1,5 @@
+import type { CommentProps } from '@@types/comments';
 import Comment from '../Comment/Comment';
-import { CommentProps } from '@@types/comments';
 
 interface CommentListProps {
   comments: CommentProps[];

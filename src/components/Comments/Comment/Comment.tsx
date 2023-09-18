@@ -16,14 +16,33 @@ interface CommentProps {
   comments: IComment;
 }
 
+enum CommentMode {
+  View = 'VIEW',
+  Edit = 'EDIT',
+  Reply = 'REPLY',
+}
+
 const Comment = ({ comments }: CommentProps) => {
-  const [isEditMode, setIsEditMode] = useState(false);
-  const [isReplyMode, setIsReplyMode] = useState(false);
+  const [mode, setMode] = useState(CommentMode.View);
   const [isCommentOptionsVisible, setIsCommentOptionsVisible] = useState(false);
+
+  const onCloseCommentOptions = () => setIsCommentOptionsVisible(false);
+  
+  const onResetMode = () => setMode(CommentMode.View);
+
+  const onEditMode = () => {
+    onCloseCommentOptions();
+    setMode(CommentMode.Edit);
+  };
+
+  const onReplyMode = () => {
+    onCloseCommentOptions();
+    setMode(CommentMode.Reply);
+  };
 
   return (
     <S.Container parentId={comments?.parentId as string} depth={comments.depth}>
-      <S.FlexWrapContainer>
+      <S.CommentContainer>
         <S.AvatarContainer>
           <S.Avatar
             src={
@@ -35,11 +54,11 @@ const Comment = ({ comments }: CommentProps) => {
           />
         </S.AvatarContainer>
         <S.ContentContainer>
-          <S.CommentInformation>
+          <S.CommentHeader>
             <div>
-              <S.User>
+              <S.Author>
                 {comments.isDeleted ? '알 수 없음' : comments?.user?.name}
-              </S.User>
+              </S.Author>
               <S.PublishDate>
                 {formatDateToElapsedTime(comments.createdAt)}{' '}
                 {checkIfIsEdittedComment(comments) &&
@@ -55,32 +74,32 @@ const Comment = ({ comments }: CommentProps) => {
             {isCommentOptionsVisible && (
               <CommentOptions
                 comments={comments}
-                setIsEditMode={setIsEditMode}
-                setIsReplyMode={setIsReplyMode}
-                setIsCommentOptionsVisible={setIsCommentOptionsVisible}
+                onResetMode={onResetMode}
+                onEditMode={onEditMode}
+                onReplyMode={onReplyMode}
+                onCloseCommentOptions={onCloseCommentOptions}
               />
             )}
-          </S.CommentInformation>
-          {isEditMode ? (
+          </S.CommentHeader>
+          <S.CommentBody isDeleted={comments.isDeleted}>
+            {comments.isDeleted ? '삭제된 댓글입니다.' : comments.body}
+          </S.CommentBody>
+          {mode === CommentMode.Edit && (
             <EditCommentForm
-              isEditMode={isEditMode}
-              setIsEditMode={setIsEditMode}
               comments={comments}
+              isEditMode={mode === CommentMode.Edit}
+              onExitEditMode={onResetMode}
             />
-          ) : (
-            <S.Content isDeleted={comments.isDeleted}>
-              {comments.isDeleted ? '삭제된 댓글입니다.' : comments.body}
-            </S.Content>
           )}
-          {isReplyMode && (
+          {mode === CommentMode.Reply && (
             <NewCommentForm
-              isReplyMode={isReplyMode}
-              setIsReplyMode={setIsReplyMode}
               comments={comments}
+              isReplyMode={mode === CommentMode.Reply}
+              onExitReplyMode={onResetMode}
             />
           )}
         </S.ContentContainer>
-      </S.FlexWrapContainer>
+      </S.CommentContainer>
       {comments?.children?.length > 0 && (
         <CommentList comments={comments.children} />
       )}

@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
-import type { Dispatch, SetStateAction } from 'react';
 import type { CommentProps } from '@@types/comments';
 import * as S from '../CommentForm.style';
 import { useSession } from 'next-auth/react';
@@ -12,13 +11,13 @@ import { getPostId } from '@components/Comments/Comments.utils';
 
 interface NewCommentFormProps {
   isReplyMode?: boolean;
-  setIsReplyMode?: Dispatch<SetStateAction<boolean>>;
+  onExitReplyMode?: () => void;
   comments?: CommentProps;
 }
 
 const NewCommentForm = ({
   isReplyMode,
-  setIsReplyMode = () => {},
+  onExitReplyMode = () => {},
   comments,
 }: NewCommentFormProps) => {
   const [comment, handleCommentChange, resetInput] =
@@ -44,18 +43,18 @@ const NewCommentForm = ({
       {
         onSuccess() {
           resetInput();
-          setIsReplyMode(false);
+          onExitReplyMode();
           sendNotificationEmail({ postId, body: comment });
         },
       }
     );
   };
 
-  const BaseCommentFormProps = {
+  const newCommentFormConfig = {
     onSubmit: session ? onCreateComment : () => showModal({ name: 'login' }),
     isFormModeCancellable: isReplyMode,
-    setFormToDefaultMode: () => setIsReplyMode(false),
-    isButtonDisabled: isLoading,
+    setFormToDefaultMode: onExitReplyMode,
+    isSubmitButtonDisabled: isLoading,
     submitButtonLabel: session
       ? isReplyMode
         ? '답글 작성'
@@ -64,8 +63,8 @@ const NewCommentForm = ({
   };
 
   return (
-    <BaseCommentForm {...BaseCommentFormProps}>
-      <S.Input
+    <BaseCommentForm {...newCommentFormConfig}>
+      <S.CommentInput
         value={comment}
         onChange={handleCommentChange}
         placeholder={

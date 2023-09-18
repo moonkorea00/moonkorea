@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
-import type { Dispatch, SetStateAction } from 'react';
 import type { CommentProps } from '@@types/comments';
 import * as S from '../CommentForm.style';
 import BaseCommentForm from '../BaseCommentForm';
@@ -10,13 +9,13 @@ import { getPostId } from '@components/Comments/Comments.utils';
 
 interface EditCommentFormProps {
   isEditMode: boolean;
-  setIsEditMode: Dispatch<SetStateAction<boolean>>;
+  onExitEditMode: () => void;
   comments: CommentProps;
 }
 
 const EditCommentForm = ({
   isEditMode,
-  setIsEditMode,
+  onExitEditMode,
   comments,
 }: EditCommentFormProps) => {
   const [edittedComment, handleCommentChange] = useInput<HTMLTextAreaElement>(
@@ -35,24 +34,24 @@ const EditCommentForm = ({
       },
       {
         onSuccess() {
-          setIsEditMode(false);
+          onExitEditMode();
           sendNotificationEmail({ postId, body: edittedComment });
         },
       }
     );
   };
 
-  const BaseCommentFormProps = {
+  const editCommentFormConfig = {
     onSubmit: onEditComment,
     isFormModeCancellable: isEditMode,
-    setFormToDefaultMode: () => setIsEditMode(false),
-    isButtonDisabled: isLoading,
+    setFormToDefaultMode: onExitEditMode,
+    isSubmitButtonDisabled: isLoading,
     submitButtonLabel: '수정',
   };
 
   return (
-    <BaseCommentForm {...BaseCommentFormProps}>
-      <S.EditInput
+    <BaseCommentForm {...editCommentFormConfig}>
+      <S.CommentEditInput
         defaultValue={edittedComment}
         onChange={handleCommentChange}
         autoFocus={isEditMode}

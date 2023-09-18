@@ -5,7 +5,7 @@ export const Container = styled.section`
   margin-bottom: 10px;
 `;
 
-export const Input = styled.textarea`
+export const CommentInput = styled.textarea`
   width: 100%;
   height: 100px;
   padding: 10px 16px;
@@ -16,13 +16,13 @@ export const Input = styled.textarea`
   cursor: ${({ disabled }) => disabled && 'not-allowed'};
 `;
 
-export const EditInput = styled(Input)`
+export const CommentEditInput = styled(CommentInput)`
   min-height: 120px;
   padding: 4px;
   line-height: 26px;
 `;
 
-export const ButtonContainer = styled.div`
+export const ActionButtonContainer = styled.div`
   display: flex;
   justify-content: flex-end;
   gap: 12px;
