@@ -9,10 +9,10 @@ import { assets } from '@utils/assetsPath';
 import { getPostId } from '@components/Comments/Comments.utils';
 
 interface PostSiderProps {
-  metaData: MetaData;
+  postFrontMatter: MetaData;
 }
 
-const PostSider = ({ metaData }: PostSiderProps) => {
+const PostSider = ({ postFrontMatter }: PostSiderProps) => {
   const [isSocialSharePanelVisible, setIsSocialSharePanelVisible] =
     useState(false);
 
@@ -27,6 +27,8 @@ const PostSider = ({ metaData }: PostSiderProps) => {
     const commentSectionElement = document.getElementById('comment-section');
     commentSectionElement?.scrollIntoView({ behavior: 'smooth' });
   };
+
+  const onCloseSocialSharePanel = () => setIsSocialSharePanelVisible(false);
 
   return (
     <S.Container
@@ -50,8 +52,8 @@ const PostSider = ({ metaData }: PostSiderProps) => {
       </S.SiderButton>
       {isSocialSharePanelVisible && (
         <SocialSharePanel
-          metaData={metaData}
-          setIsSocialSharePanelVisible={setIsSocialSharePanelVisible}
+          postFrontMatter={postFrontMatter}
+          onClose={onCloseSocialSharePanel}
           scrollDirection={scrollDirection}
         />
       )}

@@ -2,12 +2,7 @@ import type { FrontMatter } from '@@types/metaData';
 import * as S from './PreviewPost.style';
 import Link from 'next/link';
 
-interface PreviewPostProps {
-  postData: FrontMatter;
-}
-
-const PreviewPost = ({ postData }: PreviewPostProps) => {
-  const { id, title, date, tags, description } = postData;
+const PreviewPost = ({ id, title, date, tags, description }: FrontMatter) => {
   const tagsArray = tags?.split(', ');
 
   return (

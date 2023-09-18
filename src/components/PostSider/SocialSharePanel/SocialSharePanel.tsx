@@ -1,4 +1,3 @@
-import type { Dispatch, SetStateAction } from 'react';
 import type { MetaData } from '@@types/metaData';
 import * as S from './SocialSharePanel.style';
 import { useRef } from 'react';
@@ -14,14 +13,14 @@ import useOnClickOutside from '@hooks/useOnClickOutside';
 import { assets } from '@utils/assetsPath';
 
 interface ShareSocialsProps {
-  metaData: MetaData;
-  setIsSocialSharePanelVisible: Dispatch<SetStateAction<boolean>>;
+  postFrontMatter: MetaData;
+  onClose: () => void;
   scrollDirection: 'up' | 'down' | null;
 }
 
 const SocialSharePanel = ({
-  metaData,
-  setIsSocialSharePanelVisible,
+  postFrontMatter,
+  onClose,
   scrollDirection,
 }: ShareSocialsProps) => {
   const SocialShareRef = useRef<HTMLDivElement>(null);
@@ -33,8 +32,8 @@ const SocialSharePanel = ({
     await window.Kakao.Share.sendDefault({
       objectType: 'feed',
       content: {
-        title: metaData.title,
-        description: metaData.excerpt,
+        title: postFrontMatter.title,
+        description: postFrontMatter.excerpt,
         imageUrl: process.env.NEXT_PUBLIC_IMG_URL,
         link: {
           mobileWebUrl: process.env.NEXT_PUBLIC_DOMAIN_URL,
@@ -53,26 +52,24 @@ const SocialSharePanel = ({
     });
   };
 
-  const onCloseModal = () => setIsSocialSharePanelVisible(false);
-
   const onShareWithKakaoAndCloseModal = () => {
     onShareWithKakao();
-    onCloseModal();
+    onClose();
   };
 
-  useOnClickOutside(SocialShareRef, onCloseModal);
+  useOnClickOutside(SocialShareRef, onClose);
 
   return (
     <S.Container ref={SocialShareRef} scrollDirection={scrollDirection}>
       <S.CloseButtonContainer>
-        <S.CloseButton onClick={() => setIsSocialSharePanelVisible(false)}>
+        <S.CloseButton onClick={onClose}>
           <S.CloseButtonLabel>&#10005;</S.CloseButtonLabel>
         </S.CloseButton>
       </S.CloseButtonContainer>
-      <FacebookShareButton url={fullURL} onClick={onCloseModal}>
+      <FacebookShareButton url={fullURL} onClick={onClose}>
         <FacebookIcon size={40} round={true} />
       </FacebookShareButton>
-      <TwitterShareButton url={fullURL} onClick={onCloseModal}>
+      <TwitterShareButton url={fullURL} onClick={onClose}>
         <TwitterIcon size={40} round={true} />
       </TwitterShareButton>
       <S.KakaoShareButton onClick={onShareWithKakaoAndCloseModal}>
@@ -81,7 +78,7 @@ const SocialSharePanel = ({
           alt="카카오톡 공유"
           width={40}
           height={40}
-          priority={true}
+          priority
         />
       </S.KakaoShareButton>
     </S.Container>

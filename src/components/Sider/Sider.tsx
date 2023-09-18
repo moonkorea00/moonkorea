@@ -1,5 +1,5 @@
 import * as S from './Sider.style';
-import { Dispatch, SetStateAction, useRef } from 'react';
+import { useRef } from 'react';
 import NavCategory from './NavCategory/NavCategory';
 import siderData from 'public/script/sider.json';
 import useOnClickOutside from '@hooks/useOnClickOutside';
@@ -7,13 +7,11 @@ import useKeyPress from '@hooks/useKeyPress';
 
 interface SiderProps {
   isSiderVisible: boolean;
-  setIsSiderVisible: Dispatch<SetStateAction<boolean>>;
+  onCloseSider: () => void;
 }
 
-const Sider = ({ isSiderVisible, setIsSiderVisible }: SiderProps) => {
+const Sider = ({ isSiderVisible, onCloseSider }: SiderProps) => {
   const siderRef = useRef(null);
-
-  const onCloseSider = () => setIsSiderVisible(false);
 
   useOnClickOutside(siderRef, onCloseSider);
   useKeyPress({ Escape: onCloseSider });

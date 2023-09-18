@@ -5,14 +5,14 @@ import PostHeader from '../PostHeader/PostHeader';
 type HeaderMetaData = Omit<MetaData, 'id'>;
 
 interface HeaderContentProps {
-  metaData?: HeaderMetaData;
+  postFrontMatter?: HeaderMetaData;
   pageType?: string;
 }
 
-const HeaderContent = ({ metaData, pageType }: HeaderContentProps) => {
+const HeaderContent = ({ postFrontMatter, pageType }: HeaderContentProps) => {
   switch (pageType) {
     case 'post':
-      return <PostHeader metaData={metaData as HeaderMetaData} />;
+      return <PostHeader {...(postFrontMatter as HeaderMetaData)} />;
     case '404':
       return <S.Heading>404</S.Heading>;
     default:

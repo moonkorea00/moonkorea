@@ -1,4 +1,3 @@
-import type { Dispatch, SetStateAction } from 'react';
 import type { CommentProps } from '@@types/comments';
 import * as S from './CommentOptions.style';
 import { useRef } from 'react';
@@ -11,22 +10,24 @@ import { sendNotificationEmail } from '@api/services/notificationEmail';
 
 interface CommentOptionsProps {
   comments: CommentProps;
-  setIsEditMode: Dispatch<SetStateAction<boolean>>;
-  setIsReplyMode: Dispatch<SetStateAction<boolean>>;
-  setIsCommentOptionsVisible: Dispatch<SetStateAction<boolean>>;
+  onResetMode: () => void;
+  onEditMode: () => void;
+  onReplyMode: () => void;
+  onCloseCommentOptions: () => void;
 }
 
 const CommentOptions = ({
   comments,
-  setIsEditMode,
-  setIsReplyMode,
-  setIsCommentOptionsVisible,
+  onResetMode,
+  onEditMode,
+  onReplyMode,
+  onCloseCommentOptions,
 }: CommentOptionsProps) => {
   const commentOptionsRef = useRef<HTMLDivElement>(null);
   const { data: session } = useSession();
 
   const { mutateAsync, isLoading } = useDeleteComment();
-  const { showModal, closeModal } = useModal();
+  const { showModal, closeModal: closeDeleteModal } = useModal();
   const postId = getPostId();
 
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -37,47 +38,32 @@ const CommentOptions = ({
   const onDeleteComment = async () => {
     try {
       await mutateAsync({ id: comments.id, postId });
-      closeModal();
-      setIsEditMode(false);
-      setIsReplyMode(false);
+      closeDeleteModal();
+      onResetMode();
       sendNotificationEmail({ postId });
     } catch (e) {
       showModal({ name: 'error' });
     }
   };
 
-  useOnClickOutside(commentOptionsRef, () => setIsCommentOptionsVisible(false));
+  const onCloseOptionsAndShowDeleteModal = () => {
+    onCloseCommentOptions();
+    showModal({
+      name: 'delete_comment',
+      props: { onConfirm: onDeleteComment, disabled: isLoading },
+    });
+  };
+
+  useOnClickOutside(commentOptionsRef, onCloseCommentOptions);
 
   return (
     <S.Container ref={commentOptionsRef}>
-      <S.Option
-        onClick={() => {
-          setIsEditMode(false);
-          setIsReplyMode(true);
-          setIsCommentOptionsVisible(false);
-        }}
-      >
-        답글 작성
-      </S.Option>
+      <S.Option onClick={onReplyMode}>답글 작성</S.Option>
       {isAuthor && !comments.isDeleted && (
         <>
+          <S.Option onClick={onEditMode}>수정</S.Option>
           <S.Option
-            onClick={() => {
-              setIsReplyMode(false);
-              setIsEditMode(true);
-              setIsCommentOptionsVisible(false);
-            }}
-          >
-            수정
-          </S.Option>
-          <S.Option
-            onClick={() => {
-              setIsCommentOptionsVisible(false);
-              showModal({
-                name: 'delete_comment',
-                props: { onConfirm: onDeleteComment, disabled: isLoading },
-              });
-            }}
+            onClick={onCloseOptionsAndShowDeleteModal}
             disabled={isLoading}
           >
             삭제

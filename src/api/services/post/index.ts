@@ -17,20 +17,24 @@ export const getPostPaths = () => {
 };
 
 export const getAllPosts = () => {
-  const postsData = fileNames.map(fileName => {
+  const postFrontMatter = fileNames.map(fileName => {
     const filePath = join(postsDir, fileName);
     const metaData = fs.readFileSync(filePath, 'utf8');
 
     const id = fileName.replace(/\.md$/, '');
     const { data } = matter(metaData);
+    const { title, date, tags, description } = data;
 
     return {
       id,
-      ...data,
+      title,
+      date,
+      tags,
+      description,
     };
   });
 
-  return postsData;
+  return postFrontMatter;
 };
 
 export const getPostById = async (id: string) => {

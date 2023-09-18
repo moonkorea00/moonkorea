@@ -6,7 +6,7 @@ interface BaseCommentFormProps {
   onSubmit: () => void;
   isFormModeCancellable?: boolean;
   setFormToDefaultMode: () => void;
-  isButtonDisabled?: boolean;
+  isSubmitButtonDisabled?: boolean;
   submitButtonLabel: string;
 }
 
@@ -15,7 +15,7 @@ const BaseCommentForm = ({
   onSubmit,
   isFormModeCancellable,
   setFormToDefaultMode,
-  isButtonDisabled,
+  isSubmitButtonDisabled,
   submitButtonLabel,
 }: BaseCommentFormProps) => {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -27,14 +27,14 @@ const BaseCommentForm = ({
     <S.Container>
       <form onSubmit={handleSubmit}>
         {children}
-        <S.ButtonContainer>
+        <S.ActionButtonContainer>
           {isFormModeCancellable && (
             <S.ActionButton onClick={setFormToDefaultMode}>취소</S.ActionButton>
           )}
-          <S.ActionButton type="submit" disabled={isButtonDisabled}>
+          <S.ActionButton type="submit" disabled={isSubmitButtonDisabled}>
             {submitButtonLabel}
           </S.ActionButton>
-        </S.ButtonContainer>
+        </S.ActionButtonContainer>
       </form>
     </S.Container>
   );
