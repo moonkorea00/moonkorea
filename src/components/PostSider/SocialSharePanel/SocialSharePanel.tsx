@@ -1,4 +1,3 @@
-import type { Dispatch, SetStateAction } from 'react';
 import type { MetaData } from '@@types/metaData';
 import * as S from './SocialSharePanel.style';
 import { useRef } from 'react';
@@ -15,13 +14,13 @@ import { assets } from '@utils/assetsPath';
 
 interface ShareSocialsProps {
   postFrontMatter: MetaData;
-  setIsSocialSharePanelVisible: Dispatch<SetStateAction<boolean>>;
+  onClose: () => void;
   scrollDirection: 'up' | 'down' | null;
 }
 
 const SocialSharePanel = ({
   postFrontMatter,
-  setIsSocialSharePanelVisible,
+  onClose,
   scrollDirection,
 }: ShareSocialsProps) => {
   const SocialShareRef = useRef<HTMLDivElement>(null);
@@ -53,26 +52,24 @@ const SocialSharePanel = ({
     });
   };
 
-  const onCloseModal = () => setIsSocialSharePanelVisible(false);
-
   const onShareWithKakaoAndCloseModal = () => {
     onShareWithKakao();
-    onCloseModal();
+    onClose();
   };
 
-  useOnClickOutside(SocialShareRef, onCloseModal);
+  useOnClickOutside(SocialShareRef, onClose);
 
   return (
     <S.Container ref={SocialShareRef} scrollDirection={scrollDirection}>
       <S.CloseButtonContainer>
-        <S.CloseButton onClick={() => setIsSocialSharePanelVisible(false)}>
+        <S.CloseButton onClick={onClose}>
           <S.CloseButtonLabel>&#10005;</S.CloseButtonLabel>
         </S.CloseButton>
       </S.CloseButtonContainer>
-      <FacebookShareButton url={fullURL} onClick={onCloseModal}>
+      <FacebookShareButton url={fullURL} onClick={onClose}>
         <FacebookIcon size={40} round={true} />
       </FacebookShareButton>
-      <TwitterShareButton url={fullURL} onClick={onCloseModal}>
+      <TwitterShareButton url={fullURL} onClick={onClose}>
         <TwitterIcon size={40} round={true} />
       </TwitterShareButton>
       <S.KakaoShareButton onClick={onShareWithKakaoAndCloseModal}>
@@ -81,7 +78,7 @@ const SocialSharePanel = ({
           alt="카카오톡 공유"
           width={40}
           height={40}
-          priority={true}
+          priority
         />
       </S.KakaoShareButton>
     </S.Container>

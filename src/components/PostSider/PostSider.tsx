@@ -28,6 +28,8 @@ const PostSider = ({ postFrontMatter }: PostSiderProps) => {
     commentSectionElement?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const onCloseSocialSharePanel = () => setIsSocialSharePanelVisible(false);
+
   return (
     <S.Container
       isMounted={isMounted}
@@ -51,7 +53,7 @@ const PostSider = ({ postFrontMatter }: PostSiderProps) => {
       {isSocialSharePanelVisible && (
         <SocialSharePanel
           postFrontMatter={postFrontMatter}
-          setIsSocialSharePanelVisible={setIsSocialSharePanelVisible}
+          onClose={onCloseSocialSharePanel}
           scrollDirection={scrollDirection}
         />
       )}
