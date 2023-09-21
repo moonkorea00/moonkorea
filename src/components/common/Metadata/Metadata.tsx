@@ -1,11 +1,11 @@
 import type { MetaData } from '@@types/metaData';
 import Head from 'next/head';
 
-interface SEOProps {
+interface MetadataProps {
   metaData?: Partial<Pick<MetaData, 'id' | 'excerpt' | 'title'>>;
 }
 
-const SEO = ({ metaData }: SEOProps) => {
+const Metadata = ({ metaData }: MetadataProps) => {
   const TITLE = 'moonkorea 개발 블로그';
   const DESCRIPTION = 'moonkorea 개발 블로그입니다.';
 
@@ -48,4 +48,4 @@ const SEO = ({ metaData }: SEOProps) => {
   );
 };
 
-export default SEO;
+export default Metadata;

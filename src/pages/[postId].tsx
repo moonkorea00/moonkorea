@@ -1,7 +1,7 @@
 import type { MetaData } from '@@types/metaData';
 import { Suspense, useRef } from 'react';
 import DefaultLayout from '@components/common/Layout/DefaultLayout/DefaultLayout';
-import SEO from '@components/common/SEO/SEO';
+import Metadata from '@components/common/Metadata/Metadata';
 import Markdown from '@components/Markdown';
 import { CommentSectionPlaceholder } from '@components/Comments/CommentSection.style';
 import CommentSection from '@components/Comments/CommentSection';
@@ -22,7 +22,7 @@ const Post = ({ postFrontMatter }: PostProps) => {
 
   return (
     <>
-      <SEO metaData={postFrontMatter} />
+      <Metadata metaData={postFrontMatter} />
       <Markdown content={postFrontMatter.content} />
       <CommentSectionPlaceholder
         id="comment-section"
