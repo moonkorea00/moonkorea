@@ -4,11 +4,11 @@ import Metadata from '@components/common/Metadata/Metadata';
 import PreviewPost from '@components/Home/PreviewPost';
 import { getAllPosts } from '@api/services/post';
 
-interface HomeProps {
+interface HomePageProps {
   postFrontMatter: FrontMatter[];
 }
 
-const Home = ({ postFrontMatter }: HomeProps) => {
+const Home = ({ postFrontMatter }: HomePageProps) => {
   return (
     <>
       <Metadata />

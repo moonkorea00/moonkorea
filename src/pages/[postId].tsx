@@ -10,11 +10,11 @@ import PostSider from '@components/PostSider/PostSider';
 import { getPostPaths, getPostById } from '@api/services/post';
 import useIsIntersected from '@hooks/useIsIntersected';
 
-interface PostProps {
+interface PostPageProps {
   postFrontMatter: MetaData & { content: string };
 }
 
-const Post = ({ postFrontMatter }: PostProps) => {
+const Post = ({ postFrontMatter }: PostPageProps) => {
   const commentSectionRef = useRef<HTMLDivElement>(null);
   const isCommentSectionInView = useIsIntersected(commentSectionRef, {
     once: true,
