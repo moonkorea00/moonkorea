@@ -1,17 +1,17 @@
 import type { FrontMatter } from '@@types/metaData';
 import DefaultLayout from '@components/common/Layout/DefaultLayout/DefaultLayout';
-import SEO from '@components/common/SEO/SEO';
+import Metadata from '@components/common/Metadata/Metadata';
 import PreviewPost from '@components/Home/PreviewPost';
 import { getAllPosts } from '@api/services/post';
 
-interface HomeProps {
+interface HomePageProps {
   postFrontMatter: FrontMatter[];
 }
 
-const Home = ({ postFrontMatter }: HomeProps) => {
+const Home = ({ postFrontMatter }: HomePageProps) => {
   return (
     <>
-      <SEO />
+      <Metadata />
       {postFrontMatter
         .sort((a: FrontMatter, b: FrontMatter) => (a.date > b.date ? -1 : 1))
         .map((frontMatter: FrontMatter) => (
