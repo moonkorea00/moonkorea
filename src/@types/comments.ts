@@ -1,11 +1,11 @@
 import type { QueryKey } from "@tanstack/react-query";
 
-export interface RawCommentProps {
+export interface RawComment {
   id: string;
   body: string | null;
   userId: string;
   postId: string;
-  user: UserProps;
+  user: User;
   parentId: string | null;
   isDeleted: boolean;
   createdAt: Date;
@@ -13,12 +13,12 @@ export interface RawCommentProps {
   deletedAt: Date | null;
 }
 
-export interface CommentProps extends RawCommentProps {
-  children: CommentProps[];
+export interface Comment extends RawComment {
+  children: Comment[];
   depth: number;
 }
 
-export interface UserProps {
+export interface User {
   id: string;
   name: string | null;
   email: string | null;

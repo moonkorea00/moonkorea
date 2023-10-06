@@ -1,4 +1,4 @@
-import { CommentProps } from '@@types/comments';
+import type { Comment } from '@@types/comments';
 
 export const getPostId = () => {
   const postId =
@@ -44,7 +44,7 @@ export const formatDateToElapsedTime = (date: Date) => {
   }
 };
 
-export const checkIfIsEdittedComment = (comments: CommentProps) => {
+export const checkIfIsEdittedComment = (comments: Comment) => {
   const isEditted =
     new Date(comments?.updatedAt).getTime() -
       new Date(comments?.createdAt).getTime() >

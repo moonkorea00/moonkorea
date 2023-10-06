@@ -1,25 +1,21 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { CommentProps, RawCommentProps } from '@@types/comments';
+import type { Comment, RawComment } from '@@types/comments';
 
-export const nestCommentsWithChildren = (comments: RawCommentProps[]) => {
+export const nestCommentsWithChildren = (comments: RawComment[]) => {
   const map = new Map();
-  const commentsWithChildren = comments?.reduce<CommentProps[]>(
-    (arr, comment, i) => {
-      map.set(comment.id, i);
-      const parentIdIdx = map.get(comment.parentId);
-      (comment as CommentProps).children = [];
-      (comments[parentIdIdx] as CommentProps)?.children.push(
-        comment as CommentProps
-      );
+  const commentsWithChildren = comments.reduce<Comment[]>((arr, comment, i) => {
+    map.set(comment.id, i);
+    const parentIdIdx = map.get(comment.parentId);
+    (comment as Comment).children = [];
+    (comments[parentIdIdx] as Comment)?.children.push(comment as Comment);
 
-      return (comment.parentId ? arr : [...arr, comment]) as CommentProps[];
-    },
-    [] as CommentProps[]
-  );
+    return (comment.parentId ? arr : [...arr, comment]) as Comment[];
+  }, [] as Comment[]);
+
   return commentsWithChildren;
 };
 
-export const getActiveComments = (comments: RawCommentProps[]) =>
+export const getActiveComments = (comments: RawComment[]) =>
   comments.map(el =>
     el.isDeleted
       ? {
@@ -30,12 +26,9 @@ export const getActiveComments = (comments: RawCommentProps[]) =>
       : el
   );
 
-export const addDepthKeyToElement = (arr: CommentProps[]) => {
+export const addDepthKeyToElement = (arr: Comment[]) => {
   const maxDepth = 50;
-  const addDepthKeyRecursively = (
-    el: CommentProps,
-    depth = 1
-  ): CommentProps => {
+  const addDepthKeyRecursively = (el: Comment, depth = 1): Comment => {
     if (depth > maxDepth) {
       throw new Error('Infinite loop found');
     }
@@ -52,5 +45,5 @@ export const addDepthKeyToElement = (arr: CommentProps[]) => {
 
 export const pipe =
   (...fns: any[]) =>
-  (val: RawCommentProps[]) =>
+  (val: RawComment[]) =>
     fns.reduce((acc, fn) => fn(acc), val);

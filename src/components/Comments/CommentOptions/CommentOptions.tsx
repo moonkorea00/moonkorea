@@ -1,4 +1,4 @@
-import type { CommentProps } from '@@types/comments';
+import type { Comment } from '@@types/comments';
 import * as S from './CommentOptions.style';
 import { useRef } from 'react';
 import { useSession } from 'next-auth/react';
@@ -9,7 +9,7 @@ import { getPostId } from '../Comments.utils';
 import { sendNotificationEmail } from '@api/services/notificationEmail';
 
 interface CommentOptionsProps {
-  comments: CommentProps;
+  comments: Comment;
   onResetMode: () => void;
   onEditMode: () => void;
   onReplyMode: () => void;
