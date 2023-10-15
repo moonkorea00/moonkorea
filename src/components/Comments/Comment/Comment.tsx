@@ -1,4 +1,4 @@
-import type { CommentProps as IComment } from '@@types/comments';
+import type { Comment as IComment } from '@@types/comments';
 import * as S from './Comment.style';
 import { useState } from 'react';
 import Image from 'next/image';
@@ -27,7 +27,7 @@ const Comment = ({ comments }: CommentProps) => {
   const [isCommentOptionsVisible, setIsCommentOptionsVisible] = useState(false);
 
   const onCloseCommentOptions = () => setIsCommentOptionsVisible(false);
-  
+
   const onResetMode = () => setMode(CommentMode.View);
 
   const onEditMode = () => {
@@ -88,14 +88,14 @@ const Comment = ({ comments }: CommentProps) => {
             <EditCommentForm
               comments={comments}
               isEditMode={mode === CommentMode.Edit}
-              onExitEditMode={onResetMode}
+              setFormToDefaultMode={onResetMode}
             />
           )}
           {mode === CommentMode.Reply && (
             <NewCommentForm
               comments={comments}
               isReplyMode={mode === CommentMode.Reply}
-              onExitReplyMode={onResetMode}
+              setFormToDefaultMode={onResetMode}
             />
           )}
         </S.ContentContainer>

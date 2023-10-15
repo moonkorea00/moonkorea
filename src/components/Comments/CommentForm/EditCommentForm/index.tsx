@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
-import type { CommentProps } from '@@types/comments';
+import type { Comment } from '@@types/comments';
 import * as S from '../CommentForm.style';
 import BaseCommentForm from '../BaseCommentForm';
 import useInput from '@hooks/useInput';
@@ -9,13 +9,13 @@ import { getPostId } from '@components/Comments/Comments.utils';
 
 interface EditCommentFormProps {
   isEditMode: boolean;
-  onExitEditMode: () => void;
-  comments: CommentProps;
+  setFormToDefaultMode: () => void;
+  comments: Comment;
 }
 
 const EditCommentForm = ({
   isEditMode,
-  onExitEditMode,
+  setFormToDefaultMode,
   comments,
 }: EditCommentFormProps) => {
   const [edittedComment, handleCommentChange] = useInput<HTMLTextAreaElement>(
@@ -34,7 +34,7 @@ const EditCommentForm = ({
       },
       {
         onSuccess() {
-          onExitEditMode();
+          setFormToDefaultMode();
           sendNotificationEmail({ postId, body: edittedComment });
         },
       }
@@ -44,7 +44,7 @@ const EditCommentForm = ({
   const editCommentFormConfig = {
     onSubmit: onEditComment,
     isFormModeCancellable: isEditMode,
-    setFormToDefaultMode: onExitEditMode,
+    setFormToDefaultMode,
     isSubmitButtonDisabled: isLoading,
     submitButtonLabel: '수정',
   };

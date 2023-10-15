@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
 import SyntaxHighlighter from 'react-syntax-highlighter';
+import { githubGist } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
 
 const ReactPlayer = dynamic(() => import('react-player/lazy'), { ssr: false });
 // load client side. see https://github.com/cookpete/react-player/issues/1474
@@ -21,11 +22,16 @@ export const MarkdownCode = ({ children }: MarkdownCodeProps) => {
   const customStyle = {
     padding: '10px 15px',
     margin: '22px 0',
-    borderRadius: '10px',
-    lineHeight: '24px',
+    borderRadius: '6px',
+    lineHeight: '22px',
+    backgroundColor: '#f8f8f8',
   };
   return (
-    <SyntaxHighlighter language="javascript" customStyle={customStyle}>
+    <SyntaxHighlighter
+      language="javascript"
+      style={githubGist}
+      customStyle={customStyle}
+    >
       {children}
     </SyntaxHighlighter>
   );
