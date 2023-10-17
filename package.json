@@ -30,7 +30,7 @@
     "postbuild": "next-sitemap",
     "start": "next start",
     "analyze": "next-bundle-analyzer",
-    "sider": "node public/script/generateSiderJSON.js"
+    "sider": "node src/scripts/generateSiderJSON.js"
   },
   "eslintConfig": {
     "extends": [

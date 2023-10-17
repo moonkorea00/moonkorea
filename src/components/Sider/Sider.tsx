@@ -1,7 +1,7 @@
 import * as S from './Sider.style';
 import { useRef } from 'react';
 import NavCategory from './NavCategory/NavCategory';
-import SIDER_DATA from 'public/script/sider.json';
+import SIDER_DATA from '@data/sider.json';
 import useOnClickOutside from '@hooks/useOnClickOutside';
 import useKeyPress from '@hooks/useKeyPress';
 

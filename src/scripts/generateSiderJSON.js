@@ -53,7 +53,7 @@ const generateSiderJSON = () => {
   });
 
   const siderJSON = JSON.stringify(siderData);
-  writeFileSync('public/script/sider.json', siderJSON, { flag: 'w' });
+  writeFileSync('src/data/sider.json', siderJSON, { flag: 'w' });
 };
 
 generateSiderJSON();
