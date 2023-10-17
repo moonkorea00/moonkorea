@@ -6,22 +6,18 @@ import NavItem from '../NavItem/NavItem';
 import useExpandAndCollapse from '../hooks/useExpandAndCollapse';
 import { assets } from '@utils/assetsPath';
 
-interface ItemProps {
+interface NavItem {
   title: string;
-  category: string;
   path: string;
-  date: string;
 }
 
 interface CategoryProps {
-  item: { name: string; posts: ItemProps[] };
+  name: string;
+  posts: NavItem[];
   onCloseSider: () => void;
 }
 
-const NavCategory = ({
-  item: { name, posts },
-  onCloseSider,
-}: CategoryProps) => {
+const NavCategory = ({ name, posts, onCloseSider }: CategoryProps) => {
   const [isSubCategoryOpen, setIsSubCategoryOpen] = useState(false);
   const { asPath } = useRouter();
 
@@ -64,13 +60,8 @@ const NavCategory = ({
         height={containerHeight}
         ref={navItemContainerRef}
       >
-        {posts.map(({ title, path }: ItemProps, idx) => (
-          <NavItem
-            key={idx}
-            title={title}
-            path={path}
-            onCloseSider={onCloseSider}
-          />
+        {posts.map(post => (
+          <NavItem key={post.title} {...post} onCloseSider={onCloseSider} />
         ))}
       </S.NavItemContainer>
     </S.Container>

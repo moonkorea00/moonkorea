@@ -1,7 +1,7 @@
 import * as S from './Sider.style';
 import { useRef } from 'react';
 import NavCategory from './NavCategory/NavCategory';
-import siderData from 'public/script/sider.json';
+import SIDER_DATA from '@data/sider.json';
 import useOnClickOutside from '@hooks/useOnClickOutside';
 import useKeyPress from '@hooks/useKeyPress';
 
@@ -21,8 +21,8 @@ const Sider = ({ isSiderVisible, onCloseSider }: SiderProps) => {
       <S.ButtonWrapper>
         <S.CloseButton onClick={onCloseSider}>&#10005;</S.CloseButton>
       </S.ButtonWrapper>
-      {siderData.map((item, idx) => (
-        <NavCategory key={idx} item={item} onCloseSider={onCloseSider} />
+      {SIDER_DATA.map(item => (
+        <NavCategory key={item.name} {...item} onCloseSider={onCloseSider} />
       ))}
     </S.Container>
   );

@@ -1,12 +1,11 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable no-undef */
+import withBundleAnalyzer from '@next/bundle-analyzer';
 
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
+const bundleAnalyzerConfig = withBundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
 });
 
-module.exports = {
+export default {
   productionBrowserSourceMaps: true,
   webpack(config, { dev }) {
     if (dev) {
@@ -15,4 +14,4 @@ module.exports = {
     return config;
   }
 };
-// withBundleAnalyzer({})
+// bundleAnalyzerConfig
