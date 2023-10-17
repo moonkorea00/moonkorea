@@ -5,6 +5,7 @@ import SocialSharePanel from './SocialSharePanel/SocialSharePanel';
 import { usePrefetchComments } from '@api/hooks/Comments/query';
 import useResizeSiderPosition from './hooks/useResizeSiderPosition';
 import useScrollDirection from './hooks/useScrollDirection';
+import useKeyPress from '@hooks/useKeyPress';
 import { assets } from '@utils/assetsPath';
 import { getPostId } from '@components/Comments/Comments.utils';
 
@@ -29,6 +30,8 @@ const PostSider = ({ postFrontMatter }: PostSiderProps) => {
   };
 
   const onCloseSocialSharePanel = () => setIsSocialSharePanelVisible(false);
+
+  useKeyPress({ Escape: onCloseSocialSharePanel });
 
   return (
     <S.Container
