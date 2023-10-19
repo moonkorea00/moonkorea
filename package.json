@@ -24,10 +24,10 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 8000",
     "build": "next build",
     "postbuild": "next-sitemap",
-    "start": "next start",
+    "start": "next start -p 8000",
     "analyze": "next-bundle-analyzer",
     "sider": "node src/scripts/generateSiderJSON.mjs"
   },
