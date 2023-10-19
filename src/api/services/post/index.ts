@@ -1,3 +1,4 @@
+import type { FrontMatter } from '@@types/metaData';
 import fs from 'fs';
 import { join } from 'path';
 import matter from 'gray-matter';
@@ -35,6 +36,14 @@ export const getAllPosts = () => {
   });
 
   return postFrontMatter;
+};
+
+export const getAllPostsSortedByDate = () => {
+  const posts = getAllPosts();
+
+  return posts.sort((a: FrontMatter, b: FrontMatter) =>
+    a.date > b.date ? -1 : 1
+  );
 };
 
 export const getPostById = async (id: string) => {

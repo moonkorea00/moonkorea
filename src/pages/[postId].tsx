@@ -52,11 +52,13 @@ interface PostParams {
 
 export const getStaticPaths = async () => {
   const paths = getPostPaths();
+
   return { paths, fallback: false };
 };
 
 export const getStaticProps = async ({ params }: PostParams) => {
   const postFrontMatter = await getPostById(params.postId);
+  
   return {
     props: { postFrontMatter },
   };

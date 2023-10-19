@@ -2,21 +2,19 @@ import type { FrontMatter } from '@@types/metaData';
 import DefaultLayout from '@components/common/Layout/DefaultLayout/DefaultLayout';
 import Metadata from '@components/common/Metadata/Metadata';
 import PreviewPost from '@components/Home/PreviewPost';
-import { getAllPosts } from '@api/services/post';
+import { getAllPostsSortedByDate } from '@api/services/post';
 
 interface HomePageProps {
-  postFrontMatter: FrontMatter[];
+  posts: FrontMatter[];
 }
 
-const Home = ({ postFrontMatter }: HomePageProps) => {
+const Home = ({ posts }: HomePageProps) => {
   return (
     <>
       <Metadata />
-      {postFrontMatter
-        .sort((a: FrontMatter, b: FrontMatter) => (a.date > b.date ? -1 : 1))
-        .map((frontMatter: FrontMatter) => (
-          <PreviewPost key={frontMatter.id} {...frontMatter} />
-        ))}
+      {posts.map((post: FrontMatter) => (
+        <PreviewPost key={post.id} {...post} />
+      ))}
     </>
   );
 };
@@ -26,8 +24,9 @@ export default Home;
 Home.getLayout = DefaultLayout;
 
 export const getStaticProps = async () => {
-  const postFrontMatter = getAllPosts();
+  const posts = getAllPostsSortedByDate();
+
   return {
-    props: { postFrontMatter },
+    props: { posts },
   };
 };
