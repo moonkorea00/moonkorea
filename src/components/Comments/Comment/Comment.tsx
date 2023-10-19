@@ -100,7 +100,7 @@ const Comment = ({ comments }: CommentProps) => {
           )}
         </S.ContentContainer>
       </S.CommentContainer>
-      {comments?.children?.length > 0 && (
+      {comments.children.length > 0 && (
         <CommentList comments={comments.children} />
       )}
     </S.Container>
