@@ -29,7 +29,8 @@
     "postbuild": "next-sitemap",
     "start": "next start -p 8000",
     "analyze": "next-bundle-analyzer",
-    "sider": "node src/scripts/generateSiderJSON.mjs"
+    "sider": "node src/scripts/generateSiderJSON.mjs",
+    "template": "node src/scripts/generateMDTemplate.mjs"
   },
   "eslintConfig": {
     "extends": [
