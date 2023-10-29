@@ -1,6 +1,6 @@
 import DefaultLayout from '@components/common/Layout/DefaultLayout/DefaultLayout';
 import Metadata from '@components/common/Metadata/Metadata';
-import NotFound from '@components/404/NotFound';
+import ErrorWithRedirection from '@components/common/Error/ErrorWithRedirection';
 
 const metaData = {
   title: '404 페이지를 찾을 수 없습니다',
@@ -10,7 +10,9 @@ const NotFoundPage = () => {
   return (
     <>
       <Metadata metaData={metaData} />
-      <NotFound />
+      <ErrorWithRedirection>
+        <h1>페이지를 찾을 수 없습니다.</h1>
+      </ErrorWithRedirection>
     </>
   );
 };
@@ -18,4 +20,4 @@ const NotFoundPage = () => {
 export default NotFoundPage;
 
 NotFoundPage.getLayout = DefaultLayout;
-NotFoundPage.pagType = '404';
+NotFoundPage.pageType = '404';

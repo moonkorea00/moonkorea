@@ -10,6 +10,18 @@ import {
 const fetchComments = async (req: NextApiRequest, res: NextApiResponse) => {
   const { id } = req.query;
 
+  if (!id) {
+    return res.status(400).json({ message: 'Missing required parameter' });
+  }
+
+  const post = await prisma.post.findUnique({
+    where: { id: id as string },
+  });
+
+  if (!post) {
+    return res.status(404).json({ message: 'comment not found' });
+  }
+
   try {
     const rawComments = await prisma.comment.findMany({
       where: {
@@ -34,9 +46,9 @@ const fetchComments = async (req: NextApiRequest, res: NextApiResponse) => {
       .json({ total_comments: rawComments.length, comments });
   } catch (err) {
     if (err instanceof Error && err.message === 'Infinite loop found') {
-      return res.status(400).json({ message: 'Infinite loop found' });
+      return res.status(500).json({ message: 'something went wrong' });
     }
-    return res.status(400).json({ message: 'something went wrong' });
+    return res.status(500).json({ message: 'something went wrong' });
   }
 };
 
