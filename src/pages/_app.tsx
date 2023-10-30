@@ -5,6 +5,7 @@ import { SessionProvider } from 'next-auth/react';
 import { ThemeProvider } from 'styled-components';
 import { Analytics } from '@vercel/analytics/react';
 import ReactQueryClientProvider from '@components/common/Providers/QueryClient';
+import GlobalErrorBoundary from '@components/common/ErrorBoundary/GlobalErrorBoundary';
 import GlobalStyle from '@styles/GlobalStyle';
 import theme from '@styles/theme';
 import ModalProvider from '@context/Modal';
@@ -32,7 +33,9 @@ const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps) => {
           <ModalProvider>
             <ReactQueryClientProvider pageProps={pageProps}>
               <GlobalStyle />
-              {getLayout(Component, pageProps)}
+              <GlobalErrorBoundary>
+                {getLayout(Component, pageProps)}
+              </GlobalErrorBoundary>
               <Analytics />
             </ReactQueryClientProvider>
           </ModalProvider>

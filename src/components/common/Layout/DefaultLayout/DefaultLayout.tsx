@@ -2,6 +2,7 @@ import type { AppProps } from 'next/app';
 import type { NextPageWithLayout } from '@@types/layout';
 import * as S from './DefaultLayout.style';
 import Header from '@components/common/Header/Header';
+import ErrorBoundary from '@components/common/ErrorBoundary/ErrorBoundary';
 
 const DefaultLayout = (
   Page: NextPageWithLayout,
@@ -9,10 +10,15 @@ const DefaultLayout = (
 ) => {
   return (
     <S.Container>
-      <Header postFrontMatter={pageProps.postFrontMatter} pageType={Page.pageType} />
+      <Header
+        postFrontMatter={pageProps.postFrontMatter}
+        pageType={Page.pageType}
+      />
       <S.Main>
         <S.ChildrenContainer>
-          <Page {...pageProps} />
+          <ErrorBoundary>
+            <Page {...pageProps} />
+          </ErrorBoundary>
         </S.ChildrenContainer>
       </S.Main>
     </S.Container>

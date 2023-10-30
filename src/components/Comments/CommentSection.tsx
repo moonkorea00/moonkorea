@@ -1,8 +1,8 @@
 import * as S from './CommentSection.style';
+import NewCommentForm from './CommentForm/NewCommentForm';
 import CommentList from './CommentList/CommentList';
 import { useGetComments } from '@api/hooks/Comments/query';
 import { getPostId } from './Comments.utils';
-import NewCommentForm from './CommentForm/NewCommentForm';
 
 const CommentSection = () => {
   const postId = getPostId();
@@ -10,11 +10,9 @@ const CommentSection = () => {
 
   return (
     <S.Container>
-      {comments?.data && (
-        <S.CommentCount>{comments.data.total_comments}개 댓글</S.CommentCount>
-      )}
+      <S.CommentCount>{comments?.data.total_comments}개 댓글</S.CommentCount>
       <NewCommentForm />
-      {comments?.data && <CommentList comments={comments?.data.comments} />}
+      <CommentList comments={comments?.data.comments} />
     </S.Container>
   );
 };

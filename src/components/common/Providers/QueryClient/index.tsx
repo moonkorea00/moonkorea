@@ -23,12 +23,9 @@ const ReactQueryClientProvider = ({
     new QueryClient({
       defaultOptions: {
         queries: {
-          retryOnMount: false,
           refetchOnWindowFocus: false,
           refetchOnReconnect: false,
-          onError() {
-            showModal({ name: 'error' });
-          },
+          retry: 1,
         },
         mutations: {
           onError() {
