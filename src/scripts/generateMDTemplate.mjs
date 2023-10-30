@@ -22,6 +22,8 @@ date: '${parsedDate}'
 
 ## heading 2
 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum finibus, ex vitae volutpat semper, orci leo vulputate magna, vitae vestibulum tellus justo eget arcu. Suspendisse potenti. Etiam purus mauris, hendrerit quis velit in, maximus porttitor ante. Duis sit amet augue a nulla efficitur vulputate sed vitae sem. Aliquam erat volutpat. Nullam blandit velit nec accumsan posuere. Phasellus bibendum augue lorem, a rhoncus nibh hendrerit sit amet. Nullam tincidunt pulvinar tortor, quis feugiat mi congue ut. In nec molestie metus, ut mattis nunc.
+
 ### heading 3
 
 ### heading 4
