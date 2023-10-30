@@ -1,5 +1,6 @@
 import type { MetaData } from '@@types/metaData';
 import { Suspense, useRef } from 'react';
+import { useQueryErrorResetBoundary } from '@tanstack/react-query';
 import DefaultLayout from '@components/common/Layout/DefaultLayout/DefaultLayout';
 import Metadata from '@components/common/Metadata/Metadata';
 import Markdown from '@components/Markdown';
@@ -7,6 +8,8 @@ import { CommentSectionPlaceholder } from '@components/Comments/CommentSection.s
 import CommentSection from '@components/Comments/CommentSection';
 import CommentSectionLoader from '@components/Comments/Loader/Loader';
 import PostSider from '@components/PostSider/PostSider';
+import ErrorBoundary from '@components/common/ErrorBoundary/ErrorBoundary';
+import RetryFallback from '@components/common/ErrorBoundary/Fallback/RetryFallback';
 import { getPostPaths, getPostById } from '@api/services/post';
 import useIsIntersected from '@hooks/useIsIntersected';
 
@@ -20,6 +23,8 @@ const Post = ({ postFrontMatter }: PostPageProps) => {
     once: true,
   });
 
+  const { reset } = useQueryErrorResetBoundary();
+
   return (
     <>
       <Metadata metaData={postFrontMatter} />
@@ -30,9 +35,11 @@ const Post = ({ postFrontMatter }: PostPageProps) => {
         ref={commentSectionRef}
       />
       {isCommentSectionInView && (
-        <Suspense fallback={<CommentSectionLoader />}>
-          <CommentSection />
-        </Suspense>
+        <ErrorBoundary onReset={reset} fallback={RetryFallback}>
+          <Suspense fallback={<CommentSectionLoader />}>
+            <CommentSection />
+          </Suspense>
+        </ErrorBoundary>
       )}
       <PostSider postFrontMatter={postFrontMatter} />
     </>
@@ -58,7 +65,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({ params }: PostParams) => {
   const postFrontMatter = await getPostById(params.postId);
-  
+
   return {
     props: { postFrontMatter },
   };
