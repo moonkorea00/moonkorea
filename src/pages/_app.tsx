@@ -1,17 +1,21 @@
 import type { NextComponentType } from 'next';
 import type { AppProps } from 'next/app';
 import type { NextPageWithLayout } from '@@types/layout';
+
 import { SessionProvider } from 'next-auth/react';
-import { ThemeProvider } from 'styled-components';
-import { Analytics } from '@vercel/analytics/react';
+
 import ReactQueryClientProvider from '@components/common/Providers/QueryClient';
-import GlobalErrorBoundary from '@components/common/ErrorBoundary/GlobalErrorBoundary';
-import GlobalStyle from '@styles/GlobalStyle';
-import theme from '@styles/theme';
 import ModalProvider from '@context/Modal';
-import GoogleAnalytics from '@components/common/Script/GoogleAnalytics';
-import ChannelIo from '@components/common/Script/ChannelIO';
-import KakaoScript from '@components/common/Script/Kakao';
+import {
+  GoogleAnalytics,
+  ChannelIO,
+  KakaoScript,
+} from '@components/common/Script';
+import { GlobalErrorBoundary } from '@components/common/ErrorBoundary';
+import { Analytics } from '@vercel/analytics/react';
+
+import { ThemeProvider, GlobalStyle, theme } from '@styles';
+
 import useGoogleAnalytics from '@hooks/useGoogleAnalytics';
 
 const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps) => {
@@ -26,7 +30,7 @@ const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps) => {
   return (
     <>
       <GoogleAnalytics />
-      <ChannelIo />
+      <ChannelIO />
       <KakaoScript />
       <ThemeProvider theme={theme}>
         <SessionProvider session={session}>

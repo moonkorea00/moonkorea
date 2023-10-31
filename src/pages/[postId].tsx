@@ -1,16 +1,21 @@
 import type { MetaData } from '@@types/metaData';
+
 import { Suspense, useRef } from 'react';
 import { useQueryErrorResetBoundary } from '@tanstack/react-query';
+
 import DefaultLayout from '@components/common/Layout/DefaultLayout/DefaultLayout';
 import Metadata from '@components/common/Metadata/Metadata';
 import Markdown from '@components/Markdown';
-import { CommentSectionPlaceholder } from '@components/Comments/CommentSection.style';
-import CommentSection from '@components/Comments/CommentSection';
-import CommentSectionLoader from '@components/Comments/Loader/Loader';
+import {
+  CommentSection,
+  CommentSectionLoader,
+  CommentSectionPlaceholder,
+} from '@components/Comments';
 import PostSider from '@components/PostSider/PostSider';
-import ErrorBoundary from '@components/common/ErrorBoundary/ErrorBoundary';
-import RetryFallback from '@components/common/ErrorBoundary/Fallback/RetryFallback';
+import { ErrorBoundary, RetryFallback } from '@components/common/ErrorBoundary';
+
 import { getPostPaths, getPostById } from '@api/services/post';
+
 import useIsIntersected from '@hooks/useIsIntersected';
 
 interface PostPageProps {

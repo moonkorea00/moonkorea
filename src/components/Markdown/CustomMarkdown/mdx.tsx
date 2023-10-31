@@ -8,7 +8,7 @@ const ReactPlayer = dynamic(() => import('react-player/lazy'), { ssr: false });
 
 export const MDIframe = dynamic(
   () =>
-    import('src/components/Markdown/CustomMarkdown').then(
+    import('@components/Markdown/CustomMarkdown/mdx').then(
       module => module.MarkdownIframe
     ),
   { ssr: false }

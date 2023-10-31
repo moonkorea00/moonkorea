@@ -3,8 +3,8 @@ import type {
   ImgHTMLAttributes,
   HTMLAttributes,
 } from 'react';
-import * as MD from './CustomMarkdown/CustomMarkdown.style'
-import * as MDX from './CustomMarkdown/index';
+import * as MD from './CustomMarkdown/md'
+import * as MDX from './CustomMarkdown/mdx';
 import Reactmarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 
