@@ -52,6 +52,7 @@
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^13.2.4",
+    "@tanstack/eslint-plugin-query": "^5.0.5",
     "@tanstack/react-query-devtools": "^4.24.4",
     "@types/gtag.js": "^0.0.12",
     "@types/node": "^18.11.9",
