@@ -2,7 +2,7 @@ import type { AppProps } from 'next/app';
 import type { NextPageWithLayout } from '@@types/layout';
 import * as S from './DefaultLayout.style';
 import Header from '@components/common/Header/Header';
-import ErrorBoundary from '@components/common/ErrorBoundary/ErrorBoundary';
+import { ErrorBoundary } from '@components/common/ErrorBoundary';
 
 const DefaultLayout = (
   Page: NextPageWithLayout,

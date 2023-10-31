@@ -1,7 +1,9 @@
 import type { FrontMatter } from '@@types/metaData';
+
 import DefaultLayout from '@components/common/Layout/DefaultLayout/DefaultLayout';
 import Metadata from '@components/common/Metadata/Metadata';
 import PreviewPost from '@components/Home/PreviewPost';
+
 import { getAllPostsSortedByDate } from '@api/services/post';
 
 interface HomePageProps {

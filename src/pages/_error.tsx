@@ -1,6 +1,6 @@
 import type { NextPageContext } from 'next/types';
 import Metadata from '@components/common/Metadata/Metadata';
-import GlobalErrorFallback from '@components/common/ErrorBoundary/Fallback/GlobalErrorFallback';
+import { GlobalErrorFallback } from '@components/common/ErrorBoundary';
 
 interface ErrorPageProps {
   statusCode: number;
