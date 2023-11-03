@@ -6,3 +6,11 @@ export type ErrorFallbackProps = {
   err: ErrorBoundaryError;
   onRetry: () => void;
 };
+
+export interface MessageProps {
+  err: ErrorBoundaryError;
+}
+
+export interface ActionButtonProps {
+  onClickHandler: () => void;
+}

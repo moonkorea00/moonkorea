@@ -1,11 +1,7 @@
-import type { ReactNode, Dispatch, SetStateAction } from 'react';
+import type { Dispatch, SetStateAction } from 'react';
 import type { ModalProps } from '@@types/modal';
 import { useState, useContext, createContext } from 'react';
 import PortalContainer from '@components/common/Portal/PortalContainer';
-
-interface ContextProps {
-  children: ReactNode;
-}
 
 interface ModalContext {
   modalConfig: ModalProps | null;
@@ -14,7 +10,7 @@ interface ModalContext {
 
 const ModalContext = createContext<ModalContext | null>(null);
 
-const ModalProvider = ({ children }: ContextProps) => {
+const ModalProvider = ({ children }: PropsWithStrictChildren) => {
   const [modalConfig, setModalConfig] = useState<ModalProps | null>(null);
 
   return (

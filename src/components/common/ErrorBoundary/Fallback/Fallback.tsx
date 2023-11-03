@@ -1,27 +1,15 @@
+/* eslint-disable @typescript-eslint/ban-types */
 import * as S from './Fallback.style';
-import type { ReactNode } from 'react';
-import type { ErrorBoundaryError } from '../types';
+import type { ActionButtonProps, MessageProps } from '../types';
 import { isAxiosError } from 'axios';
 
-interface ErrorFallbackMainProps {
-  children: ReactNode;
-}
-
-interface MessageProps {
-  err: ErrorBoundaryError;
-  children: ReactNode;
-}
-
-interface ActionButtonProps {
-  onClickHandler: () => void;
-  children: ReactNode;
-}
-
-const ErrorFallbackMain = ({ children }: ErrorFallbackMainProps) => {
+const ErrorFallbackMain = ({
+  children,
+}: PropsWithStrictChildren) => {
   return <S.Container>{children}</S.Container>;
 };
 
-const Message = ({ err, children }: MessageProps) => {
+const Message = ({ err, children }: PropsWithStrictChildren<MessageProps>) => {
   return (
     <S.FallbackMessage>
       {children}&emsp;
@@ -32,7 +20,10 @@ const Message = ({ err, children }: MessageProps) => {
   );
 };
 
-const ActionButton = ({ onClickHandler, children }: ActionButtonProps) => {
+const ActionButton = ({
+  onClickHandler,
+  children,
+}: PropsWithStrictChildren<ActionButtonProps>) => {
   return (
     <S.FallbackButton onClick={onClickHandler}>{children}</S.FallbackButton>
   );
