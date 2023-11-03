@@ -26,7 +26,7 @@ export const useMutation = <TResponse, TError, TVariables, TContext>({
     mutationFn,
     onSuccess() {
       invalidationQueries?.forEach((queryKey: QueryKey) =>
-        queryClient.invalidateQueries(queryKey)
+        queryClient.invalidateQueries({ queryKey })
       );
     },
     ...options,

@@ -4,7 +4,7 @@ import { useState } from 'react';
 import {
   QueryClientProvider,
   QueryClient,
-  Hydrate,
+  HydrationBoundary,
 } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import useModal from '@hooks/useModal';
@@ -38,7 +38,9 @@ const ReactQueryClientProvider = ({
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Hydrate state={pageProps.dehydratedState}>{children}</Hydrate>
+      <HydrationBoundary state={pageProps.dehydratedState}>
+        {children}
+      </HydrationBoundary>
       <ReactQueryDevtools />
     </QueryClientProvider>
   );

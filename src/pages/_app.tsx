@@ -3,16 +3,16 @@ import type { AppProps } from 'next/app';
 import type { NextPageWithLayout } from '@@types/layout';
 
 import { SessionProvider } from 'next-auth/react';
+import { Analytics } from '@vercel/analytics/react';
 
 import ReactQueryClientProvider from '@components/common/Providers/QueryClient';
+import { GlobalErrorBoundary } from '@components/common/ErrorBoundary';
 import ModalProvider from '@context/Modal';
 import {
   GoogleAnalytics,
   ChannelIO,
   KakaoScript,
 } from '@components/common/Script';
-import { GlobalErrorBoundary } from '@components/common/ErrorBoundary';
-import { Analytics } from '@vercel/analytics/react';
 
 import { ThemeProvider, GlobalStyle, theme } from '@styles';
 
