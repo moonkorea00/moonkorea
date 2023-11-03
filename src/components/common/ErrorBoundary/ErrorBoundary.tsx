@@ -1,11 +1,10 @@
 import type { ErrorFallbackProps, ErrorBoundaryError } from './types';
-import { Component, FunctionComponent, ReactNode } from 'react';
+import { Component, FunctionComponent } from 'react';
 import DefaultErrorFallback from './Fallback/DefaultFallback';
 
 interface ErrorBoundaryProps {
   onReset?: () => void;
   fallback?: FunctionComponent<ErrorFallbackProps>;
-  children: ReactNode;
 }
 
 interface ErrorBoundaryState {
@@ -15,8 +14,11 @@ interface ErrorBoundaryState {
 
 const initialState = { hasError: false, err: null };
 
-class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
-  constructor(props: ErrorBoundaryProps) {
+class ErrorBoundary extends Component<
+  PropsWithStrictChildren<ErrorBoundaryProps>,
+  ErrorBoundaryState
+> {
+  constructor(props: PropsWithStrictChildren<ErrorBoundaryProps>) {
     super(props);
     this.state = { hasError: false, err: null };
     this.resetErrorBoundary = this.resetErrorBoundary.bind(this);

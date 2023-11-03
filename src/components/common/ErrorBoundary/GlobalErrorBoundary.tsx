@@ -1,10 +1,6 @@
 import type { ErrorBoundaryError } from './types';
-import { Component, ReactNode } from 'react';
+import { Component } from 'react';
 import GlobalErrorFallback from './Fallback/GlobalErrorFallback';
-
-interface ErrorBoundaryProps {
-  children: ReactNode;
-}
 
 interface ErrorBoundaryState {
   hasError: boolean;
@@ -12,10 +8,10 @@ interface ErrorBoundaryState {
 }
 
 class GlobalErrorBoundary extends Component<
-  ErrorBoundaryProps,
+  PropsWithStrictChildren,
   ErrorBoundaryState
 > {
-  constructor(props: ErrorBoundaryProps) {
+  constructor(props: PropsWithStrictChildren) {
     super(props);
     this.state = { hasError: false, err: null };
   }

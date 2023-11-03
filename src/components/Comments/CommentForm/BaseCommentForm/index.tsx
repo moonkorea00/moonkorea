@@ -1,8 +1,7 @@
-import type { FormEvent, ReactNode } from 'react';
+import type { FormEvent, PropsWithChildren } from 'react';
 import * as S from '../CommentForm.style';
 
 interface BaseCommentFormProps {
-  children?: ReactNode;
   onSubmit: () => void;
   isFormModeCancellable?: boolean;
   setFormToDefaultMode: () => void;
@@ -17,7 +16,7 @@ const BaseCommentForm = ({
   setFormToDefaultMode,
   isSubmitButtonDisabled,
   submitButtonLabel,
-}: BaseCommentFormProps) => {
+}: PropsWithChildren<BaseCommentFormProps>) => {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     onSubmit();

@@ -1,18 +1,16 @@
-import type { ReactNode } from 'react';
 import * as S from './ErrorWithRedirection.style';
 import Link from 'next/link';
 
 interface ErrorWithRedirectionProps {
   href?: string;
   label?: string;
-  children: ReactNode;
 }
 
 const ErrorWithRedirection = ({
   href = '/',
   label = '홈으로 돌아가기',
   children,
-}: ErrorWithRedirectionProps) => {
+}: PropsWithStrictChildren<ErrorWithRedirectionProps>) => {
   return (
     <S.Container>
       {children}

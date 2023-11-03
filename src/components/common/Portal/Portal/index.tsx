@@ -1,12 +1,7 @@
-import type { ReactNode } from 'react';
 import { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 
-interface PortalProps {
-  children: ReactNode;
-}
-
-const Portal = ({ children }: PortalProps) => {
+const Portal = ({ children }: PropsWithStrictChildren) => {
   const portalRef = useRef(document.createElement('div'));
 
   useEffect(() => {

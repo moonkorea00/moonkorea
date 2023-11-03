@@ -1,4 +1,3 @@
-import type { ReactNode } from 'react';
 import type { AppProps } from 'next/app';
 import { useState } from 'react';
 import {
@@ -11,13 +10,12 @@ import useModal from '@hooks/useModal';
 
 interface QueryClientProviderProps {
   pageProps: AppProps['pageProps'];
-  children: ReactNode;
 }
 
 const ReactQueryClientProvider = ({
   pageProps,
   children,
-}: QueryClientProviderProps) => {
+}: PropsWithStrictChildren<QueryClientProviderProps>) => {
   const { showModal } = useModal();
   const [queryClient] = useState(
     new QueryClient({
