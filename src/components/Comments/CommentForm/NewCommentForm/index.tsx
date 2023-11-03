@@ -25,7 +25,7 @@ const NewCommentForm = ({
   const { data: session } = useSession();
   const { showModal } = useModal();
 
-  const { mutate, isLoading } = useCreateComment();
+  const { mutate, isPending } = useCreateComment();
   const postId = getPostId();
 
   const onCreateComment = () => {
@@ -54,7 +54,7 @@ const NewCommentForm = ({
     onSubmit: session ? onCreateComment : () => showModal({ name: 'login' }),
     isFormModeCancellable: isReplyMode,
     setFormToDefaultMode,
-    isSubmitButtonDisabled: isLoading,
+    isSubmitButtonDisabled: isPending,
     submitButtonLabel: session
       ? isReplyMode
         ? '답글 작성'

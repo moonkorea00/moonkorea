@@ -26,7 +26,7 @@ const CommentOptions = ({
   const commentOptionsRef = useRef<HTMLDivElement>(null);
   const { data: session } = useSession();
 
-  const { mutateAsync, isLoading } = useDeleteComment();
+  const { mutateAsync, isPending } = useDeleteComment();
   const { showModal, closeModal: closeDeleteModal } = useModal();
   const postId = getPostId();
 
@@ -50,7 +50,7 @@ const CommentOptions = ({
     onCloseCommentOptions();
     showModal({
       name: 'delete_comment',
-      props: { onConfirm: onDeleteComment, disabled: isLoading },
+      props: { onConfirm: onDeleteComment, disabled: isPending },
     });
   };
 
@@ -64,7 +64,7 @@ const CommentOptions = ({
           <S.Option onClick={onEditMode}>수정</S.Option>
           <S.Option
             onClick={onCloseOptionsAndShowDeleteModal}
-            disabled={isLoading}
+            disabled={isPending}
           >
             삭제
           </S.Option>

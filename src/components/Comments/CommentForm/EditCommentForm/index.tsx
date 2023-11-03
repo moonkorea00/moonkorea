@@ -21,7 +21,7 @@ const EditCommentForm = ({
   const [edittedComment, handleCommentChange] = useInput<HTMLTextAreaElement>(
     comments?.body as string
   );
-  const { mutate, isLoading } = useEditComment();
+  const { mutate, isPending } = useEditComment();
   const postId = getPostId();
 
   const onEditComment = () => {
@@ -45,7 +45,7 @@ const EditCommentForm = ({
     onSubmit: onEditComment,
     isFormModeCancellable: isEditMode,
     setFormToDefaultMode,
-    isSubmitButtonDisabled: isLoading,
+    isSubmitButtonDisabled: isPending,
     submitButtonLabel: '수정',
   };
 
