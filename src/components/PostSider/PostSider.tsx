@@ -8,6 +8,7 @@ import useScrollDirection from './hooks/useScrollDirection';
 import useKeyPress from '@hooks/useKeyPress';
 import { assets } from '@utils/assetsPath';
 import { getPostId } from '@components/Comments/Comments.utils';
+import useScrollToElementById from '@hooks/useScrollToElementById';
 
 interface PostSiderProps {
   postFrontMatter: MetaData;
@@ -23,10 +24,11 @@ const PostSider = ({ postFrontMatter }: PostSiderProps) => {
   const { isMounted, headerHeight } = useResizeSiderPosition();
   const scrollDirection = useScrollDirection(1024);
 
+  const onScrollToElement = useScrollToElementById();
+
   const onPrefetchAndScrollToComments = () => {
     prefetchComments();
-    const commentSectionElement = document.getElementById('comment-section');
-    commentSectionElement?.scrollIntoView({ behavior: 'smooth' });
+    onScrollToElement('comment-section');
   };
 
   const onCloseSocialSharePanel = () => setIsSocialSharePanelVisible(false);
