@@ -1,47 +1,59 @@
 import styled from 'styled-components';
 
-export const MarkdownBlockquote = styled.blockquote`
+export const StyledBlockQuote = styled.blockquote`
   margin: 30px 0;
   padding: 0 15px;
   color: #858585;
   border-left: 4px solid ${({ theme }) => theme.colors.base.gray200};
 `;
 
-export const MarkdownH1 = styled.h1`
+export const StyledH1 = styled.h1`
   margin-top: 20px;
   padding-bottom: 8px;
   font-size: 1.8em;
   border-bottom: 1px solid ${({ theme }) => theme.colors.base.gray300};
+
+  :hover:after {
+    content: '#';
+  }
 
   @media screen and (max-width: 768px) {
     font-size: 1.6em;
   }
 `;
 
-export const MarkdownH2 = styled.h2`
+export const StyledH2 = styled.h2`
   font-size: 1.55em;
+
+  :hover:after {
+    content: '#';
+  }
 
   @media screen and (max-width: 768px) {
     font-size: 1.3em;
   }
 `;
 
-export const MarkdownH3 = styled.h3`
+export const StyledH3 = styled.h3`
   font-size: 1.35em;
   margin-bottom: -10px;
+
+  :hover:after {
+    content: '#';
+  }
 
   @media screen and (max-width: 768px) {
     font-size: 1.15em;
   }
 `;
 
-export const MarkdownP = styled.p`
+export const StyledP = styled.p`
   @media screen and (max-width: 768px) {
     font-size: 0.95em;
   }
 `;
 
-export const MarkdownSpan = styled.span`
+export const StyledSpan = styled.span`
   display: block;
   margin-bottom: 12px;
   font-size: 0.9em;
