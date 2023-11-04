@@ -103,7 +103,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
 
 <br>
 
-### 1. 리렌더
+### 2. 리렌더
 
 리렌더에서 렌더 단계는 이전에 생성한 가상 DOM 트리와 새로 만든 가상 DOM 트리를 비교해 실제 DOM에 반영할 변경 사항들을 파악하는데요, 최소한의 변경 사항만 파악하기 위해 상태 업데이트가 발생한 컴포넌트를 호출하고 새로운 가상 DOM 트리를 만들어요. 리액트가 이전 렌더와 다음 렌더의 변화를 비교하는 과정을 <a href="https://www.moonkorea.dev/React-렌더링-재조정" target="_blank" rel="noopener">재조정</a>이라고 합니다.
 
