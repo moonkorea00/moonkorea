@@ -1,4 +1,4 @@
-import * as MD from './md';
+import * as S from './CustomMarkdown.style';
 
 import type {
   MarkdownImageProps,
@@ -75,27 +75,27 @@ export const MarkdownIframe = ({ ...props }) => {
 };
 
 export const MarkdownH1 = ({ ...props }) => {
-  return <MD.StyledH1 {...props} />;
+  return <S.H1 {...props} />;
 };
 
 export const MarkdownH2 = ({ ...props }) => {
-  return <MD.StyledH2 {...props} />;
+  return <S.H2 {...props} />;
 };
 
 export const MarkdownH3 = ({ ...props }) => {
-  return <MD.StyledH3 {...props} />;
+  return <S.H3 {...props} />;
 };
 
 export const MarkdownBlockquote = ({ ...props }) => {
-  return <MD.StyledBlockQuote {...props} />;
+  return <S.BlockQuote {...props} />;
 };
 
 export const MarkdownP = ({ ...props }) => {
-  return <MD.StyledP {...props} />;
+  return <S.P {...props} />;
 };
 
 export const MarkdownSpan = ({ ...props }) => {
-  return <MD.StyledSpan {...props} />;
+  return <S.Span {...props} />;
 };
 
 export const HeadingWithLink = ({ level, children }: HeadingWithLinkProps) => {

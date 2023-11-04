@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
-export const StyledBlockQuote = styled.blockquote`
+export const BlockQuote = styled.blockquote`
   margin: 30px 0;
   padding: 0 15px;
   color: #858585;
   border-left: 4px solid ${({ theme }) => theme.colors.base.gray200};
 `;
 
-export const StyledH1 = styled.h1`
+export const H1 = styled.h1`
   margin-top: 20px;
   padding-bottom: 8px;
   font-size: 1.8em;
@@ -22,7 +22,7 @@ export const StyledH1 = styled.h1`
   }
 `;
 
-export const StyledH2 = styled.h2`
+export const H2 = styled.h2`
   font-size: 1.55em;
 
   :hover:after {
@@ -34,7 +34,7 @@ export const StyledH2 = styled.h2`
   }
 `;
 
-export const StyledH3 = styled.h3`
+export const H3 = styled.h3`
   font-size: 1.35em;
   margin-bottom: -10px;
 
@@ -47,13 +47,13 @@ export const StyledH3 = styled.h3`
   }
 `;
 
-export const StyledP = styled.p`
+export const P = styled.p`
   @media screen and (max-width: 768px) {
     font-size: 0.95em;
   }
 `;
 
-export const StyledSpan = styled.span`
+export const Span = styled.span`
   display: block;
   margin-bottom: 12px;
   font-size: 0.9em;
