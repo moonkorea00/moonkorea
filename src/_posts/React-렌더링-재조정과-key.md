@@ -9,7 +9,7 @@ date: '2023-08-25'
 
 > 본 글은 <a href="https://www.moonkorea.dev/React-렌더링-재조정" target="_blank" rel="noopener">재조정 글</a>에서 이어는 글 입니다.
 
-### TL;DR
+<b>TL;DR</b>
 
 - 자식 요소에 고유한 key를 부여하면 재조정 과정을 효율적으로 수행할 수 있다.
 - 상태를 갖는 컴포넌트가 인덱스를 key 값으로 사용할 경우 의도치 않은 결과로 이어질 수 있다.

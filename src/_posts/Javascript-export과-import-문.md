@@ -7,14 +7,14 @@ tags: '모듈, 트리 쉐이킹'
 date: '2023-10-15'
 ---
 
-## TL;DR
+<b>TL;DR</b>
 
 - 자바스크립트 모듈은 관심사 별로 코드를 나눈 단위를 말한다.
 - 모듈 간 코드를 공유하기 위해 export과 import 문을 사용한다.
 - 트리 쉐이킹의 이점을 살리기 위해 가능하면 명시적으로 엔티티들을 import 하는 게 좋다.
   &emsp;<details><summary><i>정리 더 보기</i></summary>
 
-  #### export 문
+  ### export 문
 
   - named export은 선언부에 export 키워드를 사용하거나 엔티티를 묶어서 내보낼 수 있다
   - default export은 하나의 개체만 모듈에서 내보낸다
@@ -27,7 +27,7 @@ date: '2023-10-15'
     - export \* &#91;as Foo&#93; from './module.js'; (named export만 내보내짐)
     - export { default &#91;as Foo&#93; } from './module.js'; (default export만 내보내짐)
 
-  #### import 문
+  ### import 문
 
   - named export 가져오기
     - import { foo &#91;as bar&#93;, baz } from './module.js';

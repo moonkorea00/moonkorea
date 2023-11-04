@@ -218,7 +218,7 @@ const CommentForm = ({
 
 ## 리팩토링
 
-#### 1. 상태 관리 간소화
+### 1. 상태 관리 간소화
 
 &emsp;복잡하진 않지만 기존 코드는 form의 모드를 나타내는 isEditMode와 isReplyMode 그리고 form의 타입을 나태는 "type" prop을 가지고 버튼의 텍스트를 표현하고 이벤트 처리 로직을 수행하고 있어요. mode 상태가 항상 한 가지 상태로만 활성화된다는 점(보기, 답글 또는 편집), 모드를 변경할 때마다 다른 상태값을 기본값으로 변경해야 하는 점, 조건부 렌더링을 직관적으로 작성할 수 있는 점 그리고 하나의 상태로 관리할 수 있는 점 등을 이유로 enum을 사용해서 리팩토링했는데요,
 
@@ -263,14 +263,13 @@ const Comment = ({ comments }: { comments: CommentProps }) => {
 
 <br>
 
-#### 2. 공통 form 컴포넌트 사용하기
+### 2. 공통 form 컴포넌트 사용하기
 
 &emsp;기존 form 컴포넌트는 댓글 작성과 편집을 모두 처리하고 있어서 관심사에 맞게 독립적으로 분리해 봤는데요, 우선 공통으로 사용할 form 컴포넌트를 정의했어요.
 
 ```tsx
 // BaseCommentForm.tsx
 interface BaseCommentFormProps {
-  children?: ReactNode; // form의 input 요소
   onSubmit: () => void; // submit 시 호출될 콜백 함수
   isFormModeCancellable?: boolean; // form mode 취소 가능 여부
   setFormToDefaultMode: () => void; // form mode 초기화 함수
@@ -285,7 +284,7 @@ const BaseCommentForm = ({
   setFormToDefaultMode,
   isSubmitButtonDisabled,
   submitButtonLabel,
-}: BaseCommentFormProps) => {
+}: PropsWithChildren<BaseCommentFormProps>) => {
   // 이벤트 처리 함수
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
