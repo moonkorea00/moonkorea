@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0 50px;
   min-width: 280px;
   padding-bottom: 50px;
 `;
@@ -30,5 +34,4 @@ export const Main = styled.main`
 export const ChildrenContainer = styled.div`
   min-width: 280px;
   max-width: 700px;
-  margin: 0 auto;
 `;
