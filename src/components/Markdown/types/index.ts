@@ -5,6 +5,11 @@ export type HeadingWithLinkProps = PropsWithStrictChildren<
   ReactNode[]
 >;
 
+export type NestedHeading = HeadingWithLinkProps & {
+  value: string;
+  children: NestedHeading[];
+};
+
 export interface MarkdownImageProps {
   src: string;
   alt: string;
