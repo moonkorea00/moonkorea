@@ -5,6 +5,7 @@ export const Container = styled.div`
   max-width: 800px;
   height: 100%;
   padding: 50px 20px;
+  word-break: keep-all;
 `;
 
 export const Title = styled.h1`

@@ -2,19 +2,19 @@ import styled from 'styled-components';
 
 interface SiderContainerProps {
   isMounted: boolean;
-  headerHeight: number;
+  height: number | null;
   scrollDirection: 'up' | 'down' | null;
 }
 
 export const Container = styled.section<SiderContainerProps>`
   position: fixed;
-  top: ${({ headerHeight }) => headerHeight}px;
+  top: ${({ height }) => height}px;
   right: 55px;
-  display: ${({ isMounted }) => (isMounted ? 'flex' : 'none')};
-  flex-direction: column;
+  ${({ theme }) => theme.flexColumn};
   gap: 16px;
   margin-top: 60px;
   background-color: white;
+  opacity: ${({ isMounted }) => (isMounted ? 1 : 0)};
 
   @media screen and (max-width: 1024px) {
     width: fit-content;

@@ -15,7 +15,7 @@ const Header = ({ postFrontMatter, pageType }: HeaderProps) => {
   const isHeaderInView = useIsIntersected(headerRef);
 
   return (
-    <S.Container ref={headerRef} data-header-element>
+    <S.Container ref={headerRef} id="header">
       <Nav isHeaderInView={isHeaderInView} />
       <S.HeadingContainer>
         <HeaderContent pageType={pageType} postFrontMatter={postFrontMatter} />

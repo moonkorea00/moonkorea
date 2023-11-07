@@ -3,7 +3,7 @@ import * as S from './PostSider.style';
 import { useState } from 'react';
 import SocialSharePanel from './SocialSharePanel/SocialSharePanel';
 import { usePrefetchComments } from '@api/hooks/Comments/query';
-import useResizeSiderPosition from './hooks/useResizeSiderPosition';
+import useElementHeight from './hooks/useElementHeight';
 import useScrollDirection from './hooks/useScrollDirection';
 import useKeyPress from '@hooks/useKeyPress';
 import { assets } from '@utils/assetsPath';
@@ -21,7 +21,7 @@ const PostSider = ({ postFrontMatter }: PostSiderProps) => {
   const id = getPostId();
   const prefetchComments = usePrefetchComments(id);
 
-  const { isMounted, headerHeight } = useResizeSiderPosition();
+  const { isMounted, height } = useElementHeight('header');
   const scrollDirection = useScrollDirection(1024);
 
   const onScrollToElement = useScrollToElementById();
@@ -38,7 +38,7 @@ const PostSider = ({ postFrontMatter }: PostSiderProps) => {
   return (
     <S.Container
       isMounted={isMounted}
-      headerHeight={headerHeight}
+      height={height}
       scrollDirection={scrollDirection}
     >
       <S.SiderButton onClick={onPrefetchAndScrollToComments} title="댓글">
