@@ -2,13 +2,13 @@ import styled from 'styled-components';
 
 interface SiderContainerProps {
   isMounted: boolean;
-  height: number | null;
+  headerHeight?: number;
   scrollDirection: 'up' | 'down' | null;
 }
 
 export const Container = styled.section<SiderContainerProps>`
   position: fixed;
-  top: ${({ height }) => height}px;
+  top: ${({ headerHeight }) => headerHeight}px;
   right: 55px;
   ${({ theme }) => theme.flexColumn};
   gap: 16px;
