@@ -27,6 +27,7 @@ export const Tags = styled.span`
 
 export const Title = styled.h2`
   font-size: 1.65em;
+  word-break: keep-all;
 
   @media screen and (max-width: 768px) {
     font-size: 1.4em;
