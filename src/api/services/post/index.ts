@@ -1,4 +1,5 @@
 import type { FrontMatter } from '@@types/metaData';
+import type { NestedHeading } from '@components/Markdown/types';
 import fs from 'fs';
 import { join } from 'path';
 import matter from 'gray-matter';
@@ -46,15 +47,59 @@ export const getAllPostsSortedByDate = () => {
   );
 };
 
+const extractHeadings = (content: string) => {
+  const lines = content.split('\n');
+  const headings = lines
+    .filter(line => line.match(/^#{1,4}\s/))
+    .map(heading => {
+      const matchingHeading = heading.match(/^#+/);
+      const level = matchingHeading ? matchingHeading[0].length : 0;
+      const value = heading.replace(/^#+\s/, '');
+
+      if (level === 0) {
+        throw new Error('Error finding heading level');
+      }
+
+      return { level, value, children: [] };
+    });
+
+  return headings;
+};
+
+const nestHeadingWithChildren = (headings: NestedHeading[]) => {
+  const root: NestedHeading[] = [];
+  const stack: NestedHeading[] = [];
+
+  headings.forEach(heading => {
+    while (stack.length > 0 && heading.level <= stack[stack.length - 1].level) {
+      stack.pop();
+    }
+
+    if (stack.length === 0) {
+      root.push(heading);
+    } else {
+      stack[stack.length - 1].children.push(heading);
+    }
+
+    stack.push(heading);
+  });
+
+  return root;
+};
+
 export const getPostById = async (id: string) => {
   const filePath = join(postsDir, `${id}.md`);
   const metaData = fs.readFileSync(filePath, 'utf8');
 
   const { data, content } = matter(metaData);
 
+  const headings = extractHeadings(content);
+  const tocTree = nestHeadingWithChildren(headings);
+
   return {
     id,
     ...data,
     content,
+    tocTree,
   };
 };

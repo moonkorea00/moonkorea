@@ -1,4 +1,5 @@
 import type { MetaData } from '@@types/metaData';
+import type { NestedHeading } from '@components/Markdown/types';
 
 import { Suspense, useRef } from 'react';
 import { useQueryErrorResetBoundary } from '@tanstack/react-query';
@@ -19,11 +20,12 @@ import { getPostPaths, getPostById } from '@api/services/post';
 import useIsIntersected from '@hooks/useIsIntersected';
 
 interface PostPageProps {
-  postFrontMatter: MetaData & { content: string };
+  postFrontMatter: MetaData & { content: string; tocTree: NestedHeading[] };
 }
 
 const Post = ({ postFrontMatter }: PostPageProps) => {
   const commentSectionRef = useRef<HTMLDivElement>(null);
+
   const isCommentSectionInView = useIsIntersected(commentSectionRef, {
     once: true,
   });

@@ -7,9 +7,14 @@ import type {
 } from '../types';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { githubGist } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
+
+import useScrollToHashLink from '@hooks/useScrollToHashLink';
+
+import { convertToSlug } from '@utils/markdown';
 
 const ReactPlayer = dynamic(() => import('react-player/lazy'), { ssr: false });
 // load client side. see https://github.com/cookpete/react-player/issues/1474
@@ -99,16 +104,9 @@ export const MarkdownSpan = ({ ...props }) => {
 };
 
 export const HeadingWithLink = ({ level, children }: HeadingWithLinkProps) => {
-  const link = decodeURI(String(children[0]))
-    .toLowerCase()
-    .trim()
-    .replaceAll(' ', '-');
+  const slug = convertToSlug(String(children[0]));
 
-  const scrollToHeading = () => {
-    setTimeout(() => {
-      window.scrollBy(0, -60);
-    }, 0);
-  };
+  const onScrollToHashLink = useScrollToHashLink(slug);
 
   const renderHeading = () => {
     switch (level) {
@@ -124,8 +122,13 @@ export const HeadingWithLink = ({ level, children }: HeadingWithLinkProps) => {
   };
 
   return (
-    <a id={link} href={`#${link}`} onClick={scrollToHeading}>
+    <Link
+      id={slug}
+      href={`#${slug}`}
+      scroll={false}
+      onClick={onScrollToHashLink}
+    >
       {renderHeading()}
-    </a>
+    </Link>
   );
 };
