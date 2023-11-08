@@ -7,6 +7,8 @@ tags: '리액트 쿼리'
 date: '2023-11-06'
 ---
 
+> v5부터는 React 18과 TypeScript 4.7 이상의 버전에서만 사용이 가능합니다.
+
 TanStack Query팀이 작년에 <a href="https://github.com/TanStack/query/discussions/4252" target="_blank" rel="noopener">v5 로드맵</a>을 발표하고 최근 v5 버전을 정식 출시했는데요, v4에 비해 번들 크기를 20% 줄이고 제공하는 API를 간소화하는데 중점을 두었다고 하네요. 최근 실험적으로 블로그에 변경 사항들을 적용해 봤는데요, 이번 글에서는 v5의 주요 변경 및 개선 사항들에 대해 살펴봅니다.
 
 <br>
@@ -434,7 +436,7 @@ v5에서는 useSyncExternalStore를 사용하고 있어서 React 18 또는 이�
 
 ### 타입스크립트 버전 호환
 
-타입스크립트 4.7 또는 이후 버전에서만 사용이 가능합니다.
+TypeScript 4.7 또는 이후 버전에서만 사용이 가능합니다.
 
 <br>
 
