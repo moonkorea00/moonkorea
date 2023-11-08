@@ -36,7 +36,7 @@ date: '2023-09-15'
 
 <br>
 
-### 1. 초기 렌더
+### 1. 트리거 단계 - 초기 렌더
 
 사용자가 처음 사이트에 방문하면 리소스를 서버에 요청하고 앱이 실행되는데요, 엔트리 파일에서 ReactDOM의 render() 메소드를 호출하고 루트 컴포넌트를 화면에 그립니다.
 
@@ -46,7 +46,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
 );
 ```
 
-### 2. 리렌더
+### 2. 트리거 단계 - 리렌더
 
 앱이 실행되고 다음 렌더는 상태 업데이트 함수가 호출되어 상태가 변했을 때 발생하는데요, 상태 업데이트 함수가 호출되면 리액트는 렌더링 해야 되는 것을 큐에 입력합니다. 그러고 나서 큐를 확인하고 순차적으로 렌더링 작업을 수행해요. 
 
@@ -71,7 +71,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
 
 > 렌더 단계에서의 "렌더"는 컴포넌트를 호출하는 것을 의미합니다.
 
-### 1. 초기 렌더
+### 1. 렌더 단계 - 초기 렌더
 
 초기 렌더에는 브라우저가 엔트리 파일을 읽으면서 루트 요소부터 파악해요.
 
@@ -103,7 +103,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
 
 <br>
 
-### 2. 리렌더
+### 2. 렌더 단계 - 리렌더
 
 리렌더에서 렌더 단계는 이전에 생성한 가상 DOM 트리와 새로 만든 가상 DOM 트리를 비교해 실제 DOM에 반영할 변경 사항들을 파악하는데요, 최소한의 변경 사항만 파악하기 위해 상태 업데이트가 발생한 컴포넌트를 호출하고 새로운 가상 DOM 트리를 만들어요. 리액트가 이전 렌더와 다음 렌더의 변화를 비교하는 과정을 <a href="https://www.moonkorea.dev/React-렌더링-재조정" target="_blank" rel="noopener">재조정</a>이라고 합니다.
 
