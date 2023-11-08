@@ -13,7 +13,7 @@ TanStack Query팀이 작년에 <a href="https://github.com/TanStack/query/discus
 
 <br>
 
-# 주요 변경 사항
+## 주요 변경 사항
 
 ### 하나의 객체로 쿼리 옵션 관리
 
@@ -341,7 +341,7 @@ const combinedQueries = useQueries({
 
 <br>
 
-# 타입 관련 변경 사항
+## 타입 관련 변경 사항
 
 ### queryOptions으로 안전하게 타입 추론
 
@@ -426,7 +426,7 @@ type DefaultError = Register extends {
 
 <br>
 
-# 호환 버전
+## 호환 버전
 
 ### 리액트 버전 호환
 
