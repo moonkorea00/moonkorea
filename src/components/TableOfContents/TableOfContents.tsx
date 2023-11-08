@@ -5,12 +5,13 @@ import TableOfContentsList from './TableOfContentsList/TableOfContentsList';
 
 interface TableOfContentsProps {
   tocTree: NestedHeading[];
+  headingSlugs: string[];
 }
 
-const TableOfContents = ({ tocTree }: TableOfContentsProps) => {
+const TableOfContents = ({ tocTree, headingSlugs }: TableOfContentsProps) => {
   return (
     <S.Container>
-      <TableOfContentsList tocTree={tocTree} />
+      <TableOfContentsList tocTree={tocTree} headingSlugs={headingSlugs} />
     </S.Container>
   );
 };

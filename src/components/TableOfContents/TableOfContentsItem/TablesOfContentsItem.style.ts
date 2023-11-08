@@ -1,8 +1,16 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const Heading = styled.span`
+interface HeadingProps {
+  isHeadingActive: boolean;
+}
+
+export const Heading = styled.span<HeadingProps>`
   margin: 0;
-  color: #555;
+  color: ${({ theme, isHeadingActive }) => (isHeadingActive ? theme.colors.secondary.main : '#555')};
+  ${({ isHeadingActive }) => css`
+    color: ${isHeadingActive ? '#004085' : '#555'};
+    font-weight: ${isHeadingActive ? 800 : 'normal'};
+  `}
   cursor: pointer;
 
   :hover,
