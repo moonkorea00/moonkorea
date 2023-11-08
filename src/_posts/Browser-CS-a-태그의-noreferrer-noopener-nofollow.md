@@ -15,13 +15,13 @@ date: '2023-05-18'
 
 <br>
 
-&emsp;HTML의 a 태그는 링크를 만드는 데 주로 사용됩니다. rel 속성의 noreferrer, noopener, nofollow가 어떤 역할을 하고 언제 사용할지에 대해 알아보겠습니다.
+&emsp;HTML의 a 태그는 링크를 만드는 데 주로 사용됩니다. rel 속성의 noreferrer, noopener, nofollow가 어떤 역할을 하고 언제 사용하는지에 대해 알아보겠습니다.
 
 <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel" target="_blank" rel="noopener noreferrer">mdn</a>에 따르면 a 태그의 rel 속성은 HTML에서 두 문서 간의 관계를 명시할 때 사용합니다. 페이지의 구조와 내비게이션을 정의할 때 사용하는 "prev" 또는 "next", 중복 콘텐츠와 원본 페이지를 나타내는 "canonical" 등 rel 속성은 다양한 값을 가질 수 있고 이를 통해 링크의 동작과 의미를 나타낼 수 있습니다. 링크를 클릭해서 새 창이나 탭에서 페이지를 열 때는 "noreferrer"와 "noopener"의 값을 목적에 맞게 사용합니다.
 
 ## noreferrer
 
-&emsp;noreferrer는 링크에 연결된 외부 페이지에게 사용자가 온 경로에 대한 정보를 마스킹 처리합니다. 페이지 A에서 B로 이동할 때 브라우저는 페이지 B의 페이지를 렌더링하고자 서버에 요청을 보내게 되는데 HTTP 요청 헤더에 리퍼러(referer) 정보를 포함해서 요청을 전송합니다. 이 때 리퍼러 정보는 이전 페이지의 url을 비롯한 정보를 말합니다. 페이지 B의 웹마스터는 통상 이러한 정보를 사용자 통계, 추적, 분석 등에 활용합니다.
+&emsp;noreferrer는 링크에 연결된 외부 페이지에게 사용자가 온 경로에 대한 정보를 마스킹 처리합니다. 페이지 A에서 B로 이동할 때 브라우저는 페이지 B의 페이지를 렌더링하고자 서버에 요청을 보내게 되는데 HTTP 요청 헤더에 리퍼러(referer) 정보를 담아 전송합니다. 이 때 리퍼러 정보는 이전 페이지의 url을 비롯한 정보를 말합니다. 페이지 B의 웹마스터는 통상 이러한 정보를 사용자 통계, 추적, 분석 등에 활용합니다.
 
 <img src="/assets/markdown-image/Browser-a-태그의-a 태그의 noopener-noreferrer-nofollow/request-header.png" alt="HTTP 요청 헤더" width="500" height="500"/>
 
@@ -35,7 +35,7 @@ date: '2023-05-18'
 
 ## nofollow
 
-&emsp;nofollow는 noreferrer와 반대의 역할을 해요. 리퍼럴 트래픽 정보는 유지한 채 페이지 내 링크에 대한 검색엔진의 크롤링을 막아요. nofollow를 사용하면 검색 엔진 크롤러가 링크를 따라가지 않고 해당 링크를 통해 전달되는 페이지의 순위에도 영향을 주지 않습니다. 신뢰할 수 없는 링크, 댓글란에 사용자가 남긴 url과 같은 성격의 링크에 사용할 수 있을 거 같아요.
+&emsp;nofollow는 noreferrer와 반대의 역할을 해요. 리퍼러 트래픽 정보는 유지한 채 페이지 내 링크에 대한 검색엔진의 크롤링을 막아요. nofollow를 사용하면 검색 엔진 크롤러가 링크를 따라가지 않고 해당 링크를 통해 전달되는 페이지의 순위에도 영향을 주지 않습니다. 신뢰할 수 없는 링크, 댓글란에 사용자가 남긴 url과 같은 성격의 링크에 사용할 수 있을 거 같아요.
 
 <img src="/assets/markdown-image/Browser-a-태그의-a 태그의 noopener-noreferrer-nofollow/nofollow.png" alt="스팸" width="500" height="500"/>
 

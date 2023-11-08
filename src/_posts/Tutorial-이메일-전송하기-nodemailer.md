@@ -7,11 +7,11 @@ tags: '튜토리얼, nodemailer, Node.js'
 date: '2023-02-23'
 ---
 
-&emsp;비즈니스 로직에서 사용자에게 이메일을 보내 사용자 인증 프로세스를 처리하거나 알림의 기능이 필요한 경우의 과정을 다뤄보겠습니다.
+사용자에게 이메일을 보내 사용자 인증 프로세스를 처리하거나 이메일 알림 등을 보내야 하는 경우가 있는데요, 이번 글에서는 서버에서 사용자에게 이메일을 전송하는 방법에 대해 알아보겠습니다.
 
 > Zoho mail 설정은 서론을 건너뛰어도 무방합니다.
 
-&emsp;nodemailer 모듈은 <a href='https://nodemailer.com/about/' target='_blank'>공식문서</a>에 나와 있듯 'a module for Node.js applications to allow easy as cake email sending' 발신자와 수신자 정보, 보낼 내용만 설정하여 간편하게 서드파티 앱에서 이메일을 보낼 수 있게 도와줍니다.
+&emsp;nodemailer는 <a href='https://nodemailer.com/about/' target='_blank'>공식문서</a>에 나와 있듯 'a module for Node.js applications to allow easy as cake email sending' 발신자와 수신자 정보, 보낼 내용만 설정하여 간편하게 서드파티 앱에서 이메일을 보낼 수 있게 도와줍니다.
 
 ## Gmail 계정 설정
 
@@ -23,7 +23,7 @@ date: '2023-02-23'
 
 > 22년 5월부로 구글에서는 'allow less secure apps' 기능을 제공하지 않습니다. Gmail을 사용할 경우 앱 비밀번호를 발급받아 사용해야 합니다.
 
-## Nodemailer
+## nodemailer
 
 ```javascript
 let transporter = nodemailer.createTransport(transport[, defaults])
@@ -54,7 +54,7 @@ const transporter = nodemailer.createTransport(
 
 > SMTP 서버는 이메일을 보내거나 받을 때 사용되고 클라이언트(Gmail)가 이메일을 보내거나 받기 위해 SMTP 서버와 통신합니다. 이메일을 전송할 때, 클라이언트는 이메일을 SMTP 서버에 전송하고, SMTP 서버는 내용을 받아서 수신자의 이메일 서버로 다시 전송합니다.
 
-&emsp;sendMail 내장 메소드를 통해서 transporter에 발신자, 수신자, 제목 등 이메일에 담길 필수 정보들을 전달합니다. 단순 알림 이메일 또는 사용자 인증 이메일 등 이메일 성격에 따라 로직을 구상하여 html을 담아 전송합니다.
+&emsp;sendMail 내장 메소드를 통해서 transporter에 발신자, 수신자, 제목 등 이메일에 담길 필수 정보들을 전달합니다. 단순 알림 이메일 또는 사용자 인증 이메일 등 이메일 성격에 따라 로직을 구상하여 html에 담아 전송합니다.
 
 ```typescript
 const transporter = nodemailer.createTransport({
@@ -143,11 +143,9 @@ const sendNotification = async (to: string[], subject: string, date: Date) => {
 };
 ```
 
-&emsp;구글은 로그인 요청이 발생할 때마다 실제 사용자가 로그인하는 패턴이 정상적인 패턴인지 보안수칙을 통해서 감지하고 서드파티 앱 또는 비정상적인 요청을 막기 때문에 예상치 못한 경우에서 에러가 발생할 여지가 있습니다. 이를테면 서버 지역이 다를 경우 개발 환경에서는 정상 기능을 하다가 프로덕션에서 인증 에러가 발생할 수 있습니다. nodemailer는 <a href='https://nodemailer.com/smtp/oauth2/' target='_blank'>OAuth2</a> 또는 기타 이메일 프로바이더의 사용을 권장합니다.
+## 비즈니스 계정으로 전송하기 (Zoho mail)
 
-## Zoho mail로 계정 생성
-
-&emsp;Zoho mail은 무료 티어에서도 넉넉한 스토리지를 제공합니다. 기타 이메일 클라이언트를 사용할 경우 해당 클라이언트의 도메인 이름(Gmail의 경우 user@<b>gmail</b>.com)을 사용해야 하지만 Zoho mail은 무료로 도메인 명을 기반으로 이메일을 사용할 수 있어 발신자가 관리자 또는 웹 어플리케이션일 경우 비즈니스 계정으로 사용이 가능합니다.
+기타 이메일 클라이언트를 사용할 경우 해당 클라이언트의 도메인 이름(Gmail의 경우 user@<b>gmail</b>.com)을 사용해야 하는데요, Zoho mail은 무료로 도메인 명을 기반으로 이메일을 사용할 수 있어 발신자가 관리자일 경우 비즈니스 계정으로 사용할 수 있습니다. 무료 티어에서도 넉넉한 스토리지를 제공합니다. 
 
 <!-- <details><summary>도메인 명을 이메일로 설정하기(더보기)</summary>내용</details> -->
 
