@@ -6,11 +6,13 @@ interface HeadingProps {
 
 export const Heading = styled.span<HeadingProps>`
   margin: 0;
-  color: ${({ theme, isHeadingActive }) => (isHeadingActive ? theme.colors.secondary.main : '#555')};
+  color: ${({ theme, isHeadingActive }) =>
+    isHeadingActive ? theme.colors.secondary.main : '#555'};
   ${({ isHeadingActive }) => css`
     color: ${isHeadingActive ? '#004085' : '#555'};
     font-weight: ${isHeadingActive ? 800 : 'normal'};
   `}
+  transition: 0.15s all ease-in-out;
   cursor: pointer;
 
   :hover,
