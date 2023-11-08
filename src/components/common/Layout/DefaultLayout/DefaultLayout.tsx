@@ -9,14 +9,16 @@ const DefaultLayout = (
   Page: NextPageWithLayout,
   pageProps: AppProps['pageProps']
 ) => {
+  const { postFrontMatter } = pageProps;
+
   return (
     <S.Container>
-      <Header
-        postFrontMatter={pageProps.postFrontMatter}
-        pageType={Page.pageType}
-      />
+      <Header postFrontMatter={postFrontMatter} pageType={Page.pageType} />
       {Page.pageType === 'post' && (
-        <TableOfContents tocTree={pageProps.postFrontMatter.tocTree} />
+        <TableOfContents
+          tocTree={postFrontMatter.tocTree}
+          headingSlugs={postFrontMatter.headingSlugs}
+        />
       )}
       <S.Main>
         <S.ChildrenContainer>

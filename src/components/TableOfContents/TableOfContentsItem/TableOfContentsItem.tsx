@@ -7,23 +7,35 @@ import useScrollToHashLink from '@hooks/useScrollToHashLink';
 
 import { convertToSlug } from '@utils/markdown';
 import Link from 'next/link';
+import useActiveHeadingObserver from '../hooks/useActiveHeadingObserver';
 
 interface TableOfContentsItemProps {
   heading: NestedHeading;
+  headingSlugs: string[];
 }
 
-const TableOfContentsItem = ({ heading }: TableOfContentsItemProps) => {
+const TableOfContentsItem = ({
+  heading,
+  headingSlugs,
+}: TableOfContentsItemProps) => {
   const slug = convertToSlug(heading.value);
+  const activeId = useActiveHeadingObserver(headingSlugs);
+  const isHeadingActive = slug === activeId;
+
+  const hashLink = `#${slug}`;
 
   const onScrollToHashLink = useScrollToHashLink(slug);
 
   return (
     <li>
-      <Link href={`#${slug}`} scroll={false} onClick={onScrollToHashLink}>
-        <S.Heading>{heading.value}</S.Heading>
+      <Link href={hashLink} scroll={false} onClick={onScrollToHashLink}>
+        <S.Heading isHeadingActive={isHeadingActive}>{heading.value}</S.Heading>
       </Link>
       {heading.children.length !== 0 && (
-        <TableOfContentsList tocTree={heading?.children} />
+        <TableOfContentsList
+          tocTree={heading?.children}
+          headingSlugs={headingSlugs}
+        />
       )}
     </li>
   );

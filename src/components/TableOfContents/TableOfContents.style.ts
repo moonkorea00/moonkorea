@@ -18,7 +18,7 @@ export const Container = styled.nav`
     display: none; /* Chrome, Safari, Opera */
   }
 
-  @media screen and (max-width: 1150px) {
+  @media screen and (max-width: 1200px) {
     display: none;
   }
 `;

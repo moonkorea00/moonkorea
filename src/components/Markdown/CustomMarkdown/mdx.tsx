@@ -105,6 +105,7 @@ export const MarkdownSpan = ({ ...props }) => {
 
 export const HeadingWithLink = ({ level, children }: HeadingWithLinkProps) => {
   const slug = convertToSlug(String(children[0]));
+  const hashLink = `#${slug}`;
 
   const onScrollToHashLink = useScrollToHashLink(slug);
 
@@ -122,12 +123,7 @@ export const HeadingWithLink = ({ level, children }: HeadingWithLinkProps) => {
   };
 
   return (
-    <Link
-      id={slug}
-      href={`#${slug}`}
-      scroll={false}
-      onClick={onScrollToHashLink}
-    >
+    <Link id={slug} href={hashLink} scroll={false} onClick={onScrollToHashLink}>
       {renderHeading()}
     </Link>
   );

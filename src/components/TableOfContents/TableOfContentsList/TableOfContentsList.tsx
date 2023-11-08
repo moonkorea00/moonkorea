@@ -5,10 +5,12 @@ import TableOfContentsItem from '../TableOfContentsItem/TableOfContentsItem';
 
 interface TableOfContentsListProps {
   tocTree: NestedHeading[];
+  headingSlugs: string[];
 }
 
 const TableOfContentsList = ({
   tocTree,
+  headingSlugs,
 }: TableOfContentsListProps) => {
   return (
     <S.Container>
@@ -16,6 +18,7 @@ const TableOfContentsList = ({
         <TableOfContentsItem
           key={heading.value}
           heading={heading}
+          headingSlugs={headingSlugs}
         />
       ))}
     </S.Container>

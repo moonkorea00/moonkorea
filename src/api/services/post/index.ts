@@ -3,6 +3,7 @@ import type { NestedHeading } from '@components/Markdown/types';
 import fs from 'fs';
 import { join } from 'path';
 import matter from 'gray-matter';
+import { convertToSlug } from '@utils/markdown';
 
 const postsDir = join(process.cwd(), '/src/_posts');
 const fileNames = fs.readdirSync(postsDir);
@@ -96,10 +97,13 @@ export const getPostById = async (id: string) => {
   const headings = extractHeadings(content);
   const tocTree = nestHeadingWithChildren(headings);
 
+  const headingSlugs = headings.map(heading => convertToSlug(heading.value));
+
   return {
     id,
     ...data,
     content,
     tocTree,
+    headingSlugs,
   };
 };
