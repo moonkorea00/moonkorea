@@ -1,11 +1,9 @@
 import * as S from './CustomMarkdown.style';
+import type { ImageProps } from 'next/image';
+import type { BaseReactPlayerProps } from 'react-player/base';
+import type { HeadingWithLinkProps } from '../types';
 
-import type {
-  MarkdownImageProps,
-  MarkdownVideoProps,
-  HeadingWithLinkProps,
-} from '../types';
-
+import { HTMLAttributes } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
@@ -49,57 +47,55 @@ PropsWithStrictChildren<{}, string[]>) => {
   );
 };
 
-export const MarkdownImage = ({
-  src,
-  alt,
-  width,
-  height,
-}: MarkdownImageProps) => {
+export const MarkdownImage = (props: ImageProps) => {
   return (
     <Image
-      src={src}
-      alt={alt}
-      width={width}
-      height={height}
       style={{ display: 'block', margin: '0 auto 2vh auto' }}
       placeholder="blur"
       blurDataURL="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=="
       layout="intrinsic"
+      {...props}
     />
   );
 };
 
-export const MarkdownVideo = ({ url, ...props }: MarkdownVideoProps) => {
+export const MarkdownVideo = (props: BaseReactPlayerProps) => {
   return (
-    <ReactPlayer url={url} playing={true} loop={true} muted={true} {...props} />
+    <ReactPlayer
+      url={props.url}
+      playing={true}
+      loop={true}
+      muted={true}
+      {...props}
+    />
   );
 };
 
-export const MarkdownIframe = ({ ...props }) => {
+export const MarkdownIframe = (props: HTMLAttributes<HTMLIFrameElement>) => {
   return <iframe {...props}></iframe>;
 };
 
-export const MarkdownH1 = ({ ...props }) => {
+export const MarkdownH1 = (props: HTMLAttributes<HTMLHeadingElement>) => {
   return <S.H1 {...props} />;
 };
 
-export const MarkdownH2 = ({ ...props }) => {
+export const MarkdownH2 = (props: HTMLAttributes<HTMLHeadingElement>) => {
   return <S.H2 {...props} />;
 };
 
-export const MarkdownH3 = ({ ...props }) => {
+export const MarkdownH3 = (props: HTMLAttributes<HTMLHeadingElement>) => {
   return <S.H3 {...props} />;
 };
 
-export const MarkdownBlockquote = ({ ...props }) => {
+export const MarkdownBlockquote = (props: HTMLAttributes<HTMLQuoteElement>) => {
   return <S.BlockQuote {...props} />;
 };
 
-export const MarkdownP = ({ ...props }) => {
+export const MarkdownP = (props: HTMLAttributes<HTMLParagraphElement>) => {
   return <S.P {...props} />;
 };
 
-export const MarkdownSpan = ({ ...props }) => {
+export const MarkdownSpan = (props: HTMLAttributes<HTMLSpanElement>) => {
   return <S.Span {...props} />;
 };
 
