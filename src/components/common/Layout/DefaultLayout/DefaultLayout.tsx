@@ -15,10 +15,7 @@ const DefaultLayout = (
     <S.Container>
       <Header postFrontMatter={postFrontMatter} pageType={Page.pageType} />
       {Page.pageType === 'post' && (
-        <TableOfContents
-          tocTree={postFrontMatter.tocTree}
-          headingSlugs={postFrontMatter.headingSlugs}
-        />
+        <TableOfContents toc={postFrontMatter.toc} />
       )}
       <S.Main>
         <S.ChildrenContainer>

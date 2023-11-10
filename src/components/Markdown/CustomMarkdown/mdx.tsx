@@ -1,16 +1,16 @@
 import * as S from './CustomMarkdown.style';
+import type { HTMLAttributes } from 'react';
 import type { ImageProps } from 'next/image';
 import type { BaseReactPlayerProps } from 'react-player/base';
 import type { HeadingWithLinkProps } from '../types';
 
-import { HTMLAttributes } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { githubGist } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
 
-import useScrollToHashLink from '@hooks/useScrollToHashLink';
+import useHashLink from '@hooks/useHashLink';
 
 import { convertToSlug } from '@utils/markdown';
 
@@ -101,9 +101,8 @@ export const MarkdownSpan = (props: HTMLAttributes<HTMLSpanElement>) => {
 
 export const HeadingWithLink = ({ level, children }: HeadingWithLinkProps) => {
   const slug = convertToSlug(String(children[0]));
-  const hashLink = `#${slug}`;
 
-  const onScrollToHashLink = useScrollToHashLink(slug);
+  const { hashLink, onScrollWithOffset } = useHashLink(slug);
 
   const renderHeading = () => {
     switch (level) {
@@ -119,7 +118,7 @@ export const HeadingWithLink = ({ level, children }: HeadingWithLinkProps) => {
   };
 
   return (
-    <Link id={slug} href={hashLink} scroll={false} onClick={onScrollToHashLink}>
+    <Link id={slug} href={hashLink} scroll={false} onClick={onScrollWithOffset}>
       {renderHeading()}
     </Link>
   );

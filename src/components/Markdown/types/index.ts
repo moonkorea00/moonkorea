@@ -7,16 +7,6 @@ export type HeadingWithLinkProps = PropsWithStrictChildren<
 
 export type NestedHeading = HeadingWithLinkProps & {
   value: string;
+  slug: string;
   children: NestedHeading[];
 };
-
-export interface MarkdownImageProps {
-  src: string;
-  alt: string;
-  width: number;
-  height?: number;
-}
-
-export interface MarkdownVideoProps {
-  url: string;
-}

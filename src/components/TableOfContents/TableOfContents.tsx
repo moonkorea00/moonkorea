@@ -1,17 +1,16 @@
-import type { NestedHeading } from '@components/Markdown/types';
+import type { TableOfContents as ITableOfContents } from './types';
 
 import * as S from './TableOfContents.style';
 import TableOfContentsList from './TableOfContentsList/TableOfContentsList';
 
 interface TableOfContentsProps {
-  tocTree: NestedHeading[];
-  headingSlugs: string[];
+  toc: ITableOfContents;
 }
 
-const TableOfContents = ({ tocTree, headingSlugs }: TableOfContentsProps) => {
+const TableOfContents = ({ toc }: TableOfContentsProps) => {
   return (
     <S.Container>
-      <TableOfContentsList tocTree={tocTree} headingSlugs={headingSlugs} />
+      <TableOfContentsList {...toc} />
     </S.Container>
   );
 };
