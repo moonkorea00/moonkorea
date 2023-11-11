@@ -1,5 +1,5 @@
 import type { MetaData } from '@@types/metaData';
-import type { NestedHeading } from '@components/Markdown/types';
+import type { TableOfContents } from '@components/TableOfContents/types';
 
 import { Suspense, useRef } from 'react';
 import { useQueryErrorResetBoundary } from '@tanstack/react-query';
@@ -20,7 +20,10 @@ import { getPostPaths, getPostById } from '@api/services/post';
 import useIsIntersected from '@hooks/useIsIntersected';
 
 interface PostPageProps {
-  postFrontMatter: MetaData & { content: string; tocTree: NestedHeading[] };
+  postFrontMatter: MetaData & {
+    content: string;
+    toc: TableOfContents;
+  };
 }
 
 const Post = ({ postFrontMatter }: PostPageProps) => {

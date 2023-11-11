@@ -15,9 +15,9 @@ const useActiveHeadingObserver = (headingSlugs: HeadingsSlug) => {
   const headingElements = useRef<HTMLElement[]>([]);
 
   useEffect(() => {
-    headingElements.current = headingSlugs.map(title =>
-      document.getElementById(title)
-    ) as HTMLElement[];
+    headingElements.current = headingSlugs.map(
+      title => <HTMLElement>document.getElementById(title)
+    );
 
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) {

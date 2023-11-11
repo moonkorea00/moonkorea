@@ -53,15 +53,17 @@ const extractHeadings = (content: string) => {
   const headings = lines
     .filter(line => line.match(/^#{1,4}\s/))
     .map(heading => {
-      const matchingHeading = heading.match(/^#+/);
+      const matchingHeading: string[] | null = heading.match(/^#+/);
+
       const level = matchingHeading ? matchingHeading[0].length : 0;
       const value = heading.replace(/^#+\s/, '');
+      const slug = convertToSlug(value);
 
       if (level === 0) {
         throw new Error('Error finding heading level');
       }
 
-      return { level, value, children: [] };
+      return { level, value, slug, children: [] };
     });
 
   return headings;
@@ -96,14 +98,17 @@ export const getPostById = async (id: string) => {
 
   const headings = extractHeadings(content);
   const tocTree = nestHeadingWithChildren(headings);
-
   const headingSlugs = headings.map(heading => convertToSlug(heading.value));
+
+  const toc = {
+    tocTree,
+    headingSlugs,
+  };
 
   return {
     id,
     ...data,
     content,
-    tocTree,
-    headingSlugs,
+    toc,
   };
 };
