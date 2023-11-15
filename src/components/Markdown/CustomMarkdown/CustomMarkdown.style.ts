@@ -4,7 +4,9 @@ export const BlockQuote = styled.blockquote`
   margin: 30px 0;
   padding: 0 15px;
   color: #858585;
-  border-left: 4px solid ${({ theme }) => theme.colors.base.gray200};
+  border-left: 4px solid ${({ theme }) => theme.colors.secondary.light};
+  border-radius: 3px;
+  background-color: ${({ theme }) => theme.colors.base.grayDefault};
 `;
 
 export const H1 = styled.h1`
