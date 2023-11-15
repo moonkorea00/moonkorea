@@ -33,26 +33,20 @@ const Nav = ({ isHeaderInView }: NavProps) => {
             </S.LogoContainer>
           </Link>
           <S.NavBar>
-            <S.NavItem>
-              <a
-                href="https://github.com/moonkorea00"
-                aria-label="moonkorea00 GitHub"
-                target="_blank"
-                style={S.Style}
-              >
-                GITHUB
-              </a>
-            </S.NavItem>
-            <S.NavItem onClick={() => setIsSiderVisible(true)}>
-              CATEGORIES
-            </S.NavItem>
+            <a
+              href="https://github.com/moonkorea00"
+              aria-label="moonkorea00 GitHub"
+              target="_blank"
+              rel="noopener"
+              style={S.Style}
+            >
+              Github
+            </a>
+            <S.NavItem onClick={() => setIsSiderVisible(true)}>Posts</S.NavItem>
           </S.NavBar>
         </S.FlexBox>
       </S.Container>
-      <Sider
-        isSiderVisible={isSiderVisible}
-        onCloseSider={onCloseSider}
-      />
+      <Sider isSiderVisible={isSiderVisible} onCloseSider={onCloseSider} />
     </>
   );
 };

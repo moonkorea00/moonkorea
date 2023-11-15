@@ -4,7 +4,7 @@ interface ContainerProps {
   isSiderVisible: boolean;
 }
 
-export const Container = styled.aside<ContainerProps>`
+export const Container = styled.nav<ContainerProps>`
   position: fixed;
   top: 0;
   left: 0;
@@ -24,14 +24,11 @@ export const Container = styled.aside<ContainerProps>`
   z-index: 1;
 `;
 
-export const ButtonWrapper = styled.div`
+export const CloseButton = styled.button`
   position: absolute;
   top: 0;
   right: 0;
-  padding: 8px 12px 0 0;
-`;
-
-export const CloseButton = styled.button`
+  margin: 6px 8px 0 0;
   padding: 2px 6px;
   background-color: inherit;
   border-radius: 50%;

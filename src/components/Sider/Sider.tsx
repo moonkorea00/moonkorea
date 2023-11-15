@@ -18,9 +18,7 @@ const Sider = ({ isSiderVisible, onCloseSider }: SiderProps) => {
 
   return (
     <S.Container isSiderVisible={isSiderVisible} ref={siderRef}>
-      <S.ButtonWrapper>
-        <S.CloseButton onClick={onCloseSider}>&#10005;</S.CloseButton>
-      </S.ButtonWrapper>
+      <S.CloseButton onClick={onCloseSider}>&#10005;</S.CloseButton>
       {SIDER_DATA.map(item => (
         <NavCategory key={item.name} {...item} onCloseSider={onCloseSider} />
       ))}
