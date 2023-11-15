@@ -5,6 +5,11 @@ export const Container = styled.section`
   padding: 1px 12px;
   border-bottom: 1px solid ${({ theme }) => theme.colors.base.gray300};
   line-height: 150%;
+  transition: margin-left ease 0.3s;
+
+  &:hover {
+    margin-left: 5px;
+  }
 `;
 
 export const TagContainer = styled.div`
@@ -16,7 +21,7 @@ export const TagContainer = styled.div`
 export const Tags = styled.span`
   padding: 1px 8px;
   font-size: 0.85em;
-  font-weight: 600;
+  font-weight: 500;
   border-radius: 10px;
   background-color: ${({ theme }) => theme.colors.base.gray200};
 
@@ -37,6 +42,7 @@ export const Title = styled.h2`
 export const Description = styled.h3`
   font-size: 1em;
   color: ${({ theme }) => theme.colors.base.black};
+  font-weight: 600;
 
   @media screen and (max-width: 768px) {
     font-size: 0.85em;

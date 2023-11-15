@@ -4,7 +4,7 @@ interface ContainerProps {
   isPostSelected: boolean;
 }
 
-export const Container = styled.nav<ContainerProps>`
+export const Container = styled.li<ContainerProps>`
   ${({ theme }) => theme.flexDefault};
   padding-left: 12px;
 

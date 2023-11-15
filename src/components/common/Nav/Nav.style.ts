@@ -60,8 +60,9 @@ export const BlogName = styled.span`
   }
 `;
 
-export const NavBar = styled.ul`
-  display: inline-flex;
+export const NavBar = styled.div`
+  ${({ theme }) => theme.flexCenter};
+  height: 52px;
   gap: 12px;
   font-weight: 700;
 
@@ -71,11 +72,16 @@ export const NavBar = styled.ul`
   }
 `;
 
-export const NavItem = styled.li`
-  list-style: none;
-  cursor: pointer;
+export const NavItem = styled.button`
+  color: white;
+  font-size: inherit;
+  font-weight: 700;
+  color: inherit;
+  background-color: inherit;
+  outline-offset: 2px;
 `;
 
 export const Style = {
+  fontSize: 'inherit',
   color: 'inherit',
 };

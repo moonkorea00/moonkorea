@@ -41,6 +41,18 @@ export const ActionButton = styled.button`
     background-color: ${({ theme }) => theme.colors.secondary.dark};
   }
 
+  &:not(:disabled)&:active {
+    transform: translateY(1px);
+  }
+
+  &:focus {
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+
   @media screen and (max-width: 768px) {
     width: 80px;
     height: 32px;

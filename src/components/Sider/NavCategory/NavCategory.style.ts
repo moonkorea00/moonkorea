@@ -9,9 +9,11 @@ interface NavItemContainerProps {
   height: number;
 }
 
-export const Container = styled.section`
+export const Container = styled.ul`
   ${({ theme }) => theme.flexColumn};
-  margin-bottom: 6px;
+  gap: 6px;
+  padding: 0;
+  margin:0;
 `;
 
 export const CategoryContainer = styled.div`
