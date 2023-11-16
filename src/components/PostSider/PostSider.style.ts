@@ -58,6 +58,10 @@ export const SiderButton = styled.button`
     height: 36px;
     border: none;
   }
+
+  &:focus {
+    outline: none;
+  }
 `;
 
 export const ButtonImageContainer = styled.div`
