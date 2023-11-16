@@ -54,7 +54,7 @@ const NewCommentForm = ({
     onSubmit: session ? onCreateComment : () => showModal({ name: 'login' }),
     isFormModeCancellable: isReplyMode,
     setFormToDefaultMode,
-    isSubmitButtonDisabled: isPending || !comment,
+    isSubmitButtonDisabled: isPending,
     submitButtonLabel: session
       ? isReplyMode
         ? '답글 작성'
