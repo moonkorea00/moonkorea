@@ -1,14 +1,18 @@
 import type { MetaData } from '@@types/metaData';
-import * as S from './PostSider.style';
+
 import { useState } from 'react';
+
+import * as S from './PostSider.style';
 import SocialSharePanel from './SocialSharePanel/SocialSharePanel';
+
 import { usePrefetchComments } from '@api/hooks/Comments/query';
 import useGetElementSizeById from './hooks/useGetElementSizeById';
 import useScrollDirection from './hooks/useScrollDirection';
-import useKeyPress from '@hooks/useKeyPress';
-import { assets } from '@utils/assetsPath';
-import { getPostId } from '@components/Comments/Comments.utils';
 import useScrollToElementById from '@hooks/useScrollToElementById';
+import useKeyPress from '@hooks/useKeyPress';
+
+import { getPostId } from '@components/Comments/Comments.utils';
+import { assets } from '@utils/assetsPath';
 
 interface PostSiderProps {
   postFrontMatter: MetaData;
@@ -41,18 +45,23 @@ const PostSider = ({ postFrontMatter }: PostSiderProps) => {
       headerHeight={headerHeight}
       scrollDirection={scrollDirection}
     >
-      <S.SiderButton onClick={onPrefetchAndScrollToComments} title="댓글">
+      <S.SiderButton onClick={onPrefetchAndScrollToComments}>
         <S.ButtonImageContainer>
-          <S.ButtonImage src={assets.comment} />
+          <S.ButtonImage
+            src={assets.comment}
+            alt="댓글란 바로가기"
+            title="댓글"
+          />
         </S.ButtonImageContainer>
       </S.SiderButton>
       <S.Seperator />
-      <S.SiderButton
-        onClick={() => setIsSocialSharePanelVisible(true)}
-        title="공유하기"
-      >
+      <S.SiderButton onClick={() => setIsSocialSharePanelVisible(true)}>
         <S.ButtonImageContainer>
-          <S.ButtonImage src={assets.share} />
+          <S.ButtonImage
+            src={assets.share}
+            alt="포스트 공유하기"
+            title="공유하기"
+          />
         </S.ButtonImageContainer>
       </S.SiderButton>
       {isSocialSharePanelVisible && (
