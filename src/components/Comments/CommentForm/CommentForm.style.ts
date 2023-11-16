@@ -49,10 +49,6 @@ export const ActionButton = styled.button`
     outline-offset: 2px;
   }
 
-  &:disabled {
-    cursor: not-allowed;
-  }
-
   @media screen and (max-width: 768px) {
     width: 80px;
     height: 32px;
