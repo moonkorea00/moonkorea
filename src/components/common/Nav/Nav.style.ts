@@ -78,7 +78,10 @@ export const NavItem = styled.button`
   font-weight: 700;
   color: inherit;
   background-color: inherit;
-  outline-offset: 2px;
+
+  &:focus {
+    outline: none;
+  }
 `;
 
 export const Style = {
