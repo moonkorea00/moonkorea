@@ -13,12 +13,11 @@ export const Container = styled.ul`
   ${({ theme }) => theme.flexColumn};
   gap: 6px;
   padding: 0;
-  margin:0;
+  margin: 0;
 `;
 
 export const CategoryContainer = styled.div`
   ${({ theme }) => theme.flexDefault};
-  margin-bottom: 4px;
 `;
 
 export const Title = styled.span``;
