@@ -12,7 +12,7 @@ export const Container = styled.nav<ContainerProps>`
   max-width: 325px;
   min-width: 310px;
   height: 100%;
-  padding: 16px 16px 30px 20px;
+  padding: 0px 0px 30px 20px;
   line-height: 35px;
   background-color: ${({ theme }) => theme.colors.base.grayDefault};
   border-left: 1px solid ${({ theme }) => theme.colors.base.gray300};
@@ -25,9 +25,9 @@ export const Container = styled.nav<ContainerProps>`
 `;
 
 export const CloseButton = styled.button`
-  position: absolute;
-  top: 0;
-  right: 0;
+  position: sticky;
+  top: 6px;
+  left: 310px;
   margin: 6px 8px 0 0;
   padding: 2px 6px;
   background-color: inherit;
