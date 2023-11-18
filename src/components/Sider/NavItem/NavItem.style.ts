@@ -31,6 +31,7 @@ export const PostTitle = styled.div`
   font-size: 14px;
   line-height: 25px;
   color: ${({ theme }) => theme.colors.base.gray800};
+  word-break: keep-all;
   cursor: pointer;
 
   @media screen and (max-width: 768px) {
