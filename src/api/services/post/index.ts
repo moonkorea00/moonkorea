@@ -1,8 +1,14 @@
 import type { FrontMatter } from '@@types/metaData';
-import type { NestedHeading } from '@components/Markdown/types';
+
 import fs from 'fs';
 import { join } from 'path';
 import matter from 'gray-matter';
+
+import {
+  extractHeadings,
+  nestHeadingWithChildren,
+  createPagination,
+} from '../utils';
 import { convertToSlug } from '@utils/markdown';
 
 const postsDir = join(process.cwd(), '/src/_posts');
@@ -17,6 +23,14 @@ export const getPostPaths = () => {
       },
     };
   });
+};
+
+export const getPagePaths = () => {
+  const { pages } = createPagination(fileNames.length);
+
+  const paths = pages.map(page => ({ params: { page: page.toString() } }));
+
+  return paths;
 };
 
 export const getAllPosts = () => {
@@ -48,46 +62,14 @@ export const getAllPostsSortedByDate = () => {
   );
 };
 
-const extractHeadings = (content: string) => {
-  const lines = content.split('\n');
-  const headings = lines
-    .filter(line => line.match(/^#{1,4}\s/))
-    .map(heading => {
-      const matchingHeading: string[] | null = heading.match(/^#+/);
+export const getPostsByPage = (page: number, itemsPerPage = 6) => {
+  const startIndex = (page - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const posts = getAllPostsSortedByDate().slice(startIndex, endIndex);
 
-      const level = matchingHeading ? matchingHeading[0].length : 0;
-      const value = heading.replace(/^#+\s/, '');
-      const slug = convertToSlug(value);
+  const { pages } = createPagination(fileNames.length);
 
-      if (level === 0) {
-        throw new Error('Error finding heading level');
-      }
-
-      return { level, value, slug, children: [] };
-    });
-
-  return headings;
-};
-
-const nestHeadingWithChildren = (headings: NestedHeading[]) => {
-  const root: NestedHeading[] = [];
-  const stack: NestedHeading[] = [];
-
-  headings.forEach(heading => {
-    while (stack.length > 0 && heading.level <= stack[stack.length - 1].level) {
-      stack.pop();
-    }
-
-    if (stack.length === 0) {
-      root.push(heading);
-    } else {
-      stack[stack.length - 1].children.push(heading);
-    }
-
-    stack.push(heading);
-  });
-
-  return root;
+  return { posts, pages };
 };
 
 export const getPostById = async (id: string) => {
