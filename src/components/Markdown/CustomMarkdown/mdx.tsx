@@ -99,27 +99,24 @@ export const MarkdownSpan = (props: HTMLAttributes<HTMLSpanElement>) => {
   return <S.Span {...props} />;
 };
 
+type HeadingLevel = keyof typeof headingMap;
+
+const headingMap = {
+  1: MarkdownH1,
+  2: MarkdownH2,
+  3: MarkdownH3,
+};
+
 export const HeadingWithLink = ({ level, children }: HeadingWithLinkProps) => {
   const slug = convertToSlug(String(children[0]));
 
   const { hashLink, onScrollWithOffset } = useHashLink(slug);
 
-  const renderHeading = () => {
-    switch (level) {
-      case 1:
-        return <MarkdownH1>{children[0]}</MarkdownH1>;
-      case 2:
-        return <MarkdownH2>{children[0]}</MarkdownH2>;
-      case 3:
-        return <MarkdownH3>{children[0]}</MarkdownH3>;
-      default:
-        throw new Error('No valid level for heading');
-    }
-  };
+  const MarkdownHeading = headingMap[level as HeadingLevel];
 
   return (
     <Link id={slug} href={hashLink} scroll={false} onClick={onScrollWithOffset}>
-      {renderHeading()}
+      <MarkdownHeading>{children[0]}</MarkdownHeading>
     </Link>
   );
 };

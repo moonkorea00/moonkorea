@@ -1,7 +1,8 @@
 import type {
   DetailedHTMLFactory,
-  ImgHTMLAttributes,
   HTMLAttributes,
+  ImgHTMLAttributes,
+  VideoHTMLAttributes,
 } from 'react';
 
 import * as MDX from './CustomMarkdown/mdx';
@@ -29,7 +30,7 @@ const markdownComponents = {
     HTMLElement
   >,
   video: MDX.MarkdownVideo as DetailedHTMLFactory<
-    React.VideoHTMLAttributes<HTMLVideoElement>,
+    VideoHTMLAttributes<HTMLVideoElement>,
     HTMLVideoElement
   >,
   iframe: ({ ...props }) => <MDX.MarkdownIframe {...props} />,
