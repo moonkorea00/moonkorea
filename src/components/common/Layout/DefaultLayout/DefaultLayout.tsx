@@ -18,11 +18,9 @@ const DefaultLayout = (
         <TableOfContents toc={postFrontMatter.toc} />
       )}
       <S.Main>
-        <S.ChildrenContainer>
-          <ErrorBoundary>
-            <Page {...pageProps} />
-          </ErrorBoundary>
-        </S.ChildrenContainer>
+        <ErrorBoundary>
+          <Page {...pageProps} />
+        </ErrorBoundary>
       </S.Main>
     </S.Container>
   );

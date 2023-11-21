@@ -12,6 +12,8 @@ export const Container = styled.div`
 export const Main = styled.main`
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  width: 700px;
   padding: 20px;
   min-width: 280px;
   line-height: 35px;
@@ -29,9 +31,4 @@ export const Main = styled.main`
   @media screen and (max-width: 768px) {
     padding: 14px;
   }
-`;
-
-export const ChildrenContainer = styled.div`
-  min-width: 280px;
-  max-width: 700px;
 `;
