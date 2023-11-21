@@ -1,3 +1,4 @@
+import type { GetStaticPropsContext } from 'next';
 import type { MetaData } from '@@types/metaData';
 import type { TableOfContents } from '@components/TableOfContents/types';
 
@@ -61,11 +62,9 @@ export default Post;
 Post.getLayout = DefaultLayout;
 Post.pageType = 'post';
 
-interface PostParams {
-  params: {
-    postId: string;
-  };
-}
+type PostParams = {
+  postId: string;
+};
 
 export const getStaticPaths = async () => {
   const paths = getPostPaths();
@@ -73,7 +72,11 @@ export const getStaticPaths = async () => {
   return { paths, fallback: false };
 };
 
-export const getStaticProps = async ({ params }: PostParams) => {
+export const getStaticProps = async ({
+  params,
+}: GetStaticPropsContext<PostParams>) => {
+  if (!params) return;
+  
   const postFrontMatter = await getPostById(params.postId);
 
   return {

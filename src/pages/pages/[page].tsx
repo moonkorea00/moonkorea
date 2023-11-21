@@ -1,3 +1,4 @@
+import type { GetStaticPropsContext } from 'next';
 import type { FrontMatter } from '@@types/metaData';
 
 import Metadata from '@components/common/Metadata/Metadata';
@@ -5,14 +6,14 @@ import DefaultLayout from '@components/common/Layout/DefaultLayout/DefaultLayout
 import PreviewPost from '@components/Home/PreviewPost';
 import Pagination from '@components/Pagination/Pagination';
 
-import { getPostsByPage } from '@api/services/post';
+import { getPagePaths, getPostsByPage } from '@api/services/post';
 
-interface HomePageProps {
+interface PageProps {
   posts: FrontMatter[];
   pages: number[];
 }
 
-const Home = ({ posts, pages }: HomePageProps) => {
+const Page = ({ posts, pages }: PageProps) => {
   return (
     <>
       <Metadata />
@@ -24,12 +25,26 @@ const Home = ({ posts, pages }: HomePageProps) => {
   );
 };
 
-export default Home;
+export default Page;
 
-Home.getLayout = DefaultLayout;
+Page.getLayout = DefaultLayout;
 
-export const getStaticProps = async () => {
-  const { posts, pages } = getPostsByPage(1);
+type PageParams = {
+  page: string;
+};
+
+export const getStaticPaths = async () => {
+  const paths = getPagePaths();
+
+  return { paths, fallback: false };
+};
+
+export const getStaticProps = async ({
+  params,
+}: GetStaticPropsContext<PageParams>) => {
+  if (!params) return;
+
+  const { posts, pages } = getPostsByPage(Number(params.page));
 
   return {
     props: { posts, pages },
