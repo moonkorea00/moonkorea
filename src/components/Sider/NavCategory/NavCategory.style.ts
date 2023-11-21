@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 interface TitleProps {
   isActive: boolean;
@@ -35,8 +35,10 @@ export const TotalPosts = styled.span`
 `;
 
 export const NavItemContainer = styled.div<NavItemContainerProps>`
-  height: ${({ isSubCategoryOpen, height }) =>
-    isSubCategoryOpen ? `${height}px` : '0px'};
-  transition: height 0.25s ease-in-out;
+  ${({ isSubCategoryOpen, height }) => css`
+    height: ${isSubCategoryOpen ? `${height}px` : '0px'};
+    opacity: ${isSubCategoryOpen ? '1' : '0.1'};
+  `}
+  transition: all 0.25s ease-in-out;
   overflow: hidden;
 `;
