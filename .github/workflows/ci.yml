@@ -1,0 +1,18 @@
+name: post merge workflow
+
+on:
+  pull_request:
+    branches:
+      - main
+    types: [closed]
+
+jobs:
+  post-merge-job:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Run Ping Google Script
+        run: sh scripts/ping_google_search_console.sh
