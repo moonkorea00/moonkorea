@@ -1,4 +1,3 @@
 echo "running ping google search console shell script"
-GOOGLE_PING_URL="https://www.moonkorea.dev/sitemap.xml"
-curl "$GOOGLE_PING_URL"
+curl "http://google.com/ping?sitemap=https://www.moonkorea.dev/sitemap.xml"
 echo "request sent to google"
