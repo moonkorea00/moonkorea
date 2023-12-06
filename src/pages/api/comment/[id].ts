@@ -1,10 +1,9 @@
-import { NextApiRequest, NextApiResponse } from 'next';
+import type { NextApiRequest, NextApiResponse } from 'next';
+
 import prisma from '@server/db/client';
 import {
-  pipe,
-  nestCommentsWithChildren,
+  nestComments,
   getActiveComments,
-  addDepthKeyToElement,
 } from '@server/api/comment/comment.utils';
 
 const fetchComments = async (req: NextApiRequest, res: NextApiResponse) => {
@@ -35,11 +34,7 @@ const fetchComments = async (req: NextApiRequest, res: NextApiResponse) => {
       },
     });
 
-    const comments = pipe(
-      getActiveComments,
-      nestCommentsWithChildren,
-      addDepthKeyToElement
-    )(rawComments);
+    const comments = nestComments(getActiveComments(rawComments));
 
     return res
       .status(200)

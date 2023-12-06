@@ -56,4 +56,9 @@ const generateSiderJSON = () => {
   writeFileSync('src/data/sider.json', siderJSON, { flag: 'w' });
 };
 
-generateSiderJSON();
+try {
+  generateSiderJSON();
+  console.log('\x1b[32m', 'Successfully created sider data', '\x1b[0m');
+} catch (error) {
+  console.error('\x1b[31m', 'Failed to create sider data:', error, '\x1b[0m');
+}
