@@ -29,6 +29,9 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum finibus, ex 
 ### heading 4
 `;
 
-writeFileSync('src/_posts/TEMPLATE.md', templateContent);
-
-console.log('src/_posts 에서 내용을 수정해 보세요.');
+try {
+  writeFileSync('src/_posts/TEMPLATE.md', templateContent);
+  console.log('\x1b[32m', 'src/_posts 에서 내용을 수정해 보세요.', '\x1b[0m');
+} catch (error) {
+  console.error('\x1b[31m', 'Failed to create template:', error, '\x1b[0m');
+}
