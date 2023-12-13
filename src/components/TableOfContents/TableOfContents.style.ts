@@ -13,17 +13,7 @@ export const Container = styled.nav`
   overscroll-behavior-y: none;
 
   ::-webkit-scrollbar {
-    width: 0;
-    background-color: transparent;
-  }
-
-  &:hover::-webkit-scrollbar {
-    width: 7px;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background-color: ${({ theme }) => theme.colors.base.gray300};
-    border-radius: 10px;
+    display: none;
   }
 
   -ms-overflow-style: none; /* IE and Edge */

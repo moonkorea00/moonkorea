@@ -94,3 +94,45 @@ export const getPostById = async (id: string) => {
     toc,
   };
 };
+
+export const getPostTags = () => {
+  const prioritizedTags = [
+    'JavaScript',
+    'TypeScript',
+    '블로그',
+    '오픈 소스',
+    'React.js',
+    'Next.js',
+    '개발 경험',
+  ];
+
+  const tagCounts = fileNames.reduce<Record<string, number>>(
+    (acc, fileName) => {
+      const filePath = join(postsDir, fileName);
+      const fileContent = fs.readFileSync(filePath, 'utf8');
+      const { data } = matter(fileContent);
+
+      data.tags.split(', ').forEach((tag: string) => {
+        acc[tag] = (acc[tag] || 0) + 1;
+      });
+
+      return acc;
+    },
+    {}
+  );
+
+  const ininitialTagCounts = Object.entries(tagCounts).map(([tag, count]) => ({
+    tag,
+    count,
+  }));
+
+  const orderedTags = prioritizedTags
+    .map(pTag => ininitialTagCounts.find(item => item.tag === pTag))
+    .filter(Boolean);
+
+  const rest = ininitialTagCounts.filter(item => !orderedTags.includes(item));
+
+  const tags = [...orderedTags, ...rest];
+
+  return tags;
+};

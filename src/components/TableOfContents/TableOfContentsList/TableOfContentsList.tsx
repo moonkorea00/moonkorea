@@ -1,6 +1,5 @@
 import type { NestedHeading } from '@components/Markdown/types';
 
-import * as S from './TablesOfContentsList.style';
 import TableOfContentsItem from '../TableOfContentsItem/TableOfContentsItem';
 
 interface TableOfContentsListProps {
@@ -13,7 +12,7 @@ const TableOfContentsList = ({
   headingSlugs,
 }: TableOfContentsListProps) => {
   return (
-    <S.Container>
+    <ul>
       {tocTree.map((heading: NestedHeading) => (
         <TableOfContentsItem
           key={heading.value}
@@ -21,7 +20,7 @@ const TableOfContentsList = ({
           headingSlugs={headingSlugs}
         />
       ))}
-    </S.Container>
+    </ul>
   );
 };
 
