@@ -3,7 +3,7 @@ title: 'TanStack Query v5 정식 버전 살펴보기 (리액트 쿼리)'
 category: '리액트'
 excerpt: '리액트 쿼리 v5가 정식 출시됐는데요, 이번 글에서는 마이그레이션 가이드를 참고해서 주요 변경 사항들을 살펴봅니다.'
 description: '주요 변경 및 개선 사항들은?'
-tags: '리액트 쿼리'
+tags: 'React.js'
 date: '2023-11-06'
 ---
 

@@ -1,9 +1,9 @@
 ---
-title: '재조정과 Key'
+title: 'React가 고유한 key를 권장하는 이유'
 category: '리액트'
 excerpt: '리액트는 렌더링 간 효율적으로 DOM을 업데이트하고자 재조정 과정을 거치게 되는데요, 재조정에서 key의 역할과 key 값으로 인덱스의 사용을 지야하는 이유에 대해 알아봅니다.'
 description: '재조정에서 key의 역할과 key 값으로 인덱스의 사용을 지양하는 이유'
-tags: '렌더링, 재조정, Key, 가상 DOM'
+tags: 'React.js, 렌더링'
 date: '2023-08-25'
 ---
 

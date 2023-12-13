@@ -1,21 +1,19 @@
 ---
-title: 'nodemailer로 이메일 전송(Zoho mail)'
+title: '사용자에게 이메일 전송하기 (nodemailer)'
 category: '튜토리얼 / 트러블슈팅'
 excerpt: 'nodemailer로 사용자에게 이메일을 보내 사용자 인증 프로세스를 처리하거나 알림의 기능이 필요한 경우의 과정을 다뤄보겠습니다. nodemailer 모듈은 발신자와 수신자 정보, 보낼 내용만 설정하여 간편하게 서드파티 앱에서 이메일을 보낼 수 있게 도와줍니다'
 description: '비즈니스 계정으로 사용자에게 이메일 보내기'
-tags: '튜토리얼, nodemailer, Node.js'
+tags: '개발 경험, React.js, Next.js, 튜토리얼, 블로그'
 date: '2023-02-23'
 ---
 
 사용자에게 이메일을 보내 사용자 인증 프로세스를 처리하거나 이메일 알림 등을 보내야 하는 경우가 있는데요, 이번 글에서는 서버에서 사용자에게 이메일을 전송하는 방법에 대해 알아보겠습니다.
 
-> Zoho mail 설정은 서론을 건너뛰어도 무방합니다.
-
 &emsp;nodemailer는 <a href='https://nodemailer.com/about/' target='_blank'>공식문서</a>에 나와 있듯 'a module for Node.js applications to allow easy as cake email sending' 발신자와 수신자 정보, 보낼 내용만 설정하여 간편하게 서드파티 앱에서 이메일을 보낼 수 있게 도와줍니다.
 
 ## Gmail 계정 설정
 
-&emsp;nodemailer를 통해서 이메일을 보내려면 유효한 이메일 계정이 필요합니다. 가장 간편한 방법으로 Gmail 계정을 발신자 계정으로 설정해서 사용할 수 있습니다. 서드파티 앱에게 접근권한을 설정하기 위해서 <a href='https://myaccount.google.com/security' target='_blank'>구글 계정</a>에 접속해 <b>보안 - Google에 로그인 - 앱 비밀번호</b> 항목에서앱 비밀번호를 발급받아 본 계정의 비밀번호 대신 사용합니다.
+&emsp;nodemailer를 통해서 이메일을 보내려면 유효한 이메일 계정이 필요합니다. 가장 간편한 방법으로 Gmail 계정을 발신자 계정으로 설정해서 사용할 수 있습니다. 서드파티 앱에게 접근권한을 설정하기 위해서 <a href='https://myaccount.google.com/security' target='_blank'>구글 계정</a>에 접속해 <b>보안 - Google에 로그인 - 앱 비밀번호</b> 항목에서 앱 비밀번호를 발급받아 본 계정의 비밀번호 대신 사용합니다.
 
 <img src="/assets/markdown-image/Tutorial-nodemailer/gmail_app_password.png" alt="Gmail 앱 비밀번호" width="450" height="400">
 
@@ -145,7 +143,7 @@ const sendNotification = async (to: string[], subject: string, date: Date) => {
 
 ## 비즈니스 계정으로 전송하기 (Zoho mail)
 
-기타 이메일 클라이언트를 사용할 경우 해당 클라이언트의 도메인 이름(Gmail의 경우 user@<b>gmail</b>.com)을 사용해야 하는데요, Zoho mail은 무료로 도메인 명을 기반으로 이메일을 사용할 수 있어 발신자가 관리자일 경우 비즈니스 계정으로 사용할 수 있습니다. 무료 티어에서도 넉넉한 스토리지를 제공합니다. 
+기타 이메일 클라이언트를 사용할 경우 해당 클라이언트의 도메인 이름(Gmail의 경우 user@<b>gmail</b>.com)을 사용해야 하는데요, Zoho mail은 무료로 도메인 명을 기반으로 이메일을 사용할 수 있어 발신자가 관리자일 경우 비즈니스 계정으로 사용할 수 있습니다. 무료 티어에서도 넉넉한 스토리지를 제공합니다.
 
 <!-- <details><summary>도메인 명을 이메일로 설정하기(더보기)</summary>내용</details> -->
 
@@ -206,4 +204,3 @@ const transporter = nodemailer.createTransport({
 > 설정 후 발생하는 535 서버에러는 계정 설정을 다시 확인해 주세요.
 
 8. 보안 설정과 관련해서는 <a href='https://mailadmin.zoho.com/cpanel/home.do#securityAndCompliance/dashboard' target='_blank'>여기</a>서 권장되는 항목들에 대한 보안 상태를 제공합니다. 보안 상태를 확인한 후 여러 액션에 필요한 지침을 따라주세요.
-

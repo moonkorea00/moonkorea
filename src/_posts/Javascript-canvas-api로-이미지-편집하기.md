@@ -3,7 +3,7 @@ title: 'Canvas API로 이미지 편집하기'
 category: '자바스크립트'
 excerpt: 'Canvas API는 canvas 요소로 2D나 3D 그래픽을 만들 수 있고 목적에 따라 다양한 창의적인 작업을 수행할 수 있습니다. 이 글에서는 Canvas API에 대한 간략한 소개와 Canvas API를 사용해서 이미지의 화질을 압축하는 방법에 대해 알아보겠습니다.'
 description: '이미지 화질 압축하기 (하두리캠)'
-tags: 'Canvas API, blob 객체, 화질 압축'
+tags: 'JavaScript, 개발 경험'
 date: '2023-04-13'
 ---
 
