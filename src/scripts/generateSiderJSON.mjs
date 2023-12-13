@@ -5,10 +5,10 @@ import matter from 'gray-matter';
 
 const INITIAL_SIDER_LIST = [
   { name: '웹' },
+  { name: '오픈 소스' },
   { name: '자바스크립트' },
   { name: '타입스크립트' },
   { name: '리액트' },
-  { name: 'VSCode' },
   { name: '튜토리얼 / 트러블슈팅' },
 ];
 
