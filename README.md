@@ -97,6 +97,7 @@ $ npm run sider
         "@tanstack/eslint-plugin-query": "^5.0.5",
         "@tanstack/react-query-devtools": "^5.4.3",
         "@types/gtag.js": "^0.0.12",
+        "@types/jest": "^29.5.8",
         "@types/node": "^18.11.9",
         "@types/nodemailer": "^6.4.7",
         "@types/react": "^18.0.25",
@@ -109,6 +110,7 @@ $ npm run sider
         "eslint": "^8.30.0",
         "eslint-plugin-react": "^7.31.11",
         "file-loader": "^6.2.0",
+        "jest": "^29.7.0",
         "next-sitemap": "^3.1.43",
         "prisma": "^4.9.0",
         "typescript": "^4.9.3"
@@ -142,17 +144,17 @@ $ npm run sider
 <b>[2.2.0]</b>
 - SNS에 포스트 공유하기 기능 추가
 
-<b>[2.2.2]</b>
-- TanStack Query v5 업그레이드
-
 <b>[2.3.0]</b>
-- Heading 요소 해시 링크 추가
+- 제목 요소 해시 링크 추가
 
 <b>[2.4.0]</b>
 - 목차 컴포넌트
 
 <b>[2.5.0]</b>
 - 포스트 페이지네이션
+
+<b>[2.6.0]</b>
+- 포스트 필터링
 
 <br>
 

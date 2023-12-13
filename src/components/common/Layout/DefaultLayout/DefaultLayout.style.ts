@@ -14,7 +14,7 @@ export const Main = styled.main`
   justify-content: center;
   flex-direction: column;
   width: 700px;
-  padding: 20px;
+  padding: 40px 20px;
   min-width: 280px;
   line-height: 35px;
   animation: fade-in 0.25s;

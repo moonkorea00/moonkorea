@@ -20,12 +20,14 @@ export const Description = styled.p`
   font-weight: 500;
 `;
 
-export const Date = styled.span`
-  padding: 3px 8px;
-  font-size: 0.85em;
-  border-radius: 10px;
-  color: ${({ theme }) => theme.colors.base.black};
-  background-color: ${({ theme }) => theme.colors.base.pinkGrey};
+export const Date = styled.div`
+  align-self: flex-end;
+  
+  span {
+    border-radius: 10px;
+    font-size: 0.85em;
+    color: white;
+  }
 `;
 
 export const TagContainer = styled.div`

@@ -3,7 +3,7 @@ title: '브라우저 렌더링'
 category: '웹'
 excerpt: '웹 브라우저는 프론트엔드 개발자들이 만든 앱이 실행되는 환경이자 우리가 일상생활에서 가장 많이 사용하는 소프트웨어일 것입니다. 사용자에게 웹 페이지를 그려주는 일을 하기 위해 주소창에 url이 입력된 시점부터 웹 페이지가 보여지기까지 화면 뒤에서 무수히 많은 작업들을 합니다.'
 description: '3분만에 읽어보는 간략한 브라우저 렌더링'
-tags: '브라우저 엔진, 자바스크립트 엔진, Critical Rendering Path'
+tags: '렌더링'
 date: '2022-07-06'
 ---
 
@@ -39,7 +39,7 @@ date: '2022-07-06'
 
 &emsp;렌더트리까지 생성하는 작업이 완료가 되면 렌더링 엔진은 노드들의 크기와 뷰포트에 배치될 정확한 위치를 계산하는 layout 단계로 넘어갑니다. 이때 CSS에서 사용된 모든 상대적인 단위는 사용자 디바이스에 맞춰서 픽셀 단위로 변환됩니다. 브라우저에 출력될 노드와 해당 노드에 대한 스타일 정보까지 계산이 완료가 되면 최종적으로 paint 단계에서 각 노드들을 픽셀로 변환하여 화면에 출력합니다.
 
-&emsp;데이터를 파싱하여 DOM트리와 CSSOM트리의 생성, 배치(layout), 그리고 UI를 그리는 과정(pain)을 critical rendering path라고 합니다. Critical rendering path의 동작 순서를 정리하자면 :
+&emsp;데이터를 파싱하여 DOM트리와 CSSOM트리의 생성, 배치(layout), 그리고 UI를 그리는 과정을 critical rendering path라고 합니다. Critical rendering path의 동작 순서를 정리하자면 :
 
 > 1. HTML 마크업을 파싱하여 DOM트리 생성
 > 2. CSS 마크업을 파싱하여 CSSOM트리 생성

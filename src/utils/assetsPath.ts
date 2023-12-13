@@ -5,4 +5,5 @@ export const assets = {
   comment: '/assets/PostSider/comment.svg',
   share: '/assets/PostSider/share.svg',
   kakao: '/assets/PostSider/kakao.png',
+  reset: '/assets/Home/reset-svgrepo-com.svg',
 };

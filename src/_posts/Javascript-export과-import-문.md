@@ -3,7 +3,7 @@ title: 'export, import 문'
 category: '자바스크립트'
 excerpt: '자바스크립트 모듈은 관심사 별로 코드를 나눈 단위를 말하는데요, export과 import 문으로 모듈 간 코드를 공유합니다. 이번 글에서는 export과 import 문을 사용해서 모듈을 내보내고 가져오는 방법과 사용 문법에 대해 알아봅니다.'
 description: '자바스크립트 모듈과 문법 정리'
-tags: '모듈, 트리 쉐이킹'
+tags: 'JavaScript'
 date: '2023-10-15'
 ---
 

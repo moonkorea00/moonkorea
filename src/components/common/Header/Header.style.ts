@@ -16,9 +16,3 @@ export const HeadingContainer = styled.div`
   max-height: 700px;
   background-color: ${({ theme }) => theme.colors.secondary.light};
 `;
-
-export const FilledHeaderSeperator = styled.div`
-  ${({ theme }) => theme.flexCenter}
-  height: 50px;
-  background-color: ${({ theme }) => theme.colors.base.lightOrange};
-`;

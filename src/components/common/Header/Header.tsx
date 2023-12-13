@@ -20,7 +20,6 @@ const Header = ({ postFrontMatter, pageType }: HeaderProps) => {
       <S.HeadingContainer>
         <HeaderContent pageType={pageType} postFrontMatter={postFrontMatter} />
       </S.HeadingContainer>
-      <S.FilledHeaderSeperator />
     </S.Container>
   );
 };

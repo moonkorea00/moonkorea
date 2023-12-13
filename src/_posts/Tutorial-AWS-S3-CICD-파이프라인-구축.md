@@ -1,9 +1,9 @@
 ---
-title: 'S3 CI-CD 파이프라인 구축 (Github Actions)'
+title: 'Github Actions로 AWS S3에 배포 자동화하기'
 category: '튜토리얼 / 트러블슈팅'
 excerpt: 'S3 버킷을 사용해서 앱 배포까지 완료가 되었으면 Github Actions를 통해서 CI/CD 파이프라인을 구축합니다. 코드베이스에 변경 사항이 생길 때마다 빌드, 테스트, 배포 자동화까지 한 번에 처리합니다.'
 description: 'GitHub Actions로 빌드, 테스트, 배포 자동화 튜토리얼'
-tags: '튜토리얼, CICD, GitHub Actions'
+tags: '튜토리얼, AWS, CI/CD'
 date: '2022-07-24'
 ---
 
@@ -48,7 +48,7 @@ touch some-script-name.yml
 ```
 
 ```YAML
-name: some script name
+name: script name
 on:
  push:
    branches:
@@ -83,4 +83,4 @@ jobs:
 
 기타 환경 변수는 하단에 주석 처리된 **build s3://** 값으로는 생성한 S3 버킷 이름을 등록합니다.
 
-> CloudFront 액세스 허용, yarn 혹은 기타 환경 변수를 등록하고 사용할 경우 그에 맞게 스크립트를 변경해 줍니다.
+> 프로젝트 환경 설정과 workflow가 실행될 명령어에 맞게 스크립트를 설정합니다.

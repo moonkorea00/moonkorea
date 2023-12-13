@@ -3,7 +3,7 @@ title: '커스텀 도메인 (Route 53)'
 category: '튜토리얼 / 트러블슈팅'
 excerpt: 'Route 53으로는 도메인의 인터넷 트래픽을 라우팅할 위치를 정의하기 때문에 별칭 레코드(alias)를 생성해 IP 주소 대신 S3 웹 사이트 엔드포인트를 사용합니다. AWS S3를 사용해서 버킷을 생성했으면 Route 53으로 도메인을 등록합니다.'
 description: '커스텀 도메인 설정하기 튜토리얼'
-tags: '튜토리얼, AWS, Route 53'
+tags: '튜토리얼, AWS'
 date: '2022-07-24'
 ---
 

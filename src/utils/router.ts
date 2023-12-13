@@ -1,5 +1,5 @@
 export const getQueryParamAsPositiveNumber = (
-  value: string | string[] | undefined,
+  value: string | string[] | undefined
 ) => {
   if (!value) return undefined;
 
@@ -8,4 +8,12 @@ export const getQueryParamAsPositiveNumber = (
   if (Number.isNaN(num) || num < 1) return null;
 
   return num;
+};
+
+export const getQueryParamAsArray = (value: string | string[] | undefined) => {
+  if (!value) return undefined;
+
+  const arr = Array.isArray(value) ? value : [value];
+
+  return arr;
 };

@@ -12,24 +12,6 @@ export const Container = styled.section`
   }
 `;
 
-export const TagContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-`;
-
-export const Tags = styled.span`
-  padding: 1px 8px;
-  font-size: 0.85em;
-  font-weight: 500;
-  border-radius: 10px;
-  background-color: ${({ theme }) => theme.colors.base.gray200};
-
-  @media screen and (max-width: 768px) {
-    font-size: 0.8em;
-  }
-`;
-
 export const Title = styled.h2`
   font-size: 1.65em;
   word-break: keep-all;

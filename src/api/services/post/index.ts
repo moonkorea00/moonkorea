@@ -4,11 +4,7 @@ import fs from 'fs';
 import { join } from 'path';
 import matter from 'gray-matter';
 
-import {
-  extractHeadings,
-  nestHeadingWithChildren,
-  createPagination,
-} from '../utils';
+import { extractHeadings, nestHeadingWithChildren } from '../utils';
 import { convertToSlug } from '@utils/markdown';
 
 const postsDir = join(process.cwd(), '/src/_posts');
@@ -23,14 +19,6 @@ export const getPostPaths = () => {
       },
     };
   });
-};
-
-export const getPagePaths = () => {
-  const { pages } = createPagination(fileNames.length);
-
-  const paths = pages.map(page => ({ params: { page: page.toString() } }));
-
-  return paths;
 };
 
 export const getAllPosts = () => {
@@ -62,16 +50,6 @@ export const getAllPostsSortedByDate = () => {
   );
 };
 
-export const getPostsByPage = (page: number, itemsPerPage = 6) => {
-  const startIndex = (page - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  const posts = getAllPostsSortedByDate().slice(startIndex, endIndex);
-
-  const { pages } = createPagination(fileNames.length);
-
-  return { posts, pages };
-};
-
 export const getPostById = async (id: string) => {
   const filePath = join(postsDir, `${id}.md`);
   const metaData = fs.readFileSync(filePath, 'utf8');
@@ -93,4 +71,46 @@ export const getPostById = async (id: string) => {
     content,
     toc,
   };
+};
+
+export const getPostTags = () => {
+  const prioritizedTags = [
+    'JavaScript',
+    'TypeScript',
+    '블로그',
+    '오픈 소스',
+    'React.js',
+    'Next.js',
+    '개발 경험',
+  ];
+
+  const tagCounts = fileNames.reduce<Record<string, number>>(
+    (acc, fileName) => {
+      const filePath = join(postsDir, fileName);
+      const fileContent = fs.readFileSync(filePath, 'utf8');
+      const { data } = matter(fileContent);
+
+      data.tags.split(', ').forEach((tag: string) => {
+        acc[tag] = (acc[tag] || 0) + 1;
+      });
+
+      return acc;
+    },
+    {}
+  );
+
+  const ininitialTagCounts = Object.entries(tagCounts).map(([tag, count]) => ({
+    tag,
+    count,
+  }));
+
+  const orderedTags = prioritizedTags
+    .map(pTag => ininitialTagCounts.find(item => item.tag === pTag))
+    .filter(Boolean);
+
+  const rest = ininitialTagCounts.filter(item => !orderedTags.includes(item));
+
+  const tags = [...orderedTags, ...rest];
+
+  return tags;
 };
