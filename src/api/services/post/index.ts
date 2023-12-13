@@ -4,11 +4,7 @@ import fs from 'fs';
 import { join } from 'path';
 import matter from 'gray-matter';
 
-import {
-  extractHeadings,
-  nestHeadingWithChildren,
-  createPagination,
-} from '../utils';
+import { extractHeadings, nestHeadingWithChildren } from '../utils';
 import { convertToSlug } from '@utils/markdown';
 
 const postsDir = join(process.cwd(), '/src/_posts');
@@ -23,14 +19,6 @@ export const getPostPaths = () => {
       },
     };
   });
-};
-
-export const getPagePaths = () => {
-  const { pages } = createPagination(fileNames.length);
-
-  const paths = pages.map(page => ({ params: { page: page.toString() } }));
-
-  return paths;
 };
 
 export const getAllPosts = () => {
@@ -60,16 +48,6 @@ export const getAllPostsSortedByDate = () => {
   return posts.sort((a: FrontMatter, b: FrontMatter) =>
     a.date > b.date ? -1 : 1
   );
-};
-
-export const getPostsByPage = (page: number, itemsPerPage = 6) => {
-  const startIndex = (page - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  const posts = getAllPostsSortedByDate().slice(startIndex, endIndex);
-
-  const { pages } = createPagination(fileNames.length);
-
-  return { posts, pages };
 };
 
 export const getPostById = async (id: string) => {
