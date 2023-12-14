@@ -44,6 +44,11 @@ button {
   border: none;
   cursor: pointer;
 }
+
+pre {
+  margin-top: 0;
+};
 `;
+
 
 export default GlobalStyle;

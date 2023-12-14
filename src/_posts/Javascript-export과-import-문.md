@@ -50,7 +50,7 @@ ES6에서 소개된 export과 import 문은 여러 개의 코드 단위, 즉 모
 export 문을 사용해 변수, 함수, 객체, 클래스 등의 엔티티를 외부로 내보낼 수 있습니다.
 
 ```javascript
-// html
+index.html
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -74,7 +74,7 @@ export const sub = (a, b) => a - b;
 export 키워드는 선언부 앞에 사용할 수도 있고 먼저 엔티티를 정의한 후 내보낼 엔티티들을 묶어 내보낼 수도 있습니다.
 
 ```javascript
-// calc.js
+calc.js
 const oddNumbers = [1, 3, 5, 7];
 const sum = (a, b) => a + b;
 const sub = (a, b) => a - b;
@@ -84,7 +84,7 @@ export { oddNumbers, sum, sub };
 위와 같은 형태의 export 문법은 named export이라고 하는데요, named export 말고도 개체를 내보낼 수 있는 default export가 있습니다.
 
 ```javascript
-// user.js
+user.js
 export default class User { // 선언부에 export default
   constructor(name) {
     this.name = name;
@@ -113,7 +113,7 @@ export default 문법으로 모듈을 내보내면 해당 모듈에는 하나의
 default export은 모듈에서 개체 하나만 내보낸다는 것을 의미하기 때문에 식별자 없이 익명으로 내보낼 수 있습니다.
 
 ```javascript
-// greet.js
+greet.js
 export default class {
   constructor(message) {
     this.message = message;
@@ -138,7 +138,7 @@ export default {
 export 문으로 엔티티를 내보내면 import 문으로 다른 모듈에서 현재 모듈로 불러와 사용할 수 있습니다.
 
 ```javascript
-// main.js
+main.js
 console.log('hello world');
 import { oddNumbers, sum } from './calc.js';
 console.log(oddNumbers);
@@ -148,7 +148,7 @@ console.log(sum(1, 10));
 만약 import 해올 엔티티들이 많아지면 <b>import \* as &lt;obj &gt;</b>처럼 모든 것들을 네임스페이스(객체 형태)로 가져올 수 있습니다.
 
 ```javascript
-// main.js
+main.js
 import * as calc from './calc.js';
 console.log(calc.oddNumbers);
 console.log(calc.sum(1, 10));
@@ -159,13 +159,16 @@ console.log(calc.sum(1, 10));
 named export으로 내보낸 엔티티는 불러올 때 규칙이 중괄호와 함께 정확한 엔티티명으로 불러와야 하는데 default export으로 내보낸 경우 문법이 조금 다릅니다.
 
 ```javascript
-// user.js
+user.js
 export default class User {
   constructor(name) {
     this.name = name;
   }
 }
-// main.js
+```
+
+```javascript
+main.js
 import User from './user';
 // 또는
 import Participant from './user'; // 다른 이름으로 불러오기
@@ -183,7 +186,7 @@ default export로 내보낸 경우 중괄호 없이 임의의 이름으로 불�
 named export으로 내보내진 엔티티의 경우 불러올 때 as 키워드로 이름을 새로 지정할 수 있습니다.
 
 ```javascript
-// main.js
+main.js
 import { sum as plus } from './calc';
 import { add } from './someLibrary1';
 import { add as sum } from './someLibrary2';
@@ -199,7 +202,7 @@ console.log(sum(1, 2));
 > - import와 export 문은 모듈의 맨 위나 맨 아래 정의할 수 있고 동작에는 차이가 없습니다.
 >
 > ```javascript
-> // main.js
+> main.js
 > // import { getName } from './user.js'; // 스크립트 위에 정의하던
 > getName();
 > import { getName } from './user.js'; // 스크립트 아래에 정의하던 동일하게 동작
@@ -208,7 +211,7 @@ console.log(sum(1, 2));
 > - 정적 import와 export 문은 중괄호 안에서 동작하지 않습니다.
 >
 > ```javascript
-> // main.js
+> main.js
 > if (condition) {
 >   import { getName } from './user.js';
 > }
@@ -221,7 +224,7 @@ console.log(sum(1, 2));
 위에서 다룬 예제들은 하나의 모듈에서 몇 개의 함수들만 불러와 사용했는데 10개, 20개의 모듈에서 함수를 불러와 사용할 경우에는 어떻게 불러올까요?
 
 ```javascript
-// main.js
+main.js
 import { func1 } from './module1.js';
 import { someFunc1, someFunc2 } from './module2.js';
 import { func3 } from './module3.js';
@@ -240,7 +243,7 @@ main.js에서 여러 함수를 20개의 모듈에서 불러오게 되면 코드�
 <b>export from</b> 문을 사용하면 하나의 모듈에서 여러 함수, 변수 등의 엔티티들을 불러와 해당 모듈에서 모두 불러오고 내보낼 수 있습니다.
 
 ```javascript
-// combinedModule.js
+combinedModule.js
 export { func1 } from './module1.js';
 export { someFunc1, someFunc2 } from './module2.js';
 // export .. from ..
@@ -250,6 +253,7 @@ export { func20 } from './module20.js';
 그리고 함수들을 불러와 사용하는 모듈에서는 아래와 같이 사용할 수 있겠죠.
 
 ```javascript
+main.js
 import { func1, someFunc2, ... , func20 } from './combinedModule.js';
 // 또는
 import * as someNamespace from './combinedModule.js';
@@ -258,7 +262,7 @@ import * as someNamespace from './combinedModule.js';
 참고로 위 combinedModule.js는 아래와 동일하게 동작합니다.
 
 ```javascript
-// combinedModule.js
+combinedModule.js
 import { func1 } from './module1.js';
 export { func1 };
 import { someFunc1, someFunc2 } from './module2.js';
@@ -271,13 +275,16 @@ export { func20 };
 named export의 경우 위와 같이 작성할 수 있는데요, default export의 경우 조금 다릅니다.
 
 ```javascript
-// user.js
+user.js
 export default class User {
   constructor(name) {
     this.name = name;
   }
 }
-// combinedModule.js
+```
+
+```javascript
+combinedModule.js
 export User from './user'; // 에러
 export { default as User } from './user'; // OK
 // 또는
@@ -287,7 +294,7 @@ export { default } from './user'; // OK
 그리고 불러오는 모듈에서 사용할 때는 아래와 같이 사용할 수 있겠죠.
 
 ```js
-// main.js
+main.js
 import User from './combinedModule.js';
 // 또는
 import SomeOtherName from './combinedModule.js'; // 다른 이름으로 불러오기
@@ -310,6 +317,7 @@ export과 import 문은 모듈 간 코드를 공유하고 코드 구조의 중�
 import() 문이 실행되면 모듈에서 내보내는 엔티티들을 객체로 담은 프로미스를 반환합니다.
 
 ```javascript
+main.js
 let path = prompt('모듈 경로를 입력하세요');
 import(path)
   .then(obj => console.log('모듈 객체 : ', obj))
@@ -321,7 +329,7 @@ let module = await import(modulePath);
 동적으로 모듈을 불러올 때 다음과 같이 사용할 수 있겠죠.
 
 ```javascript
-// index.html
+index.html
 <!doctype html>
 <script>
   async function load() {
@@ -330,20 +338,14 @@ let module = await import(modulePath);
     blog.bye(); // 안녕히 가세요.
   }
 </script>
+// ..
 <button onclick='load()'>클릭</button>
-// blog.js
-export function getName() {
-  console.log('moonkorea');
-}
-export function getUrl() {
-  console.log('www.moonkorea.dev');
-}
 ```
 
 동적으로 불러올 때 모듈을 조건문에서도 사용할 수 있습니다.
 
 ```javascript
-// main.js
+main.js
 const { getUrl } = await import('/blog.js');
 if (condition) {
   getUrl();
@@ -353,7 +355,7 @@ if (condition) {
 import()를 사용해서 다수의 모듈을 동적으로 불러올 수도 있습니다.
 
 ```javascript
-// main.js
+main.js
 const promises = Promise.all([
   import('/module1.js'),
   import('module2.js'),
@@ -382,12 +384,15 @@ promises.then(res => console.log('promises:', res));
 <br>
 
 ```javascript
-// heavyModule.js
+heavyModule.js
 export function foo() {}
 export function bar() {}
 // ..
 export function funcT() {}
-// module1.js
+```
+
+```javascript
+module1.js
 import * as SomeNamespace from './heavyModule.js';
 const result1 = SomeNamespace.foo();
 const result2 = SomeNamespace.bar();

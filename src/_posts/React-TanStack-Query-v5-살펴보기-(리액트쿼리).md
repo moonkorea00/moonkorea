@@ -20,6 +20,7 @@ TanStack Query팀이 작년에 <a href="https://github.com/TanStack/query/discus
 v5에서 useQuery를 비롯한 함수들은 옵션들이 정의된 **단일 객체**를 전달받아 실행합니다.
 
 ```diff
+diff
 - useQuery(key, fn, options)
 + useQuery({ queryKey, queryFn, ...options })
 - useInfiniteQuery(key, fn, options)
@@ -33,6 +34,7 @@ v5에서 useQuery를 비롯한 함수들은 옵션들이 정의된 **단일 객�
 이전 버전에서는 useQuery를 호출할 때 세 가지 방법이 있었는데요,
 
 ```ts
+index.ts
 useQuery(queryKey, queryFn, options);
 useQuery(queryKey, options); // default query function 사용할 경우 query function 생략 가능
 useQuery(options);
@@ -75,6 +77,7 @@ Mutation에서의 콜백들은 그대로 유지됩니다.
 v5부터는 안정적으로 suspense를 사용해 데이터 패칭을 할 수 있습니다. useQuery에서 사용하던 suspense: boolean 옵션은 제거되고 **useSuspenseQuery, useSuspenseInfiniteQuery**와 **useSuspenseQueries**를 사용합니다.
 
 ```ts
+index.ts
 const { data: post } = useSuspenseQuery({
   // const post: Post
   queryKey: ['post', postId],
@@ -93,6 +96,7 @@ const { data: post } = useSuspenseQuery({
 useMutation의 **variables**를 활용해서 낙관적 업데이트를 간소화할 수 있습니다.
 
 ```tsx
+index.ts
 const queryInfo = useTodos()
 const addTodoMutation = useMutation({
   mutationFn: (newTodo: string) => axios.post('/api/data', { text: newTodo }),
@@ -126,6 +130,7 @@ if (queryInfo.data) {
 **useMutationState**로 MutationCache에 있는 mutation의 상태를 공유하고 다른 컴포넌트에서도 접근이 가능합니다. **filter**옵션을 사용해 mutation을 필터링하고 **select**옵션으로 상태 값을 가공하거나 선택할 수 있습니다. useMutationState이 호출됐을 때 실행되고 있는 mutation이 한 개 이상일 수 있기 때문에 반환되는 값은 배열입니다.
 
 ```tsx
+index.ts
 // 모든 variables 
 const variables = useMutationState({
   filters: { status: 'pending' },
@@ -134,6 +139,7 @@ const variables = useMutationState({
 ```
 
 ```tsx
+index.ts
 // mutationKey로 mutation 식별
 const mutationKey = ['posts']
 const mutation = useMutation({
@@ -157,6 +163,7 @@ mutation을 고유한 키로 식별하거나 접근하고자 할 때 mutation.st
 Infinite query를 사용할 때 pageParam의 초기 값으로 사용될 initialPageParam 옵션을 전달해야 합니다. 이전 버전에서는 queryFn의 pageParam이 undefined 값을 가져서 0 또는 초기 값을 정의했었는데 undefined는 직렬화되지 않아 initialPageParam 옵션이 추가됐습니다.
 
 ```diff
+diff
 useInfiniteQuery({
    queryKey,
 -  queryFn: ({ pageParam = 0 }) => fetchSomething(pageParam),
@@ -179,6 +186,7 @@ useInfiniteQuery({
 Infinite query의 경우에도 쿼리를 prefetch 할 수 있습니다. 기본으로 한 개 페이지에 대한 쿼리를 prefetch 하지만 **pages** 옵션과 **getNextPageParam**옵션으로 한 개 이상의 페이지를 prefetch 할 수 있습니다.
 
 ```tsx
+index.ts
 const prefetchTodos = async () => {
   await queryClient.prefetchInfiniteQuery({
     queryKey: ['projects'],
@@ -199,6 +207,7 @@ const prefetchTodos = async () => {
 Hydrate 컴포넌트는 **HydrationBoundary**로 변경되고 useHydrate 훅은 이제 사용되지 않습니다.
 
 ```diff
+index.ts
 - import { Hydrate } from '@tanstack/react-query'
 + import { HydrationBoundary } from '@tanstack/react-query'
 
@@ -270,6 +279,7 @@ keepPreviousData 옵션과 isPreviousData는 **placeholderData** 옵션과 **isP
 > placeholderData: (previousData, previousQuery) => previousData,
 
 ```diff
+diff
 import {
    useQuery,
 +  keepPreviousData
@@ -298,6 +308,7 @@ const {
 쿼리를 제거해야하는 경우 v5에서는 <b>queryClient.removeQueries({queryKey: key})</b>를 사용합니다.
 
 ```diff
+diff
 const queryClient = useQueryClient();
  const query = useQuery({ queryKey, queryFn });
 - query.remove()
@@ -317,6 +328,7 @@ const queryClient = useQueryClient();
 useQueries의 **combine**으로 응답(쿼리에 대한 정보 등)을 하나의 값으로 사용할 수 있습니다.
 
 ```tsx
+index.ts
 const ids = [1,2,3]
 const combinedQueries = useQueries({
   queries: ids.map(id => (
@@ -348,6 +360,7 @@ const combinedQueries = useQueries({
 useQuery에 인라인으로 쿼리 옵션들을 정의하지 않고 함수로 옵션들을 관리하는 경우 등에 queryOptions는 옵션 객체의 타입 추론을 도와줍니다.
 
 ```ts
+index.ts
 import { queryOptions } from '@tanstack/react-query';
 
 function groupOptions() {
@@ -377,6 +390,7 @@ useQuery의 두 번째 제네릭인 TError는 Error를 기본 타입으로 갖�
 이전 버전에서는 TError가 unknown 타입을 기본적으로 가졌는데요, 거의 모든 경우에 Error 타입을 갖기 때문에 v5부터 error 필드는 Error 타입으로 추론됩니다. 다만 의도적으로 Error 인스턴스가 아닌 커스텀 에러를 반환할 때는 따로 정의할 수 있습니다.
 
 ```ts
+index.ts
 // v4
 const { error } = useQuery({ queryKey: ['groups'], queryFn: fetchGroups });
 // const error: unknown
@@ -385,6 +399,7 @@ const { error } = useQuery<Group[], Error>(['groups'], fetchGroups);
 ```
 
 ```ts
+index.ts
 // v5
 const { error } = useQuery({ queryKey: ['groups'], queryFn: fetchGroups });
 // const error: Error | null
@@ -401,12 +416,16 @@ const { error } = useQuery<Group[], string>(['groups'], fetchGroups)
 useQuery마다 에러 타입을 제네릭으로 알려주지 않고 Register 인터페이스로 기본 에러 타입을 정의할 수 있습니다.
 
 ```ts
+index.d.ts
 declare module '@tanstack/react-query' {
   interface Register {
     defaultError: AxiosError;
   }
 }
+```
 
+```ts
+index.ts
 const { error } = useQuery({ queryKey: ['groups'], queryFn: fetchGroups });
 // const error: AxiosError | null
 ```
@@ -414,9 +433,12 @@ const { error } = useQuery({ queryKey: ['groups'], queryFn: fetchGroups });
 앞서 TError의 기본 타입을 Error로 정의한 것도 Register 인터페이스를 사용한 것으로 보이네요.
 
 ```ts
-// useQuery.d.ts
+useQuery.d.ts
 declare function useQuery<TQueryFnData = unknown, TError = DefaultError, ..>(options: .. ,)
-// queryClient.d.ts
+```
+
+```ts
+queryClient.d.ts
 interface Register {
 }
 type DefaultError = Register extends {
@@ -445,6 +467,7 @@ TypeScript 4.7 또는 이후 버전에서만 사용이 가능합니다.
 리액트 쿼리는 최신 브라우저에 최적화되어 있습니다.
 
 ```bash
+bash
 Chrome >= 91
 Firefox >= 90
 Edge >= 91

@@ -10,6 +10,7 @@ date: '2022-11-23'
 &emsp;앞서 <a href="https://www.moonkorea.dev/React-%EB%A0%8C%EB%8D%94%EB%A7%81-%EB%B0%8F-%EC%B5%9C%EC%A0%81%ED%99%94-(1)" target=”_blank”>React 렌더링</a>에서 설명했듯 상태가 업데이트될 경우 해당 컴포넌트와 하위에 있는 모든 컴포넌트들은 모두 리렌더링됩니다. 해당 컴포넌트의 상태가 변했을 때는 변경된 상태에 맞게 UI가 다시 그려지는 것이 당연한 것인데 하위 컴포넌트의 props가 변하지 않았을 경우 불필요하게 새로운 함수를 호출하기 보다 초기 렌더에 저장한 값을 재사용하는 것이 효율적입니다.
 
 ```js
+index.js
 const Component = () => {
   const [message, setMessage] = React.useState('');
   return (
@@ -29,6 +30,7 @@ const Component = () => {
 React.memo는 컴포넌트를 인자로 받아서 컴포넌트를 리턴하는 컴포넌트(HOC)입니다. 함수 컴포넌트를 React.memo로 감싼 후 이전 props와 다음 렌더링에 사용될 props의 변화가 없을 경우 캐싱된 컴포넌트의 결과값을 반환합니다.
 
 ```js
+index.js
 const Component = () => {
   const [message, setMessage] = useState('');
   return (
@@ -48,6 +50,7 @@ const ChildTwo = React.memo(() => {
 React.memo는 어떻게 이전 props와 다음 props를 비교할까요? React.memo는 두 props를 <b>얕은 비교</b>를 해서 동일한지 아닌지를 판단합니다. 만약 이 비교 로직을 사용하지 않고 비교 로직을 변경하거나 조건을 추가하고자 할 때는 React.memo의 두 번째 인자로 변화 여부를 판단하는 함수를 받을 수 있습니다.
 
 ```js
+index.js
 const ChildTwo = React.memo((props) => {
   return (
     <div>ChildTwo</div>
@@ -72,6 +75,7 @@ const ChildTwo = React.memo((props) => {
 간단히 말해 React.memo는 이전 props와 새로운 props를 얕은 비교하기 때문에 비용이 아예 들지 않는 작업이 아닙니다. 더 나아가 많은 컴포넌트들이 대부분의 경우 매번 다른 prop을 전달받기 때문에 <b>렌더링에 소요되는 시간 + 비교에 소요되는 시간</b>이 오히려 리렌더링의 소요시간을 늘리는 격이 되기 때문에 memo의 사용에 있어 충분히 이해하고 신중히 사용해야 합니다.
 
 ```js
+index.js
 // 전달받는 prop이 바뀌게 될 경우 오히려 렌더링 소요시간이 늘어 퍼포먼스가 저하됩니다
 초기 렌더링 - 20ms 소요
 최적화된 렌더링 - 5ms 소요
@@ -87,6 +91,7 @@ const ChildTwo = React.memo((props) => {
 자식 컴포넌트에서 children을 사용하는 경우, children의 변경은 항상 해당 컴포넌트의 렌더링을 발생시킵니다.
 
 ```jsx
+index.js
 const ParentComponent = () => {
   return <MemoizedChildComponent>Hello, World!</MemoizedChildComponent>;
 };
@@ -104,6 +109,7 @@ const MemoizedChildComponent = React.memo(({ children }) => {
 비순수 함수, 예를 들어 Math.random()이나 new Date()와 같이 호출될 때마다 다른 값을 반환하는 함수는 컴포넌트의 안정적인 렌더링을 방해합니다.
 
 ```jsx
+index.js
 const DateComponent = () => {
   return <MemoizedDisplay time={new Date()} />;
 };
@@ -121,6 +127,7 @@ const MemoizedChildComponent = React.memo(({ time }) => {
 부모 컴포넌트로부터 참조 타입의 값들을 props로 전달받을 경우, 부모 컴포넌트의 렌더링 때마다 이 값이 바뀝니다.
 
 ```jsx
+index.js
 const ParentComponent = () => {
   const handleClick = () => {
     console.log('Button clicked');

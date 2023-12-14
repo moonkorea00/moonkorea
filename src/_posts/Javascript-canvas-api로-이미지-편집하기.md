@@ -38,10 +38,13 @@ canvas 요소는 화면에 지정한 빈 공간입니다. 2D 그래픽이나 이
 
 그림을 그리거나 선을 그리기 위해서 먼저 canvas 객체와 2D 렌더링 컨텍스트를 생성합니다. 
 
-```javascript
-// html
+```html
+index.html
 <canvas id="canvas" width="100%" height="300"></canvas>
-// js
+```
+
+```javascript
+main.js
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 // ...
@@ -62,6 +65,7 @@ canvas.addEventListener("mousemove", draw);
 Canvas API로 이미지를 편집할 수도 있습니다. 대표적인 기능들로 이미지 cropping, 이미지 회전, 픽셀 수정, 색상 변경 등이 있습니다. 하두리캠의 화질과 같은 낮은 화질의 이미지를 재현하고자 할 때도 Canvas API를 활용해서 그래픽의 화질을 압축할 수 있습니다.
 
 ```typescript
+canvas.tsx
 const canvas = document.createElement('canvas');
 const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
 const img = new Image();
@@ -71,6 +75,7 @@ img.src = URL.createObjectURL(image as File);
 canvas 요소와 이미지 객체를 생성하고 출력할 이미지 데이터의 URL을 만듭니다.
 
 ```javascript
+canvas.tsx
 const resolution = 0.1;
 img.onload = () => {
     canvas.width = img.width; // canvas의 width값 설정

@@ -35,6 +35,7 @@ date: '2023-01-04'
 &emsp;자바스크립트에서의 함수는 변수에 저장을 하거나, 함수의 인자로 전달을 하거나, 함수의 반환 값으로도 사용될 수 있습니다. 이러한 특징들 때문에 자바스크립트에서의 함수는 다양한 환경과 상황에서 호출됩니다. 같은 함수라도 여러 가지 방식으로 호출될 수 있고 함수를 호출하는 대상과 호출하는 시점 등에 따라 this값은 런타임에서 동적으로 결정됩니다.
 
 ```js
+js
 const someVariable = bar(); // 변수에 저장
 function foo(bar) {
   // ..
@@ -58,6 +59,7 @@ object2.foo(); // 객체에 의해 호출
 &emsp;자바스크립트에서 this에 대한 참조는 코드 어느 곳에서든 가능합니다. 따라서 단독 실행되는 일반 함수로 호출된 this값은 **전역객체**(브라우저 환경에서는 window객체)를 가리키며 **기본 바인딩**이 적용됩니다. 엄격모드에서는 전역 객체가 바인딩 대상에서 제외되기 때문에 바인딩 될 객체가 없는 this는 undefined 값을 갖습니다.
 
 ```javascript
+js
 function foo() {
   console.log(this);
 }
@@ -77,6 +79,7 @@ console.log(this.name); // moon
 중첩함수, 콜백함수 등에서의 호출도 모두 일반 함수 호출로 동작합니다.
 
 ```javascript
+js
 function foo() {
   console.log(this); // Window {0: Widnow, ...}
   function bar() {
@@ -94,6 +97,7 @@ foo();
 &emsp;일반 함수로 단독 호출되는 함수가 아닌 객체의 메소드로 호출이 될 경우 this는 **함수를 호출한 객체**를 값으로 **암시적으로 바인딩**됩니다.
 
 ```javascript
+js
 const object = {
   name: 'moon',
   foo: function () {
@@ -111,6 +115,7 @@ this는 함수를 호출한 객체이기 때문에 this값은 object 객체를 �
 > this값은 함수를 선언한 객체가 아닌 호출한 객체에 따라 결정됩니다.
 
 ```javascript
+js
 const object = {
   name: 'moon',
   foo() {
@@ -134,6 +139,7 @@ object에 있는 foo 함수를 bar에 할당하여 호출하면 bar 함수를 �
 &emsp;서두에 언급했듯 this는 실행 컨텍스트가 생성이 되는 평가 과정, 즉 호출 시점에서 값이 결정되기 때문에 this는 함수가 정의된 **위치**에 영향을 받지 않습니다.
 
 ```javascript
+js
 function foo() {
   console.log(this);
 }
@@ -157,6 +163,7 @@ foo(); // Window {0: Widnow, ...}
 &emsp;자바스크립트 함수를 객체를 생성하는 생성자 함수로서 호출할 수 있습니다. 이 생성자 함수 내부에 this값은 생성자 함수로부터 만들어지는 **인스턴스로 바인딩**됩니다.
 
 ```javascript
+js
 function User(name) {
   this.name = name;
 }
@@ -183,6 +190,7 @@ console.log(user1.name); // moon
 &emsp;함수를 호출하는 방법으로 직접적인 함수의 호출뿐만 아니라 apply, call, bind 메소드로도 간접적으로 호출할 수 있습니다. 런타임에 동적으로 바뀌는 this값를 bind 메소드를 사용해서 호출하면 **명시적으로 바인딩**할 수 있습니다.
 
 ```javascript
+js
 function foo() {
   console.log(this);
 }
@@ -203,6 +211,7 @@ bind 함수는 인자로 값을 받고 this값이 정적으로 바인딩된 **�
 &emsp;apply, call 메소드는 인자로 this값으로 사용할 객체와 원본 함수를 호출할 때 전달할 인자를 전달받아 **함수의 호출 결과**를 반환합니다.
 
 ```javascript
+js
 const object = {
   firstName: 'moon',
 };
@@ -224,6 +233,7 @@ logArgs.call(null, 1, 2); // 1 2
 apply와 call 메소드를 사용하여 내부 함수의 this 값을 외부 함수의 this 값과 일치시킬 수도 있습니다.
 
 ```javascript
+js
 const object = {
   name: 'moon',
   foo() {
@@ -234,6 +244,7 @@ const object = {
   },
 };
 object.foo(); // Window {0: Window, ...}
+
 const object = {
   name: 'moon',
   foo() {
@@ -254,12 +265,15 @@ object.foo(); // {name: 'moon', foo: ƒ}
 
 &emsp;함수를 DOM요소에 이벤트 처리기로 사용할 때 this는 어떤 값으로 반환될까요?
 
-```javascript
-// html
+```html
+index.html
 <body>
   <button id="btn">click</button>
 </body>;
-// js
+```
+
+```javascript
+main.js
 const button = document.getElementById('btn');
 const returnValueOfThis = function (e) {
   console.log(e.target === this, this);
@@ -281,6 +295,7 @@ button.addEventListener('click', returnValueOfThis);
 > 렉시컬 스코프는 함수가 선언될 당시에 스코프가 결정되기 때문에 lexical this는 함수의 선언 시점에 따라 값이 정해집니다.
 
 ```javascript
+js
 function Person() {
   this.age = 45;
 

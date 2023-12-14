@@ -29,21 +29,27 @@ export const MarkdownCode = ({
   children,
 }: // eslint-disable-next-line @typescript-eslint/ban-types
 PropsWithStrictChildren<{}, string[]>) => {
+  const code = children.join();
+  const title = code.substring(0, code.indexOf('\n'));
+  const content = code.substring(code.indexOf('\n') + 1);
+
   const customStyle = {
     padding: '10px 15px',
-    margin: '22px 0',
-    borderRadius: '6px',
-    lineHeight: '22px',
-    backgroundColor: '#f8f8f8',
+    lineHeight: '21px',
   };
+
   return (
-    <SyntaxHighlighter
-      language="javascript"
-      style={githubGist}
-      customStyle={customStyle}
-    >
-      {children}
-    </SyntaxHighlighter>
+    <S.HighlighterContainer>
+      <S.HighlighterTitle>{title}</S.HighlighterTitle>
+      <SyntaxHighlighter
+        language="javascript"
+        style={githubGist}
+        customStyle={customStyle}
+        showLineNumbers
+      >
+        {content}
+      </SyntaxHighlighter>
+    </S.HighlighterContainer>
   );
 };
 
@@ -108,7 +114,8 @@ const headingMap = {
 };
 
 export const HeadingWithLink = ({ level, children }: HeadingWithLinkProps) => {
-  const slug = convertToSlug(String(children[0]));
+  const content = children.join();
+  const slug = convertToSlug(content);
 
   const { hashLink, onScrollWithOffset } = useHashLink(slug);
 
@@ -116,7 +123,7 @@ export const HeadingWithLink = ({ level, children }: HeadingWithLinkProps) => {
 
   return (
     <Link id={slug} href={hashLink} scroll={false} onClick={onScrollWithOffset}>
-      <MarkdownHeading>{children[0]}</MarkdownHeading>
+      <MarkdownHeading>{content}</MarkdownHeading>
     </Link>
   );
 };

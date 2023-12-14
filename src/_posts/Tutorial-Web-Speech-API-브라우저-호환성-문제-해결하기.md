@@ -35,7 +35,8 @@ date: '2023-06-01'
 
 빌드 파일을 확인해 보니 Web Speech API의 SpeechRecognition 인스턴스를 생성하는 과정에서 발생한 문제였습니다. SpeechRecognition 클래스가 읽히지 않아 타입 에러를 반환하고 있었어요.
 
-```typescipt
+```ts
+ts
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 const recognition = new SpeechRecognition();
 ```
@@ -56,14 +57,16 @@ const recognition = new SpeechRecognition();
 
 먼저 브라우저와 API의 호환성을 확인합니다.
 
-```typescript
+```ts
+ts
 const isBrowserSupported =
   'SpeechRecognition' in window || 'webkitSpeechRecognition' in window;
 ```
 
 웹 API가 현재 브라우저와 호환이 되면, <a href="https://developer.mozilla.org/en-US/docs/Web/API/Navigator" target="_blank" rel="noopener">Navigator 인터페이스</a>로 음성 장치 관련 검사를 하고 서비스 동작 흐름에 맞게 음성 인식 로직을 실행합니다.
 
-```typescript
+```ts
+ts
 const checkAudioSettings = async () => {
   try {
     await navigator.mediaDevices.getUserMedia({ audio: true }); // 음성 장치 사용 권한 설정
@@ -81,7 +84,8 @@ const checkAudioSettings = async () => {
 
 하지만 브라우저가 Web Speech API를 지원하지 않는 경우에는 에러 메시지를 출력하거나, fallback UI를 통해 사용자에게 알릴 수 있겠죠?
 
-```typescript
+```ts
+ts
 const [speechRecognitionError, setSpeechRecognitionError] = useState(
   isBrowserSupported
     ? 'Speech Recognition is not supported in your browser.'

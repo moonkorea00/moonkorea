@@ -40,7 +40,8 @@ Github Actions를 사용하기 위해서는 S3 접근 권한이 필요하기 때
 
 6. 앱이 위치해있는 디렉토리에서 **.github** 폴더와 **workflows** 폴더를 생성합니다. main 브랜치에 push할 때마다 읽고 실행할 **some-script-name.yml** 파일을 만들어주세요.
 
-```Shell
+```shell
+shell
 cd my-app
 mkdir .github && cd "$_"
 mkdir workflows && cd "&_"
@@ -48,7 +49,8 @@ touch some-script-name.yml
 ```
 
 ```YAML
-name: script name
+build-and-deploy.yaml
+name: build and deploy
 on:
  push:
    branches:

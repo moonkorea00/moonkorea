@@ -33,6 +33,7 @@ date: '2023-08-24'
 &emsp;다음 컴포넌트 트리와 같은 코드가 있다고 가정하고 가상 DOM과 실제 DOM의 관점에서 렌더링 과정을 보겠습니다.
 
 ```jsx
+index.js
 function Content(props) {
   return <div className="child">{props.children}</div>;
 }
@@ -66,6 +67,7 @@ ReactDOM.render(<Main />, document.getElementById('root'));
 - 가상 DOM 트리는 실제 DOM의 단순화된 자바스크립트 객체인데 간략하게 객체로 그려보면 다음과 같이 구성됩니다.
 
 ```javascript
+index.js
 const virtualDOM = {
   type: 'main', // 요소의 타입
   props: {
@@ -128,6 +130,7 @@ const virtualDOM = {
 상태에 따라 다른 요소를 출력하는 컴포넌트가 있다고 가정해 보겠습니다.
 
 ```jsx
+Component.js
 function Component() {
   const [isLarge, setIsLarge] = useState(false);
   return (
@@ -176,6 +179,7 @@ function Component() {
 요소의 타입이 다른 경우에는 DOM 노드를 파괴하고 새로 그렸었는데 타입이 같으면 동일한 내역은 유지한 채 변경된 값만 갱신합니다.
 
 ```javascript
+전/후
 // 상태 변경 전 가상 DOM 노드
 {
   type: 'div',
@@ -205,6 +209,7 @@ function Component() {
 상태에 따라 props가 다른 컴포넌트가 있다고 가정해 보겠습니다.
 
 ```jsx
+index.js
 function Input({ placeholder }) {
   const [value, setValue] = React.useState('');
   return (
@@ -233,6 +238,7 @@ function Component() {
 리액트는 위 컴포넌트 트리를 읽고 DOM 노드를 다음과 같은 형태로 생성하는데요.
 
 ```javascript
+전/후
 // 상태 변경 전 가상 DOM 노드
 {
   type: Input,

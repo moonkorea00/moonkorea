@@ -41,6 +41,7 @@ date: '2023-09-15'
 사용자가 처음 사이트에 방문하면 리소스를 서버에 요청하고 앱이 실행되는데요, 엔트리 파일에서 ReactDOM의 render() 메소드를 호출하고 루트 컴포넌트를 화면에 그립니다.
 
 ```jsx
+index.ts
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <App />
 );
@@ -76,6 +77,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
 초기 렌더에는 브라우저가 엔트리 파일을 읽으면서 루트 요소부터 파악해요.
 
 ```jsx
+index.ts
 function App() {
   return (
     <main>

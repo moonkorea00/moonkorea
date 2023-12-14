@@ -24,6 +24,7 @@ date: '2023-02-23'
 ## nodemailer
 
 ```javascript
+ts
 let transporter = nodemailer.createTransport(transport[, defaults])
 ```
 
@@ -31,7 +32,8 @@ let transporter = nodemailer.createTransport(transport[, defaults])
 
 발신자의 서버 호스트(gmail)와 인증 정보가 준비되면 nodemailer에게 나머지 일을 맡깁니다.
 
-```javascript
+```ts
+ts
 const transporter = nodemailer.createTransport(
   {
     host: 'smtp.gmail.com', // 서버 호스트명
@@ -54,7 +56,8 @@ const transporter = nodemailer.createTransport(
 
 &emsp;sendMail 내장 메소드를 통해서 transporter에 발신자, 수신자, 제목 등 이메일에 담길 필수 정보들을 전달합니다. 단순 알림 이메일 또는 사용자 인증 이메일 등 이메일 성격에 따라 로직을 구상하여 html에 담아 전송합니다.
 
-```typescript
+```ts
+ts
 const transporter = nodemailer.createTransport({
   host: 'smtp.gmail.com',
   port: 587,
@@ -93,11 +96,13 @@ const sendNotification = async (recipientEmail: string, code: string) => {
 
 &emsp;nodemailer로 sendMail 메소드의 결과에 따라 예외처리 또한 가능합니다.
 
-```javascript
+```ts
+ts
 transporter.sendMail(data[, callback])
 ```
 
-```javascript
+```ts
+ts
 transporter.sendMail(mailOptions, (error, info) => {
   if (error) {
     console.error('error occured sending email:', error);
@@ -114,6 +119,7 @@ transporter.sendMail(mailOptions, (error, info) => {
 &emsp;한 번의 이메일을 보낼 때마다 nodemailer는 SMTP 서버와 연결을 하고 통신을 합니다. 다수의 사용자에게 이메일을 전송할 때는 불필요하게 서버와 연결을 맺고 끊고를 반복하지 않고 pool 옵션을 추가해 한 번의 연결을 통해서 다수의 이메일을 전송할 수 있습니다.
 
 ```typescript
+ts
 const transporter = nodemailer.createTransport({
   pool: true, // pooled connection
   host: 'smtp.gmail.com',
@@ -190,6 +196,7 @@ const sendNotification = async (to: string[], subject: string, date: Date) => {
 7. 새로 생성된 비밀번호는 transporter 객체에서 사용됩니다.
 
 ```typescript
+ts
 const transporter = nodemailer.createTransport({
   host: 'smtp.zoho.com', // 서버 호스트는 Zoho
   port: 465,

@@ -42,7 +42,7 @@ date: '2023-10-15'
 브라우저 환경에서 모듈을 사용하기 위해서는 script 태그에 type="module" 속성을 추가해 사용될 스크립트가 모듈이라는 걸 알려줍니다.
 
 ```javascript
-// index.html
+index.html
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -57,10 +57,13 @@ date: '2023-10-15'
 ```
 
 ```javascript
-// main.js
+main.js
 import { categories } from './blog.js';
 console.log(categories.length);
-// blog.js
+```
+
+```javascript
+blog.js
 export const categories = ['자바스크립트', '리액트'];
 ```
 
@@ -79,6 +82,7 @@ export const categories = ['자바스크립트', '리액트'];
 > - src 값이 동일한 외부 모듈 스크립트는 한 번만 실행됩니다.
 >
 > ```javascript
+> html
 > <script type="module" src="module.js"></script>
 >
 > <script type="module" src="module.js"></script>
@@ -87,12 +91,14 @@ export const categories = ['자바스크립트', '리액트'];
 > - 다른 오리진에서 모듈을 불러올 때는 CORS 헤더가 필요합니다.
 >
 > ```javascript
+> html
 > <script type="module" src="http://foo.com/module.js"></script>
 > ```
 
 따라서 브라우저는 외부 모듈 스크립트를 병렬적으로 불러오고 HTML 처리를 멈추지 않고 HTML 문서가 만들어진 후 실행됩니다. 스크립트의 실행 순서 또한 정의된 순서대로 차례로 실행됩니다.
 
 ```html
+index.html
 <script type="module">
   alert(typeof button); // object
 </script>
@@ -111,6 +117,7 @@ export const categories = ['자바스크립트', '리액트'];
 앞서 모듈은 외부 스크립트, 인라인 스크립트와 관계없이 defer 속성을 추가한 것처럼 동작한다고 했는데요, async 속성으로 비동기 로드할 경우 인라인 스크립트는 제대로 동작하지 않지만 모듈 스크립트에서는 async 속성을 인라인 스크립트에도 적용할 수 있습니다.
 
 ```html
+index.html
 // 외부 스크립트, ok
 <script async src="module.js"></script>
 
@@ -136,7 +143,7 @@ export const categories = ['자바스크립트', '리액트'];
 모듈은 코드가 안전하고 예측 가능하게 실행될 수 있도록 항상 엄격 모드로 실행됩니다. 따라서 변수 선언 없이 변수에 값을 할당하거나 엄격 모드에서 오류라고 판단되는 코드는 제대로 동작하지 않습니다.
 
 ```javascript
-// module.js
+module.js
 undeclaredVariable = 'moonkorea'; // 에러
 
 function foo(x, x) {
@@ -151,7 +158,7 @@ function foo(x, x) {
 모듈은 모듈마다 자신의 스코프를 갖습니다. 따라서 모듈을 내보내고(export) 가져올 때(import) 정의되지 않은 변수나 함수 등의 엔티티에 접근하거나 스코프밖에 있는 개체를 사용할 수 없습니다.
 
 ```javascript
-// index.html
+index.html
 <script type="module">
   let user = "John";
 </script>
@@ -168,11 +175,17 @@ function foo(x, x) {
 내보내진 모듈을 여러 모듈에서 사용하더라도 최초 호출에 한 번만 실행됩니다.
 
 ```javascript
-// module1.js
+module1.js
 alert('hello world');
-// module2.js
+```
+
+```javascript
+module2.js
 import 'module1.js'; // 'hello world' 출력
-// module3.js
+```
+
+```javascript
+module3.js
 import 'module1.js'; // 아무것도 실행되지 않음
 ```
 
@@ -181,7 +194,7 @@ import 'module1.js'; // 아무것도 실행되지 않음
 모듈의 이러한 특징은 모듈에서 내보내진 데이터 구조를 재사용할 때도 동일한데요,
 
 ```javascript
-// user.js
+user.js
 export let user = {};
 export function greet() {
   alert(`${user.name}`);
@@ -189,10 +202,13 @@ export function greet() {
 ```
 
 ```javascript
-// init.js
+init.js
 import { user } from './user.js';
 user.name = 'moonkorea';
-// module1.js
+```
+
+```javascript
+module1.js
 import { user, greet } from './user.js';
 alert(user.name); // 'moonkorea'
 greet(); // 'moonkorea'
@@ -207,6 +223,7 @@ greet(); // 'moonkorea'
 앞서 모듈은 엄격 모드에서 실행된다고 했는데요, 비엄격 모드에서 실행되는 일반 스크립트와 다르게 엄격 모드에서 this 값은 undefined입니다.
 
 ```javascript
+index.html
 <script>
   alert(this); // window
 </script>

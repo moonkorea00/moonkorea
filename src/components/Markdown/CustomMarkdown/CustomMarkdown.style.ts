@@ -79,3 +79,15 @@ export const Span = styled.span`
   color: ${({ theme }) => theme.colors.base.gray600};
   text-align: center;
 `;
+
+export const HighlighterContainer = styled.div`
+  border: 1px solid #d0d8df;
+  border-radius: 6px;
+`;
+
+export const HighlighterTitle = styled.div`
+  padding-left: 15px;
+  font-weight: 600;
+  line-height: 30px;
+  border-bottom: 1px solid #d0d8df;
+`;
