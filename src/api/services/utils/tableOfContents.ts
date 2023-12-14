@@ -5,17 +5,24 @@ import { convertToSlug } from '@utils/markdown';
 export const extractHeadings = (content: string) => {
   const lines = content.split('\n');
   const headings = lines
-    .filter(line => line.match(/^#{1,4}\s/))
+    .filter(line => line.startsWith('#'))
     .map(heading => {
-      const matchingHeading: string[] | null = heading.match(/^#+/);
+      const level = heading.startsWith('#### ')
+        ? 4
+        : heading.startsWith('### ')
+        ? 3
+        : heading.startsWith('## ')
+        ? 2
+        : heading.startsWith('# ')
+        ? 1
+        : null;
 
-      const level = matchingHeading ? matchingHeading[0].length : 0;
-      const value = heading.replace(/^#+\s/, '');
-      const slug = convertToSlug(value);
-
-      if (level === 0) {
+      if (level === null) {
         throw new Error('Error finding heading level');
       }
+
+      const value = heading.substring(heading.indexOf(' ') + 1);
+      const slug = convertToSlug(value);
 
       return { level, value, slug, children: [] };
     });
