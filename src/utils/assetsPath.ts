@@ -4,6 +4,6 @@ export const assets = {
   triangle: '/assets/sider/Triangle.png',
   comment: '/assets/PostSider/comment.svg',
   share: '/assets/PostSider/share.svg',
-  kakao: '/assets/PostSider/kakao.png',
+  kakao: '/assets/PostSider/kakao.webp',
   reset: '/assets/Home/reset-svgrepo-com.svg',
 };
