@@ -15,8 +15,8 @@ export const H1 = styled.h1`
   padding-bottom: 8px;
   margin-block-start: 0.67em;
   margin-block-end: 0.67em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
   font-size: 2em;
   font-weight: 700;
   border-bottom: 1px solid ${({ theme }) => theme.colors.base.gray300};
@@ -33,9 +33,9 @@ export const H1 = styled.h1`
 export const H2 = styled.h2`
   display: block;
   margin-block-start: 0.83em;
-  margin-block-end: 0.83em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
+  margin-block-end: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
   font-size: 1.6em;
   font-weight: 700;
   padding-bottom: 8px;
@@ -53,9 +53,9 @@ export const H2 = styled.h2`
 export const H3 = styled.h3`
   display: block;
   margin-block-start: 1em;
-  margin-block-end: 1em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
+  margin-block-end: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
   font-size: 1.17em;
   font-weight: 700;
 
@@ -78,4 +78,16 @@ export const Span = styled.span`
   font-style: italic;
   color: ${({ theme }) => theme.colors.base.gray600};
   text-align: center;
+`;
+
+export const HighlighterContainer = styled.div`
+  border: 1px solid #d0d8df;
+  border-radius: 6px;
+`;
+
+export const HighlighterTitle = styled.div`
+  padding-left: 15px;
+  font-weight: 600;
+  line-height: 30px;
+  border-bottom: 1px solid #d0d8df;
 `;

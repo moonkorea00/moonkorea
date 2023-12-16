@@ -23,6 +23,7 @@ date: '2023-08-25'
 아래 코드를 가상 DOM 트리로 변환하면 다음 그림과 같은데요.
 
 ```jsx
+전/후
 // 전
 <ul>
   <li>첫째</li>
@@ -55,6 +56,7 @@ date: '2023-08-25'
 리스트의 첫 번째 children 요소로 &lt;li&gt;셋째&lt;/li&gt;를 추가하는 경우의 재조정 과정은 어떨까요?
 
 ```jsx
+전/후
 // 전
 <ul>
   <li>첫째</li>
@@ -91,6 +93,7 @@ date: '2023-08-25'
 반복되는 자식 요소들이 있을 때 리스트를 순회하면서 자식 요소를 동적으로 생성하는데요.
 
 ```jsx
+List.js
 const data = [1, 2, 3];
 
 function List() {
@@ -107,6 +110,7 @@ function List() {
 린터를 사용하거나 브라우저의 개발자 도구를 보면 각 자식 요소에 "key" prop이 필요하다고 알려줍니다. 리액트는 배열을 순회하며 동적으로 리스트의 요소들을 생성하면 다음 렌더에서 이전 리스트가 어떻게 바뀔지 알지 못합니다. 요소의 순서가 바뀔 여지도 존재하고, 리스트에서 추가 또는 제거될 수도 있죠. 우리는 자식 요소에 key라는 고유한 값을 제공함으로써 리액트에게 재조정 과정에서 효율적으로 요소들을 비교하고 정말 변한 부분만 실제 DOM에 반영할 수 있습니다.
 
 ```jsx
+List.js
 // ..
 {
   data.map(data => <Item key={data.uniqueKey} data={data} />);
@@ -135,18 +139,21 @@ function List() {
 다음과 같은 배열이 있다고 가정하겠습니다.
 
 ```javascript
+items.js
 const items = ['apple', 'banana', 'orange'];
 ```
 
 이 배열을 사용해서 리스트를 렌더링 하고
 
 ```jsx
+items.js
 items.map((fruit, index) => <li key={index}>{fruit}</li>);
 ```
 
 배열의 첫 번째 요소에 'mango'를 추가해 보겠습니다.
 
 ```javascript
+items.js
 const items = ['mango', 'apple', 'banana', 'orange'];
 ```
 

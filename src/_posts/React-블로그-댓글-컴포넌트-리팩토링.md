@@ -40,6 +40,7 @@ date: '2023-10-19'
 <details><summary><i>댓글 인터페이스 보기</i></summary>
 
 ```ts
+types.ts
 interface Comment {
   id: string;
   body: string | null;
@@ -67,7 +68,7 @@ interface User {
 </details>
 
 ```tsx
-// Comment.tsx
+Comment.tsx
 const Comment = ({ comments }: { comments: CommentProps }) => {
   const [isEditMode, setIsEditMode] = useState(false);
   const [isReplyMode, setIsReplyMode] = useState(false);
@@ -129,7 +130,7 @@ const Comment = ({ comments }: { comments: CommentProps }) => {
 다음은 댓글을 작성하고 편집하는 form 컴포넌트입니다.
 
 ```tsx
-// CommentForm.tsx
+CommentForm.tsx
 interface CommentFormProps {
   isReplyMode?: boolean;
   isEditMode?: boolean;
@@ -223,7 +224,7 @@ const CommentForm = ({
 &emsp;복잡하진 않지만 기존 코드는 form의 모드를 나타내는 isEditMode와 isReplyMode 그리고 form의 타입을 나태는 "type" prop을 가지고 버튼의 텍스트를 표현하고 이벤트 처리 로직을 수행하고 있어요. mode 상태가 항상 한 가지 상태로만 활성화된다는 점(보기, 답글 또는 편집), 모드를 변경할 때마다 다른 상태값을 기본값으로 변경해야 하는 점, 조건부 렌더링을 직관적으로 작성할 수 있는 점 그리고 하나의 상태로 관리할 수 있는 점 등을 이유로 enum을 사용해서 리팩토링했는데요,
 
 ```tsx
-// Comment.tsx
+Comment.tsx
 enum CommentMode {
   View = 'VIEW',
   Edit = 'EDIT',
@@ -268,7 +269,7 @@ const Comment = ({ comments }: { comments: CommentProps }) => {
 &emsp;기존 form 컴포넌트는 댓글 작성과 편집을 모두 처리하고 있어서 관심사에 맞게 독립적으로 분리해 봤는데요, 우선 공통으로 사용할 form 컴포넌트를 정의했어요.
 
 ```tsx
-// BaseCommentForm.tsx
+BaseCommentForm.tsx
 interface BaseCommentFormProps {
   onSubmit: () => void; // submit 시 호출될 콜백 함수
   isFormModeCancellable?: boolean; // form mode 취소 가능 여부
@@ -313,7 +314,7 @@ BaseCommentForm 컴포넌트는 기본적인 form의 기능과 구조에 집중�
 따라서 모드에 따라 댓글을 편집하고 작성하는 상위 form 컴포넌트에서는 공통 form 컴포넌트를 가져와 아래와 같이 사용하게 했는데요, 역할에 맞게 EditCommentForm과 NewCommentForm으로 나눴어요.
 
 ```tsx
-// EditCommentForm.tsx
+EditCommentForm.tsx
 interface EditCommentFormProps {
   isEditMode: boolean;
   setFormToDefaultMode: () => void;
@@ -356,7 +357,7 @@ const EditCommentForm = ({
 <details><summary><i>NewCommentForm 보기</i></summary>
 
 ```tsx
-// NewCommentForm.tsx
+NewCommentForm.tsx
 interface NewCommentFormProps {
   isReplyMode?: boolean;
   setFormToDefaultMode?: () => void;
@@ -425,7 +426,7 @@ const NewCommentForm = ({
 리팩토링한 form 컴포넌트를 기존 코드에 적용하면 다음과 같은데요,
 
 ```tsx
-// Comment.tsx
+Comment.tsx
 enum CommentMode {
   View = 'VIEW',
   Edit = 'EDIT',

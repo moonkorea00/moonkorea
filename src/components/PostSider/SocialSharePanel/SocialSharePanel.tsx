@@ -1,14 +1,16 @@
 import type { MetaData } from '@@types/metaData';
-import * as S from './SocialSharePanel.style';
+
 import { useRef } from 'react';
 import { useRouter } from 'next/router';
-import Image from 'next/image';
 import {
   FacebookShareButton,
   TwitterShareButton,
   FacebookIcon,
   TwitterIcon,
 } from 'react-share';
+
+import * as S from './SocialSharePanel.style';
+
 import useOnClickOutside from '@hooks/useOnClickOutside';
 import { assets } from '@utils/assetsPath';
 
@@ -73,13 +75,7 @@ const SocialSharePanel = ({
         <TwitterIcon size={40} round={true} />
       </TwitterShareButton>
       <S.KakaoShareButton onClick={onShareWithKakaoAndCloseModal}>
-        <Image
-          src={assets.kakao}
-          alt="카카오톡 공유"
-          width={40}
-          height={40}
-          priority
-        />
+        <S.KakaoIcon src={assets.kakao} alt="카카오톡 공유" />
       </S.KakaoShareButton>
     </S.Container>
   );

@@ -34,7 +34,7 @@ date: '2023-05-23'
 &emsp;자바스크립트에서는 변수에 어떤 종류의 값이든 할당할 수 있습니다. 변수에 어떤 종류의 값이든 할당할 수 있다는 것은 코드 작성 단계를 지나서야 코드가 실행되는 런타임에 타입 관련 오류를 파악할 수 있다는 것입니다. 변수의 타입은 런타임에 결정되기 때문이죠. 예를 들어, 잘못된 변수 타입을 사용하거나 존재하지 않는 프로퍼티에 접근하려 할 때 오류가 발생할 수 있어요.
 
 ```javascript
-// js
+
 function doubleQuantity(a) {
   if (a > 0) {
     return a * 2;
@@ -45,7 +45,7 @@ function doubleQuantity(a) {
 함수에 매개변수 a를 전달하면 a의 두 배 값을 반환하는 함수입니다. 이 함수는 당연히 매개변수 a가 number 타입의 값을 전달받는다고 실행된다는 가정하에 작성됐겠죠. 자바스크립트는 매개변수가 어떤 타입의 값인지 제약을 걸지 않습니다. 하지만 함수의 사용법은 작성자만 숙지하고 다른 개발자들은 사용법을 추론만 할 뿐 최종 사용자는 모를 수도 있습니다. 문자열과 같은 다른 타입의 값으로 함수가 호출되면 사용법과 의도와 다른 결과를 반환하겠죠(함수 실행 결과가 NaN의 값을 의도한 게 아니라면).
 
 ```javascript
-// js
+
 doubleQuantity(15); // 30
 doubleQuantity('15'); // 30
 doubleQuantity('15'); // NaN
@@ -80,7 +80,7 @@ doubleQuantity('15'); // NaN
 타입스크립트의 타입 시스템은 코드가 오류를 발생시키지 않는 유효한 자바스크립트 코드일지라도 정적 타입 시스템에서 오류로 간주될 경우, 코드 작성 단계에서 알려줍니다.
 
 ```javascript
-// js
+js
 const group = {
   name: 'BTS',
   memberCount: '6',
@@ -91,7 +91,7 @@ group.album; // undefined
 자바스크립트에서는 코드를 실행한 런타임에 실행 결과인 undefined를 알려줍니다.
 
 ```typescript
-// ts
+ts
 const group = {
   name: 'BTS',
   memberCount: '6',
@@ -106,6 +106,7 @@ group.album; // Property 'album' does not exist on type { name: string; memberCo
 - 오타
 
 ```typescript
+ts
 const announcement = 'Hello World!';
 announcement.toLowercase();
 // 'toLowercase' 속성이 '"Hello World!"' 형식에 없습니다. 'toLowerCase'을(를) 사용하시겠습니까?
@@ -114,6 +115,7 @@ announcement.toLowercase();
 - 호출되지 않은 함수
 
 ```typescript
+ts
 function flipCoin() {
   return Math.random < 0.5;
 }
@@ -123,6 +125,7 @@ function flipCoin() {
 - 논리 오류
 
 ```typescript
+ts
 const value = Math.random() < 0.5 ? 'a' : 'b';
 if (value !== 'a') {
   // ...
@@ -137,7 +140,7 @@ if (value !== 'a') {
 &emsp;타입스크립트는 컴파일러가 보다 엄격하고 일관성 있게 잠재적 오류를 발견할 수 있도록 다양한 옵션들을 제공합니다. 타입스크립트의 타입 시스템은 매개변수의 타입을 명시적으로 지정하지 않을 경우 몇몇 경우에 타입을 any로 추론합니다. doubleQuantity 함수에서는 a를 any 타입으로, 리턴 타입을 number로 추론합니다(NaN도 number 타입).
 
 ```javascript
-// ts
+ts
 function doubleQuantity(a) {
   if (a > 0) {
     return a * 2;
@@ -150,7 +153,7 @@ console.log(doubleQuantity('cup') + 2); // NaN
 noImplicitAny 옵션은 타입이 any로 추론되는 변수에 대해 에러를 반환합니다. any 타입은 모든 종류의 값을 나타낼 수 있는 "관대한" 타입이기 때문에 any 타입으로 추론되는 변수에 대해서 타입 명시를 강제합니다.
 
 ```typescript
-// ts
+ts
 // 매개변수 a의 타입이 any로 추론되기 때문에 타입 명시를 강제
 function doubleQuantity(a: number) {
   if (a > 0) {
@@ -162,6 +165,7 @@ function doubleQuantity(a: number) {
 매개변수에 타입을 명시적으로 지정했습니다. 사용자는 규칙에 맞게 매개변수로 number 타입의 값을 전달하고 실행합니다.
 
 ```typescript
+
 console.log(doubleQuantity(3)); // 6
 console.log(doubleQuantity(-5)); // undefined
 console.log(doubleQuantity(-5) + 2); // NaN
@@ -172,6 +176,7 @@ console.log(doubleQuantity(-5) + 2); // NaN
 자바스크립트는 모든 타입이 nullable입니다. 즉, 변수에 어떠한 값이든 할당할 수 있고 필요한 경우에는 null 또는 undefined를 할당할 수 있습니다. 타입스크립트의 strictNullChecks 옵션은 null과 undefined 값에 대한 명시적인 처리를 강제하는 옵션입니다. 해당 옵션은 코드 작성 단계에서 작성자에게 잠재적인 null 또는 undefined 타입의 값을 오류 메시지로 알려줍니다.
 
 ```typescript
+
 console.log(doubleQuantity(3)); // 6
 console.log(doubleQuantity(-5)); // error: Object is possibly 'undefined'.
 console.log(doubleQuantity(-5) + 2); // error: Object is possibly 'undefined'.

@@ -48,3 +48,8 @@ export const KakaoShareButton = styled.button`
   height: 40px;
   background-color: inherit;
 `;
+
+export const KakaoIcon = styled.img`
+  width: 40px;
+  height: 40px;
+`;

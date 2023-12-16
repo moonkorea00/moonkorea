@@ -34,6 +34,7 @@ date: '2022-12-03'
 &emsp;그렇다면 위 두 실행 컨텍스트는 어떻게 만들어지는 걸까요? 브라우저가 HTML 코드를 해석하다가 script 태그를 만나게 되면 제어 권한을 렌더링 엔진에서 자바스크립트 엔진에게 넘깁니다. 앞서 코드의 실행 순서를 실행 컨텍스트 스택을 통해 관리한다고 했는데요, 실행 컨텍스트 스택이 만들어지는 과정을 살펴보겠습니다.
 
 ```javascript
+js
 var a = 10; // a라는 변수를 선언하고 10의 값을 할당
 function functionA() {
    // functionA 함수 선언
@@ -80,6 +81,7 @@ function functionA() {
 다음 코드가 실행될 때 평가 과정에서 생성되는 전역 실행 컨텐스트와 함수 실행 컨텍스트 내부에는 어떤 프로퍼티들이 있고 어떤 형태로 구성돼있는지 보겠습니다.
 
 ``` javascript
+js
 var x = 10;
 const a = '20';
 function funcA() {
@@ -98,6 +100,7 @@ funcA();
 먼저 자바스크립트 코드가 실행되면서 **전역 객체**가 생성이 됩니다.
 
 ```javascript
+js
 const global = {
    console: {
    log() {},
@@ -124,6 +127,7 @@ Lexical Environment는 크게 두가지 프로퍼티를 갖습니다:
 2. Object Environment Record : 그 외 var, 전역 함수, 빌트인 프로퍼티 등을 관리합니다.
 
 ```javascript
+js
 const global = {
    console: {
    log() {},
@@ -157,6 +161,7 @@ const GlobalExecutionContext = {
 이제 **this 값에 대한 참조가 결정**됩니다.
 
 ```javascript
+js
 const GlobalExecutionContext = {
    GlobalLexicalEnvironment: {
    GlobalEnvironmentRecord: {
@@ -179,6 +184,7 @@ const GlobalExecutionContext = {
 전역 실행 컨텍스트에서의 스코프는 최상위의 스코프이기 때문에 외부 환경에 대한 참조값은 null입니다.
 
 ```javascript
+js
 const GlobalExecutionContext = {
    GlobalLexicalEnvironment: {
    GlobalEnvironmentRecord: {
@@ -198,6 +204,7 @@ const GlobalExecutionContext = {
 전역 실행 컨텍스트에서의 평가 과정이 모두 완료되고 자바스크립트 엔진은 실행 과정으로 넘어갑니다. 실행 과정에서는 식별자들에 대한 값들이 할당됩니다.
 
 ```javascript
+js
 const global = {
    console: {
    log() {},
@@ -227,6 +234,7 @@ const GlobalExecutionContext = {
 자바스크립트 엔진은 이어서 소스코드를 실행합니다.
 
 ``` javascript
+js
 var x = 10;
 const a = '20';
 function funcA() {
@@ -247,6 +255,7 @@ funcA();
 함수 실행 컨텍스트의 Lexical Environment Record에서는 **Function Environment Record**가 생성됩니다. Function Environment Record에서는 함수 내부에서 생성된 지역 변수, 함수, 매개변수가 저장됩니다.
 
 ```javascript
+js
 const FuncAFunctionExecutionContext = {
    LexicalEnvironment: {
    FunctionEnvironmentRecord: {
@@ -271,6 +280,7 @@ const FuncAFunctionExecutionContext = {
 > 실행 컨텍스트와 렉시컬 환경은 별도의 객체입니다. 렉시컬 환경은 실행 컨텍스트에서 참조하고 있지만 실행 컨텍스트가 제거가 되더라도 렉시컬 환경이 참조가 되고 있다면 렉시컬 환경은 가비지 컬렉팅 대상에서 제외가 됩니다.
 
 ```javascript
+js
 const FuncAFunctionExecutionContext = {it add
  LexicalEnvironment: {
    FunctionEnvironmentRecord: {
@@ -286,6 +296,7 @@ const FuncAFunctionExecutionContext = {it add
 funcA에 대한 평가 과정이 끝나며 실행 과정에서 식별자에 대한 값이 할당됩니다. funcA 함수의 실행 과정에서 funcB 함수가 호출되었으므로 funcB 함수에 대한 함수 실행 컨텍스트도 생성됩니다.
 
 ```javascript
+js
 const FuncAFunctionExecutionContext = {
    LexicalEnvironment: {
    FunctionEnvironmentRecord: {

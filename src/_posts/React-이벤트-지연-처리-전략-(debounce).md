@@ -36,7 +36,7 @@ debounce 적용 전 고려 사항 :
 <br>
 
 ```typescript
-// SearchInput.tsx
+SearchInput.tsx
 // ..
 const [searchInput, setSearchInput] = useState('');
 function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
@@ -56,9 +56,11 @@ api() 함수는 상태 변화의 부수효과로 입력값이 바뀔 때마다 �
 따라서 setTimeout을 사용해서 연속적으로 발생하는 이벤트 중 일정 시간이 지나고 난 뒤의 마지막 입력 이벤트만 실행되게 해보겠습니다.
 
 ```javascript
+ts
 const [searchInput, setSearchInput] = useState('');
 const [debounceInput, setDebounceInput] = useState('');
 const delay = 400;
+
 useEffect(() => {
   const timeout = setTimeout(() => {
     setDebounceValue(searchInput);
@@ -67,9 +69,11 @@ useEffect(() => {
     clearTimeout(timeout);
   };
 }, [searchInput]);
+
 function api() {
   fetch(`url?search=${debounceInput}`);
 }
+
 useEffect(api, [debounceInput]);
 ```
 
@@ -117,24 +121,31 @@ onChange 이벤트 핸들러는 호출될 때마다 선택된 화질로 새로�
 <details><summary><i>소스코드 보기</i></summary>
 
 ```typescript
+useDebounceChange.ts
 function useDebounceChange(
   onChange: (value: number) => void,
   initialValue: number,
   delay: number = 15
 ) {
   const [debouncedValue, setDebouncedValue] = useState<number>(initialValue);
+
   useEffect(() => {
     const timeout = setTimeout(() => {
       onChange(debouncedValue);
     }, delay);
     return () => clearTimeout(timeout);
   }, [debouncedValue]);
+
   const handleDebounceChange = (e: ChangeEvent<HTMLInputElement>) => {
     setDebouncedValue(Number(e.target.value));
   };
+
   return handleDebounceChange;
 }
-// Range.tsx
+```
+
+```typescript
+Range.tsx
 function Range(props) {
   const { ... } = props
   const handleDebounceChange = useDebounceChange(handleChange, value);
