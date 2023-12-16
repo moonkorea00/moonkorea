@@ -1,4 +1,4 @@
-name: post merge workflow
+name: ping google
 
 on:
   pull_request:
