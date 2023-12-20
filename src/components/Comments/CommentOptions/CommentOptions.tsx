@@ -6,7 +6,7 @@ import useModal from '@hooks/useModal';
 import { useDeleteComment } from '@api/hooks/Comments/mutation';
 import useOnClickOutside from '@hooks/useOnClickOutside';
 import { getPostId } from '../Comments.utils';
-import { sendNotificationEmail } from '@api/services/notificationEmail';
+import { sendNotificationEmail } from '@api/notificationEmail';
 
 interface CommentOptionsProps {
   comments: Comment;

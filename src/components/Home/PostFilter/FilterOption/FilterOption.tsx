@@ -3,18 +3,18 @@ import * as S from './FilterOption.style';
 interface FilterItemProps {
   tag: string;
   count: number;
-  isSelected?: boolean;
-  toggleTag: () => void;
+  isSelected: boolean;
+  onSetFilter: () => void;
 }
 
 const FilterOption = ({
   tag,
   count,
   isSelected,
-  toggleTag,
+  onSetFilter,
 }: FilterItemProps) => {
   return (
-    <S.Option onClick={toggleTag} isSelected={isSelected}>
+    <S.Option onClick={onSetFilter} isSelected={isSelected}>
       {tag} <span>({count})</span>
     </S.Option>
   );

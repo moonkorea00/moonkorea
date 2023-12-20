@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-export const Option = styled.button<{ isSelected?: boolean }>`
+export const Option = styled.button<{ isSelected: boolean }>`
   padding: 4px 10px;
   font-size: 14px;
   border-radius: 10px;

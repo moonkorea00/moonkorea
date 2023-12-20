@@ -4,7 +4,7 @@ import fs from 'fs';
 import { join } from 'path';
 import matter from 'gray-matter';
 
-import { extractHeadings, nestHeadingWithChildren } from '../utils';
+import { extractHeadings, nestHeadingWithChildren } from './post.utils';
 import { convertToSlug } from '@utils/markdown';
 
 const postsDir = join(process.cwd(), '/src/_posts');
@@ -84,33 +84,25 @@ export const getPostTags = () => {
     '개발 경험',
   ];
 
-  const tagCounts = fileNames.reduce<Record<string, number>>(
-    (acc, fileName) => {
-      const filePath = join(postsDir, fileName);
-      const fileContent = fs.readFileSync(filePath, 'utf8');
-      const { data } = matter(fileContent);
+  const tags = fileNames.reduce<Record<string, number>>((tags, fileName) => {
+    const filePath = join(postsDir, fileName);
+    const fileContent = fs.readFileSync(filePath, 'utf8');
+    const { data } = matter(fileContent);
 
-      data.tags.split(', ').forEach((tag: string) => {
-        acc[tag] = (acc[tag] || 0) + 1;
-      });
+    data.tags
+      .split(', ')
+      .forEach((tag: string) => (tags[tag] = (tags[tag] || 0) + 1));
 
-      return acc;
-    },
-    {}
-  );
+    return tags;
+  }, {});
 
-  const ininitialTagCounts = Object.entries(tagCounts).map(([tag, count]) => ({
-    tag,
-    count,
-  }));
+  const sortedTags: Record<string, number> = {};
 
-  const orderedTags = prioritizedTags
-    .map(pTag => ininitialTagCounts.find(item => item.tag === pTag))
-    .filter(Boolean);
+  prioritizedTags.forEach(tag => (sortedTags[tag] = tags[tag]));
 
-  const rest = ininitialTagCounts.filter(item => !orderedTags.includes(item));
+  Object.keys(tags).forEach(tag => {
+    if (!sortedTags[tag]) sortedTags[tag] = tags[tag];
+  });
 
-  const tags = [...orderedTags, ...rest];
-
-  return tags;
+  return sortedTags;
 };
