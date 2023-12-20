@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 
-type HeadingsSlug = string[];
+type ElementIds = string[];
 
 interface IntersectionObserverInit {
   root?: Element | Document | null;
@@ -10,12 +10,14 @@ interface IntersectionObserverInit {
 
 const options: IntersectionObserverInit = { rootMargin: '0px 0px -40% 0px' };
 
-const useActiveHeadingObserver = (headingSlugs: HeadingsSlug) => {
+const useActiveElementObserver = (headingSlugs: ElementIds) => {
   const [activeId, setActiveId] = useState('');
-  const headingElements = useRef<HTMLElement[]>([]);
+  const observableElements = useRef<HTMLElement[]>([]);
+
+  const isElementInView = (id: string) => id === activeId;
 
   useEffect(() => {
-    headingElements.current = headingSlugs.map(
+    observableElements.current = headingSlugs.map(
       title => <HTMLElement>document.getElementById(title)
     );
 
@@ -25,12 +27,12 @@ const useActiveHeadingObserver = (headingSlugs: HeadingsSlug) => {
       }
     }, options);
 
-    headingElements.current.forEach(heading => observer.observe(heading));
+    observableElements.current.forEach(el => observer.observe(el));
 
     return () => observer.disconnect();
   }, []);
 
-  return activeId;
+  return isElementInView;
 };
 
-export default useActiveHeadingObserver;
+export default useActiveElementObserver;
