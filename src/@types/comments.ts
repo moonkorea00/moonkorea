@@ -1,4 +1,4 @@
-import type { QueryKey } from "@tanstack/react-query";
+import type { QueryKey } from '@tanstack/react-query';
 
 export interface RawComment {
   id: string;
@@ -27,7 +27,7 @@ export interface User {
 }
 
 export interface ReadCommentsParams {
-  queryKey: QueryKey
+  queryKey: QueryKey;
 }
 
 export interface CreateCommentParams {
@@ -47,4 +47,21 @@ export interface UpdateCommentParams {
 export interface DeleteCommentParams {
   id: string;
   postId: string;
+}
+
+export interface ReadCommentsResponse {
+  total_comments: number;
+  comments: Comment[];
+}
+
+export interface CreateCommentResponse {
+  message: string;
+}
+
+export interface UpdateCommentResponse {
+  message: string;
+}
+
+export interface DeleteCommentResponse {
+  message: string;
 }
