@@ -6,4 +6,6 @@ export const assets = {
   share: '/assets/PostSider/share.svg',
   kakao: '/assets/PostSider/kakao.webp',
   reset: '/assets/Home/reset-svgrepo-com.svg',
+  copy: '/assets/Clipboard/copy.webp',
+  check: '/assets/Clipboard/done-check.webp',
 };

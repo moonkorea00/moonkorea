@@ -11,8 +11,10 @@ import SyntaxHighlighter from 'react-syntax-highlighter';
 import { githubGist } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
 
 import useHashLink from '@hooks/useHashLink';
+import useCopyToClipboard from '@hooks/useCopyToClipboard';
 
 import { convertToSlug } from '@utils/markdown';
+import { assets } from '@utils/assetsPath';
 
 const ReactPlayer = dynamic(() => import('react-player/lazy'), { ssr: false });
 // load client side. see https://github.com/cookpete/react-player/issues/1474
@@ -31,16 +33,27 @@ export const MarkdownCode = ({
 PropsWithStrictChildren<{}, string[]>) => {
   const code = children.join();
   const title = code.substring(0, code.indexOf('\n'));
-  const content = code.substring(code.indexOf('\n') + 1);
+  const content = code.substring(code.indexOf('\n') + 1, code.lastIndexOf('\n'));
+
+  const { isCopied, onCopy } = useCopyToClipboard();
 
   const customStyle = {
     padding: '10px 15px',
     lineHeight: '21px',
+    fontSize: '12px',
   };
 
   return (
     <S.HighlighterContainer>
-      <S.HighlighterTitle>{title}</S.HighlighterTitle>
+      <S.Header>
+        <S.HighlighterTitle>{title}</S.HighlighterTitle>
+        <S.CopyButton disabled={isCopied} onClick={() => onCopy(content)}>
+          <S.ClipboardStatusImage
+            src={isCopied ? assets.check : assets.copy}
+            alt="클립보드"
+          />
+        </S.CopyButton>
+      </S.Header>
       <SyntaxHighlighter
         language="javascript"
         style={githubGist}

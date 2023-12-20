@@ -85,9 +85,23 @@ export const HighlighterContainer = styled.div`
   border-radius: 6px;
 `;
 
-export const HighlighterTitle = styled.div`
+export const Header = styled.div`
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #d0d8df;
+`;
+
+export const HighlighterTitle = styled.span`
   padding-left: 15px;
   font-weight: 600;
   line-height: 30px;
-  border-bottom: 1px solid #d0d8df;
+`;
+
+export const CopyButton = styled.button`
+  background-color: inherit;
+`;
+
+export const ClipboardStatusImage = styled.img`
+  width: 18px;
+  height: 18px;
 `;

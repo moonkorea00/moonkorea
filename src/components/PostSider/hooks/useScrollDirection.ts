@@ -2,14 +2,26 @@ import { useState, useEffect } from 'react';
 
 type ScrollDirection = 'up' | 'down' | null;
 
-const useScrollDirection = (screenWidth: number) => {
+interface UseScrollDirectionParams {
+  screenWidth: number;
+  scrollDownCallback?: VoidFunction;
+  scrollUpCallback?: VoidFunction;
+}
+
+const useScrollDirection = ({
+  screenWidth,
+  scrollDownCallback,
+  scrollUpCallback,
+}: UseScrollDirectionParams) => {
   const [scrollDirection, setScrollDirection] = useState<ScrollDirection>(null);
   let prevScrollY = 0;
 
   const updateScrollDirection = () => {
     if (window.scrollY > prevScrollY) {
+      if (scrollDownCallback) scrollDownCallback();
       setScrollDirection('down');
     } else {
+      if (scrollUpCallback) scrollUpCallback();
       setScrollDirection('up');
     }
     prevScrollY = window.scrollY;

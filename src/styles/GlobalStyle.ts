@@ -32,7 +32,7 @@ textarea:focus{
 }
 
 p {
-  word-spacing: 3px;
+  word-spacing: 1.5px;
 }
 
 a {
@@ -48,7 +48,16 @@ button {
 pre {
   margin-top: 0;
 };
-`;
 
+code {
+  font-family: Consolas, Monaco, "Courier New", monospace;
+}
+
+summary {
+  :hover{
+    cursor: pointer;
+  }
+}
+`;
 
 export default GlobalStyle;
