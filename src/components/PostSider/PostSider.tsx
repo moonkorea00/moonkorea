@@ -21,21 +21,21 @@ interface PostSiderProps {
 const PostSider = ({ postFrontMatter }: PostSiderProps) => {
   const [isSocialSharePanelVisible, setIsSocialSharePanelVisible] =
     useState(false);
-
   const id = getPostId();
+
   const prefetchComments = usePrefetchComments(id);
-
   const { isMounted, height: headerHeight } = useGetElementSizeById('header');
-  const scrollDirection = useScrollDirection(1024);
-
   const onScrollToElement = useScrollToElementById();
+  const onCloseSocialSharePanel = () => setIsSocialSharePanelVisible(false);
+  const scrollDirection = useScrollDirection({
+    screenWidth: 1024,
+    scrollUpCallback: onCloseSocialSharePanel,
+  });
 
   const onPrefetchAndScrollToComments = () => {
     prefetchComments();
     onScrollToElement('comment-section');
   };
-
-  const onCloseSocialSharePanel = () => setIsSocialSharePanelVisible(false);
 
   useKeyPress({ Escape: onCloseSocialSharePanel });
 
