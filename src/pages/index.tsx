@@ -5,31 +5,32 @@ import DefaultLayout from '@components/common/Layout/DefaultLayout/DefaultLayout
 import PostList from '@components/Home/PostList/PostList';
 import PostFilter from '@components/Home/PostFilter/PostFilter';
 
-import { getAllPostsSortedByDate, getPostTags } from '@api/services/post';
-import useSearchParams from '@hooks/useSearchParams';
+import { getAllPostsSortedByDate, getPostTags } from '@api/post';
+import usePostFilter from '@hooks/usePostFilter';
 
 interface HomePageProps {
   posts: FrontMatter[];
-  tags: { tag: string; count: number }[];
+  tags: Record<string, number>;
 }
 
 const Home = ({ posts, tags }: HomePageProps) => {
-  const { query, set, clear } = useSearchParams();
-
-  const filteredPosts = query.tags?.length
-    ? posts.filter(post =>
-        post.tags.split(', ').some(tag => query.tags?.includes(tag))
-      )
-    : posts;
+  const {
+    filteredPosts,
+    selectedOptions,
+    isOptionSelected,
+    onSetFilter,
+    onResetFilter,
+  } = usePostFilter(posts);
 
   return (
     <>
       <Metadata />
       <PostFilter
-        tags={tags}
-        selectedTags={query.tags}
-        toggleTag={set}
-        reset={clear}
+        options={tags}
+        selectedOptions={selectedOptions}
+        isOptionSelected={isOptionSelected}
+        onSetFilter={onSetFilter}
+        onResetFilter={onResetFilter}
       />
       <PostList posts={filteredPosts} />
     </>
