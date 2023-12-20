@@ -1,4 +1,4 @@
-import * as service from '@api/services/comment';
+import * as service from '@api/comment';
 import { queryOptions } from '@tanstack/react-query';
 import { CACHE_KEYS } from '../ReactQuery.utils';
 

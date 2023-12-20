@@ -4,7 +4,7 @@ import * as S from '../CommentForm.style';
 import BaseCommentForm from '../BaseCommentForm';
 import useInput from '@hooks/useInput';
 import { useEditComment } from '@api/hooks/Comments/mutation';
-import { sendNotificationEmail } from '@api/services/notificationEmail';
+import { sendNotificationEmail } from '@api/notificationEmail';
 import { getPostId } from '@components/Comments/Comments.utils';
 
 interface EditCommentFormProps {

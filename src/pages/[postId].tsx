@@ -16,7 +16,7 @@ import {
 import PostSider from '@components/PostSider/PostSider';
 import { ErrorBoundary, RetryFallback } from '@components/common/ErrorBoundary';
 
-import { getPostPaths, getPostById } from '@api/services/post';
+import { getPostPaths, getPostById } from '@api/post';
 
 import useIsIntersected from '@hooks/useIsIntersected';
 
@@ -76,7 +76,7 @@ export const getStaticProps = async ({
   params,
 }: GetStaticPropsContext<PostParams>) => {
   if (!params) return;
-  
+
   const postFrontMatter = await getPostById(params.postId);
 
   return {

@@ -6,7 +6,7 @@ import BaseCommentForm from '../BaseCommentForm';
 import useInput from '@hooks/useInput';
 import { useCreateComment } from '@api/hooks/Comments/mutation';
 import useModal from '@hooks/useModal';
-import { sendNotificationEmail } from '@api/services/notificationEmail';
+import { sendNotificationEmail } from '@api/notificationEmail';
 import { getPostId } from '@components/Comments/Comments.utils';
 
 interface NewCommentFormProps {

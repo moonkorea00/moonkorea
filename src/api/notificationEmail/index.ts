@@ -1,12 +1,12 @@
-import { instance } from '@api';
+import { instance } from "@api/axios/instance";
 
-interface sendNotificationEmailProps {
+interface NotificationEmailParams {
   postId: string;
   body?: string;
 }
 
 export const sendNotificationEmail = async (
-  params: sendNotificationEmailProps
+  params: NotificationEmailParams
 ) => {
   return await instance.post('/api/notificationMail', params);
 };
