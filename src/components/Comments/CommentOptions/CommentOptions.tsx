@@ -1,12 +1,15 @@
 import type { Comment } from '@@types/comments';
-import * as S from './CommentOptions.style';
-import { useRef } from 'react';
 import { useSession } from 'next-auth/react';
+
+import * as S from './CommentOptions.style';
+import OutsideClickWrapper from '@components/common/OutsideClickWrapper/OutsideClickWrapper';
+
 import useModal from '@hooks/useModal';
+
 import { useDeleteComment } from '@api/hooks/Comments/mutation';
-import useOnClickOutside from '@hooks/useOnClickOutside';
-import { getPostId } from '../Comments.utils';
 import { sendNotificationEmail } from '@api/notificationEmail';
+
+import { getPostId } from '../Comments.utils';
 
 interface CommentOptionsProps {
   comments: Comment;
@@ -23,7 +26,6 @@ const CommentOptions = ({
   onReplyMode,
   onCloseCommentOptions,
 }: CommentOptionsProps) => {
-  const commentOptionsRef = useRef<HTMLDivElement>(null);
   const { data: session } = useSession();
 
   const { mutateAsync, isPending } = useDeleteComment();
@@ -54,23 +56,26 @@ const CommentOptions = ({
     });
   };
 
-  useOnClickOutside(commentOptionsRef, onCloseCommentOptions);
-
   return (
-    <S.Container ref={commentOptionsRef}>
-      <S.Option onClick={onReplyMode}>답글 작성</S.Option>
-      {isAuthor && !comments.isDeleted && (
-        <>
-          <S.Option onClick={onEditMode}>수정</S.Option>
-          <S.Option
-            onClick={onCloseOptionsAndShowDeleteModal}
-            disabled={isPending}
-          >
-            삭제
-          </S.Option>
-        </>
-      )}
-    </S.Container>
+    <OutsideClickWrapper
+      onClickHandler={onCloseCommentOptions}
+      triggerKey="Escape"
+    >
+      <S.Container>
+        <S.Option onClick={onReplyMode}>답글 작성</S.Option>
+        {isAuthor && !comments.isDeleted && (
+          <>
+            <S.Option onClick={onEditMode}>수정</S.Option>
+            <S.Option
+              onClick={onCloseOptionsAndShowDeleteModal}
+              disabled={isPending}
+            >
+              삭제
+            </S.Option>
+          </>
+        )}
+      </S.Container>
+    </OutsideClickWrapper>
   );
 };
 

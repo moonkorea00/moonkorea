@@ -1,4 +1,4 @@
-import { useState, useEffect, RefObject } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 interface IntersectionObserverInit {
   root?: Element | Document | null;
@@ -8,19 +8,20 @@ interface IntersectionObserverInit {
 }
 
 const useIsIntersected = <T extends HTMLElement>(
-  ref: RefObject<T>,
   options?: IntersectionObserverInit
 ) => {
   const [isIntersected, setIsIntersected] = useState(false);
+  const ref = useRef<T>(null);
 
   useEffect(() => {
     if (!ref.current) return;
 
     const observer = new IntersectionObserver(([entry]) => {
-      setIsIntersected(
-        options?.once ? entry.isIntersecting : !entry.isIntersecting
-      );
-      
+      const isObservered = options?.once
+        ? entry.isIntersecting
+        : !entry.isIntersecting;
+      setIsIntersected(isObservered);
+
       if (options?.once && entry.isIntersecting) observer.disconnect();
     }, options);
 
@@ -31,7 +32,7 @@ const useIsIntersected = <T extends HTMLElement>(
     };
   }, []);
 
-  return isIntersected;
+  return { isIntersected, ref };
 };
 
 export default useIsIntersected;

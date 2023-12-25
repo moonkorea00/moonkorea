@@ -1,8 +1,9 @@
 import type { MetaData } from '@@types/metaData';
+
 import * as S from './Header.style';
-import { useRef } from 'react';
 import Nav from '../Nav/Nav';
 import HeaderContent from './HeaderContent/HeaderContent';
+
 import useIsIntersected from '@hooks/useIsIntersected';
 
 interface HeaderProps {
@@ -11,12 +12,11 @@ interface HeaderProps {
 }
 
 const Header = ({ postFrontMatter, pageType }: HeaderProps) => {
-  const headerRef = useRef<HTMLHeadElement>(null);
-  const isHeaderInView = useIsIntersected(headerRef);
+  const { isIntersected, ref } = useIsIntersected();
 
   return (
-    <S.Container ref={headerRef} id="header">
-      <Nav isHeaderInView={isHeaderInView} />
+    <S.Container ref={ref} id="header">
+      <Nav isHeaderInView={isIntersected} />
       <S.HeadingContainer>
         <HeaderContent pageType={pageType} postFrontMatter={postFrontMatter} />
       </S.HeadingContainer>

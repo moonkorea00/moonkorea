@@ -9,7 +9,6 @@ import { usePrefetchComments } from '@api/hooks/Comments/query';
 import useGetElementSizeById from './hooks/useGetElementSizeById';
 import useScrollDirection from './hooks/useScrollDirection';
 import useScrollToElementById from '@hooks/useScrollToElementById';
-import useKeyPress from '@hooks/useKeyPress';
 
 import { getPostId } from '@components/Comments/Comments.utils';
 import { assets } from '@utils/assetsPath';
@@ -36,8 +35,6 @@ const PostSider = ({ postFrontMatter }: PostSiderProps) => {
     prefetchComments();
     onScrollToElement('comment-section');
   };
-
-  useKeyPress({ Escape: onCloseSocialSharePanel });
 
   return (
     <S.Container

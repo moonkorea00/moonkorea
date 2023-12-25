@@ -1,20 +1,16 @@
 import type { DependencyList } from 'react';
 import { useEffect } from 'react';
 
-interface KeyCallbackMap {
-  [key: string]: () => void;
-}
-
 const useKeyPress = (
-  keyCallbackMap: KeyCallbackMap,
+  keyCallbackMap: Record<string, VoidFunction>,
   deps: DependencyList = []
 ) => {
   useEffect(() => {
     const keyPressHandler = ({ key }: KeyboardEvent) => {
-      const callback = keyCallbackMap[key];
-      if (callback) {
-        callback();
-      }
+      if (!keyCallbackMap) return;
+
+      const keyPressCallback = keyCallbackMap[key];
+      if (keyPressCallback) keyPressCallback();
     };
 
     window.addEventListener('keydown', keyPressHandler);

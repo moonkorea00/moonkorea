@@ -1,6 +1,5 @@
 import type { MetaData } from '@@types/metaData';
 
-import { useRef } from 'react';
 import { useRouter } from 'next/router';
 import {
   FacebookShareButton,
@@ -10,8 +9,8 @@ import {
 } from 'react-share';
 
 import * as S from './SocialSharePanel.style';
+import OutsideClickWrapper from '@components/common/OutsideClickWrapper/OutsideClickWrapper';
 
-import useOnClickOutside from '@hooks/useOnClickOutside';
 import useCopyToClipboard from '@hooks/useCopyToClipboard';
 
 import { assets } from '@utils/assetsPath';
@@ -27,7 +26,6 @@ const SocialSharePanel = ({
   onClose,
   scrollDirection,
 }: ShareSocialsProps) => {
-  const SocialShareRef = useRef<HTMLDivElement>(null);
   const { asPath } = useRouter();
   const { isCopied, onCopy } = useCopyToClipboard();
 
@@ -62,39 +60,39 @@ const SocialSharePanel = ({
     onClose();
   };
 
-  useOnClickOutside(SocialShareRef, onClose);
-
   return (
-    <S.Container ref={SocialShareRef} scrollDirection={scrollDirection}>
-      <S.ShareIconContainer>
-        <S.CloseButtonContainer>
-          <S.CloseButton onClick={onClose}>
-            <S.CloseButtonLabel>&#10005;</S.CloseButtonLabel>
-          </S.CloseButton>
-        </S.CloseButtonContainer>
-        <FacebookShareButton url={fullURL} onClick={onClose}>
-          <FacebookIcon size={40} round={true} />
-        </FacebookShareButton>
-        <TwitterShareButton url={fullURL} onClick={onClose}>
-          <TwitterIcon size={40} round={true} />
-        </TwitterShareButton>
-        <S.KakaoShareButton onClick={onShareWithKakaoAndCloseModal}>
-          <S.KakaoIcon src={assets.kakao} alt="카카오톡 공유" />
-        </S.KakaoShareButton>
-      </S.ShareIconContainer>
-      <S.CopyURLContainer>
-        <input value={window.location.href} readOnly />
-        <S.CopyURLButton
-          disabled={isCopied}
-          onClick={() => onCopy(window.location.href)}
-        >
-          <S.CopyURLIcon
-            src={isCopied ? assets.check : assets.copy}
-            alt="복사"
-          />
-        </S.CopyURLButton>
-      </S.CopyURLContainer>
-    </S.Container>
+    <OutsideClickWrapper onClickHandler={onClose} triggerKey="Escape">
+      <S.Container scrollDirection={scrollDirection}>
+        <S.ShareIconContainer>
+          <S.CloseButtonContainer>
+            <S.CloseButton onClick={onClose}>
+              <S.CloseButtonLabel>&#10005;</S.CloseButtonLabel>
+            </S.CloseButton>
+          </S.CloseButtonContainer>
+          <FacebookShareButton url={fullURL} onClick={onClose}>
+            <FacebookIcon size={40} round={true} />
+          </FacebookShareButton>
+          <TwitterShareButton url={fullURL} onClick={onClose}>
+            <TwitterIcon size={40} round={true} />
+          </TwitterShareButton>
+          <S.KakaoShareButton onClick={onShareWithKakaoAndCloseModal}>
+            <S.KakaoIcon src={assets.kakao} alt="카카오톡 공유" />
+          </S.KakaoShareButton>
+        </S.ShareIconContainer>
+        <S.CopyURLContainer>
+          <input value={window.location.href} readOnly />
+          <S.CopyURLButton
+            disabled={isCopied}
+            onClick={() => onCopy(window.location.href)}
+          >
+            <S.CopyURLIcon
+              src={isCopied ? assets.check : assets.copy}
+              alt="복사"
+            />
+          </S.CopyURLButton>
+        </S.CopyURLContainer>
+      </S.Container>
+    </OutsideClickWrapper>
   );
 };
 

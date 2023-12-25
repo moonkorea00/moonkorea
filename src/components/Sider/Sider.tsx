@@ -1,9 +1,8 @@
 import * as S from './Sider.style';
-import { useRef } from 'react';
 import NavCategory from './NavCategory/NavCategory';
+import OutsideClickWrapper from '@components/common/OutsideClickWrapper/OutsideClickWrapper';
+
 import SIDER_DATA from '@data/sider.json';
-import useOnClickOutside from '@hooks/useOnClickOutside';
-import useKeyPress from '@hooks/useKeyPress';
 
 interface SiderProps {
   isSiderVisible: boolean;
@@ -11,18 +10,15 @@ interface SiderProps {
 }
 
 const Sider = ({ isSiderVisible, onCloseSider }: SiderProps) => {
-  const siderRef = useRef(null);
-
-  useOnClickOutside(siderRef, onCloseSider);
-  useKeyPress({ Escape: onCloseSider });
-
   return (
-    <S.Container isSiderVisible={isSiderVisible} ref={siderRef}>
-      <S.CloseButton onClick={onCloseSider}>&#10005;</S.CloseButton>
-      {SIDER_DATA.map(item => (
-        <NavCategory key={item.name} {...item} onCloseSider={onCloseSider} />
-      ))}
-    </S.Container>
+    <OutsideClickWrapper onClickHandler={onCloseSider} triggerKey="Escape">
+      <S.Container isSiderVisible={isSiderVisible}>
+        <S.CloseButton onClick={onCloseSider}>&#10005;</S.CloseButton>
+        {SIDER_DATA.map(item => (
+          <NavCategory key={item.name} {...item} onCloseSider={onCloseSider} />
+        ))}
+      </S.Container>
+    </OutsideClickWrapper>
   );
 };
 
