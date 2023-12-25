@@ -22,10 +22,10 @@ export const dateToKor = (date: Date) => {
 
 export const formatDateToElapsedTime = (date: Date) => {
   const now = new Date();
-  const postedDate = new Date(date);
+  const eventDate = new Date(date);
 
   const secondsElapsed = Math.floor(
-    (now.getTime() - postedDate.getTime()) / 1000 / 60
+    (now.getTime() - eventDate.getTime()) / 1000 / 60
   );
   const hoursElapsed = Math.floor(secondsElapsed / 60);
   const daysElapsed = Math.floor(secondsElapsed / 60 / 24);
@@ -44,10 +44,11 @@ export const formatDateToElapsedTime = (date: Date) => {
   }
 };
 
-export const checkIfIsEdittedComment = (comments: Comment) => {
+export const isEdittedAndNotDeleted = (comments: Comment) => {
   const isEditted =
     new Date(comments?.updatedAt).getTime() -
       new Date(comments?.createdAt).getTime() >
     1000;
-  return isEditted;
+
+  return isEditted && !comments.isDeleted;
 };
