@@ -2,7 +2,7 @@ import type { GetStaticPropsContext } from 'next';
 import type { MetaData } from '@@types/metaData';
 import type { TableOfContents } from '@components/TableOfContents/types';
 
-import { Suspense, useRef } from 'react';
+import { Suspense } from 'react';
 import { useQueryErrorResetBoundary } from '@tanstack/react-query';
 
 import DefaultLayout from '@components/common/Layout/DefaultLayout/DefaultLayout';
@@ -28,9 +28,7 @@ interface PostPageProps {
 }
 
 const Post = ({ postFrontMatter }: PostPageProps) => {
-  const commentSectionRef = useRef<HTMLDivElement>(null);
-
-  const isCommentSectionInView = useIsIntersected(commentSectionRef, {
+  const { isIntersected: isCommentSectionInView, ref } = useIsIntersected({
     once: true,
   });
 
@@ -43,7 +41,7 @@ const Post = ({ postFrontMatter }: PostPageProps) => {
       <CommentSectionPlaceholder
         id="comment-section"
         isIntersected={isCommentSectionInView}
-        ref={commentSectionRef}
+        ref={ref}
       />
       {isCommentSectionInView && (
         <ErrorBoundary onReset={reset} fallback={RetryFallback}>
