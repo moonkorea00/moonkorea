@@ -1,14 +1,17 @@
 import type { Comment as IComment } from '@@types/comments';
-import * as S from './Comment.style';
+
 import { useState } from 'react';
 import Image from 'next/image';
+
+import * as S from './Comment.style';
 import EditCommentForm from '../CommentForm/EditCommentForm';
 import NewCommentForm from '../CommentForm/NewCommentForm';
 import CommentList from '../CommentList/CommentList';
 import CommentOptions from '../CommentOptions/CommentOptions';
+
 import {
   formatDateToElapsedTime,
-  checkIfIsEdittedComment,
+  isEdittedAndNotDeleted,
 } from '../Comments.utils';
 import { assets } from '@utils/assetsPath';
 
@@ -16,14 +19,16 @@ interface CommentProps {
   comments: IComment;
 }
 
-enum CommentMode {
-  View = 'VIEW',
-  Edit = 'EDIT',
-  Reply = 'REPLY',
-}
+const CommentMode = {
+  View: 'VIEW',
+  Edit: 'EDIT',
+  Reply: 'REPLY',
+} as const;
+
+type CommentModeType = (typeof CommentMode)[keyof typeof CommentMode];
 
 const Comment = ({ comments }: CommentProps) => {
-  const [mode, setMode] = useState(CommentMode.View);
+  const [mode, setMode] = useState<CommentModeType>(CommentMode.View);
   const [isCommentOptionsVisible, setIsCommentOptionsVisible] = useState(false);
 
   const onCloseCommentOptions = () => setIsCommentOptionsVisible(false);
@@ -48,7 +53,7 @@ const Comment = ({ comments }: CommentProps) => {
             src={
               comments.isDeleted
                 ? assets.defaultUserAvatar
-                : comments.user.image || assets.defaultUserAvatar
+                : comments.user.image ?? assets.defaultUserAvatar
             }
             alt="avatar"
           />
@@ -57,13 +62,11 @@ const Comment = ({ comments }: CommentProps) => {
           <S.CommentHeader>
             <div>
               <S.Author>
-                {comments.isDeleted ? '알 수 없음' : comments?.user?.name}
+                {comments.isDeleted ? '알 수 없음' : comments.user.name}
               </S.Author>
               <S.PublishDate>
                 {formatDateToElapsedTime(comments.createdAt)}{' '}
-                {checkIfIsEdittedComment(comments) &&
-                  !comments.isDeleted &&
-                  '(수정됨)'}
+                {isEdittedAndNotDeleted(comments) && '(수정됨)'}
               </S.PublishDate>
             </div>
             <S.OptionsButton
