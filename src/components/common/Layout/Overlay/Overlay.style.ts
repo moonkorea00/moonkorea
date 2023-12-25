@@ -1,20 +1,33 @@
-import styled from 'styled-components';
+import type { OverlayType } from './Overlay';
 
-interface ContainerProps {
-  type?: string;
+import styled, { css } from 'styled-components';
+
+interface OverlayContainerProps {
+  type: OverlayType;
 }
 
-export const Container = styled.div<ContainerProps>`
+const overlayStyle = {
+  backdrop: css`
+    ${({ theme }) => css`
+      ${theme.flexCenter}
+      background-color: ${theme.colors.overlay};
+    `}
+  `,
+  toast: css`
+    ${({ theme }) => css`
+      ${theme.flexCenterEnd}
+      padding: 0 20px;
+    `}
+  `,
+};
+
+export const Container = styled.div<OverlayContainerProps>`
+  ${({ type }) => overlayStyle[type]}
   position: fixed;
-  ${({ theme, type }) =>
-    type === 'toast' ? theme.flexCenterEnd : theme.flexCenter}
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  padding: ${({ type }) => type === 'toast' && '0 20px'};
-  background-color: ${({ type, theme }) =>
-    type ? 'inherit' : theme.colors.overlay};
   animation: fade-in 0.25s;
 
   @keyframes fade-in {
