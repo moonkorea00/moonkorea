@@ -1,4 +1,7 @@
 import type { NextPageContext } from 'next/types';
+
+import * as Sentry from '@sentry/nextjs';
+
 import Metadata from '@components/common/Metadata/Metadata';
 import { GlobalErrorFallback } from '@components/common/ErrorBoundary';
 
@@ -21,13 +24,11 @@ const Error = ({ statusCode }: ErrorPageProps) => {
 
 export default Error;
 
-interface NextErrorResponse {
-  res: NextPageContext['res'];
-  err: { statusCode: number };
-}
-
-Error.getInitialProps = ({ res, err }: NextErrorResponse) => {
+Error.getInitialProps = async (ctx: NextPageContext) => {
+  const { res, err } = ctx;
   const statusCode = res ? res.statusCode : err ? err.statusCode : 404;
+  
+  await Sentry.captureUnderscoreErrorException(ctx);
 
   return { statusCode };
 };
