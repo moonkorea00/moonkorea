@@ -10,37 +10,24 @@ export const Container = styled.div`
 
 export const Title = styled.h1`
   margin-bottom: -10px;
-  font-size: 40px;
+  font-size: 42px;
   font-weight: 900;
+
+  @media screen and (max-width: 768px) {
+    font-size: 40px;
+  }
 `;
 
 export const Description = styled.p`
-  color: ${({ theme }) => theme.colors.base.gray300};
   font-size: 22px;
   font-weight: 500;
+
+  @media screen and (max-width: 768px) {
+    font-size: 18px;
+  }
 `;
 
 export const Date = styled.div`
   align-self: flex-end;
-  
-  span {
-    border-radius: 10px;
-    font-size: 0.85em;
-    color: white;
-  }
-`;
-
-export const TagContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: 14px;
-  gap: 6px;
-`;
-
-export const Tags = styled.span`
-  padding: 3px 8px;
   font-size: 0.85em;
-  font-weight: 500;
-  border-radius: 10px;
-  background-color: ${({ theme }) => theme.colors.base.darkYellow};
 `;
