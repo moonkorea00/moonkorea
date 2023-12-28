@@ -67,6 +67,7 @@ $ npm run sider
 - Vercel
 - Google Analytics
 - Google Search Console
+- Sentry
 
 <details><summary><i>dependencies 더 보기</i></summary>
 
@@ -74,6 +75,7 @@ $ npm run sider
 "dependencies": {
         "@next-auth/prisma-adapter": "^1.0.5",
         "@prisma/client": "^4.9.0",
+        "@sentry/nextjs": "^7.91.0",
         "@tanstack/react-query": "^5.4.3",
         "@vercel/analytics": "^0.1.6",
         "axios": "^1.3.0",
@@ -121,8 +123,8 @@ $ npm run sider
 
 <br>
 
-## 3. 포스트 발행 프로세스
-[Wiki에서 보기](https://github.com/moonkorea00/moonkorea/wiki/%ED%8F%AC%EC%8A%A4%ED%8A%B8-%EB%B0%9C%ED%96%89-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4)
+## 3. 포스트 발행 과정
+[Wiki에서 보기](https://github.com/moonkorea00/moonkorea/wiki/%ED%8F%AC%EC%8A%A4%ED%8A%B8-%EB%B0%9C%ED%96%89-%EA%B3%BC%EC%A0%95)
 
 <br>
 
@@ -145,7 +147,7 @@ $ npm run sider
 - SNS에 포스트 공유하기 기능 추가
 
 <b>[2.3.0]</b>
-- 제목 요소 해시 링크 추가
+- 부제목 해시 링크 추가
 
 <b>[2.4.0]</b>
 - 목차 컴포넌트
@@ -155,6 +157,9 @@ $ npm run sider
 
 <b>[2.6.0]</b>
 - 포스트 필터링
+
+<b>[2.7.0]</b>
+- Sentry
 
 <br>
 

@@ -1,6 +1,11 @@
 import type { ErrorFallbackProps, ErrorBoundaryError } from './types';
+
 import { Component, FunctionComponent } from 'react';
+import { isAxiosError } from 'axios';
+
 import DefaultErrorFallback from './Fallback/DefaultFallback';
+
+import { catptureErrorWithContext } from '@utils/sentry';
 
 interface ErrorBoundaryProps {
   onReset?: () => void;
@@ -26,6 +31,12 @@ class ErrorBoundary extends Component<
 
   static getDerivedStateFromError(err: ErrorBoundaryError) {
     return { hasError: true, err };
+  }
+
+  componentDidCatch(error: Error) {
+    if (isAxiosError(error)) {
+      catptureErrorWithContext(error);
+    }
   }
 
   resetErrorBoundary() {
