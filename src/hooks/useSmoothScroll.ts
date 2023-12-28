@@ -1,4 +1,4 @@
-const useScrollToElementById = () => {
+const useSmoothScroll = () => {
   const onScrollToElement = (
     id: string,
     behavior: ScrollBehavior | undefined = 'smooth'
@@ -10,4 +10,4 @@ const useScrollToElementById = () => {
   return onScrollToElement;
 };
 
-export default useScrollToElementById;
+export default useSmoothScroll;

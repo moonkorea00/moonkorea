@@ -7,7 +7,6 @@ export const Container = styled.header`
   min-height: 300px;
   max-height: 800px;
   background-color: ${({ theme }) => theme.colors.secondary.light};
-  color: ${({ theme }) => theme.colors.base.white};
 `;
 
 export const HeadingContainer = styled.div`
@@ -15,4 +14,5 @@ export const HeadingContainer = styled.div`
   min-height: 300px;
   max-height: 700px;
   background-color: ${({ theme }) => theme.colors.secondary.light};
+  color: ${({ theme }) => theme.colors.base.white};
 `;

@@ -8,7 +8,7 @@ import SocialSharePanel from './SocialSharePanel/SocialSharePanel';
 import { usePrefetchComments } from '@api/hooks/Comments/query';
 import useGetElementSizeById from './hooks/useGetElementSizeById';
 import useScrollDirection from './hooks/useScrollDirection';
-import useScrollToElementById from '@hooks/useScrollToElementById';
+import useSmoothScroll from '@hooks/useSmoothScroll';
 
 import { getPostId } from '@components/Comments/Comments.utils';
 import { assets } from '@utils/assetsPath';
@@ -24,7 +24,7 @@ const PostSider = ({ postFrontMatter }: PostSiderProps) => {
 
   const prefetchComments = usePrefetchComments(id);
   const { isMounted, height: headerHeight } = useGetElementSizeById('header');
-  const onScrollToElement = useScrollToElementById();
+  const onScrollToElement = useSmoothScroll();
   const onCloseSocialSharePanel = () => setIsSocialSharePanelVisible(false);
   const scrollDirection = useScrollDirection({
     screenWidth: 1024,
