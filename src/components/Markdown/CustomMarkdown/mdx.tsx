@@ -1,6 +1,6 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 import * as S from './CustomMarkdown.style';
 import type { HTMLAttributes } from 'react';
+import type { ImageProps } from 'next/image';
 import type { BaseReactPlayerProps } from 'react-player/base';
 import type { HeadingWithLinkProps } from '../types';
 
@@ -33,10 +33,7 @@ export const MarkdownCode = ({
 PropsWithStrictChildren<{}, string[]>) => {
   const code = children.join();
   const title = code.substring(0, code.indexOf('\n'));
-  const content = code.substring(
-    code.indexOf('\n') + 1,
-    code.lastIndexOf('\n')
-  );
+  const content = code.substring(code.indexOf('\n') + 1, code.lastIndexOf('\n'));
 
   const { isCopied, onCopy } = useCopyToClipboard();
 
@@ -69,24 +66,14 @@ PropsWithStrictChildren<{}, string[]>) => {
   );
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const MarkdownImage = ({ src, alt, imageSizes }: any) => {
-  if (imageSizes[decodeURI(String(src))] === undefined) return;
-  const { intrinsicWidth, intrinsicHeight } =
-    imageSizes[decodeURI(String(src))];
-
+export const MarkdownImage = (props: ImageProps) => {
   return (
     <Image
-      width={intrinsicWidth}
-      height={intrinsicHeight}
-      src={src}
-      alt={alt}
+      style={{ display: 'block', margin: '0 auto 2vh auto' }}
       placeholder="blur"
       blurDataURL="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=="
-      style={{
-        maxWidth: '100%',
-        height: 'auto',
-      }}
+      layout="intrinsic"
+      {...props}
     />
   );
 };
