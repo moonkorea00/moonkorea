@@ -377,7 +377,11 @@ promises.then(res => console.log('promises:', res));
 
 <br>
 
-<img src="/assets/markdown-image/Javascript-모듈/웹팩.png" alt="웹팩" width="650" height="400"/>
+<div style="max-width:650px; margin: auto">
+
+![웹팩](/assets/markdown-image/Javascript-모듈/웹팩.png)
+
+</div>
 
 <span>1.1 웹팩</span>
 

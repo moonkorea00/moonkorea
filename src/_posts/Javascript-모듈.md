@@ -33,7 +33,11 @@ date: '2023-10-15'
 
 <br>
 
-<img src="/assets/markdown-image/Javascript-모듈/모듈.png" alt="자바스크립트 모듈" width="650" height="400"/>
+<div style="max-width:650px; margin: auto">
+
+![자바스크립트 모듈](/assets/markdown-image/Javascript-모듈/모듈.png)
+
+</div>
 
 <span>1.1 모듈</span>
 

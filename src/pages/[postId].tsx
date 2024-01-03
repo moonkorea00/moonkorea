@@ -1,5 +1,6 @@
 import type { GetStaticPropsContext } from 'next';
 import type { MetaData } from '@@types/metaData';
+import type { ImageSizes } from '@api/image';
 import type { TableOfContents } from '@components/TableOfContents/types';
 
 import { Suspense } from 'react';
@@ -23,21 +24,22 @@ import useIsIntersected from '@hooks/useIsIntersected';
 interface PostPageProps {
   postFrontMatter: MetaData & {
     content: string;
+    imageSizes: ImageSizes;
     toc: TableOfContents;
   };
 }
 
 const Post = ({ postFrontMatter }: PostPageProps) => {
+  const { content, imageSizes } = postFrontMatter;
   const { isIntersected: isCommentSectionInView, ref } = useIsIntersected({
     once: true,
   });
-
   const { reset } = useQueryErrorResetBoundary();
 
   return (
     <>
       <Metadata metaData={postFrontMatter} />
-      <Markdown content={postFrontMatter.content} />
+      <Markdown content={content} imageSizes={imageSizes} />
       <CommentSectionPlaceholder
         id="comment-section"
         isIntersected={isCommentSectionInView}

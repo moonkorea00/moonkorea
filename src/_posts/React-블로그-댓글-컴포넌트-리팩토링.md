@@ -19,7 +19,11 @@ date: '2023-10-19'
 
 > 댓글의 댓글 같은 중첩 댓글이 있을 경우 list 컴포넌트를 다시 순회하는 구조
 
-<img src="/assets/markdown-image/React-댓글-컴포넌트-리팩토링/댓글-컴포넌트-트리.png" alt="댓글 컴포넌트 트리" width="600" height="600">
+<div style="max-width:600px; margin: auto">
+
+![댓글 컴포넌트 트리](/assets/markdown-image/React-댓글-컴포넌트-리팩토링/댓글-컴포넌트-트리.png)
+
+</div>
 
 <span>1.2 댓글 컴포넌트 트리</span>
 
@@ -29,7 +33,11 @@ date: '2023-10-19'
 
 <br>
 
-<img src="/assets/markdown-image/React-댓글-컴포넌트-리팩토링/댓글-컴포넌트.png" alt="블로그 댓글 컴포넌트" width="700" height="230">
+<div style="max-width:700px; margin: auto">
+
+![댓글 컴포넌트](/assets/markdown-image/React-댓글-컴포넌트-리팩토링/댓글-컴포넌트.png)
+
+</div>
 
 <span>1.1 블로그 댓글란</span>
 
@@ -417,7 +425,11 @@ const NewCommentForm = ({
 
 <br>
 
-<img src="/assets/markdown-image/React-댓글-컴포넌트-리팩토링/리팩토링-후.png" alt="블로그 댓글 컴포넌트" width="650" height="230">
+<div style="max-width:650px; margin: auto">
+
+![댓글 컴포넌트](/assets/markdown-image/React-댓글-컴포넌트-리팩토링/리팩토링-후.png)
+
+</div>
 
 <span>1.3 리팩토링 후</span>
 

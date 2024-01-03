@@ -12,30 +12,60 @@ date: '2022-07-24'
 Github Actions를 사용하기 위해서는 S3 접근 권한이 필요하기 때문에 **AWS IAM**(Identity and Access Management)으로 리소스에 대한 권한을 허용할 수 있습니다.
 1. **IAM - 액세스 관리 - 사용자**탭에서 S3에 접근할 수 있도록 사용자를 새로 추가합니다.
 
-<img src="/assets/markdown-image/Tutorial-AWS-s3-cicd-파이프라인-구축/add_user.png" alt="IAM 사용자 추가" width="650" height="600">
+<div style="max-width:650px; margin: auto">
+
+![IAM 사용자 추가](/assets/markdown-image/Tutorial-AWS-s3-cicd-파이프라인-구축/add_user.png)
+
+</div>
+
 <span>IAM - 사용자 추가</span>
 
 2. **사용자 이름** 등록 후 **액세스 키 - 프로그래밍 방식 액세스** 유형을 선택해 줍니다.
 
-<img src="/assets/markdown-image/Tutorial-AWS-s3-cicd-파이프라인-구축/user_details.png" alt="IAM 사용자 세부 정보 설정" width="550" height="400">
+<div style="max-width:550px; margin: auto">
+
+![IAM 사용자 세부 정보 설정](/assets/markdown-image/Tutorial-AWS-s3-cicd-파이프라인-구축/user_details.png)
+
+</div>
+
 <span>사용자 세부 정보 설정</span>
 
 3. **권한 설정**에서 **기존 정책 직접 연결** 선택 후 **AmazonS3FullAccess**를 선택해 줍니다. CloudFront 등 기타 권한 설정이 필요한 경우 알맞게 편집합니다.
 
-<img src="/assets/markdown-image/Tutorial-AWS-s3-cicd-파이프라인-구축/step2.png" alt="권한 설정" width="550" height="400">
+<div style="max-width:550px; margin: auto">
+
+![권한 설정](/assets/markdown-image/Tutorial-AWS-s3-cicd-파이프라인-구축/step2.png)
+
+</div>
+
 <span>권한 설정</span>
 
 4. 사용자 세부 정보 설정 단계까지 완료했으면 5단계까지 넘어갑니다. 사용자가 성공적으로 추가가 되었으면 사용자에 대한 **액세스 키 ID**와 **비밀 액세스 키**가 생성됩니다.
 
-<img src="/assets/markdown-image/Tutorial-AWS-s3-cicd-파이프라인-구축/keys.png" alt="사용자 추가" width="550" height="400">
+<div style="max-width:550px; margin: auto">
+
+![사용자 추가](/assets/markdown-image/Tutorial-AWS-s3-cicd-파이프라인-구축/keys.png)
+
+</div>
+
 <span>사용자 추가</span>
 
 5. Github Actions에서 해당 액세스 키 ID와 비밀 액세스 키를 활용해서 **Settings-Secrets-Actions**에 환경 변수로 등록해 줍니다. 아래와 같이 **AWS_ACCESS_KEY_ID**와 **AWS_SECRET_ACCESS_KEY**의 이름으로 환경 변수를 생성합니다. 해당 레포에 등록되어 있는 모든 collaborator는 secrets를 사용할 수 있습니다.
 
-<img src="/assets/markdown-image/Tutorial-AWS-s3-cicd-파이프라인-구축/access-key.png" alt="Actions secrets-액세스 키 ID-비밀 액세스 키" width="550" height="400">
+<div style="max-width:550px; margin: auto">
+
+![cloudfront 배포 생성](/assets/markdown-image/Tutorial-AWS-s3-cicd-파이프라인-구축/access-key.png)
+
+</div>
+
 <span>AWS_ACCESS_KEY_ID</span>
 
-<img src="/assets/markdown-image/Tutorial-AWS-s3-cicd-파이프라인-구축/secret-key.png" alt="Actions secrets-액세스 키 ID-비밀 액세스 키" width="550" height="400">
+<div style="max-width:550px; margin: auto">
+
+![Actions secrets-액세스 키 ID-비밀 액세스 키](/assets/markdown-image/Tutorial-AWS-s3-cicd-파이프라인-구축/secret-key.png)
+
+</div>
+
 <span>AWS_SECRET_ACCESS_KEY</span>
 
 6. 앱이 위치해있는 디렉토리에서 **.github** 폴더와 **workflows** 폴더를 생성합니다. main 브랜치에 push할 때마다 읽고 실행할 **some-script-name.yml** 파일을 만들어주세요.

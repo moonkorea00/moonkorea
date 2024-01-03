@@ -4,6 +4,7 @@ import fs from 'fs';
 import { join } from 'path';
 import matter from 'gray-matter';
 
+import { extractIntrinsicImageSize } from '@api/image';
 import {
   readFileContent,
   extractHeadings,
@@ -47,13 +48,15 @@ export const getPostById = async (id: string) => {
   const fileContent = readFileContent(postsDir, `${id}.md`);
   const { data, content } = matter(fileContent);
 
+  const imageSizes = await extractIntrinsicImageSize(content);
+
   const headings = extractHeadings(content);
   const tocTree = nestHeadingWithChildren(headings);
   const headingSlugs = headings.map(heading => convertToSlug(heading.value));
 
   const toc = { tocTree, headingSlugs };
 
-  return { id, ...data, content, toc };
+  return { id, ...data, content, imageSizes, toc };
 };
 
 const buildTagsCount = () => {

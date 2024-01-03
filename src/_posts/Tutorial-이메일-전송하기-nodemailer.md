@@ -1,13 +1,13 @@
 ---
 title: '사용자에게 이메일 전송하기 (nodemailer)'
 category: '튜토리얼 / 트러블슈팅'
-excerpt: 'nodemailer로 사용자에게 이메일을 보내 사용자 인증 프로세스를 처리하거나 알림의 기능이 필요한 경우의 과정을 다뤄보겠습니다. nodemailer 모듈은 발신자와 수신자 정보, 보낼 내용만 설정하여 간편하게 서드파티 앱에서 이메일을 보낼 수 있게 도와줍니다'
+excerpt: 'nodemailer를 사용해 사용자에게 이메일 알림이나 사용자 인증 메일을 보내야 하는 경우의 과정을 다뤄보겠습니다. nodemailer 모듈은 발신자와 수신자 정보, 보낼 내용만 설정하여 간편하게 서드파티 앱에서 이메일을 보낼 수 있게 도와줍니다'
 description: '비즈니스 계정으로 사용자에게 이메일 보내기'
 tags: '개발 경험, React.js, Next.js, 튜토리얼, 블로그'
 date: '2023-02-23'
 ---
 
-사용자에게 이메일을 보내 사용자 인증 프로세스를 처리하거나 이메일 알림 등을 보내야 하는 경우가 있는데요, 이번 글에서는 서버에서 사용자에게 이메일을 전송하는 방법에 대해 알아보겠습니다.
+사용자에게 이메일 알림이나 사용자 인증 메일을 보내야 하는 경우가 있는데요, 이번 글에서는 서버에서 사용자에게 이메일을 전송하는 방법에 대해 알아보겠습니다.
 
 &emsp;nodemailer는 <a href='https://nodemailer.com/about/' target='_blank'>공식문서</a>에 나와 있듯 'a module for Node.js applications to allow easy as cake email sending' 발신자와 수신자 정보, 보낼 내용만 설정하여 간편하게 서드파티 앱에서 이메일을 보낼 수 있게 도와줍니다.
 
@@ -15,7 +15,11 @@ date: '2023-02-23'
 
 &emsp;nodemailer를 통해서 이메일을 보내려면 유효한 이메일 계정이 필요합니다. 가장 간편한 방법으로 Gmail 계정을 발신자 계정으로 설정해서 사용할 수 있습니다. 서드파티 앱에게 접근권한을 설정하기 위해서 <a href='https://myaccount.google.com/security' target='_blank'>구글 계정</a>에 접속해 <b>보안 - Google에 로그인 - 앱 비밀번호</b> 항목에서 앱 비밀번호를 발급받아 본 계정의 비밀번호 대신 사용합니다.
 
-<img src="/assets/markdown-image/Tutorial-nodemailer/gmail_app_password.png" alt="Gmail 앱 비밀번호" width="450" height="400">
+<div style="max-width:450px; margin: auto">
+
+![Gmail 앱 비밀번호](/assets/markdown-image/Tutorial-nodemailer/gmail_app_password.png)
+
+</div>
 
 <span>1.1 Gmail 앱 비밀번호 발급</span>
 
@@ -155,27 +159,47 @@ const sendNotification = async (to: string[], subject: string, date: Date) => {
 
 1. Zoho에서 계정을 새로 <a href='https://www.zoho.com/mail/' target='_blank'>생성</a>합니다. 소유하고 있는 도메인을 기반으로 계정으로 생성할 거기 때문에 아래의 설정으로 진행합니다.
 
-<img src="/assets/markdown-image/Tutorial-nodemailer/zoho-signup.png" alt="zoho 가입" width="450" height="400">
+<div style="max-width:450px; margin: auto">
+
+![zoho 가입](/assets/markdown-image/Tutorial-nodemailer/zoho-signup.png)
+
+</div>
 
 <span>2.1 Zoho 계정 생성</span>
 
 2. 계정 생성 후 <a href='https://www.zoho.com/mail/' target='_blank'>메일 설정</a>을 계속 진행합니다. 소유하고 있는 도메인 이름과 기타 정보를 입력합니다.
 
-<img src="/assets/markdown-image/Tutorial-nodemailer/zoho-domain.png" alt="도메인 입력" width="450" height="400">
+<div style="max-width:450px; margin: auto">
+
+![도메인 입력](/assets/markdown-image/Tutorial-nodemailer/zoho-domain.png)
+
+</div>
 
 <span>2.2 도메인 입력</span>
 
 3. 도메인이 등록된 호스트의 도메인 설정 페이지에서 레코드를 추가합니다. 아래 2.4에서는 AWS를 예시로 <a href='https://us-east-1.console.aws.amazon.com/route53/v2/hostedzones#' target='_blank'>Route 53</a>에서 레코드를 생성했습니다. Vercel은 <b>Dashboard - <a href='https://vercel.com/dashboard/domains' target='_blank'>Domains</a></b>에서 DNS 설정을 하고 기타 도메인 프로바이더 계정은 각 DNS 페이지(DNS Manager, DNS Control Panel 등)에서 레코드를 생성합니다.
 
-<img src="/assets/markdown-image/Tutorial-nodemailer/zoho-dns.png" alt="레코드 추가" width="450" height="400">
+<div style="max-width:450px; margin: auto">
+
+![레코드 추가](/assets/markdown-image/Tutorial-nodemailer/zoho-dns.png)
+
+</div>
 
 <span>2.3 레코드</span>
 
-<img src="/assets/markdown-image/Tutorial-nodemailer/route53.png" alt="route53" width="500" height="500">
+<div style="max-width:500px; margin: auto">
+
+![route 53](/assets/markdown-image/Tutorial-nodemailer/route53.png)
+
+</div>
 
 <span>2.4 Route 53</span>
 
-<img src="/assets/markdown-image/Tutorial-nodemailer/txt-record.png" alt="txt-record" width="550" height="500">
+<div style="max-width:550px; margin: auto">
+
+![txt-record](/assets/markdown-image/Tutorial-nodemailer/txt-record.png)
+
+</div>
 
 <span>2.5 레코드 추가</span>
 
@@ -183,13 +207,21 @@ const sendNotification = async (to: string[], subject: string, date: Date) => {
 
 5. 도메인 이름 기반 계정을 새로 생성했으면 서드파티앱에서도 이메일을 사용할 수 있도록 two-factor authentication 설정을 합니다. TFA를 허용하면 기존 비밀번호 대신 Application Specific Password를 사용해서 인증 프로세스를 거치게 됩니다. <a href='https://mailadmin.zoho.com/cpanel/home.do#dashboard' target='_blank'>Zoho Mail Admin Console</a>에 로그인 후 <b>Security and Compliance 탭</b>에서 TFA를 허용합니다.
 
-<img src="/assets/markdown-image/Tutorial-nodemailer/TFA.png" alt="TFA 설정" width="550" height="500">
+<div style="max-width:550px; margin: auto">
+
+![TFA 설정](/assets/markdown-image/Tutorial-nodemailer/TFA.png)
+
+</div>
 
 <span>2.6 TFA 설정</span>
 
 6. <a href='https://accounts.zoho.com/home#profile/personal' target='_blank'>Zoho Accounts</a>에 로그인 후 <b>Security - App Paswords</b>탭에서 Application Specific Password를 새로 발급받습니다.
 
-<img src="/assets/markdown-image/Tutorial-nodemailer/TFA-password.png" alt="Application Specific Password" width="550" height="500">
+<div style="max-width:550px; margin: auto">
+
+![Application Specific Password](/assets/markdown-image/Tutorial-nodemailer/TFA-password.png)
+
+</div>
 
 <span>2.7 Application Specific Password</span>
 

@@ -13,7 +13,11 @@ date: '2023-12-16'
 
 <br>
 
-<img src='/assets/markdown-image/React-해시-링크/해시-링크.png' alt='해시 링크' width='700' height='420' />
+<div style="max-width:500px; margin: auto">
+
+![해시 링크](/assets/markdown-image/React-해시-링크/해시-링크.png)
+
+</div>
 
 <span>1.1 해시 링크</span>
 
@@ -100,7 +104,11 @@ const PostPage = ({ content }: PostPageProps) => {
 
 <br>
 
-<img src="/assets/markdown-image/React-해시-링크/마크다운-props.png" alt="마크다운 props" width="650" height="450" />
+<div style="max-width:650px; margin: auto">
+
+![마크다운 props](/assets/markdown-image/React-해시-링크/마크다운-props.png)
+
+</div>
 
 <span>1.2 heading 요소 props</span>
 

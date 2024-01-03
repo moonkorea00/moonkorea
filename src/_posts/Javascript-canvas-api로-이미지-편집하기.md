@@ -13,7 +13,11 @@ date: '2023-04-13'
 
 </br>
 
-<img src="/assets/markdown-image/Javascript-canvas-api/canvas.png" alt="canvas 요소" width="650" height="700"/>
+<div style="max-width:650px; margin: auto">
+
+![canvas api](/assets/markdown-image/Javascript-canvas-api/canvas.png)
+
+</div>
 
 <span>1.2 canvas 요소</span>
 
@@ -95,7 +99,11 @@ img.onload = () => {
 ```
 이미지 객체가 생성되면 onload() 이벤트로 콜백 함수를 호출합니다. 콜백은 새로 생성된 canvas 요소에 이미지 객체를 그리기 위해 drawImage() 메소드로 canvas요소에 이미지를 그리고 blob 객체의 화질을 조절해서 압축된 blob 객체를 반환합니다.
 
-<img src="/assets/markdown-image/Javascript-canvas-api/canvas_drawimage.png" alt="mdn drawImage()" width="300" height="330"/>
+<div style="max-width:350px; margin: auto">
+
+![mdn draw image](/assets/markdown-image/Javascript-canvas-api/canvas_drawimage.png)
+
+</div>
 
 <span>1.3 drawImage(), https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/drawImage</span>
 

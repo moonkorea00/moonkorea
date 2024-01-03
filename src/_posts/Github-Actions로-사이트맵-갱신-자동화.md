@@ -22,7 +22,7 @@ date: '2023-12-28'
 "/scripts" 폴더에 다음과 같이 스크립트를 작성합니다.
 
 ```shell
- # ping_google_search_console.sh
+ping_google_search_console.sh
 echo "running shell script"
 curl "https://google.com/ping?sitemap=https://[도메인]/sitemap.xml"
 echo "request sent to google"
@@ -32,7 +32,11 @@ echo "request sent to google"
 
 <br>
 
-<img src="/assets/markdown-image/Github-Actions로-sitemap-갱신-자동화/ping-google.png" alt="ping google" width="650" height="300">
+<div style="max-width:650px; margin: auto">
+
+![ping google](/assets/markdown-image/Github-Actions로-sitemap-갱신-자동화/ping-google.png)
+
+</div>
 
 <span>1.1 ping google</span>
 
@@ -43,7 +47,7 @@ echo "request sent to google"
 쉘 스크립트를 생성한 후, Pull Request가 main 브랜치에 머지될 때마다 해당 스크립트가 실행되도록 Workflow를 구축해 보겠습니다.
 
 ```yml
- # ping-google.yml
+ping-google.yml
 name: post merge workflow
 
 on:
@@ -81,7 +85,11 @@ main 브랜치 업데이트 후, Actions 탭에서 Workflow가 성공적으로 �
 
 <br>
 
-<img src="/assets/markdown-image/Github-Actions로-sitemap-갱신-자동화/post-merge-workflow.png" alt="github actions workflow" width="650" height="300">
+<div style="max-width:650px; margin: auto">
+
+![github actions workflow](/assets/markdown-image/Github-Actions로-sitemap-갱신-자동화/post-merge-workflow.png)
+
+</div>
 
 <span>1.2 post merge workflow</span>
 
@@ -91,7 +99,11 @@ main 브랜치 업데이트 후, Actions 탭에서 Workflow가 성공적으로 �
 
 <br>
 
-<img src="/assets/markdown-image/Github-Actions로-sitemap-갱신-자동화/성공.png" alt="색인 생성 결과" width="650" height="300"> 
+<div style="max-width:650px; margin: auto">
+
+![색인 생성 결과](/assets/markdown-image/Github-Actions로-sitemap-갱신-자동화/성공.png)
+
+</div>
 
 <span>1.3 색인 결과</span>
 

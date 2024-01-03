@@ -19,7 +19,11 @@ date: '2023-05-23'
 
 <br>
 
-<img src="/assets/markdown-image/Typescript-타입스크립트-쓰면-좋은-점/typescript-org.png" alt="typescriptlang.org" width="650" height="300"/>
+<div style="max-width:650px; margin: auto">
+
+![typescriptlang.org](/assets/markdown-image/Typescript-타입스크립트-쓰면-좋은-점/typescript-org.png)
+
+</div>
 
 <span>1.1 typescript, https://www.typescriptlang.org/</span>
 
@@ -206,7 +210,11 @@ console.log(doubleQuantity(-5) + 2); // error: Object is possibly 'undefined'.
 
 <br>
 
-<img src="/assets/markdown-image/Typescript-타입스크립트-쓰면-좋은-점/stackoverflow-ts.png" alt="typescriptlang.org" width="650" height="500"/>
+<div style="max-width:650px; margin: auto">
+
+![typescriptlang.org](/assets/markdown-image/Typescript-타입스크립트-쓰면-좋은-점/stackoverflow-ts.png)
+
+</div>
 
 <span>1.2 stackoverflow typescript, https://stackoverflow.blog/2021/05/05/getting-started-with-typescript/</span>
 

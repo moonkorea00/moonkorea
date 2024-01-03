@@ -19,15 +19,27 @@ date: '2023-06-01'
 
 <br>
 
-<img src="/assets/markdown-image/Tutorial-web-speech-api/github-issue.png" alt="github 이슈" width="550" height="300" />
+<div style="max-width:550px; margin: auto">
+
+![github issue](/assets/markdown-image/Tutorial-web-speech-api/github-issue.png)
+
+</div>
 
 <span>1.1 깃헙 이슈</span>
 
-<img src="/assets/markdown-image/Tutorial-web-speech-api/firefox-err.png" alt="firefox application error" width="800" height="300" />
+<div style="max-width:700px; margin: auto">
+
+![firefox application error](/assets/markdown-image/Tutorial-web-speech-api/firefox-err.png)
+
+</div>
 
 <span>1.2 Firefox</span>
 
-<img src="/assets/markdown-image/Tutorial-web-speech-api/opera-err.png" alt="opera application error" width="800" height="300" />
+<div style="max-width:700px; margin: auto">
+
+![opera application error](/assets/markdown-image/Tutorial-web-speech-api/opera-err.png)
+
+</div>
 
 <span>1.3 Opera</span>
 
@@ -43,7 +55,11 @@ const recognition = new SpeechRecognition();
 
 <br>
 
-<img src="/assets/markdown-image/Tutorial-web-speech-api/js-bundle.png" alt="opera application error" width="800" height="400" />
+<div style="max-width:700px; margin: auto">
+
+![opera application error](/assets/markdown-image/Tutorial-web-speech-api/js-bundle.png)
+
+</div>
 
 <span>1.4 자바스크립트 번들</span>
 
