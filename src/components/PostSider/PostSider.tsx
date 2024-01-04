@@ -13,10 +13,10 @@ import { assets } from '@utils/assetsPath';
 
 interface PostSiderProps {
   title: string;
-  excerpt: string;
+  description: string;
 }
 
-const PostSider = ({ title, excerpt }: PostSiderProps) => {
+const PostSider = ({ title, description }: PostSiderProps) => {
   const [isSocialSharePanelVisible, setIsSocialSharePanelVisible] =
     useState(false);
   const id = getPostId();
@@ -63,7 +63,7 @@ const PostSider = ({ title, excerpt }: PostSiderProps) => {
       {isSocialSharePanelVisible && (
         <SocialSharePanel
           title={title}
-          excerpt={excerpt}
+          description={description}
           onClose={onCloseSocialSharePanel}
           scrollDirection={scrollDirection}
         />

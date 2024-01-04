@@ -1,8 +1,8 @@
 ---
 title: 'a 태그의 noreferrer, noopener, nofollow'
 category: '웹'
-excerpt: 'HTML의 a 태그는 링크를 만드는 데 주로 사용됩니다. rel 속성 값에 따라 보안에 미치는 영향과 검색 엔진이 링크를 읽는 방식, 그리고 언제 어떤 값을 사용해야 하는지에 알아보겠습니다.'
-description: '언제 어떤 걸 써야 하나요?'
+description: 'HTML의 a 태그는 링크를 만드는 데 주로 사용됩니다. rel 속성 값에 따라 보안에 미치는 영향과 검색 엔진이 링크를 읽는 방식, 그리고 언제 어떤 값을 사용해야 하는지에 알아보겠습니다.'
+excerpt: '언제 어떤 걸 써야 하나요?'
 tags: 'SEO'
 date: '2023-05-18'
 ---

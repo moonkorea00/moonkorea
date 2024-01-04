@@ -7,11 +7,11 @@ import useIsIntersected from '@hooks/useIsIntersected';
 interface HeaderProps {
   title?: string;
   date?: string;
-  description?: string;
+  excerpt?: string;
   pageType?: string;
 }
 
-const Header = ({ title, date, description, pageType }: HeaderProps) => {
+const Header = ({ title, date, excerpt, pageType }: HeaderProps) => {
   const { isIntersected, ref } = useIsIntersected();
 
   return (
@@ -21,7 +21,7 @@ const Header = ({ title, date, description, pageType }: HeaderProps) => {
         <HeaderContent
           title={title}
           date={date}
-          description={description}
+          excerpt={excerpt}
           pageType={pageType}
         />
       </S.HeadingContainer>

@@ -15,14 +15,14 @@ import { assets } from '@utils/assetsPath';
 
 interface ShareSocialsProps {
   title: string;
-  excerpt: string;
+  description: string;
   onClose: () => void;
   scrollDirection: 'up' | 'down' | null;
 }
 
 const SocialSharePanel = ({
   title,
-  excerpt,
+  description,
   onClose,
   scrollDirection,
 }: ShareSocialsProps) => {
@@ -35,8 +35,8 @@ const SocialSharePanel = ({
     await window.Kakao.Share.sendDefault({
       objectType: 'feed',
       content: {
-        title: title,
-        description: excerpt,
+        title,
+        description,
         imageUrl: process.env.NEXT_PUBLIC_IMG_URL,
         link: {
           mobileWebUrl: process.env.NEXT_PUBLIC_DOMAIN_URL,

@@ -29,9 +29,9 @@ export const getAllPosts = () => {
     const fileContent = readFileContent(postsDir, fileName);
     const id = fileName.replace(/\.md$/, '');
     const { data } = matter(fileContent);
-    const { title, date, tags, description } = data;
+    const { title, date, tags, excerpt } = data;
 
-    return { id, title, date, tags, description };
+    return { id, title, date, tags, excerpt };
   });
 
   return postFrontMatter;

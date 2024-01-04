@@ -1,8 +1,8 @@
 ---
 title: 'debounce 동작 탐구와 적용기'
 category: '리액트'
-excerpt: '이번 글에서는 UI의 반응성과 성능을 개선할 수 있는 전략인 debounce의 동작 원리와 실용적인 사용 예시에 대해 알아보겠습니다.'
-description: '디바운스 동작 탐구'
+description: '이번 글에서는 UI의 반응성과 성능을 개선할 수 있는 전략인 debounce의 동작 원리와 실용적인 사용 예시에 대해 알아보겠습니다.'
+excerpt: '디바운스 동작 탐구'
 tags: 'JavaScript, React.js, Next.js, 렌더링, 성능, 개발 경험'
 date: '2023-04-16'
 ---

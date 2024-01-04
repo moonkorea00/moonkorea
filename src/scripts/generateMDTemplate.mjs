@@ -10,8 +10,8 @@ const parsedDate = `${year}-${month}-${date}`;
 const templateContent = `---
 title: '제목'
 category: '자바스크립트'
-excerpt: 'meta description'
-description: '한 줄 요약'
+description: 'meta description'
+excerpt: '한 줄 요약'
 tags: '블로그, 마크다운'
 date: '${parsedDate}'
 ---
