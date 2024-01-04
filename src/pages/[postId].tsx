@@ -1,5 +1,5 @@
 import type { GetStaticPropsContext } from 'next';
-import type { MetaData } from '@@types/metaData';
+import type { Post } from '@@types/post';
 import type { ImageSizes } from '@api/image';
 import type { TableOfContents } from '@components/TableOfContents/types';
 
@@ -22,15 +22,14 @@ import { getPostPaths, getPostById } from '@api/post';
 import useIsIntersected from '@hooks/useIsIntersected';
 
 interface PostPageProps {
-  postFrontMatter: MetaData & {
-    content: string;
+  post: Post & {
     imageSizes: ImageSizes;
     toc: TableOfContents;
   };
 }
 
-const Post = ({ postFrontMatter }: PostPageProps) => {
-  const { content, imageSizes } = postFrontMatter;
+const PostPage = ({ post }: PostPageProps) => {
+  const { title, excerpt, content, imageSizes } = post;
   const { isIntersected: isCommentSectionInView, ref } = useIsIntersected({
     once: true,
   });
@@ -38,7 +37,7 @@ const Post = ({ postFrontMatter }: PostPageProps) => {
 
   return (
     <>
-      <Metadata metaData={postFrontMatter} />
+      <Metadata metaData={post} />
       <Markdown content={content} imageSizes={imageSizes} />
       <CommentSectionPlaceholder
         id="comment-section"
@@ -52,15 +51,15 @@ const Post = ({ postFrontMatter }: PostPageProps) => {
           </Suspense>
         </ErrorBoundary>
       )}
-      <PostSider postFrontMatter={postFrontMatter} />
+      <PostSider title={title} excerpt={excerpt} />
     </>
   );
 };
 
-export default Post;
+export default PostPage;
 
-Post.getLayout = DefaultLayout;
-Post.pageType = 'post';
+PostPage.getLayout = DefaultLayout;
+PostPage.pageType = 'post';
 
 type PostParams = {
   postId: string;
@@ -77,9 +76,9 @@ export const getStaticProps = async ({
 }: GetStaticPropsContext<PostParams>) => {
   if (!params) return;
 
-  const postFrontMatter = await getPostById(params.postId);
+  const post = await getPostById(params.postId);
 
   return {
-    props: { postFrontMatter },
+    props: { post },
   };
 };

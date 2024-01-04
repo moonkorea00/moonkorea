@@ -1,5 +1,3 @@
-import type { MetaData } from '@@types/metaData';
-
 import * as S from './Header.style';
 import Nav from '../Nav/Nav';
 import HeaderContent from './HeaderContent/HeaderContent';
@@ -7,18 +5,25 @@ import HeaderContent from './HeaderContent/HeaderContent';
 import useIsIntersected from '@hooks/useIsIntersected';
 
 interface HeaderProps {
-  postFrontMatter?: MetaData;
+  title?: string;
+  date?: string;
+  description?: string;
   pageType?: string;
 }
 
-const Header = ({ postFrontMatter, pageType }: HeaderProps) => {
+const Header = ({ title, date, description, pageType }: HeaderProps) => {
   const { isIntersected, ref } = useIsIntersected();
 
   return (
     <S.Container ref={ref} id="header">
       <Nav isHeaderInView={isIntersected} />
       <S.HeadingContainer>
-        <HeaderContent pageType={pageType} postFrontMatter={postFrontMatter} />
+        <HeaderContent
+          title={title}
+          date={date}
+          description={description}
+          pageType={pageType}
+        />
       </S.HeadingContainer>
     </S.Container>
   );

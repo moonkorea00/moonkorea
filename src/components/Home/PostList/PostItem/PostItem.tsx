@@ -1,8 +1,15 @@
-import type { FrontMatter } from '@@types/metaData';
-import * as S from './PostItem.style';
+import type { HomePost } from '@@types/post';
+
 import Link from 'next/link';
 
-const PostItem = ({ id, title, date, description }: FrontMatter) => {
+import * as S from './PostItem.style';
+
+const PostItem = ({
+  id,
+  title,
+  date,
+  description,
+}: HomePost) => {
   return (
     <S.Container>
       <Link href={`/${id}`}>

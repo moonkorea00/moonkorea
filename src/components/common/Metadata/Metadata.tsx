@@ -1,8 +1,8 @@
-import type { MetaData } from '@@types/metaData';
+import type { Post } from '@@types/post';
 import Head from 'next/head';
 
 interface MetadataProps {
-  metaData?: Partial<Pick<MetaData, 'id' | 'excerpt' | 'title'>>;
+  metaData?: Partial<Pick<Post, 'id' | 'excerpt' | 'title'>>;
 }
 
 const Metadata = ({ metaData }: MetadataProps) => {

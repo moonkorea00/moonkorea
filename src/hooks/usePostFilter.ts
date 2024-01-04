@@ -1,10 +1,10 @@
-import type { FrontMatter } from '@@types/metaData';
+import type { HomePost } from '@@types/post';
 
 import useSearchParams from './useSearchParams';
 
 const key = 'tags';
 
-const usePostFilter = (posts: FrontMatter[]) => {
+const usePostFilter = (posts: HomePost[]) => {
   const { query, set, clear } = useSearchParams();
 
   const onSetFilter = (value: string) => set(key, value);

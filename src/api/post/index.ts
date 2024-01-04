@@ -1,4 +1,4 @@
-import type { FrontMatter } from '@@types/metaData';
+import type { HomePost } from '@@types/post';
 
 import fs from 'fs';
 import { join } from 'path';
@@ -25,7 +25,7 @@ export const getPostPaths = () => {
 };
 
 export const getAllPosts = () => {
-  const postFrontMatter = postFileNames.map(fileName => {
+  const postFrontMatter: HomePost[] = postFileNames.map(fileName => {
     const fileContent = readFileContent(postsDir, fileName);
     const id = fileName.replace(/\.md$/, '');
     const { data } = matter(fileContent);
@@ -39,9 +39,7 @@ export const getAllPosts = () => {
 
 export const getAllPostsSortedByDate = () => {
   const posts = getAllPosts();
-  return posts.sort((a: FrontMatter, b: FrontMatter) =>
-    a.date > b.date ? -1 : 1
-  );
+  return posts.sort((a: HomePost, b: HomePost) => (a.date > b.date ? -1 : 1));
 };
 
 export const getPostById = async (id: string) => {
