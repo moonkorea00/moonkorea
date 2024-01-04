@@ -19,7 +19,11 @@ date: '2023-09-15'
 
 <br>
 
-<img src="/assets/markdown-image/React-렌더단계-커밋단계/렌더-커밋.png" alt="렌더 단계 커밋 단계" width="700" height="850"/>
+<div style="max-width:700px; margin: auto">
+
+![렌더 단계 커밋 단계](/assets/markdown-image/React-렌더단계-커밋단계/렌더-커밋.png)
+
+</div>
 
 <span>1.1 렌더 단계와 커밋 단계</span>
 
@@ -99,7 +103,11 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
 
 <br>
 
-<img src="/assets/markdown-image/React-렌더단계-커밋단계/초기-렌더.png" alt="렌더 단계 초기 렌더" width="300" height="250"/>
+<div style="max-width:300px; margin: auto">
+
+![렌더 단계 초기 렌더](/assets/markdown-image/React-렌더단계-커밋단계/초기-렌더.png)
+
+</div>
 
 <span>1.2 렌더 단계 - 초기 렌더</span>
 
@@ -111,7 +119,11 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
 
 <br>
 
-<img src="/assets/markdown-image/React-렌더단계-커밋단계/리렌더.png" alt="렌더 단계 리렌더" width="450" height="400"/>
+<div style="max-width:450px; margin: auto">
+
+![렌더 단계 리렌더](/assets/markdown-image/React-렌더단계-커밋단계/리렌더.png)
+
+</div>
 
 <span>1.3 렌더 단계 - 리렌더</span>
 

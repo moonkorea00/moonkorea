@@ -1,5 +1,3 @@
-import type { MetaData } from '@@types/metaData';
-
 import { useRouter } from 'next/router';
 import {
   FacebookShareButton,
@@ -16,13 +14,15 @@ import useCopyToClipboard from '@hooks/useCopyToClipboard';
 import { assets } from '@utils/assetsPath';
 
 interface ShareSocialsProps {
-  postFrontMatter: MetaData;
+  title: string;
+  excerpt: string;
   onClose: () => void;
   scrollDirection: 'up' | 'down' | null;
 }
 
 const SocialSharePanel = ({
-  postFrontMatter,
+  title,
+  excerpt,
   onClose,
   scrollDirection,
 }: ShareSocialsProps) => {
@@ -35,8 +35,8 @@ const SocialSharePanel = ({
     await window.Kakao.Share.sendDefault({
       objectType: 'feed',
       content: {
-        title: postFrontMatter.title,
-        description: postFrontMatter.excerpt,
+        title: title,
+        description: excerpt,
         imageUrl: process.env.NEXT_PUBLIC_IMG_URL,
         link: {
           mobileWebUrl: process.env.NEXT_PUBLIC_DOMAIN_URL,

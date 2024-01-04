@@ -1,6 +1,16 @@
 import type { NestedHeading } from '@components/Markdown/types';
 
+import fs from 'fs';
+import { join } from 'path';
+
 import { convertToSlug } from '@utils/markdown';
+
+export const readFileContent = (dir: string, fileName: string) => {
+  const filePath = join(dir, fileName);
+  const fileContent = fs.readFileSync(filePath, 'utf8');
+
+  return fileContent;
+};
 
 export const extractHeadings = (content: string) => {
   const lines = content.split('\n');

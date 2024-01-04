@@ -18,7 +18,11 @@ date: '2023-08-24'
 
 <br>
 
-<img src="/assets/markdown-image/React-렌더링-재조정/재조정-과정.png" alt="재조정" width="650" height="700"/>
+<div style="max-width:650px; margin: auto">
+
+![재조정](/assets/markdown-image/React-렌더링-재조정/재조정-과정.png)
+
+</div>
 
 <span>1.1 재조정</span>
 
@@ -57,8 +61,11 @@ ReactDOM.render(<Main />, document.getElementById('root'));
 
 앱이 실행되면 리액트는 주어진 컴포넌트 트리를 순회하면서 JSX를 변환하고 가상 DOM 노드를 생성하는데요, 생성된 가상 DOM 트리는 다음과 같이 만들어집니다.
 
+<div style="max-width:600px; margin: auto">
 
-<img src="/assets/markdown-image/React-렌더링-재조정/가상DOM.png" alt="가상 DOM 트리" width="600" height="600"/>
+![가상돔](/assets/markdown-image/React-렌더링-재조정/가상DOM.png)
+
+</div>
 
 <span>1.2 가상 DOM</span>
 
@@ -102,7 +109,11 @@ const virtualDOM = {
 
 앱이 실행된 후 사용자와 상호작용 등으로 상태 업데이트가 감지되면 리액트는 변화가 일어난 컴포넌트를 기준으로 재조정을 시작하고 새로운 가상 DOM을 생성합니다.
 
-<img src="/assets/markdown-image/React-렌더링-재조정/변경된-가상DOM.png" alt="가상 DOM" width="600" height="600"/>
+<div style="max-width:600px; margin: auto">
+
+![가상돔](/assets/markdown-image/React-렌더링-재조정/변경된-가상DOM.png)
+
+</div>
 
 <span>1.3 새로운 가상 DOM</span>
 
@@ -149,7 +160,11 @@ function Component() {
 
 <br>
 
-<img src="/assets/markdown-image/React-렌더링-재조정/VDOM-다른타입요소.png" alt="가상 DOM" width="500" height="500" />
+<div style="max-width:500px; margin: auto">
+
+![가상돔](/assets/markdown-image/React-렌더링-재조정/VDOM-다른타입요소.png)
+
+</div>
 
 <span>1.4 가상 DOM - 요소의 타입이 다른 경우</span>
 
@@ -161,7 +176,11 @@ function Component() {
 
 <br>
 
-<img src="/assets/markdown-image/React-렌더링-재조정/가상DOM-다른타입-자식-컴포넌트.png" alt="가상 DOM" width="500" height="400" />
+<div style="max-width:500px; margin: auto">
+
+![가상돔](/assets/markdown-image/React-렌더링-재조정/가상DOM-다른타입-자식-컴포넌트.png)
+
+</div>
 
 <span>1.5 가상 DOM - 요소의 타입이 다른 경우</span>
 

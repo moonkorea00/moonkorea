@@ -19,7 +19,11 @@ date: '2023-03-12'
 
 &emsp;익스텐션 개발에 앞서, 네이버 맞춤법 검사기가 원문을 어떻게 검사해서 교정 결과를 화면에 출력하는지 먼저 파악했어요.
 
-<img src="/assets/markdown-image/vscode-맞춤법-검사-extension-생성기/서버-응답.png" alt="네이버 맞춤법 검사기" width="900" height="900"/>
+<div style="max-width:700px; margin: auto">
+
+![네이버 맞춤법 검사기](/assets/markdown-image/vscode-맞춤법-검사-extension-생성기/서버-응답.png)
+
+</div>
 
 <span>1.1 네이버 맞춤법 검사기 응답</span>
 
@@ -99,9 +103,17 @@ date: '2023-03-12'
 
 &emsp;본 익스텐션은 맞춤법 오류가 극단적으로 많으면 서버 응답까지의 소요 시간이 길어져요(최대 2초. 서버, 네트워크 상태에 따라 상이).
 
-<img src="/assets/markdown-image/vscode-맞춤법-검사-extension-생성기/낮은-응답-시간.png" alt="Korean Grammar Checker 응답 시간" width="650" height="650"/>
+<div style="max-width:650px; margin: auto">
 
-<img src="/assets/markdown-image/vscode-맞춤법-검사-extension-생성기/높은-응답-시간.png" alt="Korean Grammar Checker 응답 시간" width="650" height="650"/>
+![Korean Grammar Checker 응답 시간](/assets/markdown-image/vscode-맞춤법-검사-extension-생성기/낮은-응답-시간.png)
+
+</div>
+
+<div style="max-width:650px; margin: auto">
+
+![Korean Grammar Checker 응답 시간](/assets/markdown-image/vscode-맞춤법-검사-extension-생성기/높은-응답-시간.png)
+
+</div>
 
 <span>1.3 응답 시간</span>
 

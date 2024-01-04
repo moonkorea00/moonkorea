@@ -13,7 +13,11 @@ date: '2022-11-23'
 
 </br>
 
-<img src="/assets/markdown-image/React-렌더링-최적화-1/React_home.png" alt="리액트" width="860" height="260"/>
+<div style="max-width:700px; margin: auto">
+
+![리액트](/assets/markdown-image/React-렌더링-최적화-1/React_home.png)
+
+</div>
 
 <span>1.1 React, https://reactjs.org/</span>
 
@@ -44,7 +48,11 @@ DOM이 업데이트되고 화면에 변경된 사항들이 그려지는 과정�
 
 <br>
 
-<img src="/assets/markdown-image/React-렌더링-최적화-1/VDOM.png" alt="Virtual DOM" width="700" height="450"/>
+<div style="max-width:700px; margin: auto">
+
+![가상돔](/assets/markdown-image/React-렌더링-최적화-1/VDOM.png)
+
+</div>
 
 <span>1.2 React Virtual DOM Explained in Simple English, https://programmingwithmosh.com/react/react-virtual-dom-explained/</span>
 

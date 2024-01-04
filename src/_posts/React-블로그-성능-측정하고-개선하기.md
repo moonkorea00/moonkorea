@@ -17,13 +17,21 @@ date: '2023-03-25'
 
 &emsp;서버에서 gif 파일을 전달받는 블로그 포스트 페이지의 성능 섹션부터 확인해 보겠습니다. 개선 사항으로 비디오 포맷의 사용을 권장하고 있습니다.
 
-<img src="/assets/markdown-image/React-블로그-성능-측정/performance.png" alt="lighthouse performance" width="550" height="300" />
+<div style="max-width:550px; margin: auto">
+
+![lighthouse 성능](/assets/markdown-image/React-블로그-성능-측정/performance.png)
+
+</div>
 
 <span>1.1 Performance</span>
 
 블로그의 gif 리소스들은 지연 로딩과 자동 리사이징 등을 지원하는 next/Image 컴포넌트로 관리했는데요, 페이지 로딩 속도만큼 중요한 것이 사용자가 콘텐츠를 보고 읽는 시점에 미디어 데이터가 매끄럽게 준비되는거라고 생각해요. 이미지같은 경우 리소스를 다운로드하기 전까지 placeholder로 대체할 수 있겠지만 화면에 보여지기까지 시간을 더 필요로하는 미디어 파일들의 경우 파일 크기에 따라 상이하겠지만 화면에 원활하게 출력되기까지 몇 초 기다려야 하는 경우가 있었어요.
 
-<img src="/assets/markdown-image/React-블로그-성능-측정/서버-응답.png" alt="gif 서버 응답" width="800" height="600" />
+<div style="max-width:700px; margin: auto">
+
+![gif 서버 응답](/assets/markdown-image/React-블로그-성능-측정/서버-응답.png)
+
+</div>
 
 <span>1.2 gif 다운로드 시간</span>
 
@@ -31,11 +39,19 @@ date: '2023-03-25'
 
 WebM 포맷은 gif보다 훨씬 적은 용량으로 여러 브라우저 환경에서도 호환이 가능한 미디어 파일 포맷입니다. readme를 작성할 때 gif를 애용해서 사용해왔던지라 앱에서의 성능 고려는 해보지 않았었는데 WebM 포맷으로 변환 전과 후로 서버에서 넘어오는 응답을 확인해 보겠습니다.
 
-<img src="/assets/markdown-image/React-블로그-성능-측정/gif-assets.png" alt="gif 응답" width="800" height="300" />
+<div style="max-width:700px; margin: auto">
+
+![gif 응답](/assets/markdown-image/React-블로그-성능-측정/gif-assets.png)
+
+</div>
 
 <span>1.3 개선 전</span>
 
-<img src="/assets/markdown-image/React-블로그-성능-측정/webM-assets.png" alt="WebM 응답" width="800" height="300" />
+<div style="max-width:800px; margin: auto">
+
+![webM 응답](/assets/markdown-image/React-블로그-성능-측정/webM-assets.png)
+
+</div>
 
 <span>1.4 개선 후</span>
 
@@ -47,7 +63,11 @@ WebM 포맷은 gif보다 훨씬 적은 용량으로 여러 브라우저 환경�
 
 &#9432;&emsp;개선 사항 : UI 색채 대비
 
-<img src="/assets/markdown-image/React-블로그-성능-측정/접근성.png" alt="접근성" width="500" height="300" />
+<div style="max-width:500px; margin: auto">
+
+![접근성](/assets/markdown-image/React-블로그-성능-측정/접근성.png)
+
+</div>
 
 <span>1.5 색 대비</span>
 
@@ -63,13 +83,21 @@ WebM 포맷은 gif보다 훨씬 적은 용량으로 여러 브라우저 환경�
 
 &#9432;&emsp;개선 사항 : 외부 api 관련 로컬 쿠키 사용 이슈
 
-<img src="/assets/markdown-image/React-블로그-성능-측정/쿠키-이슈.png" alt="쿠키 이슈" width="500" height="300" />
+<div style="max-width:500px; margin: auto">
+
+![쿠키 이슈](/assets/markdown-image/React-블로그-성능-측정/쿠키-이슈.png)
+
+</div>
 
 <span>1.6 쿠키 관련 이슈</span>
 
 &emsp;본 블로그는 챗봇 시스템으로 <a href="https://channel.io/ko" target="_blank">채널톡</a>을 사용하고 있어요. 검사 결과 로컬 쿠키와 관련된 이슈가 출력됐는데 제품 팀에 문의해 보니 로컬 쿠키는 사용자 인증과 판별에만 사용되고 보안적으로는 문제가 되지 않는다는 답변을 받았어요. 출력된 이슈는 추측건대 쿠키가 자바스크립트로 조작이 가능해서 lighthouse에서 유의하고 인지하라는 정도로 생각돼요.
 
-<img src="/assets/markdown-image/React-블로그-성능-측정/문의.png" alt="채널톡" width="350" height="300" />
+<div style="max-width:350px; margin: auto">
+
+![채널톡](/assets/markdown-image/React-블로그-성능-측정/문의.png)
+
+</div>
 
 <span>1.7 쿠키 관련 이슈</span>
 
@@ -89,7 +117,11 @@ WebM 포맷은 gif보다 훨씬 적은 용량으로 여러 브라우저 환경�
 
 ## SEO
 
-<img src="/assets/markdown-image/React-블로그-성능-측정/SEO.png" alt="SEO" width="130" height="50" />
+<div style="max-width:130px; margin: auto">
+
+![SEO](/assets/markdown-image/React-블로그-성능-측정/SEO.png)
+
+</div>
 
 <span>1.9 SEO</span>
 

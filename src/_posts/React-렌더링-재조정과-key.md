@@ -39,7 +39,11 @@ date: '2023-08-25'
 
 <br>
 
-<img src="/assets/markdown-image/React-재조정과-key/정상-재조정.png" alt="가상 DOM 자식 요소 재귀적 처리" width="500" height="500"/>
+<div style="max-width:500px; margin: auto">
+
+![DOM의 재귀척 처리](/assets/markdown-image/React-재조정과-key/정상-재조정.png)
+
+</div>
 
 <span>1.1 자식 요소에 대한 재귀적 처리</span>
 
@@ -72,7 +76,11 @@ date: '2023-08-25'
 
 <br>
 
-<img src="/assets/markdown-image/React-재조정과-key/비효율적-재조정.png" alt="가상 DOM 자식 요소 재귀적 처리" width="500" height="500" />
+<div style="max-width:500px; margin: auto">
+
+![DOM의 재귀척 처리](/assets/markdown-image/React-재조정과-key/비효율적-재조정.png)
+
+</div>
 
 <span>1.2 비효율적인 재조정 과정</span>
 
@@ -120,7 +128,11 @@ List.js
 
 <br>
 
-<img src="/assets/markdown-image/React-재조정과-key/리스트-key.png" alt="재조정 key" width="500" height="500"/>
+<div style="max-width:500px; margin: auto">
+
+![재조정 key](/assets/markdown-image/React-재조정과-key/리스트-key.png)
+
+</div>
 
 <span>1.3 순서가 바뀌더라도 타입과 key가 동일하기 때문에 렌더 간 요소를 재사용</span>
 

@@ -11,7 +11,6 @@ date: '2023-02-28'
 
 &emsp;Next.js는 서버 사이드 렌더 전략에 따라 리소스가 빌드 타임에 생성된 정적 파일로 제공되거나 매 요청마다 서버에서 생성되어 클라이언트에게 전달됩니다. 빌드 타임에 생성되는 리소스들에 대해 살펴보고 이 리소스들이 서버로부터 클라이언트에게 어느 시점 전달되어 어떻게 사용되는지 간략하게 알아보겠습니다.
 
-
 ## 빌드
 
 현재 읽고 있는 블로그의 소스코드가 업로드된 레포로 빌드 디렉토리를 만들어보겠습니다.
@@ -21,7 +20,11 @@ shell
 npm run build
 ```
 
-<img src="/assets/markdown-image/React-NextJS-빌드-리소스/build-output.png" alt="NextJS 빌드" width="560" height="330">
+<div style="max-width:560px; margin: auto">
+
+![next.js 빌드](/assets/markdown-image/React-NextJS-빌드-리소스/build-output.png)
+
+</div>
 
 <span>1.1 빌드 결과</span>
 
@@ -46,7 +49,11 @@ First Load JS테이블은 리소스의 크기가 더 큰 것으로 보아 다양
 
 다음으로 폴더 루트에 생성된 빌드 폴더를 살펴보겠습니다.
 
-<img src="/assets/markdown-image/React-NextJS-빌드-리소스/build-directory.png" alt="빌드 폴더" width="400" height="100">
+<div style="max-width:400px; margin: auto">
+
+![next.js 빌드 폴더](/assets/markdown-image/React-NextJS-빌드-리소스/build-directory.png)
+
+</div>
 
 <span>1.2 빌드 폴더</span>
 
@@ -60,7 +67,11 @@ First Load JS테이블은 리소스의 크기가 더 큰 것으로 보아 다양
 
 &emsp;먼저 순서대로 <b>.next/cache</b> 폴더부터 살펴보겠습니다. cache 폴더에는 빌드 캐시와 서버 사이드 렌더링 파일(이미지, 페이지 등)들의 캐시가 관리됩니다. 빌드 캐시는 추후 빌드 시에 재사용되기 때문에 일정 인터벌을 두고 매번 빌드를 요청하는 앱같은 경우 잘 활용하면 효율적으로 빌드 전략을 구축할 수 있을 거 같습니다.
 
-<img src="/assets/markdown-image/React-NextJS-빌드-리소스/cache-folder.png" alt="cache 폴더" width="400" height="150">
+<div style="max-width:400px; margin: auto">
+
+![next.js cache](/assets/markdown-image/React-NextJS-빌드-리소스/cache-folder.png)
+
+</div>
 
 <span>1.3 .next/cache</span>
 
@@ -70,7 +81,11 @@ First Load JS테이블은 리소스의 크기가 더 큰 것으로 보아 다양
 
 &emsp;<b>.next/server</b> 폴더에는 컴파일된 서버 사이드 코드, 즉 서버 사이드 렌더링, 라우팅, API 엔드포인트를 담당하는 서버 사이드 로직의 파일들로 구성돼 있습니다. 서버 사이드 코드는 Next 서버에서 페이지 콘텐츠를 그릴 pre-rendering에 사용됩니다. 따라서 클라이언트 브라우저로는 전송되지 않습니다.
 
-<img src="/assets/markdown-image/React-NextJS-빌드-리소스/server-folder.png" alt="server 폴더" width="400" height="150">
+<div style="max-width:400px; margin: auto">
+
+![next.js server](/assets/markdown-image/React-NextJS-빌드-리소스/server-folder.png)
+
+</div>
 
 <span>1.4 .next/server</span>
 
@@ -87,7 +102,11 @@ First Load JS테이블은 리소스의 크기가 더 큰 것으로 보아 다양
 - 이미지 최적화 : 이미지 리소스는 resize, compress 등 WebP와 같은 포맷으로 변환해서 저장됩니다.
 - 코드 스플리팅 : 자바스크립트 코드는 빌드 타임에 작은 단위(chunk)로 나뉘어 번들링됩니다. 클라이언트에서 렌더링에 필요한 자원들을 그때그때 요청에 따라 받아서 사용합니다.
 
-<img src="/assets/markdown-image/React-NextJS-빌드-리소스/static-folder.png" alt="static 폴더" width="400" height="100">
+<div style="max-width:400px; margin: auto">
+
+![next.js static](/assets/markdown-image/React-NextJS-빌드-리소스/static-folder.png)
+
+</div>
 
 <span>1.5 .next/static</span>
 
@@ -95,7 +114,11 @@ First Load JS테이블은 리소스의 크기가 더 큰 것으로 보아 다양
 
 &emsp;NextJS는 어떤 페이지에 어떤 자바스크립트 Chunk가 필요한지를 빌드 타임에 생성된 <b>build-manifest파일</b>을 통해서 파악합니다. 페이지 간 이동이 발생하면 NextJS는 manifest 파일에서 페이지와 매핑된 Chunk를 찾아 클라이언트에게 전달합니다. 웹팩 런타임 파일들은 manifest 파일에 의존해서 클라이언트 사이드에 자바스크립트 chunk를 로드하고 실행합니다.
 
-<img src="/assets/markdown-image/React-NextJS-빌드-리소스/manifest-json.png" alt="build-manifest" width="400" height="100">
+<div style="max-width:400px; margin: auto">
+
+![nextj.js 빌드 manifest](/assets/markdown-image/React-NextJS-빌드-리소스/manifest-json.png)
+
+</div>
 
 <span>1.6 build-manifest.json</span>
 

@@ -23,8 +23,17 @@ date: '2023-03-01'
 
 먼저 HTML 응답을 확인해 보겠습니다.
 
-<img src="/assets/markdown-image/React-NextJS-빌드-리소스/html-prerender.png" alt="HTML" width="550" height="100">
-<img src="/assets/markdown-image/React-NextJS-빌드-리소스/html-prerender-response.png" alt="HTML" width="550" height="100">
+<div style="max-width:550px; margin: auto">
+
+![HTML](/assets/markdown-image/React-NextJS-빌드-리소스/html-prerender.png)
+
+</div>
+
+<div style="max-width:550px; margin: auto">
+
+![HTML](/assets/markdown-image/React-NextJS-빌드-리소스/html-prerender-response.png)
+
+</div>
 
 <span>1.2 HTML</span>
 
@@ -38,9 +47,17 @@ date: '2023-03-01'
 
 > 해당 페이지의 청크가 로딩되면 런타임 코드는 해당 스크립트를 실행하고 동적으로 자바스크립트 객체를 생성합니다. 클라이언트는 넘겨받은 결과 HTML를 읽으며 이벤트 리스너가 달려야 하는 DOM위치를 찾아 'hydrate'된 컴포넌트로 페이지를 업데이트합니다.
 
-<img src="/assets/markdown-image/React-NextJS-빌드-리소스/webpack-manifest(index).png" alt="페이지 chunk" width="550" height="80">
+<div style="max-width:550px; margin: auto">
 
-<img src="/assets/markdown-image/React-NextJS-빌드-리소스/browser-webpack-manifest(index).png" alt="페이지 chunk" width="550" height="120">
+![페이지 chunk](/assets/markdown-image/React-NextJS-빌드-리소스/webpack-manifest(index).png)
+
+</div>
+
+<div style="max-width:550px; margin: auto">
+
+![페이지 chunk](/assets/markdown-image/React-NextJS-빌드-리소스/browser-webpack-manifest(index).png)
+
+</div>
 
 <span>1.3 페이지, chunk 매핑</span>
 
@@ -56,8 +73,17 @@ date: '2023-03-01'
 
 &emsp;우리가 따로 구현하지 않아도 라우팅, pre-fetching, 코드 스플리팅 등의 기능은 프레임워크 코드인 framework.js가 대신해주는 것으로 보입니다. main.js는 클라이언트에서 사용할 리액트 코드로 페이지의 컴포넌트를 렌더링하고 클라이언트 상태를 관리할 클라이언트 사이드 스크립트입니다. framework.js는 앱 전반에 사용될 공통 코드인 반면 main.js는 페이지 요청에 따라 새로운 스크립트로 서빙됩니다. 다만 NextJS의 디폴트 캐싱 설정으로 전부 브라우저 메모리에 저장되어 캐시로 재사용됩니다.
 
-<img src="/assets/markdown-image/React-NextJS-빌드-리소스/default-cache-control.png" alt="캐싱" width="550" height="120">
-<img src="/assets/markdown-image/React-NextJS-빌드-리소스/memory-cache.png" alt="캐싱" width="550" height="120">
+<div style="max-width:550px; margin: auto">
+
+![캐싱](/assets/markdown-image/React-NextJS-빌드-리소스/default-cache-control.png)
+
+</div>
+
+<div style="max-width:550px; margin: auto">
+
+![캐싱](/assets/markdown-image/React-NextJS-빌드-리소스/memory-cache.png)
+
+</div>
 
 <span>1.5 캐싱</span>
 
@@ -67,7 +93,11 @@ date: '2023-03-01'
 
 HTML과 클라이언트 스크립트뿐만 아니라 이미지 데이터도 응답에 포함돼있습니다.
 
-<img src="/assets/markdown-image/React-NextJS-빌드-리소스/image-response.png" alt="webP 이미지" width="550" height="120">
+<div style="max-width:550px; margin: auto">
+
+![webP](/assets/markdown-image/React-NextJS-빌드-리소스/image-response.png)
+
+</div>
 
 <span>1.6 이미지 데이터</span>
 
@@ -87,7 +117,11 @@ HTML과 클라이언트 스크립트뿐만 아니라 이미지 데이터도 응�
 
 > Link pre-fetching은 뷰포트 내 next/Link 컴포넌트를 찾아 백그라운드에서 해당 라우트의 페이지 데이터를 미리 요청해서 받아옵니다.
 
-<img src="/assets/markdown-image/React-NextJS-빌드-리소스/json-cache.png" alt="json 캐시" width="550" height="120">
+<div style="max-width:550px; margin: auto">
+
+![json 캐시](/assets/markdown-image/React-NextJS-빌드-리소스/json-cache.png)
+
+</div>
 
 <span>1.8 캐싱</span>
 

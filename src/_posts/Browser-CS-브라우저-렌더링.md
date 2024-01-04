@@ -9,7 +9,11 @@ date: '2022-07-06'
 
 &emsp;웹 브라우저는 프론트엔드 개발자들이 만든 앱이 실행되는 환경이자 우리가 일상생활에서 가장 많이 사용하는 소프트웨어일 것입니다. 사용자에게 웹 페이지를 그려주는 일을 하기 위해 주소창에 url이 입력된 시점부터 웹 페이지가 보여지기까지 화면 뒤에서 무수히 많은 작업들을 합니다.
 
-<img src="/assets/markdown-image/Browser-브라우저-렌더링/google.png" alt="브라우저 주소창 검색" width="560" height="330">
+<div style="max-width:560px; margin: auto">
+
+![브라우저 주소창 검색](/assets/markdown-image/Browser-브라우저-렌더링/google.png)
+
+</div>
 
 <span>1.1 브라우저에 google.com을 입력하면 어떻게 될까요?</span>
 
@@ -21,7 +25,11 @@ date: '2022-07-06'
 
 &emsp;브라우저의 렌더링 엔진은 HTML을 파싱하여 모든 노드들을 트리 자료구조인 DOM트리를 생성합니다. 파싱 과정 중에 렌더링 엔진이 style 태그를 만나면 HTML 파싱 작업을 중지하고 CSS 파싱을 통해 CSSOM트리를 생성합니다. 각 HTML과 CSS 인풋은 document에 적용 될 콘텐츠와 스타일을 규정합니다.
 
-<img src="/assets/markdown-image/Browser-브라우저-렌더링/domcssom.png" alt="DOM CSSOM" width="800" height="350">
+<div style="max-width:700px; margin: auto">
+
+![DOM CSSOM](/assets/markdown-image/Browser-브라우저-렌더링/domcssom.png)
+
+</div>
 
 <span>1.2 Render-tree Construction, Layout, and Paint, https://web.dev/critical-rendering-path-render-tree-construction/</span>
 
@@ -33,7 +41,11 @@ date: '2022-07-06'
 
 &emsp;렌더링 엔진은 본격적으로 화면에 웹 페이지를 그리기 위해 DOM트리와 CSSOM트리를 합쳐 렌더트리를 생성합니다. 렌더트리는 document 객체부터 각 노드들을 순회하면서 화면에 표시되어야 할 모든 콘텐츠, 스타일 정보와 함께 렌더에 필요한 노드만 선택해서 포함시킵니다. meta 태크 또는 display: none 속성을 가진 노드들은 렌더되는 출력값에 포함되지 않기 때문에 렌더트리에서 제외됩니다.
 
-<img src="/assets/markdown-image/Browser-브라우저-렌더링/render-tree.png" alt="렌더 트리 render tree" width="750" height="330">
+<div style="max-width:700px; margin: auto">
+
+![렌더 트리](/assets/markdown-image/Browser-브라우저-렌더링/render-tree.png)
+
+</div>
 
 <span>1.3 Render-tree Construction, Layout, and Paint, https://web.dev/critical-rendering-path-render-tree-construction/</span>
 

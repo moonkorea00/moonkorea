@@ -23,7 +23,11 @@ date: '2023-05-18'
 
 &emsp;noreferrer는 링크에 연결된 외부 페이지에게 사용자가 온 경로에 대한 정보를 마스킹 처리합니다. 페이지 A에서 B로 이동할 때 브라우저는 페이지 B의 페이지를 렌더링하고자 서버에 요청을 보내게 되는데 HTTP 요청 헤더에 리퍼러(referer) 정보를 담아 전송합니다. 이 때 리퍼러 정보는 이전 페이지의 url을 비롯한 정보를 말합니다. 페이지 B의 웹마스터는 통상 이러한 정보를 사용자 통계, 추적, 분석 등에 활용합니다.
 
-<img src="/assets/markdown-image/Browser-a-태그의-a 태그의 noopener-noreferrer-nofollow/request-header.png" alt="HTTP 요청 헤더" width="500" height="500"/>
+<div style="max-width:500px; margin: auto">
+
+![HTTP-요청-헤더](/assets/markdown-image/noopener-noreferrer-nofollow/request-header.png)
+
+</div>
 
 <span>1.1 HTTP 요청 헤더</span>
 
@@ -37,7 +41,11 @@ date: '2023-05-18'
 
 &emsp;nofollow는 noreferrer와 반대의 역할을 해요. 리퍼러 트래픽 정보는 유지한 채 페이지 내 링크에 대한 검색엔진의 크롤링을 막아요. nofollow를 사용하면 검색 엔진 크롤러가 링크를 따라가지 않고 해당 링크를 통해 전달되는 페이지의 순위에도 영향을 주지 않습니다. 신뢰할 수 없는 링크, 댓글란에 사용자가 남긴 url과 같은 성격의 링크에 사용할 수 있을 거 같아요.
 
-<img src="/assets/markdown-image/Browser-a-태그의-a 태그의 noopener-noreferrer-nofollow/nofollow.png" alt="스팸" width="500" height="500"/>
+<div style="max-width:500px; margin: auto">
+
+![스팸](/assets/markdown-image/noopener-noreferrer-nofollow/nofollow.png)
+
+</div>
 
 <span>1.2 스팸, https://clever-solution.com/everything-you-need-to-know-about-rel-noopener-noreferrer-tags-purpose-benefits-and-seo-impact<span/>
 

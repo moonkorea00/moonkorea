@@ -1,14 +1,14 @@
-import * as S from './CustomMarkdown.style';
-import type { HTMLAttributes } from 'react';
-import type { ImageProps } from 'next/image';
+import type { HTMLAttributes, ReactNode } from 'react';
 import type { BaseReactPlayerProps } from 'react-player/base';
-import type { HeadingWithLinkProps } from '../types';
+import type { MarkdownImageProps, HeadingWithLinkProps } from '../types';
 
 import Image from 'next/image';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { githubGist } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
+
+import * as S from './CustomMarkdown.style';
 
 import useHashLink from '@hooks/useHashLink';
 import useCopyToClipboard from '@hooks/useCopyToClipboard';
@@ -30,10 +30,13 @@ export const MDIframe = dynamic(
 export const MarkdownCode = ({
   children,
 }: // eslint-disable-next-line @typescript-eslint/ban-types
-PropsWithStrictChildren<{}, string[]>) => {
+PropsWithStrictChildren<{}, ReactNode[]>) => {
   const code = children.join();
   const title = code.substring(0, code.indexOf('\n'));
-  const content = code.substring(code.indexOf('\n') + 1, code.lastIndexOf('\n'));
+  const content = code.substring(
+    code.indexOf('\n') + 1,
+    code.lastIndexOf('\n')
+  );
 
   const { isCopied, onCopy } = useCopyToClipboard();
 
@@ -66,14 +69,28 @@ PropsWithStrictChildren<{}, string[]>) => {
   );
 };
 
-export const MarkdownImage = (props: ImageProps) => {
+export const MarkdownImage = ({
+  src,
+  alt,
+  imageSizes,
+  ...rest
+}: MarkdownImageProps) => {
+  const imgSource = decodeURI(src as string);
+  const { intrinsicWidth, intrinsicHeight } = imageSizes[imgSource];
+
   return (
     <Image
-      style={{ display: 'block', margin: '0 auto 2vh auto' }}
+      {...rest}
+      width={intrinsicWidth}
+      height={intrinsicHeight}
+      src={src}
+      alt={alt}
       placeholder="blur"
       blurDataURL="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=="
-      layout="intrinsic"
-      {...props}
+      style={{
+        maxWidth: '100%',
+        height: 'auto',
+      }}
     />
   );
 };
@@ -81,11 +98,11 @@ export const MarkdownImage = (props: ImageProps) => {
 export const MarkdownVideo = (props: BaseReactPlayerProps) => {
   return (
     <ReactPlayer
+      {...props}
       url={props.url}
       playing={true}
       loop={true}
       muted={true}
-      {...props}
     />
   );
 };

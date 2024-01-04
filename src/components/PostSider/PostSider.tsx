@@ -1,5 +1,3 @@
-import type { MetaData } from '@@types/metaData';
-
 import { useState } from 'react';
 
 import * as S from './PostSider.style';
@@ -14,10 +12,11 @@ import { getPostId } from '@components/Comments/Comments.utils';
 import { assets } from '@utils/assetsPath';
 
 interface PostSiderProps {
-  postFrontMatter: MetaData;
+  title: string;
+  excerpt: string;
 }
 
-const PostSider = ({ postFrontMatter }: PostSiderProps) => {
+const PostSider = ({ title, excerpt }: PostSiderProps) => {
   const [isSocialSharePanelVisible, setIsSocialSharePanelVisible] =
     useState(false);
   const id = getPostId();
@@ -63,7 +62,8 @@ const PostSider = ({ postFrontMatter }: PostSiderProps) => {
       </S.SiderButton>
       {isSocialSharePanelVisible && (
         <SocialSharePanel
-          postFrontMatter={postFrontMatter}
+          title={title}
+          excerpt={excerpt}
           onClose={onCloseSocialSharePanel}
           scrollDirection={scrollDirection}
         />

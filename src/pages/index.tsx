@@ -1,4 +1,4 @@
-import type { FrontMatter } from '@@types/metaData';
+import type { HomePost } from '@@types/post';
 
 import Metadata from '@components/common/Metadata/Metadata';
 import DefaultLayout from '@components/common/Layout/DefaultLayout/DefaultLayout';
@@ -9,11 +9,11 @@ import { getAllPostsSortedByDate, getPostTags } from '@api/post';
 import usePostFilter from '@hooks/usePostFilter';
 
 interface HomePageProps {
-  posts: FrontMatter[];
+  posts: HomePost[];
   tags: Record<string, number>;
 }
 
-const Home = ({ posts, tags }: HomePageProps) => {
+const HomePage = ({ posts, tags }: HomePageProps) => {
   const {
     filteredPosts,
     selectedOptions,
@@ -37,9 +37,9 @@ const Home = ({ posts, tags }: HomePageProps) => {
   );
 };
 
-export default Home;
+export default HomePage;
 
-Home.getLayout = DefaultLayout;
+HomePage.getLayout = DefaultLayout;
 
 export const getStaticProps = async () => {
   const posts = getAllPostsSortedByDate();

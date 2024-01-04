@@ -9,7 +9,11 @@ date: '2022-12-26'
 
 &emsp;Google 검색은 자동화된 검색엔진으로 정기적으로 웹을 탐색하며 웹에 대한 정보를 수집(**크롤링**)하고 Google index(**색인**)에 추가할 페이지들을 찾습니다. 신기하게도 구글은 페이지에 대한 정보를 수집할 때 사용자가 웹페이지에서 상호작용 경험을 어떻게 인식하는지를 측정하기 위해 사용자가 페이지에 접근하는 방식과 유사하게 Chrome을 사용해서 페이지를 렌더링합니다. 우리는 웹 마스터 도구를 사용해서 구글에 직접 도메인을 등록하고 색인 생성을 요청해 페이지에 대한 정보를 제공할 수 있으나 구글 검색 결과에서 반환되는 정보(페이지)들은 대부분 웹 크롤러라는 소프트웨어가 탐색하여 자동으로 추가된 결과들입니다. 이 검색 결과들은 페이지의 콘텐츠 품질, 모바일 친화성, 사용자 중심의 웹 퍼포먼스를 평가해 검색 랭킹을 결정하는 메트릭인 Core Web Vitals 등 다양한 메트릭들로 평가되어 검색 순위와 검색 노출 여부가 결정됩니다.
 
-<img src='/assets/markdown-image/Browser-core-web-vitals/core-web-vitals-google-search-engine.jpeg' alt='구글 검색 엔진' width='550' height='400'>
+<div style="max-width:550px; margin: auto">
+
+![구글 검색 엔진](/assets/markdown-image/Browser-core-web-vitals/core-web-vitals-google-search-engine.jpeg)
+
+</div>
 
 <span>1.1, 구글 검색 엔진, https://www.aa.com.tr/en/science-technology/google-abuses-search-engine-dominance-in-france-eana/1597993</span>
 
@@ -35,7 +39,11 @@ URL 검색 과정을 통해 페이지의 URL을 발견하면 해당 페이지의
 
 > 구글은 페이지의 색인을 차단하는 로봇 메타태그를 만날 경우 색인 생성을 하지 않습니다.
 
-<img src="/assets/markdown-image/Browser-core-web-vitals/clustering.png" alt="구글 검색 엔진 클러스터링" width='550' height='400'>
+<div style="max-width:550px; margin: auto">
+
+![구글 검색 엔진](/assets/markdown-image/Browser-core-web-vitals/clustering.png)
+
+</div>
 
 <span>1.2, 구글 검색 클러스터링</span>
 
@@ -47,7 +55,11 @@ URL 검색 과정을 통해 페이지의 URL을 발견하면 해당 페이지의
 >
 > 구글이 평가하는 메트릭들에 대한 더 자세한 내용과 개선할 수 있는 방법은 <a href="https://developers.google.com/search/docs/essentials?hl=ko" target=”_blank”>여기서</a> 확인 할 수 있습니다.
 
-<img src="/assets/markdown-image/Browser-core-web-vitals/core-web-vitals-2.png" alt="구글이 앱을 처리하는 방식" width='550' height='400'>
+<div style="max-width:550px; margin: auto">
+
+![구글 검색 엔진](/assets/markdown-image/Browser-core-web-vitals/core-web-vitals-2.png)
+
+</div>
 
 <span>1.3, 구글이 앱을 처리하는 방식, https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics?hl=ko</span>
 
