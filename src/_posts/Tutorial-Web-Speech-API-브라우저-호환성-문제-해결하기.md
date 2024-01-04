@@ -1,8 +1,8 @@
 ---
 title: 'Web Speech API 브라우저 호환성 문제 해결하기'
 category: '튜토리얼 / 트러블슈팅'
-excerpt: '브라우저 간의 Web Speech API(SpeechRecognition API) 크로스 브라우징 문제를 해결하는 방법에 대해 알아봅니다.'
-description: '웹 API 크로스 브라우징 문제 대응하기'
+description: '브라우저 간의 Web Speech API(SpeechRecognition API) 크로스 브라우징 문제를 해결하는 방법에 대해 알아봅니다.'
+excerpt: '웹 API 크로스 브라우징 문제 대응하기'
 tags: 'JavaScript, 개발 경험, React.js'
 date: '2023-06-01'
 ---

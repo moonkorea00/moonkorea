@@ -8,4 +8,4 @@ export interface Post {
   content: string;
 }
 
-export type HomePost = Omit<Post, 'excerpt' | 'content'>;
+export type HomePost = Omit<Post, 'description' | 'content'>;

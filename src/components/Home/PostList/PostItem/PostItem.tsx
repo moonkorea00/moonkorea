@@ -8,13 +8,13 @@ const PostItem = ({
   id,
   title,
   date,
-  description,
+  excerpt,
 }: HomePost) => {
   return (
     <S.Container>
       <Link href={`/${id}`}>
         <S.Title>{title}</S.Title>
-        <S.Description>{description}</S.Description>
+        <S.Description>{excerpt}</S.Description>
         <S.PublishDate>{date.replaceAll('-', '.')}</S.PublishDate>
       </Link>
     </S.Container>

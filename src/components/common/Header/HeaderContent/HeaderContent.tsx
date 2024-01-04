@@ -4,19 +4,19 @@ import PostHeader from '../PostHeader/PostHeader';
 interface HeaderContentProps {
   title?: string;
   date?: string;
-  description?: string;
+  excerpt?: string;
   pageType?: string;
 }
 
 const HeaderContent = ({
   title,
   date,
-  description,
+  excerpt,
   pageType,
 }: HeaderContentProps) => {
   switch (pageType) {
     case 'post':
-      return <PostHeader title={title} date={date} description={description} />;
+      return <PostHeader title={title} date={date} excerpt={excerpt} />;
     case '404':
       return <S.Heading>404</S.Heading>;
     default:

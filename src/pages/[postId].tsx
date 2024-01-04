@@ -29,7 +29,7 @@ interface PostPageProps {
 }
 
 const PostPage = ({ post }: PostPageProps) => {
-  const { title, excerpt, content, imageSizes } = post;
+  const { title, description, content, imageSizes } = post;
   const { isIntersected: isCommentSectionInView, ref } = useIsIntersected({
     once: true,
   });
@@ -51,7 +51,7 @@ const PostPage = ({ post }: PostPageProps) => {
           </Suspense>
         </ErrorBoundary>
       )}
-      <PostSider title={title} excerpt={excerpt} />
+      <PostSider title={title} description={description} />
     </>
   );
 };

@@ -2,7 +2,7 @@ import type { Post } from '@@types/post';
 import Head from 'next/head';
 
 interface MetadataProps {
-  metaData?: Partial<Pick<Post, 'id' | 'excerpt' | 'title'>>;
+  metaData?: Partial<Pick<Post, 'id' | 'description' | 'title'>>;
 }
 
 const Metadata = ({ metaData }: MetadataProps) => {
@@ -13,7 +13,7 @@ const Metadata = ({ metaData }: MetadataProps) => {
     <Head>
       <title>{metaData?.title || TITLE}</title>
       <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <meta name="description" content={metaData?.excerpt || DESCRIPTION} />
+      <meta name="description" content={metaData?.description || DESCRIPTION} />
       <meta
         property="og:url"
         content={
@@ -26,7 +26,7 @@ const Metadata = ({ metaData }: MetadataProps) => {
       <meta property="og:title" content={metaData?.title || TITLE} />
       <meta
         property="og:description"
-        content={metaData?.excerpt || DESCRIPTION}
+        content={metaData?.description || DESCRIPTION}
       />
       <meta property="og:image" content={process.env.NEXT_PUBLIC_IMG_URL} />
       {/* Twitter */}
@@ -41,7 +41,7 @@ const Metadata = ({ metaData }: MetadataProps) => {
       />
       <meta
         name="twitter:description"
-        content={metaData?.excerpt || DESCRIPTION}
+        content={metaData?.description || DESCRIPTION}
       />
       <meta name="twitter:image" content={process.env.NEXT_PUBLIC_IMG_URL} />
     </Head>
