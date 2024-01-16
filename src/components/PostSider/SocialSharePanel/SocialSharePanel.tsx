@@ -5,6 +5,7 @@ import {
   FacebookIcon,
   TwitterIcon,
 } from 'react-share';
+import Image from 'next/image';
 
 import * as S from './SocialSharePanel.style';
 import OutsideClickWrapper from '@components/common/OutsideClickWrapper/OutsideClickWrapper';
@@ -76,7 +77,13 @@ const SocialSharePanel = ({
             <TwitterIcon size={40} round={true} />
           </TwitterShareButton>
           <S.KakaoShareButton onClick={onShareWithKakaoAndCloseModal}>
-            <S.KakaoIcon src={assets.kakao} alt="카카오톡 공유" />
+            <Image
+              src={assets.kakao}
+              alt="카카오톡 공유"
+              width={40}
+              height={40}
+              sizes="40px"
+            />
           </S.KakaoShareButton>
         </S.ShareIconContainer>
         <S.CopyURLContainer>
@@ -85,9 +92,13 @@ const SocialSharePanel = ({
             disabled={isCopied}
             onClick={() => onCopy(window.location.href)}
           >
-            <S.CopyURLIcon
+            <Image
               src={isCopied ? assets.check : assets.copy}
               alt="복사"
+              width={18}
+              height={18}
+              sizes="18px"
+              priority
             />
           </S.CopyURLButton>
         </S.CopyURLContainer>

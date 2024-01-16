@@ -25,7 +25,7 @@ const Nav = ({ isHeaderInView }: NavProps) => {
             <S.LogoContainer isHeaderInView={isHeaderInView}>
               <Image
                 src={favicon}
-                alt="moonkorea"
+                alt="moonkorea 개발 블로그"
                 width={30}
                 height={30}
               ></Image>

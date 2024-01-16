@@ -46,7 +46,7 @@ export const getPostById = async (id: string) => {
   const fileContent = readFileContent(postsDir, `${id}.md`);
   const { data, content } = matter(fileContent);
 
-  const imageSizes = await extractIntrinsicImageSize(content);
+  const imageProps = await extractIntrinsicImageSize(content);
 
   const headings = extractHeadings(content);
   const tocTree = nestHeadingWithChildren(headings);
@@ -54,7 +54,7 @@ export const getPostById = async (id: string) => {
 
   const toc = { tocTree, headingSlugs };
 
-  return { id, ...data, content, imageSizes, toc };
+  return { id, ...data, content, imageProps, toc };
 };
 
 const buildTagsCount = () => {
