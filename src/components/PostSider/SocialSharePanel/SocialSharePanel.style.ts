@@ -74,8 +74,3 @@ export const CopyURLButton = styled.button`
   background-color: inherit;
   padding-left: 0;
 `;
-
-export const CopyURLIcon = styled.img`
-  width: 18px;
-  height: 18px;
-`;
