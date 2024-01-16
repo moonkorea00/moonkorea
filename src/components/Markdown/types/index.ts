@@ -1,6 +1,6 @@
 import type { HTMLAttributes, ReactNode } from 'react';
 import type { ImageProps } from 'next/image';
-import type { ImageSizes } from '@api/image';
+import type { ImageProps as MDImageProps } from '@api/image';
 
 export type HeadingWithLinkProps = PropsWithStrictChildren<
   { level: number },
@@ -14,7 +14,7 @@ export type NestedHeading = HeadingWithLinkProps & {
 };
 
 export interface MarkdownImageProps extends ImageProps {
-  imageSizes: ImageSizes;
+  imageProps: MDImageProps;
 }
 
 export type CustomMarkdownComponents = {

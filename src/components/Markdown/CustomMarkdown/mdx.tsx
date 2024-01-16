@@ -72,21 +72,19 @@ PropsWithStrictChildren<{}, ReactNode[]>) => {
 export const MarkdownImage = ({
   src,
   alt,
-  imageSizes,
+  imageProps,
   ...rest
 }: MarkdownImageProps) => {
   const imgSource = decodeURI(src as string);
-  const { intrinsicWidth, intrinsicHeight } = imageSizes[imgSource];
-
   return (
     <Image
       {...rest}
-      width={intrinsicWidth}
-      height={intrinsicHeight}
+      {...imageProps[imgSource]}
       src={src}
       alt={alt}
+      quality={100}
       placeholder="blur"
-      blurDataURL="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBABbWyZJf74GZgAAAABJRU5ErkJggg=="
+      sizes="(max-width: 699px) 100vw, 700px"
       style={{
         maxWidth: '100%',
         height: 'auto',

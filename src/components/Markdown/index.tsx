@@ -2,16 +2,16 @@ import type { CustomMarkdownComponents } from './types';
 
 import Reactmarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
-import { ImageSizes } from '@api/image';
+import { ImageProps } from '@api/image';
 
 import * as MDX from './CustomMarkdown/mdx';
 
 interface MarkdownProps {
   content: string;
-  imageSizes: ImageSizes;
+  imageProps: ImageProps;
 }
 
-const Markdown = ({ content, imageSizes }: MarkdownProps) => {
+const Markdown = ({ content, imageProps }: MarkdownProps) => {
   const markdownComponents: CustomMarkdownComponents = {
     h1: MDX.HeadingWithLink,
     h2: MDX.HeadingWithLink,
@@ -22,7 +22,7 @@ const Markdown = ({ content, imageSizes }: MarkdownProps) => {
     img: props => (
       <MDX.MarkdownImage
         {...props}
-        imageSizes={imageSizes}
+        imageProps={imageProps}
         src={props.src}
         alt={props.alt}
       />
