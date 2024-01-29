@@ -1,29 +1,45 @@
 import type { HomePost } from '@@types/post';
 
-import useSearchParams from './useSearchParams';
+import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 
 const key = 'tags';
 
 const usePostFilter = (posts: HomePost[]) => {
-  const { query, set, clear } = useSearchParams();
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
 
-  const onSetFilter = (value: string) => set(key, value);
+  const params = new URLSearchParams(searchParams);
+  const values = params.getAll(key);
 
-  const onResetFilter = () => clear();
+  const onSetFilter = (value: string) => {
+    if (values.includes(value)) {
+      params.delete(key);
+      values.forEach(initialValue => {
+        if (initialValue !== value) params.append(key, initialValue);
+      });
+      router.replace(pathname + '?' + params.toString());
+    } else {
+      params.append(key, value);
+      router.replace(pathname + '?' + params.toString());
+    }
+  };
 
-  const selectedOptions = query.tags;
+  const onResetFilter = () => router.replace(pathname);
 
-  const isOptionSelected = (value: string) => !!selectedOptions?.includes(value);
+  const isResettable = !!values.length;
 
-  const filteredPosts = query.tags?.length
+  const isOptionSelected = (value: string) => values?.includes(value);
+
+  const filteredPosts = values.length
     ? posts.filter(post =>
-        post.tags.split(', ').some(tag => query.tags?.includes(tag))
+        post.tags.split(', ').some(tag => values.includes(tag))
       )
     : posts;
 
   return {
     filteredPosts,
-    selectedOptions,
+    isResettable,
     isOptionSelected,
     onSetFilter,
     onResetFilter,

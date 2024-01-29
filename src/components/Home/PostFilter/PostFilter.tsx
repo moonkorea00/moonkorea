@@ -5,7 +5,7 @@ import { assets } from '@utils/assetsPath';
 
 interface PostFilterProps {
   options: Record<string, number>;
-  selectedOptions?: string | string[];
+  isResettable: boolean;
   isOptionSelected: (value: string) => boolean;
   onSetFilter: (value: string) => void;
   onResetFilter: () => void;
@@ -13,7 +13,7 @@ interface PostFilterProps {
 
 const PostFilter = ({
   options,
-  selectedOptions,
+  isResettable,
   isOptionSelected,
   onSetFilter,
   onResetFilter,
@@ -31,10 +31,7 @@ const PostFilter = ({
           />
         ))}
       </S.FilterList>
-      <S.ResetFilterButton
-        onClick={onResetFilter}
-        shouldRender={selectedOptions}
-      >
+      <S.ResetFilterButton onClick={onResetFilter} shouldRender={isResettable}>
         <img src={assets.reset} alt="초기화" />
         <span>초기화</span>
       </S.ResetFilterButton>

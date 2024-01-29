@@ -17,7 +17,7 @@ export const FilterList = styled.div`
 `;
 
 export const ResetFilterButton = styled.button<{
-  shouldRender?: string | string[];
+  shouldRender: boolean;
 }>`
   display: flex;
   align-items: center;
