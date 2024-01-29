@@ -1,9 +1,9 @@
 import * as S from './PostHeader.style';
 
 interface PostHeaderProps {
-  title?: string;
-  date?: string;
-  excerpt?: string;
+  title: string;
+  date: string;
+  excerpt: string;
 }
 
 const PostHeader = ({ title, date, excerpt }: PostHeaderProps) => {
