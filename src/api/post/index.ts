@@ -1,4 +1,4 @@
-import type { HomePost } from '@@types/post';
+import type { HomePost, PagePost } from '@@types/post';
 
 import fs from 'fs';
 import { join } from 'path';
@@ -18,7 +18,7 @@ const postFileNames = fs.readdirSync(postsDir);
 export const getPostPaths = () => {
   const paths = postFileNames.map(fileName => {
     const path = fileName.replace(/\.md$/, '');
-    return { params: { postId: path } };
+    return { postId: path };
   });
 
   return paths;
@@ -42,9 +42,10 @@ export const getAllPostsSortedByDate = () => {
   return posts.sort((a: HomePost, b: HomePost) => (a.date > b.date ? -1 : 1));
 };
 
-export const getPostById = async (id: string) => {
-  const fileContent = readFileContent(postsDir, `${id}.md`);
+export const getPostById = async (id: string): Promise<PagePost> => {
+  const fileContent = readFileContent(postsDir, `${decodeURI(id)}.md`);
   const { data, content } = matter(fileContent);
+  const { title, date, description, excerpt } = data;
 
   const imageProps = await extractIntrinsicImageSize(content);
 
@@ -54,7 +55,7 @@ export const getPostById = async (id: string) => {
 
   const toc = { tocTree, headingSlugs };
 
-  return { id, ...data, content, imageProps, toc };
+  return { title, date, description, excerpt, content, imageProps, toc };
 };
 
 const buildTagsCount = () => {
