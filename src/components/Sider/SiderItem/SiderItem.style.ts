@@ -1,15 +1,15 @@
 import styled, { css } from 'styled-components';
 
 interface ContainerProps {
-  isPostSelected: boolean;
+  isSiderItemActive: boolean;
 }
 
 export const Container = styled.li<ContainerProps>`
   ${({ theme }) => theme.flexDefault};
   padding-left: 12px;
 
-  ${({ isPostSelected }) =>
-    isPostSelected &&
+  ${({ isSiderItemActive }) =>
+    isSiderItemActive &&
     css`
       margin-left: 4px;
       border-radius: 4px;

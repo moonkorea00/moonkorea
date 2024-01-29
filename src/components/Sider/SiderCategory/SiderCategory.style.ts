@@ -5,7 +5,7 @@ interface TitleProps {
 }
 
 interface NavItemContainerProps {
-  isSubCategoryOpen: boolean;
+  isCategoryOpen: boolean;
   height: number;
 }
 
@@ -20,12 +20,10 @@ export const CategoryContainer = styled.div`
   ${({ theme }) => theme.flexDefault};
 `;
 
-export const Title = styled.span``;
-
-export const CategoryItem = styled.span<TitleProps>`
+export const Category = styled.span<TitleProps>`
   margin-left: 10px;
   font-size: 0.9em;
-  font-weight: ${({ isActive }) => isActive && '900'};
+  font-weight: ${({ isActive }) => isActive && '800'};
   cursor: pointer;
 `;
 
@@ -34,10 +32,10 @@ export const TotalPosts = styled.span`
   font-size: 14px;
 `;
 
-export const NavItemContainer = styled.div<NavItemContainerProps>`
-  ${({ isSubCategoryOpen, height }) => css`
-    height: ${isSubCategoryOpen ? `${height}px` : '0px'};
-    opacity: ${isSubCategoryOpen ? '1' : '0.1'};
+export const CategoryItemContainer = styled.div<NavItemContainerProps>`
+  ${({ isCategoryOpen, height }) => css`
+    height: ${isCategoryOpen ? `${height}px` : '0px'};
+    opacity: ${isCategoryOpen ? '1' : '0.1'};
   `}
   transition: all 0.25s ease-in-out;
   overflow: hidden;

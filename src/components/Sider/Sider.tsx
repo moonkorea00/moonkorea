@@ -1,5 +1,5 @@
 import * as S from './Sider.style';
-import NavCategory from './NavCategory/NavCategory';
+import SiderCategory from './SiderCategory/SiderCategory';
 import OutsideClickWrapper from '@components/common/OutsideClickWrapper/OutsideClickWrapper';
 
 import SIDER_DATA from '@data/sider.json';
@@ -14,8 +14,13 @@ const Sider = ({ isSiderVisible, onCloseSider }: SiderProps) => {
     <OutsideClickWrapper onClickHandler={onCloseSider} triggerKey="Escape">
       <S.Container isSiderVisible={isSiderVisible}>
         <S.CloseButton onClick={onCloseSider}>&#10005;</S.CloseButton>
-        {SIDER_DATA.map(item => (
-          <NavCategory key={item.name} {...item} onCloseSider={onCloseSider} />
+        {SIDER_DATA.map(({ name, posts }) => (
+          <SiderCategory
+            key={name}
+            name={name}
+            posts={posts}
+            onCloseSider={onCloseSider}
+          />
         ))}
       </S.Container>
     </OutsideClickWrapper>
