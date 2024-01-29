@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { Container, CommentCount } from '../CommentSection.style';
+import { Container, CommentCount } from '../CommentSection/CommentSection.style';
 import { Container as CommentFormContainer } from '../CommentForm/CommentForm.style';
 
 const PlaceholderMixin = css`

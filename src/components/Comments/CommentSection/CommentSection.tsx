@@ -1,8 +1,10 @@
 import * as S from './CommentSection.style';
-import NewCommentForm from './CommentForm/NewCommentForm';
-import CommentList from './CommentList/CommentList';
+import NewCommentForm from '../CommentForm/NewCommentForm';
+import CommentList from '../CommentList/CommentList';
+
 import { useGetComments } from '@api/hooks/Comments/query';
-import { getPostId } from './Comments.utils';
+
+import { getPostId } from '../Comments.utils';
 
 const CommentSection = () => {
   const postId = getPostId();

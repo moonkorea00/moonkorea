@@ -1,3 +1,5 @@
+'use client';
+
 import type { TableOfContents as ITableOfContents } from './types';
 
 import * as S from './TableOfContents.style';
