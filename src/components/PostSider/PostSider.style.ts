@@ -13,7 +13,6 @@ export const Container = styled.section<SiderContainerProps>`
   ${({ theme }) => theme.flexColumn};
   gap: 16px;
   margin-top: 60px;
-  background-color: white;
   opacity: ${({ isMounted }) => (isMounted ? 1 : 0)};
 
   @media screen and (max-width: 1024px) {
