@@ -20,7 +20,7 @@ const generateOpenGraphImage = async (req: NextRequest) => {
     const type = searchParams.get('type');
 
     const font = await fetch(
-      new URL('./fonts/Pretendard-ExtraBold.woff', import.meta.url)
+      new URL('public/assets/fonts/Pretendard-ExtraBold.woff', import.meta.url)
     );
     const fontData = await font.arrayBuffer();
 
