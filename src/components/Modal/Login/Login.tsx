@@ -16,7 +16,7 @@ const LoginModal = ({ onClose }: LoginModalProps) => {
   const [isOAuthServerLoading, setIsOAuthServerLoading] = useState(false);
 
   return (
-    <Overlay type='backdrop'>
+    <Overlay type="backdrop">
       <OutsideClickWrapper onClickHandler={onClose as VoidFunction}>
         <S.Container>
           <S.ButtonWrapper>
@@ -58,11 +58,5 @@ const OAUTH_LOGIN_DATA = [
     img_src: '/assets/OAuth/github.svg',
     alt: 'github',
     platform: 'github',
-  },
-  {
-    text: 'Facebook 계정으로 로그인',
-    img_src: '/assets/OAuth/facebook.svg',
-    alt: 'facebook',
-    platform: 'facebook',
   },
 ];

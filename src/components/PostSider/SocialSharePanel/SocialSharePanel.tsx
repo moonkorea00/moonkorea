@@ -1,4 +1,4 @@
-import { useRouter } from 'next/router';
+import { useParams } from 'next/navigation';
 import {
   FacebookShareButton,
   TwitterShareButton,
@@ -27,10 +27,10 @@ const SocialSharePanel = ({
   onClose,
   scrollDirection,
 }: ShareSocialsProps) => {
-  const { asPath } = useRouter();
+  const { postId } = useParams();
   const { isCopied, onCopy } = useCopyToClipboard();
 
-  const fullURL = `${process.env.NEXT_PUBLIC_DOMAIN_URL}${asPath}`;
+  const fullURL = `${process.env.NEXT_PUBLIC_DOMAIN_URL}/${postId}`;
 
   const onShareWithKakao = async () => {
     await window.Kakao.Share.sendDefault({

@@ -1,3 +1,5 @@
+'use client';
+
 import type { CustomMarkdownComponents } from './types';
 
 import Reactmarkdown from 'react-markdown';

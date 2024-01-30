@@ -20,7 +20,8 @@ export const Title = styled.h1`
 
 export const Description = styled.p`
   font-size: 22px;
-  font-weight: 500;
+  font-weight: 400;
+  letter-spacing: -0.8px;
 
   @media screen and (max-width: 768px) {
     font-size: 18px;

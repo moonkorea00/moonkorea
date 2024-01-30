@@ -1,5 +1,8 @@
-import * as S from './ErrorWithRedirection.style';
+'use client';
+
 import Link from 'next/link';
+
+import * as S from './ErrorWithRedirection.style';
 
 interface ErrorWithRedirectionProps {
   href?: string;

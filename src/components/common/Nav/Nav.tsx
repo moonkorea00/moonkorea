@@ -1,9 +1,12 @@
-import * as S from './Nav.style';
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+
+import * as S from './Nav.style';
 import Sider from '@components/Sider/Sider';
+
 import useLockBodyScroll from '@hooks/useLockBodyScroll';
+
 import favicon from 'public/assets/favicon/moonkorea.png';
 
 interface NavProps {
@@ -20,31 +23,31 @@ const Nav = ({ isHeaderInView }: NavProps) => {
   return (
     <>
       <S.Container isHeaderInView={isHeaderInView}>
-        <S.FlexBox isHeaderInView={isHeaderInView}>
+        <S.FlexContainer>
           <Link href="/">
-            <S.LogoContainer isHeaderInView={isHeaderInView}>
-              <Image
-                src={favicon}
-                alt="moonkorea 개발 블로그"
-                width={30}
-                height={30}
-              ></Image>
-              <S.BlogName>moonkorea</S.BlogName>
-            </S.LogoContainer>
+            <Image
+              src={favicon}
+              alt="moonkorea 개발 블로그"
+              width={30}
+              height={30}
+            />
           </Link>
-          <S.NavBar>
+          <S.NavItemsContainer>
             <a
               href="https://github.com/moonkorea00"
               aria-label="moonkorea00 GitHub"
               target="_blank"
               rel="noopener"
-              style={S.Style}
+              style={{
+                fontSize: 'inherit',
+                color: 'inherit',
+              }}
             >
               Github
             </a>
             <S.NavItem onClick={() => setIsSiderVisible(true)}>Posts</S.NavItem>
-          </S.NavBar>
-        </S.FlexBox>
+          </S.NavItemsContainer>
+        </S.FlexContainer>
       </S.Container>
       <Sider isSiderVisible={isSiderVisible} onCloseSider={onCloseSider} />
     </>

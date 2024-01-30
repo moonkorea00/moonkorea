@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 
 import * as S from './PostSider.style';
@@ -10,6 +12,7 @@ import useSmoothScroll from '@hooks/useSmoothScroll';
 
 import { getPostId } from '@components/Comments/Comments.utils';
 import { assets } from '@utils/assetsPath';
+import usePreloadImages from '@hooks/usePreloadImages';
 
 interface PostSiderProps {
   title: string;
@@ -22,6 +25,11 @@ const PostSider = ({ title, description }: PostSiderProps) => {
   const id = getPostId();
 
   const prefetchComments = usePrefetchComments(id);
+  const onPreloadImages = usePreloadImages([
+    assets.kakao_sm,
+    assets.copy_sm,
+    assets.check_sm,
+  ]);
   const { isMounted, height: headerHeight } = useGetElementSizeById('header');
   const onScrollToElement = useSmoothScroll();
   const onCloseSocialSharePanel = () => setIsSocialSharePanelVisible(false);
@@ -30,7 +38,7 @@ const PostSider = ({ title, description }: PostSiderProps) => {
     scrollUpCallback: onCloseSocialSharePanel,
   });
 
-  const onPrefetchAndScrollToComments = () => {
+  const prefetchAndScrollToComments = () => {
     prefetchComments();
     onScrollToElement('comment-section');
   };
@@ -41,7 +49,7 @@ const PostSider = ({ title, description }: PostSiderProps) => {
       headerHeight={headerHeight}
       scrollDirection={scrollDirection}
     >
-      <S.SiderButton onClick={onPrefetchAndScrollToComments}>
+      <S.SiderButton onClick={prefetchAndScrollToComments}>
         <S.ButtonImageContainer>
           <S.ButtonImage
             src={assets.comment}
@@ -51,7 +59,10 @@ const PostSider = ({ title, description }: PostSiderProps) => {
         </S.ButtonImageContainer>
       </S.SiderButton>
       <S.Seperator />
-      <S.SiderButton onClick={() => setIsSocialSharePanelVisible(true)}>
+      <S.SiderButton
+        onClick={() => setIsSocialSharePanelVisible(true)}
+        onMouseOver={onPreloadImages}
+      >
         <S.ButtonImageContainer>
           <S.ButtonImage
             src={assets.share}

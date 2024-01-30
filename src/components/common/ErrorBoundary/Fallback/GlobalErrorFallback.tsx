@@ -8,8 +8,8 @@ const GlobalErrorFallback = ({ statusCode }: GlobalErrorFallbackProps) => {
   return (
     <ErrorWithRedirection>
       <h3>문제가 발생했습니다. 잠시 후 다시 시도해 주세요.</h3>
-      {statusCode &&<p>{statusCode} 에러</p>}
-      <h4>
+      {statusCode && <p>{statusCode} 에러</p>}
+      <p>
         에러가 지속되면{' '}
         <a
           href="https://github.com/moonkorea00/moonkorea/issues"
@@ -19,7 +19,7 @@ const GlobalErrorFallback = ({ statusCode }: GlobalErrorFallbackProps) => {
           여기
         </a>
         로 문의해 주세요.
-      </h4>
+      </p>
     </ErrorWithRedirection>
   );
 };

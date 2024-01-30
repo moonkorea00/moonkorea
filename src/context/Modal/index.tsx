@@ -1,5 +1,8 @@
+'use client';
+
 import type { Dispatch, SetStateAction } from 'react';
 import type { ModalProps } from '@@types/modal';
+
 import { useState, useContext, createContext } from 'react';
 import PortalContainer from '@components/common/Portal/PortalContainer';
 

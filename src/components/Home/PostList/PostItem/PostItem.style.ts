@@ -21,20 +21,21 @@ export const Title = styled.h2`
   }
 `;
 
-export const Description = styled.h3`
+export const Description = styled.p`
   font-size: 1em;
-  color: ${({ theme }) => theme.colors.base.black};
-  font-weight: 600;
+  color: black;
+  font-weight: 400;
+  letter-spacing: -0.8px;
 
   @media screen and (max-width: 768px) {
     font-size: 0.85em;
   }
 `;
 
-export const PublishDate = styled.h4`
+export const PublishDate = styled.p`
   font-size: 0.8em;
   font-weight: 400;
-  color: ${({ theme }) => theme.colors.base.black};
+  color: rgb(130, 130, 130);
 
   @media screen and (max-width: 768px) {
     font-size: 0.75em;
