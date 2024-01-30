@@ -20,7 +20,7 @@ const generateOpenGraphImage = async (req: NextRequest) => {
     const type = searchParams.get('type');
 
     const font = await fetch(
-      new URL('public/assets/fonts/Pretendard-ExtraBold.woff', import.meta.url)
+      new URL('public/assets/fonts/MBC1961.ttf', import.meta.url)
     );
     const fontData = await font.arrayBuffer();
 
@@ -28,7 +28,7 @@ const generateOpenGraphImage = async (req: NextRequest) => {
       ...size,
       fonts: [
         {
-          name: 'Pretendard',
+          name: 'MBC1961',
           data: fontData,
           style: 'normal',
           weight: 900,
