@@ -1,12 +1,19 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import type { Comment } from '@@types/comments';
-import * as S from '../CommentForm.style';
+
+import { useState } from 'react';
 import { useSession } from 'next-auth/react';
+
+import * as S from '../CommentForm.style';
 import BaseCommentForm from '../BaseCommentForm';
+import LoginModal from '@components/Modal/Login/Login';
+
 import useInput from '@hooks/useInput';
+
 import { useCreateComment } from '@api/hooks/Comments/mutation';
-import useModal from '@hooks/useModal';
 import { sendNotificationEmail } from '@api/notificationEmail';
+import useLockBodyScroll from '@hooks/useLockBodyScroll';
+
 import { getPostId } from '@components/Comments/Comments.utils';
 
 interface NewCommentFormProps {
@@ -20,10 +27,10 @@ const NewCommentForm = ({
   setFormToDefaultMode = () => {},
   comments,
 }: NewCommentFormProps) => {
+  const [isLoginModalVisible, setIsLoginModalVisible] = useState(false);
   const [comment, handleCommentChange, resetInput] =
     useInput<HTMLTextAreaElement>('');
   const { data: session } = useSession();
-  const { showModal } = useModal();
 
   const { mutate, isPending } = useCreateComment();
   const postId = getPostId();
@@ -50,8 +57,10 @@ const NewCommentForm = ({
     );
   };
 
+  useLockBodyScroll(isLoginModalVisible);
+
   const newCommentFormConfig = {
-    onSubmit: session ? onCreateComment : () => showModal({ name: 'login' }),
+    onSubmit: session ? onCreateComment : () => setIsLoginModalVisible(true),
     isFormModeCancellable: isReplyMode,
     setFormToDefaultMode,
     isSubmitButtonDisabled: isPending,
@@ -77,6 +86,9 @@ const NewCommentForm = ({
         disabled={!session}
         autoFocus={isReplyMode}
       />
+      {isLoginModalVisible && (
+        <LoginModal onClose={() => setIsLoginModalVisible(false)} />
+      )}
     </BaseCommentForm>
   );
 };
