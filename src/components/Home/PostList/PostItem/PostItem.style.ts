@@ -24,7 +24,7 @@ export const Title = styled.h2`
 export const Description = styled.p`
   font-size: 1em;
   color: black;
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: -0.8px;
 
   @media screen and (max-width: 768px) {

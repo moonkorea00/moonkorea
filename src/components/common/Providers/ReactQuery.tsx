@@ -4,10 +4,12 @@ import { useState } from 'react';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
-import useModal from '@hooks/useModal';
+import { useToastContext } from '@context/Toast';
+
+import { TOAST } from '@components/Modal/Toast/toast.utils';
 
 const ReactQueryClientProvider = ({ children }: PropsWithStrictChildren) => {
-  const { showModal } = useModal();
+  const toast = useToastContext();
   const [queryClient] = useState(
     () =>
       new QueryClient({
@@ -20,7 +22,7 @@ const ReactQueryClientProvider = ({ children }: PropsWithStrictChildren) => {
           },
           mutations: {
             onError() {
-              showModal({ name: 'error' });
+              toast.show(TOAST.ERROR);
             },
           },
         },

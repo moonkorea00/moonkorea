@@ -10,7 +10,7 @@ export const Container = styled.section`
   width: 290px;
   min-width: 270px;
   height: 500px;
-  gap: 16px;
+  gap: 22px;
   border-radius: 16px;
   background-color: ${({ theme }) => theme.colors.base.white};
   box-shadow: 2px 2px 6px ${({ theme }) => theme.colors.shadow.default};

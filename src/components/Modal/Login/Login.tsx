@@ -17,7 +17,10 @@ const LoginModal = ({ onClose }: LoginModalProps) => {
 
   return (
     <Overlay type="backdrop">
-      <OutsideClickWrapper onClickHandler={onClose as VoidFunction}>
+      <OutsideClickWrapper
+        onClickHandler={onClose as VoidFunction}
+        triggerKey="Escape"
+      >
         <S.Container>
           <S.ButtonWrapper>
             <S.CloseButton onClick={onClose}>&#10005;</S.CloseButton>

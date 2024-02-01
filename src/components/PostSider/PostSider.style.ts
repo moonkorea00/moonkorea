@@ -13,7 +13,6 @@ export const Container = styled.section<SiderContainerProps>`
   ${({ theme }) => theme.flexColumn};
   gap: 16px;
   margin-top: 60px;
-  background-color: white;
   opacity: ${({ isMounted }) => (isMounted ? 1 : 0)};
 
   @media screen and (max-width: 1024px) {
@@ -24,6 +23,7 @@ export const Container = styled.section<SiderContainerProps>`
     flex-direction: row;
     gap: 10px;
     padding: 4px 20px;
+    background-color: white;
     border: 1px solid ${({ theme }) => theme.colors.base.gray300};
     border-radius: 25px;
     transition: transform 0.4s ease-in-out;

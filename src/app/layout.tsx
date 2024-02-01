@@ -2,8 +2,9 @@ import {
   ReactQueryClientProvider,
   NextAuthSessionProvider,
   StyledComponentsProvider,
+  ToastProvider,
 } from '@components/common/Providers';
-import ModalProvider from '@context/Modal';
+
 import {
   GoogleAnalytics,
   ChannelIO,
@@ -56,11 +57,11 @@ const RootLayout = ({ children }: PropsWithStrictChildren) => {
       <body>
         <StyledComponentsProvider>
           <NextAuthSessionProvider>
-            <ModalProvider>
+            <ToastProvider>
               <ReactQueryClientProvider>
                 <PageLayout>{children}</PageLayout>
               </ReactQueryClientProvider>
-            </ModalProvider>
+            </ToastProvider>
           </NextAuthSessionProvider>
         </StyledComponentsProvider>
         <GoogleAnalytics />
