@@ -1,11 +1,13 @@
+import type { NextAuthOptions } from 'next-auth';
+
 import NextAuth from 'next-auth';
 import { PrismaAdapter } from '@next-auth/prisma-adapter';
 import GoogleProvider from 'next-auth/providers/google';
 import GithubProvider from 'next-auth/providers/github';
-import FacebookProvider from 'next-auth/providers/facebook';
+
 import prisma from '@server/db/client';
 
-export default NextAuth({
+export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
   providers: [
     GoogleProvider({
@@ -23,10 +25,6 @@ export default NextAuth({
       clientSecret: process.env.GITHUB_CLIENT_SECRET as string,
       allowDangerousEmailAccountLinking: true,
     }),
-    FacebookProvider({
-      clientId: process.env.FACEBOOK_CLIENT_ID as string,
-      clientSecret: process.env.FACEBOOK_CLIENT_SECRET as string,
-    }),
   ],
   callbacks: {
     session({ session, token }) {
@@ -43,4 +41,6 @@ export default NextAuth({
   session: {
     strategy: 'jwt',
   },
-});
+}
+
+export default NextAuth(authOptions);
