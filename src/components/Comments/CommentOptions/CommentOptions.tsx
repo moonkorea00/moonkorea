@@ -4,12 +4,13 @@ import { useSession } from 'next-auth/react';
 import * as S from './CommentOptions.style';
 import OutsideClickWrapper from '@components/common/OutsideClickWrapper/OutsideClickWrapper';
 
-import useModal from '@hooks/useModal';
+import { useToastContext } from '@context/Toast';
 
 import { useDeleteComment } from '@api/hooks/Comments/mutation';
 import { sendNotificationEmail } from '@api/notificationEmail';
 
 import { getPostId } from '../Comments.utils';
+import { TOAST } from '@components/Modal/Toast/toast.utils';
 
 interface CommentOptionsProps {
   comments: Comment;
@@ -29,7 +30,7 @@ const CommentOptions = ({
   const { data: session } = useSession();
 
   const { mutateAsync, isPending } = useDeleteComment();
-  const { showModal, closeModal: closeDeleteModal } = useModal();
+  const toast = useToastContext();
   const postId = getPostId();
 
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -40,20 +41,17 @@ const CommentOptions = ({
   const onDeleteComment = async () => {
     try {
       await mutateAsync({ id: comments.id, postId });
-      closeDeleteModal();
+      // closeDeleteModal();
       onResetMode();
       sendNotificationEmail({ postId });
     } catch (e) {
-      showModal({ name: 'error' });
+      toast.show(TOAST.ERROR);
     }
   };
 
   const onCloseOptionsAndShowDeleteModal = () => {
     onCloseCommentOptions();
-    showModal({
-      name: 'delete_comment',
-      props: { onConfirm: onDeleteComment, disabled: isPending },
-    });
+    toast.show({ ...TOAST.DELETE_COMMENT, onConfirm: onDeleteComment });
   };
 
   return (

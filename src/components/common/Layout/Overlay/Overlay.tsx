@@ -1,4 +1,4 @@
-import Portal from '@components/common/Portal/Portal';
+import Portal from '@components/common/Portal';
 import * as S from './Overlay.style';
 
 export type OverlayType = 'backdrop' | 'toast';

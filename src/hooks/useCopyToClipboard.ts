@@ -1,10 +1,13 @@
 import { useState } from 'react';
-import useModal from './useModal';
+
+import { useToastContext } from '@context/Toast';
+
+import { TOAST } from '@components/Modal/Toast/toast.utils';
 
 const useCopyToClipboard = () => {
   const [isCopied, setIsCopied] = useState(false);
 
-  const { showModal } = useModal();
+  const toast = useToastContext();
 
   const onCopy = async (text: string) => {
     try {
@@ -12,7 +15,7 @@ const useCopyToClipboard = () => {
       setIsCopied(true);
       setTimeout(() => setIsCopied(false), 2000);
     } catch (_) {
-      showModal({ name: 'error' });
+      toast.show(TOAST.ERROR);
     }
   };
 
