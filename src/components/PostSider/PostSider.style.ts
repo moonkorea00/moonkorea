@@ -23,6 +23,7 @@ export const Container = styled.section<SiderContainerProps>`
     flex-direction: row;
     gap: 10px;
     padding: 4px 20px;
+    background-color: white;
     border: 1px solid ${({ theme }) => theme.colors.base.gray300};
     border-radius: 25px;
     transition: transform 0.4s ease-in-out;
