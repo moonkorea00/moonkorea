@@ -19,7 +19,7 @@ import { getPostId } from '@components/Comments/Comments.utils';
 interface NewCommentFormProps {
   isReplyMode?: boolean;
   setFormToDefaultMode?: () => void;
-  comments?: Comment;
+  comments?: Pick<Comment, 'id'>;
 }
 
 const NewCommentForm = ({
@@ -27,6 +27,7 @@ const NewCommentForm = ({
   setFormToDefaultMode = () => {},
   comments,
 }: NewCommentFormProps) => {
+  const { id } = comments ?? {};
   const [isLoginModalVisible, setIsLoginModalVisible] = useState(false);
   const [comment, handleCommentChange, resetInput] =
     useInput<HTMLTextAreaElement>('');
@@ -45,7 +46,7 @@ const NewCommentForm = ({
         //@ts-ignore
         userId: session?.user?.id,
         userEmail: session?.user?.email as string,
-        parentId: comments?.id,
+        parentId: id,
       },
       {
         onSuccess() {

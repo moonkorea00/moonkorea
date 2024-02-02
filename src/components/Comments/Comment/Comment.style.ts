@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 interface ChildrenCommentStyleProps {
-  parentId?: string;
+  parentId: string | null;
   depth: number;
 }
 
@@ -37,60 +37,4 @@ export const ContentContainer = styled.div`
   @media screen and (max-width: 768px) {
     padding-left: 10px;
   }
-`;
-
-export const CommentHeader = styled.div`
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-`;
-
-export const AvatarContainer = styled.div`
-  width: 44px;
-  height: 100%;
-  padding-top: 8px;
-
-  @media screen and (max-width: 768px) {
-    width: 30px;
-  }
-`;
-
-export const Avatar = styled.img`
-  width: 100%;
-`;
-
-export const Author = styled.span`
-  margin-right: 10px;
-  font-weight: 700;
-
-  @media screen and (max-width: 768px) {
-    margin-right: 6px;
-    font-size: 0.95em;
-  }
-`;
-
-export const PublishDate = styled.span`
-  font-size: 13px;
-
-  @media screen and (max-width: 768px) {
-    font-size: 12px;
-  }
-`;
-
-export const OptionsButton = styled.button`
-  position: absolute;
-  top: 0;
-  right: 0;
-  border-radius: 50%;
-  background-color: inherit;
-
-  @media screen and (max-width: 768px) {
-    right: -24px;
-  }
-`;
-
-export const CommentBody = styled.div<{ isDeleted: boolean }>`
-  font-size: 0.95em;
-  line-height: 26px;
-  color: ${({ isDeleted, theme }) => isDeleted && theme.colors.base.gray700};
 `;

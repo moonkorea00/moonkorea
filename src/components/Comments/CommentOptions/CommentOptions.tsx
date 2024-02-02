@@ -1,8 +1,8 @@
 import type { Comment } from '@@types/comments';
+
 import { useSession } from 'next-auth/react';
 
 import * as S from './CommentOptions.style';
-import OutsideClickWrapper from '@components/common/OutsideClickWrapper/OutsideClickWrapper';
 
 import { useToastContext } from '@context/Toast';
 
@@ -13,7 +13,7 @@ import { getPostId } from '../Comments.utils';
 import { TOAST } from '@components/Modal/Toast/toast.utils';
 
 interface CommentOptionsProps {
-  comments: Comment;
+  comments: Pick<Comment, 'id' | 'user' | 'isDeleted'>;
   onResetMode: () => void;
   onEditMode: () => void;
   onReplyMode: () => void;
@@ -27,21 +27,21 @@ const CommentOptions = ({
   onReplyMode,
   onCloseCommentOptions,
 }: CommentOptionsProps) => {
+  const { id, user, isDeleted } = comments;
   const { data: session } = useSession();
 
-  const { mutateAsync, isPending } = useDeleteComment();
   const toast = useToastContext();
+  const { mutateAsync, isPending } = useDeleteComment();
   const postId = getPostId();
 
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
-  const isAuthor = session?.user?.id == comments?.user.id;
+  const isAuthor = session?.user?.id == user.id;
 
   // TODO : see why onSuccess callback doesnt work with mutate
   const onDeleteComment = async () => {
     try {
-      await mutateAsync({ id: comments.id, postId });
-      // closeDeleteModal();
+      await mutateAsync({ id, postId });
       onResetMode();
       sendNotificationEmail({ postId });
     } catch (e) {
@@ -49,31 +49,26 @@ const CommentOptions = ({
     }
   };
 
-  const onCloseOptionsAndShowDeleteModal = () => {
-    onCloseCommentOptions();
-    toast.show({ ...TOAST.DELETE_COMMENT, onConfirm: onDeleteComment });
-  };
-
   return (
-    <OutsideClickWrapper
-      onClickHandler={onCloseCommentOptions}
-      triggerKey="Escape"
-    >
-      <S.Container>
-        <S.Option onClick={onReplyMode}>답글 작성</S.Option>
-        {isAuthor && !comments.isDeleted && (
-          <>
-            <S.Option onClick={onEditMode}>수정</S.Option>
-            <S.Option
-              onClick={onCloseOptionsAndShowDeleteModal}
-              disabled={isPending}
-            >
-              삭제
-            </S.Option>
-          </>
-        )}
-      </S.Container>
-    </OutsideClickWrapper>
+    <S.Container onClick={onCloseCommentOptions}>
+      <S.Option onClick={onReplyMode}>답글 작성</S.Option>
+      {isAuthor && !isDeleted && (
+        <>
+          <S.Option onClick={onEditMode}>수정</S.Option>
+          <S.Option
+            onClick={() =>
+              toast.show({
+                ...TOAST.DELETE_COMMENT,
+                onConfirm: onDeleteComment,
+              })
+            }
+            disabled={isPending}
+          >
+            삭제
+          </S.Option>
+        </>
+      )}
+    </S.Container>
   );
 };
 
