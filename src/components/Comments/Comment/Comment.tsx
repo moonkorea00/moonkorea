@@ -1,106 +1,44 @@
 import type { Comment as IComment } from '@@types/comments';
 
 import { useState } from 'react';
-import Image from 'next/image';
 
 import * as S from './Comment.style';
-import EditCommentForm from '../CommentForm/EditCommentForm';
-import NewCommentForm from '../CommentForm/NewCommentForm';
+import UserAvatar from './UserAvatar/UserAvatar';
+import CommentBody from './CommentBody/CommentBody';
+import CommentHeader from './CommentHeader/CommentHeader';
 import CommentList from '../CommentList/CommentList';
-import CommentOptions from '../CommentOptions/CommentOptions';
-
-import {
-  formatDateToElapsedTime,
-  isEdittedAndNotDeleted,
-} from '../Comments.utils';
-import { assets } from '@utils/assetsPath';
 
 interface CommentProps {
   comments: IComment;
 }
 
-const CommentMode = {
-  View: 'VIEW',
-  Edit: 'EDIT',
-  Reply: 'REPLY',
-} as const;
-
-type CommentModeType = (typeof CommentMode)[keyof typeof CommentMode];
+enum CommentMode {
+  View = 'VIEW',
+  Edit = 'EDIT',
+  Reply = 'REPLY',
+}
 
 const Comment = ({ comments }: CommentProps) => {
-  const [mode, setMode] = useState<CommentModeType>(CommentMode.View);
-  const [isCommentOptionsVisible, setIsCommentOptionsVisible] = useState(false);
-
-  const onCloseCommentOptions = () => setIsCommentOptionsVisible(false);
-
-  const onResetMode = () => setMode(CommentMode.View);
-
-  const onEditMode = () => {
-    onCloseCommentOptions();
-    setMode(CommentMode.Edit);
-  };
-
-  const onReplyMode = () => {
-    onCloseCommentOptions();
-    setMode(CommentMode.Reply);
-  };
+  const { parentId, depth, isDeleted, user } = comments;
+  const [mode, setMode] = useState(CommentMode.View);
 
   return (
-    <S.Container parentId={comments?.parentId as string} depth={comments.depth}>
+    <S.Container parentId={parentId} depth={depth}>
       <S.CommentContainer>
-        <S.AvatarContainer>
-          <S.Avatar
-            src={
-              comments.isDeleted
-                ? assets.defaultUserAvatar
-                : comments.user.image ?? assets.defaultUserAvatar
-            }
-            alt="avatar"
-          />
-        </S.AvatarContainer>
+        <UserAvatar isDeleted={isDeleted} user={user} />
         <S.ContentContainer>
-          <S.CommentHeader>
-            <div>
-              <S.Author>
-                {comments.isDeleted ? '알 수 없음' : comments.user.name}
-              </S.Author>
-              <S.PublishDate>
-                {formatDateToElapsedTime(comments.createdAt)}{' '}
-                {isEdittedAndNotDeleted(comments) && '(수정됨)'}
-              </S.PublishDate>
-            </div>
-            <S.OptionsButton
-              onClick={() => setIsCommentOptionsVisible(prev => !prev)}
-            >
-              <Image src={assets.options} alt="옵션" width={30} height={30} />
-            </S.OptionsButton>
-            {isCommentOptionsVisible && (
-              <CommentOptions
-                comments={comments}
-                onResetMode={onResetMode}
-                onEditMode={onEditMode}
-                onReplyMode={onReplyMode}
-                onCloseCommentOptions={onCloseCommentOptions}
-              />
-            )}
-          </S.CommentHeader>
-          <S.CommentBody isDeleted={comments.isDeleted}>
-            {comments.isDeleted ? '삭제된 댓글입니다.' : comments.body}
-          </S.CommentBody>
-          {mode === CommentMode.Edit && (
-            <EditCommentForm
-              comments={comments}
-              isEditMode={mode === CommentMode.Edit}
-              setFormToDefaultMode={onResetMode}
-            />
-          )}
-          {mode === CommentMode.Reply && (
-            <NewCommentForm
-              comments={comments}
-              isReplyMode={mode === CommentMode.Reply}
-              setFormToDefaultMode={onResetMode}
-            />
-          )}
+          <CommentHeader
+            comments={comments}
+            onResetMode={() => setMode(CommentMode.View)}
+            onEditMode={() => setMode(CommentMode.Edit)}
+            onReplyMode={() => setMode(CommentMode.Reply)}
+          />
+          <CommentBody
+            comments={comments}
+            isEditMode={mode === CommentMode.Edit}
+            isReplyMode={mode === CommentMode.Reply}
+            onResetMode={() => setMode(CommentMode.View)}
+          />
         </S.ContentContainer>
       </S.CommentContainer>
       {comments.children.length > 0 && (

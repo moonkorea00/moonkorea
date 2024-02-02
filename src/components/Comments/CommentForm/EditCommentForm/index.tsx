@@ -10,7 +10,7 @@ import { getPostId } from '@components/Comments/Comments.utils';
 interface EditCommentFormProps {
   isEditMode: boolean;
   setFormToDefaultMode: () => void;
-  comments: Comment;
+  comments: Pick<Comment, 'body' | 'id'>;
 }
 
 const EditCommentForm = ({
@@ -18,17 +18,18 @@ const EditCommentForm = ({
   setFormToDefaultMode,
   comments,
 }: EditCommentFormProps) => {
+  const { body, id } = comments;
   const [edittedComment, handleCommentChange] = useInput<HTMLTextAreaElement>(
-    comments?.body as string
+    body as string
   );
   const { mutate, isPending } = useEditComment();
   const postId = getPostId();
 
   const onEditComment = () => {
-    if (edittedComment === comments?.body || !edittedComment) return;
+    if (edittedComment === body || !edittedComment) return;
     mutate(
       {
-        id: comments.id,
+        id,
         body: edittedComment,
         postId,
       },
