@@ -1,6 +1,11 @@
 'use client';
 
-import type { Toast, ToastOptions } from '@components/Modal/Toast/toast.type';
+import type {
+  Toast,
+  ToastContext,
+  ToastOptions,
+  CreateToastOptions,
+} from '@components/Modal/Toast/toast.type';
 
 import { useState } from 'react';
 
@@ -13,33 +18,64 @@ import { generateId } from '@components/Modal/Toast/toast.utils';
 const ToastProvider = ({ children }: PropsWithStrictChildren) => {
   const [toasts, setToasts] = useState<Toast[]>([]);
 
-  const createToastOptions = (options: ToastOptions) => {
-    const id = generateId();
+  const createToastOptions = (options: CreateToastOptions) => {
+    const id = options.id ?? generateId();
     const defaultOptions = {};
     let timer: Toast['timer'] = null;
+
     if (options.duration) {
       timer = setTimeout(() => remove(id), options.duration);
     }
 
     return {
-      id,
       ...defaultOptions,
       ...options,
+      id,
       timer,
     };
   };
 
-  const show = (options: ToastOptions) => {
+  const show: ToastContext['show'] = options => {
+    const isPresentToast = toasts.find(toast => toast.id === options.id);
+    if (isPresentToast) return;
     setToasts(prev => [...prev, createToastOptions(options)]);
   };
 
-  const remove = (id: number) => {
+  const update = (options: ToastOptions) => {
+    setToasts(prev =>
+      prev.map(toast =>
+        toast.id === options.id
+          ? { ...toast, ...createToastOptions(options) }
+          : toast
+      )
+    );
+  };
+
+  const promise: ToastContext['promise'] = async ({
+    id,
+    fetchFn,
+    promiseContent,
+  }) => {
+    try {
+      update({ id, confirmLabel: promiseContent?.loading });
+      await fetchFn();
+      remove(id);
+    } catch (err) {
+      remove(id);
+      setToasts(prev => [
+        ...prev,
+        createToastOptions({ id, description: 'error' }),
+      ]);
+    }
+  };
+
+  const remove: ToastContext['remove'] = id => {
     setToasts(prev => prev.filter(toast => toast.id !== id));
     const toastTimer = toasts.find(toast => toast.id === id)?.timer;
     if (toastTimer) clearTimeout(toastTimer);
   };
 
-  const removeAll = () => {
+  const removeAll: ToastContext['removeAll'] = () => {
     toasts.forEach(toast => {
       if (toast.timer) clearTimeout(toast.timer);
     });
@@ -47,7 +83,7 @@ const ToastProvider = ({ children }: PropsWithStrictChildren) => {
   };
 
   return (
-    <ToastContextProvider value={{ show, remove, removeAll }}>
+    <ToastContextProvider value={{ show, remove, removeAll, promise }}>
       {children}
       <ToastContainer toasts={toasts} />
     </ToastContextProvider>
