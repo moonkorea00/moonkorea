@@ -1,4 +1,6 @@
+/* eslint-disable no-undef */
 import { writeFileSync } from 'fs';
+import path from 'path';
 
 const currentDate = new Date();
 const year = currentDate.getFullYear();
@@ -25,12 +27,13 @@ date: '${parsedDate}'
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum finibus, ex vitae volutpat semper, orci leo vulputate magna, vitae vestibulum tellus justo eget arcu. Suspendisse potenti. Etiam purus mauris, hendrerit quis velit in, maximus porttitor ante. Duis sit amet augue a nulla efficitur vulputate sed vitae sem. Aliquam erat volutpat. Nullam blandit velit nec accumsan posuere. Phasellus bibendum augue lorem, a rhoncus nibh hendrerit sit amet. Nullam tincidunt pulvinar tortor, quis feugiat mi congue ut. In nec molestie metus, ut mattis nunc.
 
 ### heading 3
-
-### heading 4
 `;
 
+const fileName = process.argv[2] ? process.argv[2] : 'TEMPLATE';
+const filePath = path.join('src', '_posts', `${fileName}.md`);
+
 try {
-  writeFileSync('src/_posts/TEMPLATE.md', templateContent);
+  writeFileSync(filePath, templateContent);
   console.log('\x1b[32m', 'src/_posts 에서 내용을 수정해 보세요.', '\x1b[0m');
 } catch (error) {
   console.error('\x1b[31m', 'Failed to create template:', error, '\x1b[0m');
