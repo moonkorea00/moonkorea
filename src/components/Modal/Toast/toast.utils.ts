@@ -5,8 +5,14 @@ export const generateId = (() => {
   return () => ++count;
 })();
 
-export const TOAST: Record<string, ToastOptions> = {
+interface ToastOptionsConstants {
+  DELETE_COMMENT: ToastOptions;
+  ERROR: Omit<ToastOptions, 'id'>;
+}
+
+export const TOAST: ToastOptionsConstants = {
   DELETE_COMMENT: {
+    id: 'delete_comment',
     type: 'dialog',
     description: '댓글을 삭제하시겠습니까?',
     confirmLabel: '삭제',

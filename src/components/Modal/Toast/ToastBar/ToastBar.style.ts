@@ -1,12 +1,15 @@
+import type { ToastType } from '../toast.type';
+
 import styled from 'styled-components';
 
 interface ButtonProps {
   action?: string;
 }
 
-export const Container = styled.div`
+export const Container = styled.div<{ type?: ToastType }>`
   position: relative;
-  ${({ theme }) => theme.flexSpaceBetween}
+  ${({ theme, type }) =>
+    type ? theme.flexSpaceBetween : theme.flexCenter}
   padding: 0 26px;
   width: 400px;
   height: 70px;

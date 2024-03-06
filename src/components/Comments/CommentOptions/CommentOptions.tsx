@@ -3,6 +3,7 @@ import type { Comment } from '@@types/comments';
 import { useSession } from 'next-auth/react';
 
 import * as S from './CommentOptions.style';
+import Spinner from '@components/common/Loader/Spinner';
 
 import { useToastContext } from '@context/Toast';
 
@@ -33,10 +34,10 @@ const CommentOptions = ({
   const toast = useToastContext();
   const { mutateAsync, isPending } = useDeleteComment();
   const postId = getPostId();
-
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   const isAuthor = session?.user?.id == user.id;
+  const isCommentMutatable = isAuthor && !isDeleted;
 
   // TODO : see why onSuccess callback doesnt work with mutate
   const onDeleteComment = async () => {
@@ -52,16 +53,24 @@ const CommentOptions = ({
   return (
     <S.Container onClick={onCloseCommentOptions}>
       <S.Option onClick={onReplyMode}>답글 작성</S.Option>
-      {isAuthor && !isDeleted && (
+      {isCommentMutatable && (
         <>
           <S.Option onClick={onEditMode}>수정</S.Option>
           <S.Option
             onClick={() =>
               toast.show({
                 ...TOAST.DELETE_COMMENT,
-                onConfirm: onDeleteComment,
+                onConfirm: () =>
+                  toast.promise({
+                    id: TOAST.DELETE_COMMENT.id,
+                    fetchFn: onDeleteComment,
+                    promiseContent: {
+                      loading: <Spinner />,
+                    },
+                  }),
               })
             }
+            // onClick={() => toast.show({ description: <Spinner/> })}
             disabled={isPending}
           >
             삭제
