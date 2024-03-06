@@ -28,14 +28,14 @@
   },
   "scripts": {
     "dev": "next dev -p 8000",
-    "prebuild": "npm run test && node src/scripts/generateSiderJSON.mjs",
+    "prebuild": "npm run test && npm run sider",
     "build": "next build",
     "start": "next start -p 8000",
     "test": "jest",
     "lint": "eslint src/ --ext .js,.jsx,.ts,.tsx",
     "analyze": "next-bundle-analyzer",
-    "sider": "node src/scripts/generateSiderJSON.mjs",
-    "template": "node src/scripts/generateMDTemplate.mjs"
+    "sider": "node scripts/generateSiderJSON.mjs",
+    "template": "node scripts/generateMDTemplate.mjs"
   },
   "eslintConfig": {
     "extends": [

@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 
 import Header from '@components/common/Header/Header';
 import TableOfContents from '@components/TableOfContents/TableOfContents';
@@ -16,19 +17,26 @@ interface PostPageProps {
 export const generateMetadata = async ({
   params: { postId },
 }: PostPageProps): Promise<Metadata> => {
-  const { title, description } = await getPostById(postId);
+  const post = await getPostById(postId);
+
+  if (!post) return {};
+
+  const { title, description } = post;
+
+  const ogUrl = `/${decodeURI(postId)}`;
+  const ogImageUrl = `/api/og?title=${encodeURIComponent(title)}&type=post`;
 
   return {
     title,
     description,
     openGraph: {
       type: 'website',
-      url: `/${decodeURI(postId)}`,
+      url: ogUrl,
       title,
       description,
       images: [
         {
-          url: `/api/og?title=${encodeURIComponent(title)}&type=post`,
+          url: ogImageUrl,
         },
       ],
     },
@@ -38,7 +46,7 @@ export const generateMetadata = async ({
       card: 'summary_large_image',
       images: [
         {
-          url: `/api/og?title=${encodeURIComponent(title)}&type=post`,
+          url: ogImageUrl,
         },
       ],
     },
@@ -49,6 +57,9 @@ export const generateStaticParams = async () => getPostPaths();
 
 const PostPage = async ({ params: { postId } }: PostPageProps) => {
   const post = await getPostById(postId);
+
+  if (!post) notFound();
+
   const { title, description, content, toc, imageProps } = post;
 
   return (
