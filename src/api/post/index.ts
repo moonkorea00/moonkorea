@@ -5,11 +5,7 @@ import { join } from 'path';
 import matter from 'gray-matter';
 
 import { extractIntrinsicImageSize } from '@api/image';
-import {
-  readFileContent,
-  extractHeadings,
-  nestHeadingWithChildren,
-} from './post.utils';
+import { extractHeadings, nestHeadingWithChildren } from './post.utils';
 import { convertToSlug } from '@utils/markdown';
 
 const postsDir = join(process.cwd(), '/src/_posts');
@@ -26,7 +22,8 @@ export const getPostPaths = () => {
 
 export const getAllPosts = () => {
   const postFrontMatter: HomePost[] = postFileNames.map(fileName => {
-    const fileContent = readFileContent(postsDir, fileName);
+    const filePath = join(postsDir, fileName);
+    const fileContent = fs.readFileSync(filePath, 'utf8');
     const id = fileName.replace(/\.md$/, '');
     const { data } = matter(fileContent);
     const { title, date, tags, excerpt } = data;
@@ -42,8 +39,17 @@ export const getAllPostsSortedByDate = () => {
   return posts.sort((a: HomePost, b: HomePost) => (a.date > b.date ? -1 : 1));
 };
 
-export const getPostById = async (id: string): Promise<PagePost> => {
-  const fileContent = readFileContent(postsDir, `${decodeURI(id)}.md`);
+export const getPostById = async (
+  id: string
+): Promise<PagePost | undefined> => {
+  const isExistingPost = postFileNames.some(
+    fileName => fileName === `${decodeURI(id)}.md`
+  );
+
+  if (!isExistingPost) return undefined;
+
+  const filePath = join(postsDir, `${decodeURI(id)}.md`);
+  const fileContent = fs.readFileSync(filePath, 'utf8');
   const { data, content } = matter(fileContent);
   const { title, date, description, excerpt } = data;
 
@@ -61,7 +67,8 @@ export const getPostById = async (id: string): Promise<PagePost> => {
 const buildTagsCount = () => {
   const tagsCount = postFileNames.reduce<Record<string, number>>(
     (tags, fileName) => {
-      const fileContent = readFileContent(postsDir, fileName);
+      const filePath = join(postsDir, fileName);
+      const fileContent = fs.readFileSync(filePath, 'utf8');
       const { data } = matter(fileContent);
 
       data.tags
