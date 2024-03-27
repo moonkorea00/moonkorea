@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { useToastContext } from '@context/Toast';
 
-import { TOAST } from '@components/Modal/Toast/toast.utils';
+import { TOAST } from '@components/Modal/Toast/toast.constants';
 
 const useCopyToClipboard = () => {
   const [isCopied, setIsCopied] = useState(false);

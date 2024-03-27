@@ -3,10 +3,11 @@
 import { useState } from 'react';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { isAxiosError } from 'axios';
 
 import { useToastContext } from '@context/Toast';
 
-import { TOAST } from '@components/Modal/Toast/toast.utils';
+import { TOAST } from '@components/Modal/Toast/toast.constants';
 
 const ReactQueryClientProvider = ({ children }: PropsWithStrictChildren) => {
   const toast = useToastContext();
@@ -21,8 +22,15 @@ const ReactQueryClientProvider = ({ children }: PropsWithStrictChildren) => {
             staleTime: 60 * 1000,
           },
           mutations: {
-            onError() {
-              toast.show(TOAST.ERROR);
+            onError(err) {
+              toast.show({
+                ...TOAST.ERROR,
+                description: `문제가 발생했습니다. ${
+                  isAxiosError(err) &&
+                  err.response?.status &&
+                  `(${err.response?.status}에러)`
+                }`,
+              });
             },
           },
         },

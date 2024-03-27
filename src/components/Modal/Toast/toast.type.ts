@@ -1,3 +1,5 @@
+import { CSSProperties } from "styled-components";
+
 export type ToastType = 'dialog' | 'error';
 export type ConfirmType = 'delete';
 
@@ -9,7 +11,8 @@ export interface BaseToast {
   dismissLabel?: string;
   onConfirm?: () => void;
   duration?: number;
-  promiseContent?: ToastPromiseOptions;
+  persistOptions?: boolean;
+  style?: CSSProperties;
 }
 
 export interface CreateToastOptions extends BaseToast {
@@ -25,12 +28,21 @@ export interface Toast extends ToastOptions {
 }
 
 export interface ToastPromiseOptions {
-  id: number | string;
-  fetchFn: () => Promise<unknown>;
-  promiseContent?: {
-    loading?: string | JSX.Element;
-    error?: string | JSX.Element;
-    success?: string | JSX.Element;
+  id?: number | string;
+  asyncFn: () => Promise<unknown>;
+  response?: {
+    loading?: {
+      content?: string | JSX.Element;
+      options?: CreateToastOptions;
+    };
+    error?: {
+      content?: string | JSX.Element;
+      options?: CreateToastOptions;
+    };
+    success?: {
+      content?: string | JSX.Element;
+      options?: CreateToastOptions;
+    };
   };
 }
 

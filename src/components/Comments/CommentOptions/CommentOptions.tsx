@@ -11,7 +11,8 @@ import { useDeleteComment } from '@api/hooks/Comments/mutation';
 import { sendNotificationEmail } from '@api/notificationEmail';
 
 import { getPostId } from '../Comments.utils';
-import { TOAST } from '@components/Modal/Toast/toast.utils';
+
+import { TOAST } from '@components/Modal/Toast/toast.constants';
 
 interface CommentOptionsProps {
   comments: Pick<Comment, 'id' | 'user' | 'isDeleted'>;
@@ -39,15 +40,10 @@ const CommentOptions = ({
   const isAuthor = session?.user?.id == user.id;
   const isCommentMutatable = isAuthor && !isDeleted;
 
-  // TODO : see why onSuccess callback doesnt work with mutate
   const onDeleteComment = async () => {
-    try {
-      await mutateAsync({ id, postId });
-      onResetMode();
-      sendNotificationEmail({ postId });
-    } catch (e) {
-      toast.show(TOAST.ERROR);
-    }
+    await mutateAsync({ id, postId });
+    onResetMode();
+    sendNotificationEmail({ postId });
   };
 
   return (
@@ -60,17 +56,17 @@ const CommentOptions = ({
             onClick={() =>
               toast.show({
                 ...TOAST.DELETE_COMMENT,
-                onConfirm: () =>
+                onConfirm: () => {
                   toast.promise({
                     id: TOAST.DELETE_COMMENT.id,
-                    fetchFn: onDeleteComment,
-                    promiseContent: {
-                      loading: <Spinner />,
+                    asyncFn: onDeleteComment,
+                    response: {
+                      loading: { content: <Spinner /> },
                     },
-                  }),
+                  });
+                },
               })
             }
-            // onClick={() => toast.show({ description: <Spinner/> })}
             disabled={isPending}
           >
             삭제
