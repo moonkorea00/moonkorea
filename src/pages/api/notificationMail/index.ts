@@ -12,49 +12,28 @@ const sendNotificationEmail = async (
     port: 465,
     secure: true,
     auth: {
-      user: process.env.NEXT_PUBLIC_NODEMAILER_USER,
-      pass: process.env.NEXT_PUBLIC_NODEMAILER_PASS,
+      user: process.env.NODEMAILER_USER,
+      pass: process.env.NODEMAILER_PW,
     },
   });
 
   const mailOptions = {
-    from: `"moonkorea" <${process.env.NEXT_PUBLIC_NODEMAILER_USER}>`,
-    to: process.env.NEXT_PUBLIC_NODEMAILER_RECIPIENT,
+    from: `"moonkorea" <${process.env.NODEMAILER_USER}>`,
+    to: process.env.NODEMAILER_RECIPIENT,
     subject: `moonkorea(comment) : ${postId}`,
     text: postId,
     html: `<a href=https://moonkorea.dev/${postId} target=”_blank”>https://moonkorea.dev/${postId}</a><p>content : ${
       body || 'none'
     }</p>`,
   };
-
-  const sendNotification = async () => {
-    await new Promise((resolve, reject) => {
-      transporter.verify(function (err, success) {
-        if (err) {
-          console.log('SMTP server error : ', err);
-          reject(err);
-        } else {
-          resolve(success);
-        }
-      });
-    });
-
-    await new Promise((resolve, reject) => {
-      transporter.sendMail(mailOptions, (err, mailRes) => {
-        if (err) {
-          reject(err);
-        } else {
-          resolve(mailRes);
-        }
-      });
-    });
-  };
-
+  
   try {
-    await sendNotification();
+    await transporter.verify();
+    await transporter.sendMail(mailOptions);
     return res.status(201).json({ message: 'sent' });
   } catch (err) {
-    return res.status(500).json({ message: `internal server error` });
+    console.log('Error sending mail :', err);
+    return res.status(500).json({ message: 'internal server error' });
   }
 };
 
