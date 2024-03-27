@@ -1,31 +1,35 @@
 'use client';
 
 import type {
-  Toast,
   ToastContext,
   ToastOptions,
   CreateToastOptions,
 } from '@components/Modal/Toast/toast.type';
 
-import { useState } from 'react';
+import { useReducer } from 'react';
 
 import ToastContainer from '@components/Modal/Toast/ToastContainer/ToastContainer';
 
 import { ToastContextProvider } from '@context/Toast';
+import {
+  ToastActionsType,
+  toastReducer,
+} from '@components/Modal/Toast/toast.reducer';
 
 import { generateId } from '@components/Modal/Toast/toast.utils';
 
 const ToastProvider = ({ children }: PropsWithStrictChildren) => {
-  const [toasts, setToasts] = useState<Toast[]>([]);
+  const [toasts, dispatch] = useReducer(toastReducer, []);
 
   const createToastOptions = (options: CreateToastOptions) => {
     const id = options.id ?? generateId();
-    const defaultOptions = {};
-    let timer: Toast['timer'] = null;
-
-    if (options.duration) {
-      timer = setTimeout(() => remove(id), options.duration);
-    }
+    const defaultOptions: CreateToastOptions = {};
+    const timer = options.duration
+      ? setTimeout(
+          () => dispatch({ type: ToastActionsType.REMOVE, id }),
+          options.duration
+        )
+      : null;
 
     return {
       ...defaultOptions,
@@ -38,48 +42,53 @@ const ToastProvider = ({ children }: PropsWithStrictChildren) => {
   const show: ToastContext['show'] = options => {
     const isPresentToast = toasts.find(toast => toast.id === options.id);
     if (isPresentToast) return;
-    setToasts(prev => [...prev, createToastOptions(options)]);
+    dispatch({
+      type: ToastActionsType.SHOW,
+      toast: createToastOptions(options),
+    });
   };
 
   const update = (options: ToastOptions) => {
-    setToasts(prev =>
-      prev.map(toast =>
-        toast.id === options.id
-          ? { ...toast, ...createToastOptions(options) }
-          : toast
-      )
-    );
+    dispatch({
+      type: ToastActionsType.UPDATE,
+      id: options.id,
+      toast: createToastOptions(options),
+    });
   };
 
   const promise: ToastContext['promise'] = async ({
-    id,
-    fetchFn,
-    promiseContent,
+    id = generateId(),
+    asyncFn,
+    response,
   }) => {
     try {
-      update({ id, confirmLabel: promiseContent?.loading });
-      await fetchFn();
-      remove(id);
+      update({
+        id,
+        confirmLabel: response?.loading?.content,
+        persistOptions: true,
+      });
+      await asyncFn();
+      dispatch({ type: ToastActionsType.REMOVE, id });
     } catch (err) {
-      remove(id);
-      setToasts(prev => [
-        ...prev,
-        createToastOptions({ id, description: 'error' }),
-      ]);
+      dispatch({ type: ToastActionsType.REMOVE, id });
+      if (response?.error) {
+        const {
+          error: { options, content },
+        } = response;
+        dispatch({
+          type: ToastActionsType.SHOW,
+          toast: createToastOptions({ ...options, description: content }),
+        });
+      }
     }
   };
 
   const remove: ToastContext['remove'] = id => {
-    setToasts(prev => prev.filter(toast => toast.id !== id));
-    const toastTimer = toasts.find(toast => toast.id === id)?.timer;
-    if (toastTimer) clearTimeout(toastTimer);
+    dispatch({ type: ToastActionsType.REMOVE, id });
   };
 
   const removeAll: ToastContext['removeAll'] = () => {
-    toasts.forEach(toast => {
-      if (toast.timer) clearTimeout(toast.timer);
-    });
-    setToasts([]);
+    dispatch({ type: ToastActionsType.REMOVE_ALL });
   };
 
   return (

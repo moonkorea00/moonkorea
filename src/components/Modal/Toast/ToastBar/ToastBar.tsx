@@ -12,10 +12,11 @@ const ToastBar = ({
   confirmType,
   dismissLabel,
   onConfirm,
+  style,
 }: Omit<Toast, 'duration'>) => {
   const toast = useToastContext();
   return (
-    <S.Container type={type}>
+    <S.Container style={style}>
       <div>{description}</div>
       {type === 'dialog' && (
         <S.ButtonWrapper>
